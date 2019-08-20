@@ -81,5 +81,5 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 
 ### 创建模块和业务组件
 * ng g ng-alain:module trade，创建trade模块
-* ng g ng-alain:edit edit -m=video，创建video模块的edit组件（模块），edit目录在video目录下，edit模块的文件在edit目录下
-* ng g ng-alain:crud -m=trade，一次性创建list、view、edit模块
+* ng g ng-alain:edit edit -m=video，创建video模块的edit组件，edit目录在video目录下，edit模块的文件在edit目录下
+* ng g ng-alain:curd curd -m=trade，在trade/curd目录下，一次性创建list、view、edit模块，好像不能直接在trade目录下直接创建3个组件
