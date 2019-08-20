@@ -79,6 +79,15 @@ Thank you to all our backers! 🙏
 
 The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/master/LICENSE) file for the full text)
 
+### 新增模块以及菜单
+* 使用命令新增module
+* 在routes-routing.module.ts中配置新增module的路由
+* 在app-data.json中，添加菜单数据，当然如果这个数据是来自后台，那么就在后台添加
+* 在app-data.json中使用到了i18n的数据和icon的数据。i18n的数据在tmp/i18n/下的文件中添加对应的i18n数据
+* icon的图标使用插件的方式添加，运行 ng g ng-alain:plugin icon. 这个插件只从html和ts文件中寻找，如果是在json中使用了，要在style-icon.ts中自己引入
+* icon可以在[iconfont](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=9402)中寻找
+
+
 ### 创建模块和业务组件
 * ng g ng-alain:module trade，创建trade模块
 * ng g ng-alain:edit edit -m=video，创建video模块的edit组件，edit目录在video目录下，edit模块的文件在edit目录下
