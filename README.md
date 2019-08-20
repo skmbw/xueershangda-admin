@@ -81,7 +81,7 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 
 ### 新增模块以及菜单
 * 使用命令新增module
-* 在routes-routing.module.ts中配置新增module的路由
+* 在routes-routing.module.ts中配置新增module的路由，否则找不到路径404错误
 * 在app-data.json中，添加菜单数据，当然如果这个数据是来自后台，那么就在后台添加
 * 在app-data.json中使用到了i18n的数据和icon的数据。i18n的数据在tmp/i18n/下的文件中添加对应的i18n数据
 * app-data.json数据还有i18n的数据在 StartupService中使用。本来应该从后台获取的，这是demo就从本地获取了。

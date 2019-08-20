@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { SimpleGuard } from '@delon/auth';
 import { environment } from '@env/environment';
 // layout
@@ -42,6 +42,9 @@ const routes: Routes = [
       { path: 'pro', loadChildren: () => import('./pro/pro.module').then(m => m.ProModule) },
       // Exception
       { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
+      // 业务module
+      { path: 'video', loadChildren: () => import('./video/video.module').then(m => m.VideoModule) },
+      { path: 'article', loadChildren: './article/article.module#ArticleModule' },
     ],
   },
   // 全屏布局
