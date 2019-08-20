@@ -83,3 +83,10 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 * ng g ng-alain:module trade，创建trade模块
 * ng g ng-alain:edit edit -m=video，创建video模块的edit组件，edit目录在video目录下，edit模块的文件在edit目录下
 * ng g ng-alain:curd curd -m=trade，在trade/curd目录下，一次性创建list、view、edit模块，好像不能直接在trade目录下直接创建3个组件
+
+### protobufjs的使用
+* pbjs -t static-module -w commonjs -o bundled.js file1.proto file2.proto
+将多个proto文件生成一个js文件
+* pbjs -t static-module -w commonjs -o bundled.js account_detail.proto answer.proto content.proto follow.proto platform_detail.proto score_detail.proto user.proto account.proto article.proto dialogue.proto orders.proto images.proto score.proto answer_file.proto comment.proto favorite.proto platform_account.proto question.proto tags.proto equipment.proto characters.proto virtual_items.proto category.proto video.proto payment.proto
+* pbts -o bundled.d.ts bundled.js
+将生成的bundled.js 生成typescript的文件bundled.d.ts
