@@ -78,3 +78,8 @@ Thank you to all our backers! 🙏
 ### License
 
 The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/master/LICENSE) file for the full text)
+
+### 创建模块和业务组件
+* ng g ng-alain:module trade，创建trade模块
+* ng g ng-alain:edit edit -m=video，创建video模块的edit组件（模块），edit目录在video目录下，edit模块的文件在edit目录下
+* ng g ng-alain:crud -m=trade，一次性创建list、view、edit模块
