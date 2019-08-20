@@ -55,6 +55,32 @@
           "link": "/widgets",
           "icon": "anticon-appstore",
           "badge": 2
+        },
+        {
+          "text": "视频管理",
+          "i18n": "menu.video.management",
+          "icon": "anticon anticon-video-camera",
+          "shortcutRoot": true,
+          "children": [
+            {
+              "text": "视频列表",
+              "link": "/video/list",
+              "i18n": "menu.video.list"
+            }
+          ]
+        },
+        {
+          "text": "文章管理",
+          "i18n": "menu.article.management",
+          "icon": "anticon anticon-file-text",
+          "shortcutRoot": true,
+          "children": [
+            {
+              "text": "文章列表",
+              "link": "/article/list",
+              "i18n": "menu.article.list"
+            }
+          ]
         }
       ]
     },
