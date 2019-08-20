@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArticleEditComponent } from './edit/edit.component';
 import { ArticleListComponent } from './list/list.component';
+import { ArticleEditComponent } from './edit/edit.component';
 
 const routes: Routes = [
 
-  { path: 'edit', component: ArticleEditComponent },
-  { path: 'list', component: ArticleListComponent }];
+  { path: 'list', component: ArticleListComponent },
+  { path: 'edit', component: ArticleEditComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -49,13 +49,13 @@ export class ArticleEditComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.id > 0)
-    this.http.get(`/user/${this.record.id}`).subscribe(res => (this.i = res));
+    this.http.get(`/user/${this.i.id}`).subscribe(res => (this.i = res)); // ${this.record.id}中record不存在的，是i
   }
 
   save(value: any) {
-    this.http.post(`/user/${this.record.id}`, value).subscribe(res => {
+    this.http.post(`/user/${this.i.id}`, value).subscribe(res => {
       this.msgSrv.success('保存成功');
-      this.modal.close(true);
+      // this.modal.close(true); // 应该是模板使用错误，不使用modal mode生成代码，但是模板还是modal的。找不到modal
     });
   }
 }
