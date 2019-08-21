@@ -23,9 +23,7 @@ export class ArticleEditComponent implements OnInit {
       callNo: { type: 'number', title: '调用次数' },
       href: { type: 'string', title: '链接', format: 'uri' },
       description: { type: 'string', title: '描述', maxLength: 140 },
-      // content: { type: 'string', title: '内容', ui: {
-      //     widget: 'md'
-      //   } }
+      content: { type: 'string', title: '内容', ui: { widget: 'md' } }
     },
     required: ['authorName', 'callNo', 'href', 'description'],
   };
@@ -44,16 +42,16 @@ export class ArticleEditComponent implements OnInit {
       widget: 'textarea',
       grid: { span: 24 }
     },
-    // $content: {
-    //   widget: 'md',
-    //   grid: { span: 24 },
-    //   // 配置markdown工具栏
-    //   options: {},
-    //   // markdown内容发生变化
-    //   change: (md: string) => {
-    //
-    //   }
-    // },
+    $content: {
+      widget: 'md',
+      // grid: { span: 24 },
+      // 配置markdown工具栏
+      // options: {},
+      // markdown内容发生变化
+      change: (md: string) => {
+
+      }
+    },
   };
 
   constructor(
