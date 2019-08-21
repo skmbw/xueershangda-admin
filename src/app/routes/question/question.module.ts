@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
 import { QuestionRoutingModule } from './question-routing.module';
+import { QuestionListComponent } from './list/list.component';
+import { QuestionViewComponent } from './view/view.component';
+import { QuestionEditComponent } from './edit/edit.component';
 
-const COMPONENTS = [];
-const COMPONENTS_NOROUNT = [];
+const COMPONENTS = [
+  QuestionListComponent,
+  QuestionEditComponent];
+const COMPONENTS_NOROUNT = [
+  QuestionViewComponent];
 
 @NgModule({
   imports: [

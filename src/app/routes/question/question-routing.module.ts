@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { QuestionListComponent } from './list/list.component';
+import { QuestionEditComponent } from './edit/edit.component';
 
 const routes: Routes = [
-];
+
+  { path: 'list', component: QuestionListComponent },
+  { path: 'edit', component: QuestionEditComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
