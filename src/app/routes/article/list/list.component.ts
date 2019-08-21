@@ -16,6 +16,7 @@ import ArticleReply = com.xueershangda.tianxun.article.model.ArticleReply;
 export class ArticleListComponent implements OnInit {
   // url = `/user`;
   url: STData[] = [];
+  // 搜索属性
   searchSchema: SFSchema = {
     properties: {
       no: {
@@ -25,11 +26,13 @@ export class ArticleListComponent implements OnInit {
     }
   };
   @ViewChild('st', { static: false }) st: STComponent;
+  // 表格显示的属性，与后端数据要能对的上
   columns: STColumn[] = [
     { title: '编号', index: 'no' },
-    { title: '调用次数', type: 'number', index: 'callNo' },
-    { title: '头像', type: 'img', width: '50px', index: 'avatar' },
-    { title: '时间', type: 'date', index: 'updatedAt' },
+    { title: '标题', index: 'title' },
+    // { title: '头像', type: 'img', width: '50px', index: 'avatar' },
+    { title: '作者', index: 'authorName' },
+    { title: '时间', type: 'date', index: 'createDate' },
     {
       title: '',
       // 这里是进行页面跳转的 配置
