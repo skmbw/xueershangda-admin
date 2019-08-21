@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 // delon
 import { AlainThemeModule } from '@delon/theme';
@@ -10,12 +10,12 @@ import { DelonACLModule } from '@delon/acl';
 import { DelonFormModule } from '@delon/form';
 // i18n
 import { TranslateModule } from '@ngx-translate/core';
-
 // #region third libs
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { CountdownModule } from 'ngx-countdown';
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
+import { ToastrModule } from 'ngx-toastr';
 
 const THIRDMODULES = [NgZorroAntdModule, CountdownModule, UEditorModule, NgxTinymceModule];
 // #endregion
@@ -38,6 +38,8 @@ const DIRECTIVES = [];
     DelonFormModule,
     // third libs
     ...THIRDMODULES,
+    // 这个不需要重新export，所以不能放在 THIRDMODULES 中
+    ToastrModule.forRoot({timeOut: 3000, positionClass: 'toast-center-center'})
   ],
   declarations: [
     // your components

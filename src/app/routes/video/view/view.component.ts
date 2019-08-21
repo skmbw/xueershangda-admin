@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService, NzModalRef } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
+import { VideoService } from '@shared/service/video.service';
+import { com } from '@shared';
+import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
+import IVideo = com.xueershangda.tianxun.video.model.IVideo;
 
 @Component({
   selector: 'app-video-view',
@@ -8,16 +12,25 @@ import { _HttpClient } from '@delon/theme';
 })
 export class VideoViewComponent implements OnInit {
   record: any = {};
-  i: any;
+  i: IVideo;
 
   constructor(
     private modal: NzModalRef,
     public msgSrv: NzMessageService,
-    public http: _HttpClient
+    public http: _HttpClient,
+    private videoService: VideoService
   ) { }
 
   ngOnInit(): void {
-    this.http.get(`/user/${this.record.id}`).subscribe(res => this.i = res);
+    this.videoService.get(this.record.id).subscribe(res => {
+      const uint8Array = new Uint8Array(res, 0, res.byteLength);
+      const reply = VideoReply.decode(uint8Array);
+      if (reply.code === 1) {
+        this.i = reply.video;
+      } else {
+        this.msgSrv.info(reply.message);
+      }
+    });
   }
 
   close() {
