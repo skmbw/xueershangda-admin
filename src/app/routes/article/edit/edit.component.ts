@@ -23,7 +23,7 @@ export class ArticleEditComponent implements OnInit {
       callNo: { type: 'number', title: '调用次数' },
       href: { type: 'string', title: '链接', format: 'uri' },
       description: { type: 'string', title: '描述', maxLength: 140 },
-      content: { type: 'string', title: '内容', ui: { widget: 'md' } }
+      content: { type: 'string', title: '内容' }
     },
     required: ['authorName', 'callNo', 'href', 'description'],
   };

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared';
 import { DelonFormModule, WidgetRegistry } from '@delon/form';
+import { MarkdownWidget } from '../../routes/widgets/markdown/markdown.widget';
 
 // import { TinymceWidget } from './widgets/tinymce/tinymce.widget';
 // import { UeditorWidget } from './widgets/ueditor/ueditor.widget';
@@ -8,6 +9,7 @@ import { DelonFormModule, WidgetRegistry } from '@delon/form';
 export const SCHEMA_THIRDS_COMPONENTS = [
   // TinymceWidget,
   // UeditorWidget
+  MarkdownWidget
 ];
 
 @NgModule({
@@ -20,5 +22,6 @@ export class JsonSchemaModule {
   constructor(widgetRegistry: WidgetRegistry) {
     // widgetRegistry.register(TinymceWidget.KEY, TinymceWidget);
     // widgetRegistry.register(UeditorWidget.KEY, UeditorWidget);
+    widgetRegistry.register(MarkdownWidget.KEY, MarkdownWidget);
   }
 }
