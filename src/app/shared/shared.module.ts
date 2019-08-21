@@ -16,6 +16,7 @@ import { CountdownModule } from 'ngx-countdown';
 import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
 import { ToastrModule } from 'ngx-toastr';
+import { SimplemdeModule } from 'ngx-simplemde';
 
 const THIRDMODULES = [NgZorroAntdModule, CountdownModule, UEditorModule, NgxTinymceModule];
 // #endregion
@@ -39,7 +40,8 @@ const DIRECTIVES = [];
     // third libs
     ...THIRDMODULES,
     // 这个不需要重新export，所以不能放在 THIRDMODULES 中
-    ToastrModule.forRoot({timeOut: 3000, positionClass: 'toast-center-center'})
+    ToastrModule.forRoot({timeOut: 3000, positionClass: 'toast-center-center'}),
+    SimplemdeModule
   ],
   declarations: [
     // your components
