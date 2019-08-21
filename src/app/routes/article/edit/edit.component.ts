@@ -24,23 +24,28 @@ export class ArticleEditComponent implements OnInit {
       callNo: { type: 'number', title: '调用次数' },
       href: { type: 'string', title: '链接', format: 'uri' },
       description: { type: 'string', title: '描述', maxLength: 140 },
+      content: { type: 'string', title: '内容' }
     },
     required: ['owner', 'callNo', 'href', 'description'],
   };
   ui: SFUISchema = {
     '*': {
       spanLabelFixed: 100,
-      grid: { span: 12 },
+      grid: { span: 12 }
     },
     $no: {
       widget: 'text'
     },
     $href: {
-      widget: 'string',
+      widget: 'string'
     },
     $description: {
       widget: 'textarea',
-      grid: { span: 24 },
+      grid: { span: 24 }
+    },
+    $content: {
+      widget: 'md',
+      grid: { span: 24 }
     },
   };
 
