@@ -4,13 +4,17 @@ import { Location } from '@angular/common';
 import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
+import { JsUtils } from '@shared/utils/js-utils';
+import { ArticleService } from '@shared/service/article.service';
+import { com } from '@shared';
+import ArticleReply = com.xueershangda.tianxun.article.model.ArticleReply;
 
 @Component({
   selector: 'app-article-edit',
   templateUrl: './edit.component.html',
 })
 export class ArticleEditComponent implements OnInit {
-
+  record: any = {};
   id = this.route.snapshot.params.id; // 在这里获取路由参数信息，ngOnInit中可以直接获取到
   i: any;
   schema: SFSchema = {
@@ -45,12 +49,24 @@ export class ArticleEditComponent implements OnInit {
     public location: Location,
     private msgSrv: NzMessageService,
     public http: _HttpClient,
+    private articleService: ArticleService
   ) {}
 
   ngOnInit(): void {
-    if (this.id > 0)
+    // 如果id不为空，则是编辑，否则是新增。对于文章，因为是富文本，这里是否有必要做编辑和新增啊。那样的话，还需要富文本编辑器！
+    if (JsUtils.isNotBlank(this.record.id)) {
       // ${this.record.id}中record不存在的，是i
-      this.http.get(`/user/${this.i.id}`).subscribe(res => (this.i = res));
+      // this.http.get(`/user/${this.i.id}`).subscribe(res => (this.i = res));
+      this.articleService.get(this.record.id).subscribe(result => {
+        const uint8Array = new Uint8Array(result, 0, result.byteLength);
+        const reply = ArticleReply.decode(uint8Array);
+        if (reply.code === 1) {
+          this.i = reply.data;
+        } else {
+          this.msgSrv.info(reply.message);
+        }
+      });
+    }
   }
 
   save(value: any) {
