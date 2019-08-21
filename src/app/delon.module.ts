@@ -2,19 +2,15 @@
  * 进一步对基础模块的导入提炼
  * 有关模块注册指导原则请参考：https://ng-alain.com/docs/module
  */
-import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { throwIfAlreadyLoaded } from '@core';
 
 import { AlainThemeModule } from '@delon/theme';
 import { DelonACLModule } from '@delon/acl';
-
 // #region mock
 import { DelonMockModule } from '@delon/mock';
 import * as MOCKDATA from '../../_mock';
 import { environment } from '@env/environment';
-const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
-// #endregion
-
 // #region reuse-tab
 /**
  * 若需要[路由复用](https://ng-alain.com/components/reuse-tab)需要：
@@ -27,8 +23,12 @@ const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
  *  </section>
  *  ```
  */
-import { RouteReuseStrategy } from '@angular/router';
-import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
+// tslint:disable-next-line: no-duplicate-imports
+import { PageHeaderConfig, STConfig } from '@delon/abc';
+import { DelonAuthConfig } from '@delon/auth';
+// 登录和注册的mock就在这里配置的，在项目的_mock/_user.ts中
+const MOCK_MODULES = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
+// #endregion
 const REUSETAB_PROVIDES = [
   // {
   //   provide: RouteReuseStrategy,
@@ -39,8 +39,6 @@ const REUSETAB_PROVIDES = [
 // #endregion
 
 // #region global config functions
-
-import { PageHeaderConfig } from '@delon/abc';
 export function fnPageHeaderConfig(): PageHeaderConfig {
   return {
     ...new PageHeaderConfig(),
@@ -48,7 +46,6 @@ export function fnPageHeaderConfig(): PageHeaderConfig {
   };
 }
 
-import { DelonAuthConfig } from '@delon/auth';
 export function fnDelonAuthConfig(): DelonAuthConfig {
   return {
     ...new DelonAuthConfig(),
@@ -56,8 +53,6 @@ export function fnDelonAuthConfig(): DelonAuthConfig {
   };
 }
 
-// tslint:disable-next-line: no-duplicate-imports
-import { STConfig } from '@delon/abc';
 export function fnSTConfig(): STConfig {
   return {
     ...new STConfig(),
