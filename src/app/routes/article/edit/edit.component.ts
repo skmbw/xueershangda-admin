@@ -73,7 +73,7 @@ export class ArticleEditComponent implements OnInit {
         const uint8Array = new Uint8Array(result, 0, result.byteLength);
         const reply = ArticleReply.decode(uint8Array);
         if (reply.code === 1) {
-          this.i = reply.data;
+          this.i = reply.data[0]; // data是一个数组
         } else {
           this.msgSrv.info(reply.message);
         }
