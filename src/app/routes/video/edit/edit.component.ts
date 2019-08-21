@@ -14,8 +14,9 @@ import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
   templateUrl: './edit.component.html',
 })
 export class VideoEditComponent implements OnInit {
-  record: any = {};
+  record: any;
   i: any;
+  // undefined: any; // 好像可以使用undefined作为变量名
   schema: SFSchema = {
     properties: {
       id: { type: 'string', title: '编号' },
@@ -160,9 +161,6 @@ export class VideoEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // if (this.record.id > 0)
-    //   this.http.get(`/user/${this.record.id}`).subscribe(res => (this.i = res));
-
     // alert(this.record.id); // this.undefined就是穿过来的参数，但是table.js._btnClick中的bug，没有设置或取到参数名导致
     // if (this.record.id > 0)
     //   this.http.get(Consts.URL + `/video/detail/${this.record.id}`).subscribe(res => (this.i = res));
