@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { _HttpClient, ModalHelper } from '@delon/theme';
 import { STColumn, STComponent } from '@delon/abc';
 import { SFSchema } from '@delon/form';
+import { ArticleEditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-article-list',
@@ -25,9 +26,14 @@ export class ArticleListComponent implements OnInit {
     { title: '时间', type: 'date', index: 'updatedAt' },
     {
       title: '',
+      // 这里是进行页面跳转的 配置
       buttons: [
-        // { text: '查看', click: (item: any) => `/form/${item.id}` },
-        // { text: '编辑', type: 'static', component: FormEditComponent, click: 'reload' },
+        { text: '查看', type: 'link', click: (item: any) => `article/view/${item.id}` }, // 返回的url，可以不以/开头
+        {
+          text: '编辑',
+          type: 'link',
+          click: (item: any) => `/article/edit/${item.id}` // 这里要返回全url，否则404
+        },
       ]
     }
   ];
@@ -37,9 +43,9 @@ export class ArticleListComponent implements OnInit {
   ngOnInit() { }
 
   add() {
-    // this.modal
-    //   .createStatic(FormEditComponent, { i: { id: 0 } })
-    //   .subscribe(() => this.st.reload());
+    this.modal
+      .createStatic(ArticleEditComponent, { i: { id: '' } })
+      .subscribe(() => this.st.reload());
   }
 
 }

@@ -10,8 +10,8 @@ import { SFSchema, SFUISchema } from '@delon/form';
   templateUrl: './edit.component.html',
 })
 export class ArticleEditComponent implements OnInit {
-  
-  id = this.route.snapshot.params.id;
+
+  id = this.route.snapshot.params.id; // 在这里获取路由参数信息，ngOnInit中可以直接获取到
   i: any;
   schema: SFSchema = {
     properties: {
@@ -49,13 +49,15 @@ export class ArticleEditComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.id > 0)
-    this.http.get(`/user/${this.i.id}`).subscribe(res => (this.i = res)); // ${this.record.id}中record不存在的，是i
+      // ${this.record.id}中record不存在的，是i
+      this.http.get(`/user/${this.i.id}`).subscribe(res => (this.i = res));
   }
 
   save(value: any) {
     this.http.post(`/user/${this.i.id}`, value).subscribe(res => {
       this.msgSrv.success('保存成功');
-      // this.modal.close(true); // 应该是模板使用错误，不使用modal mode生成代码，但是模板还是modal的。找不到modal
+      // 应该是模板使用错误，应该使用非modal mode template生成代码，但是本文件的代码还是modal的模板生成的，找不到modal
+      // this.modal.close(true);
     });
   }
 }
