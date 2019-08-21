@@ -6,6 +6,7 @@ import { ArticleEditComponent } from '../edit/edit.component';
 import { ArticleService } from '@shared/service/article.service';
 import { com } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd';
+import { ArticleViewComponent } from '../view/view.component';
 import Article = com.xueershangda.tianxun.article.model.Article;
 import ArticleReply = com.xueershangda.tianxun.article.model.ArticleReply;
 
@@ -28,7 +29,7 @@ export class ArticleListComponent implements OnInit {
   @ViewChild('st', { static: false }) st: STComponent;
   // 表格显示的属性，与后端数据要能对的上
   columns: STColumn[] = [
-    { title: '编号', index: 'no' },
+    { title: '编号', index: 'id' },
     { title: '标题', index: 'title' },
     // { title: '头像', type: 'img', width: '50px', index: 'avatar' },
     { title: '作者', index: 'authorName' },
@@ -37,7 +38,18 @@ export class ArticleListComponent implements OnInit {
       title: '',
       // 这里是进行页面跳转的 配置
       buttons: [
-        { text: '查看', type: 'link', click: (item: any) => `article/view/${item.id}` }, // 返回的url，可以不以/开头
+        {
+          text: '查看',
+          // type: 'link',
+          click: (item: any) => {
+            this.modal
+            // static的modal点击蒙层，不会关闭modal
+            // 这个参数名有两个一个是i，一个是record
+              .createStatic(ArticleViewComponent, { record: item })
+              .subscribe(() => this.st.reload());
+          },
+          // click: (item: any) => `article/view/${item.id}`
+        }, // 返回的url，可以不以/开头
         {
           text: '编辑',
           type: 'link',

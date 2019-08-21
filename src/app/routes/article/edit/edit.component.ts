@@ -14,26 +14,27 @@ import ArticleReply = com.xueershangda.tianxun.article.model.ArticleReply;
   templateUrl: './edit.component.html',
 })
 export class ArticleEditComponent implements OnInit {
-  record: any = {};
   id = this.route.snapshot.params.id; // 在这里获取路由参数信息，ngOnInit中可以直接获取到
   i: any;
   schema: SFSchema = {
     properties: {
-      no: { type: 'string', title: '编号' },
-      owner: { type: 'string', title: '姓名', maxLength: 15 },
+      id: { type: 'string', title: '编号' },
+      authorName: { type: 'string', title: '作者', maxLength: 15 },
       callNo: { type: 'number', title: '调用次数' },
       href: { type: 'string', title: '链接', format: 'uri' },
       description: { type: 'string', title: '描述', maxLength: 140 },
-      content: { type: 'string', title: '内容' }
+      // content: { type: 'string', title: '内容', ui: {
+      //     widget: 'md'
+      //   } }
     },
-    required: ['owner', 'callNo', 'href', 'description'],
+    required: ['authorName', 'callNo', 'href', 'description'],
   };
   ui: SFUISchema = {
     '*': {
       spanLabelFixed: 100,
       grid: { span: 12 }
     },
-    $no: {
+    $id: {
       widget: 'text'
     },
     $href: {
@@ -43,16 +44,16 @@ export class ArticleEditComponent implements OnInit {
       widget: 'textarea',
       grid: { span: 24 }
     },
-    $content: {
-      widget: 'md',
-      grid: { span: 24 },
-      // 配置markdown工具栏
-      options: {},
-      // markdown内容发生变化
-      change: (md: string) => {
-
-      }
-    },
+    // $content: {
+    //   widget: 'md',
+    //   grid: { span: 24 },
+    //   // 配置markdown工具栏
+    //   options: {},
+    //   // markdown内容发生变化
+    //   change: (md: string) => {
+    //
+    //   }
+    // },
   };
 
   constructor(
@@ -65,10 +66,10 @@ export class ArticleEditComponent implements OnInit {
 
   ngOnInit(): void {
     // 如果id不为空，则是编辑，否则是新增。对于文章，因为是富文本，这里是否有必要做编辑和新增啊。那样的话，还需要富文本编辑器！
-    if (JsUtils.isNotBlank(this.record.id)) {
+    if (JsUtils.isNotBlank(this.id)) { // 这个是连接跳转过来的，record是空的
       // ${this.record.id}中record不存在的，是i
       // this.http.get(`/user/${this.i.id}`).subscribe(res => (this.i = res));
-      this.articleService.get(this.record.id).subscribe(result => {
+      this.articleService.get(this.id).subscribe(result => {
         const uint8Array = new Uint8Array(result, 0, result.byteLength);
         const reply = ArticleReply.decode(uint8Array);
         if (reply.code === 1) {

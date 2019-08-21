@@ -6,7 +6,7 @@ import { ArticleEditComponent } from './edit/edit.component';
 const routes: Routes = [
 
   { path: 'list', component: ArticleListComponent },
-  { path: 'edit', component: ArticleEditComponent }];
+  { path: 'edit/:id', component: ArticleEditComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
