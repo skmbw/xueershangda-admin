@@ -44,12 +44,12 @@ export class ArticleEditComponent implements OnInit {
     },
     $content: {
       widget: 'md',
-      // grid: { span: 24 },
+      grid: { span: 24 },
       // 配置markdown工具栏
       // options: {},
       // markdown内容发生变化
       change: (md: string) => {
-
+        alert(md);
       }
     },
   };

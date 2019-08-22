@@ -40,7 +40,6 @@ export class ArticleListComponent implements OnInit {
       buttons: [
         {
           text: '查看',
-          // type: 'link',
           click: (item: any) => {
             this.modal
             // static的modal点击蒙层，不会关闭modal
@@ -52,6 +51,11 @@ export class ArticleListComponent implements OnInit {
         }, // 返回的url，可以不以/开头
         {
           text: '编辑',
+          type: 'link',
+          click: (item: any) => `/article/edit/${item.id}` // 这里要返回全url，否则404
+        },
+        {
+          text: '删除',
           type: 'link',
           click: (item: any) => `/article/edit/${item.id}` // 这里要返回全url，否则404
         },
