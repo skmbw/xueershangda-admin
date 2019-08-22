@@ -6,7 +6,7 @@ import { QuestionEditComponent } from './edit/edit.component';
 const routes: Routes = [
 
   { path: 'list', component: QuestionListComponent },
-  { path: 'edit', component: QuestionEditComponent }];
+  { path: 'edit/:id', component: QuestionEditComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

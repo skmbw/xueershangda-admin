@@ -10,7 +10,7 @@ import { ControlWidget } from '@delon/form';
       [ui]="ui"
       [showError]="showError"
       [error]="error"
-      [showTitle]="schema.title"
+      [showTitle]="schema.title!==undefined"
     >
       <simplemde
         [ngModel]="value"
