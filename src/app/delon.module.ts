@@ -50,6 +50,10 @@ export function fnDelonAuthConfig(): DelonAuthConfig {
   return {
     ...new DelonAuthConfig(),
     login_url: '/passport/login',
+    token_send_key: 'tokenId',
+    // tslint:disable-next-line:no-invalid-template-strings
+    // token_send_template: `${tokenId}`,
+    token_send_place: 'header',
   };
 }
 

@@ -3,7 +3,6 @@ import { CommonService } from '@shared/service/common.service';
 import { HttpClient } from '@angular/common/http';
 import { com } from '@shared';
 import { Observable } from 'rxjs';
-import { Consts } from '@shared/utils/consts';
 import Article = com.xueershangda.tianxun.article.model.Article;
 
 @Injectable({
@@ -23,14 +22,18 @@ export class ArticleService extends CommonService {
   }
 
   save(article: Article): Observable<ArrayBuffer> {
-    return this.postProtobuf(Consts.URL + 'article/add', this.encode(article));
+    return this.postProtobuf('article/add', this.encode(article));
   }
 
   list(article: Article): Observable<ArrayBuffer> {
-    return this.postProtobuf(Consts.URL + 'article/list', this.encode(article));
+    return this.postProtobuf('article/list', this.encode(article));
   }
 
   get(id: string): Observable<ArrayBuffer> {
-    return this.getArrayBuffer(Consts.URL + 'article/detail/' + id);
+    return this.getArrayBuffer('article/detail/' + id);
+  }
+
+  delete(article: Article): Observable<ArrayBuffer> {
+    return this.postProtobuf('article/delete/' + article.id, this.encode(article));
   }
 }

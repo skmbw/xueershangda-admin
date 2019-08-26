@@ -1,16 +1,16 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpHandler,
   HttpErrorResponse,
   HttpEvent,
+  HttpHandler,
+  HttpInterceptor,
+  HttpRequest,
   HttpResponseBase,
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { mergeMap, catchError } from 'rxjs/operators';
-import { NzMessageService, NzNotificationService } from 'ng-zorro-antd';
+import { catchError, mergeMap } from 'rxjs/operators';
+import { NzNotificationService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
@@ -111,7 +111,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     // 统一加上服务端前缀
     let url = req.url;
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
-      url = environment.SERVER_URL + url;
+      url = url.startsWith('assets/') ? environment.SERVER_LOCAL + url : environment.SERVER_URL + url;
     }
 
     const newReq = req.clone({ url });
