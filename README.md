@@ -87,6 +87,7 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 * app-data.json数据还有i18n的数据在 StartupService中使用。本来应该从后台获取的，这是demo就从本地获取了。
 * icon的图标使用插件的方式添加，运行 ng g ng-alain:plugin icon. 这个插件只从html和ts文件中寻找，如果是在json中使用了，要在style-icon.ts中自己引入
 * icon可以在[iconfont](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=9402)中寻找
+* icon图标，带outline后缀的，不需要写-outlone，Fill后缀的写-fill，TwoTone后缀的写-twotone
 
 
 ### 创建模块和业务组件
