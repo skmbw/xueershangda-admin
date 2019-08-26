@@ -81,6 +81,19 @@
               "i18n": "menu.article.list"
             }
           ]
+        },
+        {
+          "text": "问题管理",
+          "i18n": "menu.question.management",
+          "icon": "anticon anticon-question-circle-two-tone",
+          "shortcutRoot": true,
+          "children": [
+            {
+              "text": "问题列表",
+              "link": "/question/list",
+              "i18n": "menu.question.list"
+            }
+          ]
         }
       ]
     },

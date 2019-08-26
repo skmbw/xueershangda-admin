@@ -71,6 +71,8 @@
   "menu.video.list": "视频列表",
   "menu.article.management": "文章管理",
   "menu.article.list": "文章列表",
+  "menu.question.management": "文章管理",
+  "menu.question.list": "文章列表",
   "app.analysis.test": "工专路 {{no}} 号店",
   "app.analysis.introduce": "指标说明",
   "app.analysis.total-sales": "总销售额",
