@@ -85,7 +85,7 @@
         {
           "text": "问题管理",
           "i18n": "menu.question.management",
-          "icon": "anticon anticon-question-circle-two-tone",
+          "icon": "anticon anticon-question-circle",
           "shortcutRoot": true,
           "children": [
             {

@@ -7,12 +7,12 @@ import {
   InfoOutline,
   LinkOutline,
   ProfileOutline,
-  QuestionCircleTwoTone,
+  QuestionCircleOutline,
   VideoCameraOutline,
 } from '@ant-design/icons-angular/icons';
 
 export const ICONS = [InfoOutline, BulbOutline, ProfileOutline, ExceptionOutline, LinkOutline,
   VideoCameraOutline,
   FileTextOutline,
-  QuestionCircleTwoTone
+  QuestionCircleOutline
 ];
