@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { NzMessageService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
+import { QuestionService } from '@shared/service/question.service';
 
 @Component({
   selector: 'app-question-edit',
@@ -44,7 +45,7 @@ export class QuestionEditComponent implements OnInit {
     private route: ActivatedRoute,
     public location: Location,
     private msgSrv: NzMessageService,
-    public http: _HttpClient,
+    public http: _HttpClient, private questionService: QuestionService
   ) {}
 
   ngOnInit(): void {
