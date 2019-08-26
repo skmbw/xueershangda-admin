@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { CommonService } from '@shared/service/common.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Consts } from '@shared/utils/consts';
 import { com } from '@shared';
 import Question = com.xueershangda.tianxun.question.model.Question;
 
@@ -23,14 +22,14 @@ export class QuestionService extends CommonService {
   }
 
   save(question: Question): Observable<ArrayBuffer> {
-    return this.postProtobuf(Consts.URL + 'question/add', this.encode(question));
+    return this.postProtobuf('question/add', this.encode(question));
   }
 
   list(question: Question): Observable<ArrayBuffer> {
-    return this.postProtobuf(Consts.URL + 'question/list', this.encode(question));
+    return this.postProtobuf('question/list', this.encode(question));
   }
 
   get(id: string): Observable<ArrayBuffer> {
-    return this.getArrayBuffer(Consts.URL + 'question/detail/' + id);
+    return this.getArrayBuffer('question/detail/' + id);
   }
 }

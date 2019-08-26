@@ -3,7 +3,6 @@ import { CommonService } from './common.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { com } from '@shared/protobuf/model';
-import { Consts } from '@shared/utils/consts';
 import Video = com.xueershangda.tianxun.video.model.Video;
 
 @Injectable({
@@ -23,14 +22,14 @@ export class VideoService extends CommonService {
   }
 
   save(video: Video): Observable<ArrayBuffer> {
-    return this.postProtobuf(Consts.URL + 'video/add', this.encode(video));
+    return this.postProtobuf('video/add', this.encode(video));
   }
 
   list(video: Video): Observable<ArrayBuffer> {
-    return this.postProtobuf(Consts.URL + 'video/list', this.encode(video));
+    return this.postProtobuf('video/list', this.encode(video));
   }
 
   get(id: string): Observable<ArrayBuffer> {
-    return this.getArrayBuffer(Consts.URL + 'video/detail/' + id);
+    return this.getArrayBuffer('video/detail/' + id);
   }
 }
