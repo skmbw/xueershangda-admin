@@ -17,12 +17,16 @@ import { UEditorModule } from 'ngx-ueditor';
 import { NgxTinymceModule } from 'ngx-tinymce';
 import { ToastrModule } from 'ngx-toastr';
 import { SimplemdeModule } from 'ngx-simplemde';
+import { ConfirmComponent } from '@shared/confirm/confirm.component';
+import { MatDialogModule } from '@angular/material';
 
 const THIRDMODULES = [NgZorroAntdModule, CountdownModule, UEditorModule, NgxTinymceModule, SimplemdeModule];
 // #endregion
 
 // #region your componets & directives
-const COMPONENTS = [];
+const COMPONENTS = [
+  ConfirmComponent
+];
 const DIRECTIVES = [];
 // #endregion
 
@@ -41,6 +45,7 @@ const DIRECTIVES = [];
     ...THIRDMODULES,
     // 这个不需要重新export，所以不能放在 THIRDMODULES 中
     ToastrModule.forRoot({timeOut: 3000, positionClass: 'toast-center-center'}),
+    MatDialogModule
   ],
   declarations: [
     // your components
@@ -64,6 +69,9 @@ const DIRECTIVES = [];
     // your components
     ...COMPONENTS,
     ...DIRECTIVES,
+  ],
+  entryComponents: [
+    ConfirmComponent
   ],
 })
 export class SharedModule {}
