@@ -16,6 +16,7 @@ import ArticleReply = com.xueershangda.tianxun.article.model.ArticleReply;
 export class ArticleEditComponent implements OnInit {
   id = this.route.snapshot.params.id; // 在这里获取路由参数信息，ngOnInit中可以直接获取到
   i: any;
+  title = '';
   schema: SFSchema = {
     properties: {
       id: { type: 'string', title: '编号' },
@@ -72,10 +73,13 @@ export class ArticleEditComponent implements OnInit {
         const reply = ArticleReply.decode(uint8Array);
         if (reply.code === 1) {
           this.i = reply.data[0]; // data是一个数组
+          this.title = `编辑文章 ${this.id} 的信息`
         } else {
           this.msgSrv.info(reply.message);
         }
       });
+    } else {
+      this.title = '新建文章';
     }
   }
 

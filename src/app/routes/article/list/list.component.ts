@@ -100,7 +100,7 @@ export class ArticleListComponent implements OnInit {
 
   add() {
     this.modal
-      .createStatic(ArticleEditComponent, { i: { id: '' } })
+      .createStatic(ArticleEditComponent, { i: { id: null } })
       .subscribe(() => this.st.reload());
   }
 
