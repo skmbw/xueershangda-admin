@@ -28,7 +28,8 @@
             ],
             "styles": [
               "src/styles.less",
-              "node_modules/ngx-simplemde/src/index.css"
+              "node_modules/ngx-simplemde/src/index.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/@antv/g2/build/g2.js",

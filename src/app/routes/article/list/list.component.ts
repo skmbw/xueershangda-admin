@@ -7,6 +7,7 @@ import { ArticleService } from '@shared/service/article.service';
 import { com } from '@shared';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ArticleViewComponent } from '../view/view.component';
+import { ConfirmService } from '@shared/service/confirm.service';
 import Article = com.xueershangda.tianxun.article.model.Article;
 import ArticleReply = com.xueershangda.tianxun.article.model.ArticleReply;
 
@@ -64,7 +65,8 @@ export class ArticleListComponent implements OnInit {
   ];
 
   constructor(private http: _HttpClient, private modal: ModalHelper,
-              private articleService: ArticleService, private msgSrv: NzMessageService) { }
+              private articleService: ArticleService, private msgSrv: NzMessageService,
+              private confirmService: ConfirmService) { }
 
   ngOnInit() {
     const article = new Article();
