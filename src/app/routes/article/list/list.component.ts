@@ -57,8 +57,23 @@ export class ArticleListComponent implements OnInit {
         },
         {
           text: '删除',
-          type: 'link',
-          click: (item: any) => `/article/edit/${item.id}` // 这里要返回全url，否则404
+          // type: 'link',
+          click: (item: any) => {
+            this.confirmService.confirm('删除后不可恢复，您确定要删除该文章？').subscribe(result => {
+              if (result) {
+                // this.questionService.delete(question).subscribe(buffer => {
+                //   const uint8Array = new Uint8Array(buffer, 0, buffer.byteLength);
+                //   const questionReply = QuestionReply.decode(uint8Array);
+                //   if (questionReply.code === 1) {
+                //     this.toastr.success('删除问题成功！');
+                //     this.questionList.splice(this.questionList.indexOf(question), 1);
+                //   } else {
+                //     this.toastr.info(questionReply.message);
+                //   }
+                // });
+              }
+            });
+          }
         },
       ]
     }
