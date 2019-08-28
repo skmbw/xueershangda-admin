@@ -6,11 +6,11 @@ import { JsUtils } from '@shared/utils/js-utils';
 import { Consts } from '@shared/utils/consts';
 import { VideoService } from '@shared/service/video.service';
 import { com } from '@shared';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
 
-declare var plupload: any;
+declare var $: any; // 这次的导入要使用这种方式声明，否则会说 pluploadQueue is not a function
 
 @Component({
   selector: 'app-video-edit',
@@ -165,7 +165,9 @@ export class VideoEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // 新引入，需要重启动，否则无法检测到插件 https://blog.csdn.net/yhc0322/article/details/78796009
     // Initialize the widget when the DOM is ready
+    // const uploader = $("#uploader").pluploadQueue({});
     const uploader = $("#uploader").pluploadQueue({
       // General settings
       runtimes: 'html5,flash,silverlight,html4',
