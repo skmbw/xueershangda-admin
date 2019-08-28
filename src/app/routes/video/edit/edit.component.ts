@@ -147,6 +147,16 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     //   chunk_size: '1mb'
     // });
 
+    // angular中没有$(document).ready(function(){});的等价物
+    setTimeout(() => {
+      this.uploader = $("#uploader").pluploadQueue({
+        this_: $("#uploader"),
+        url: 'video/plupload',
+        max_file_size: '10000mb',
+        chunk_size: '1mb'
+      });
+    }, 200)
+
     // 这样new才可以，jquery加载不行
     // const plu = new plupload.Uploader({
     //   url: 'video/plupload',
@@ -292,7 +302,14 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   select() {
-    $('#fileInput').trigger('click');
+    // $('#fileInput').trigger('click');
+    this.uploader = $("#uploader").pluploadQueue({
+      this_: $("#uploader"),
+      url: 'video/plupload',
+      max_file_size: '10000mb',
+      chunk_size: '1mb'
+    });
+    this.uploader.init();
   }
 
   change() {
