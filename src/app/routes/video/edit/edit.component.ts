@@ -169,9 +169,10 @@ export class VideoEditComponent implements OnInit {
     // Initialize the widget when the DOM is ready
     // const uploader = $("#uploader").pluploadQueue({});
     const uploader = $("#uploader").pluploadQueue({
+      browse_button : 'browse',
       // General settings
       runtimes: 'html5,flash,silverlight,html4',
-      url: "../pluploadUpload",
+      url: "video/plupload",
 
       // Maximum file size
       max_file_size: '10000mb',
@@ -210,12 +211,35 @@ export class VideoEditComponent implements OnInit {
       },
 
       // Flash settings
-      // flash_swf_url: 'js/Moxie.swf',
+      flash_swf_url: 'js/Moxie.swf',
 
       // Silverlight settings
-      // silverlight_xap_url: 'js/Moxie.xap'
+      silverlight_xap_url: 'js/Moxie.xap'
     });
+    // 初始化plupload
+    uploader.init();
 
+    // 文件添加时，在容器里显示待上传的文件列表
+    uploader.bind('FilesAdded', (upload, files) => {
+      for (const i in files) {
+        if (files.hasOwnProperty(i)) {
+          // 在页面迭代显示
+          $('#filelist').append('<div><input type="hidden" name="attachmentId" id="id'+files[i].id+'"/>'+files[i].name + ' (' + upload.formatSize(files[i].size) + ')<div id="'+files[i].id+'"></div></div></br>');
+        }
+      }
+    });
+    // 文件上传进度显示
+    uploader.bind('UploadProgress', (upload, file) => {
+
+    });
+    // 单个文件上完成后,回调事件
+    uploader.bind('FileUploaded', (upload, file, result) => {
+
+    });
+    // 全部完成后的回调事件
+    uploader.bind('UploadComplete', (upload, files) => {
+
+    });
     // $("#toStop").on('click', function () {
     //   uploader.stop();
     // });

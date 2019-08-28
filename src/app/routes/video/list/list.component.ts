@@ -57,8 +57,12 @@ export class VideoListComponent implements OnInit {
         { // 这种方式打开modal为什么不能正确的传递参数呢？因为bug，没有取modal这个参数，导致参数名是undefined。
           // 默认传递的参数是该行记录。
           text: '编辑',
-          type: 'static',
-          component: VideoEditComponent // 默认将当前行记录record传进去作为参数
+          click: (item: any) => {
+            this.modal.createStatic(VideoEditComponent, { record: item})
+              .subscribe(() => this.st.reload());
+          }
+          // type: 'static',
+          // component: VideoEditComponent // 默认将当前行记录record传进去作为参数
           // 这个参数没有使用，是一个bug，在@delon/abc/fesm5/table.js._btnClick（1978行）中，根本没有判断paramsName是否为空
           // @delon/abc/fesm2015/table.js._btnClick（2215行）中也要修改。8.3版本
           // 我对源码做了改动，可以使用了，暂时还是不建议使用这个方式，使用click的方式也是OK的，自己创建modal。
