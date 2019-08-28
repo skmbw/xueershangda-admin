@@ -183,7 +183,7 @@ export class VideoEditComponent implements OnInit {
     // });
 
     this.uploader = new plupload.Uploader({
-      browse_button : 'browse',
+      browse_button : 'browse_btn',
       // General settings
       // runtimes: 'html5',
       url: "video/plupload",
@@ -194,12 +194,12 @@ export class VideoEditComponent implements OnInit {
       chunk_size: '1mb',
 
       // Resize images on clientside if we can
-      resize: {
-        width: 200,
-        height: 200,
-        quality: 90,
-        crop: true // crop to exact dimensions
-      },
+      // resize: {
+      //   width: 200,
+      //   height: 200,
+      //   quality: 90,
+      //   crop: true // crop to exact dimensions
+      // },
 
       // Specify what files to browse for
       filters: [
@@ -218,11 +218,11 @@ export class VideoEditComponent implements OnInit {
       dragdrop: true,
 
       // Views to activate
-      views: {
-        list: true,
-        thumbs: true, // Show thumbs
-        active: 'thumbs'
-      },
+      // views: {
+      //   list: true,
+      //   thumbs: true, // Show thumbs
+      //   active: 'thumbs'
+      // },
 
       // Flash settings
       // flash_swf_url: 'js/Moxie.swf',
@@ -311,5 +311,13 @@ export class VideoEditComponent implements OnInit {
 
   startUpload() {
     this.uploader.start();
+  }
+
+  selectFile() {
+    $('#fileInput').trigger('click');
+  }
+
+  change() {
+    this.uploader.addFile($('#fileInput'));
   }
 }
