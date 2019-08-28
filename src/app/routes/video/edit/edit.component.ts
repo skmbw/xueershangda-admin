@@ -18,7 +18,7 @@ declare var $: any; // 这次的导入要使用这种方式声明，否则会说
   styleUrls: ['./edit.component.css']
 })
 export class VideoEditComponent implements OnInit {
-  record: any;
+  record: any = {}; // 如果不初始化，那么this.record.id会是undefined
   i: any;
   // undefined: any; // 好像可以使用undefined作为变量名
   schema: SFSchema = {
