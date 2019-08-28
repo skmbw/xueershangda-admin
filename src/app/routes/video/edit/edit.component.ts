@@ -7,6 +7,7 @@ import { Consts } from '@shared/utils/consts';
 import { VideoService } from '@shared/service/video.service';
 import { com } from '@shared';
 // import * as $ from 'jquery';
+import * as plupload from 'plupload';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
 
@@ -20,6 +21,7 @@ declare var $: any; // 这次的导入要使用这种方式声明，否则会说
 export class VideoEditComponent implements OnInit {
   record: any = {}; // 如果不初始化，那么this.record.id会是undefined
   i: any;
+  uploader: any;
   // undefined: any; // 好像可以使用undefined作为变量名
   schema: SFSchema = {
     properties: {
@@ -167,11 +169,23 @@ export class VideoEditComponent implements OnInit {
   ngOnInit(): void {
     // 新引入，需要重启动，否则无法检测到插件 https://blog.csdn.net/yhc0322/article/details/78796009
     // Initialize the widget when the DOM is ready
-    // const uploader = $("#uploader").pluploadQueue({});
-    const uploader = $("#uploader").pluploadQueue({
+    // this.uploader = $("#uploader").pluploadQueue({
+    //   url: 'video/plupload',
+    //   max_file_size: '10000mb',
+    //   chunk_size: '1mb'
+    // });
+
+    // 这样new才可以，jquery加载不行
+    // const plu = new plupload.Uploader({
+    //   url: 'video/plupload',
+    //   max_file_size: '10000mb',
+    //   chunk_size: '1mb'
+    // });
+
+    this.uploader = new plupload.Uploader({
       browse_button : 'browse',
       // General settings
-      runtimes: 'html5,flash,silverlight,html4',
+      // runtimes: 'html5',
       url: "video/plupload",
 
       // Maximum file size
@@ -211,16 +225,16 @@ export class VideoEditComponent implements OnInit {
       },
 
       // Flash settings
-      flash_swf_url: 'js/Moxie.swf',
+      // flash_swf_url: 'js/Moxie.swf',
 
       // Silverlight settings
-      silverlight_xap_url: 'js/Moxie.xap'
+      // silverlight_xap_url: 'js/Moxie.xap'
     });
     // 初始化plupload
-    uploader.init();
+    this.uploader.init();
 
     // 文件添加时，在容器里显示待上传的文件列表
-    uploader.bind('FilesAdded', (upload, files) => {
+    this.uploader.bind('FilesAdded', (upload, files) => {
       for (const i in files) {
         if (files.hasOwnProperty(i)) {
           // 在页面迭代显示
@@ -229,23 +243,24 @@ export class VideoEditComponent implements OnInit {
       }
     });
     // 文件上传进度显示
-    uploader.bind('UploadProgress', (upload, file) => {
-
+    this.uploader.bind('UploadProgress', (upload, file) => {
+      $('#'+file.id).html("   "+file.percent + "%");
     });
     // 单个文件上完成后,回调事件
-    uploader.bind('FileUploaded', (upload, file, result) => {
-
+    this.uploader.bind('FileUploaded', (upload, file, result) => {
+      $('#id'+file.id).val(result.response);
     });
     // 全部完成后的回调事件
-    uploader.bind('UploadComplete', (upload, files) => {
-
+    this.uploader.bind('UploadComplete', (upload, files) => {
+      alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
     });
     // $("#toStop").on('click', function () {
     //   uploader.stop();
     // });
-    //
-    // $("#toStart").on('click', function () {
-    //   uploader.start();
+
+    // $("#startUpload").on('click', () => {
+    //   alert('start upload.');
+    //   this.uploader.start();
     // });
 
     // alert(this.record.id); // this.undefined就是穿过来的参数，但是table.js._btnClick中的bug，没有设置或取到参数名导致
@@ -292,5 +307,9 @@ export class VideoEditComponent implements OnInit {
 
   close() {
     this.modal.destroy();
+  }
+
+  startUpload() {
+    this.uploader.start();
   }
 }

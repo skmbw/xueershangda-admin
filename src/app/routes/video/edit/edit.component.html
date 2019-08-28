@@ -8,4 +8,9 @@
     <button nz-button type="submit" nzType="primary" (click)="save(sf.value)" [disabled]="!sf.valid" [nzLoading]="http.loading">保存</button>
   </div>
 </sf>
-<div id="uploader"></div>
+<div id="uploader">
+  <div></div>
+  <div id="filelist"></div>
+</div>
+<button id="browse">选择文件</button>
+<button id="startUpload" (click)="startUpload()">开始上传</button>
