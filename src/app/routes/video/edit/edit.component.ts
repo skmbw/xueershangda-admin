@@ -6,6 +6,8 @@ import { JsUtils } from '@shared/utils/js-utils';
 import { Consts } from '@shared/utils/consts';
 import { VideoService } from '@shared/service/video.service';
 import { com } from '@shared';
+// import * as $ from 'jquery';
+// import * as plupload from 'plupload';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
 
@@ -16,7 +18,7 @@ declare var $: any; // 这次的导入要使用这种方式声明，否则会说
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class VideoEditComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class VideoEditComponent implements OnInit, AfterViewInit {
   record: any = {}; // 如果不初始化，那么this.record.id会是undefined
   i: any;
   uploader: any;
@@ -36,18 +38,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit, AfterContentIn
       },
       // url: { type: 'string', title: '链接', format: 'uri' },
       coverImage: { type: 'string', title: '封面图片',
-        // enum: [ // enum中的静态数据会以a标签展示，后面上传的是span标签
-        //   // {
-        //   //   // uid: -1,
-        //   //   // name: 'xxx.png',
-        //   //   // status: 'done',
-        //   //   // url:
-        //   //   //   'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-        //   //   // response: {
-        //   //   //   resourceId: 1,
-        //   //   // }
-        //   // }
-        // ]
       },
       video: { type: 'string', title: '视频文件'},
       category: { type: 'string', title: '分类', maxLength: 12 }
@@ -89,8 +79,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit, AfterContentIn
       change: (args: UploadChangeParam) => {
         // console.log(JSON.stringify(args));
         if (args.type === 'success') {
-          // this.ui.$coverImage.asyncData(args.file);
-          // console.log('changed.');
           const reply = args.file;
           const response = reply.response;
           if (response.code !== 1) { // 提示信息
@@ -102,8 +90,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit, AfterContentIn
             const ext = reply.name.substring(reply.name.lastIndexOf('.'));
             this.record.image = this.record.id + ext;
           }
-          // reply.url = response.url;
-          // this.schema.properties.coverImage.enum[0] = reply;
         }
       },
       listType: 'picture',
@@ -111,19 +97,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit, AfterContentIn
         const id = JsUtils.isBlank(this.record.id) ? '' : this.record.id;
         return {'videoType': '1', 'id': id};
       }
-      // asyncData: (data?: any) => {
-      //   if (data !== undefined) {
-      //     console.log(JSON.stringify(data));
-      //     // const type: SFSchemaEnumType[] = [];
-      //     return Observable.create((observer) => {
-      //       data.url = 'aaaa';
-      //       observer.next(data);
-      //     });
-      //   } else {
-      //     return Observable.create(() => {
-      //     });
-      //   }
-      // }
     },
     $video: {
       widget: 'upload',
@@ -280,10 +253,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit, AfterContentIn
   }
 
   save(value: any) {
-    // this.http.post(`/user/${this.record.id}`, value).subscribe(res => {
-    //   this.msgSrv.success('保存成功');
-    //   this.modal.close(true);
-    // });
     if (value.coverImage !== value.video) {
       this.msgSrv.info('视频文件和封面图片信息不匹配。');
       return;
@@ -306,21 +275,12 @@ export class VideoEditComponent implements OnInit, AfterViewInit, AfterContentIn
   }
 
   ngAfterViewInit() {
-    this.uploader = $("#uploader").pluploadQueue({
-      this_: $("#uploader"),
-      url: 'video/plupload',
-      max_file_size: '10000mb',
-      chunk_size: '1mb'
-    });
-  }
-  // 这个在ngAfterViewInit前面调
-  ngAfterContentInit() {
-    this.uploader = $("#uploader").pluploadQueue({
-      this_: $("#uploader"),
-      url: 'video/plupload',
-      max_file_size: '10000mb',
-      chunk_size: '1mb'
-    });
+    // this.uploader = $("#uploader").pluploadQueue({
+    //   this_: $("#uploader"),
+    //   url: 'video/plupload',
+    //   max_file_size: '10000mb',
+    //   chunk_size: '1mb'
+    // });
   }
 
   close() {
