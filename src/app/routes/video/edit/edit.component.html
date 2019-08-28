@@ -8,10 +8,10 @@
     <button nz-button type="submit" nzType="primary" (click)="save(sf.value)" [disabled]="!sf.valid" [nzLoading]="http.loading">保存</button>
   </div>
 </sf>
-<div id="uploader" class="plupload_wrapper plupload_container">
-  <div id="filelist"></div>
-  <button id="browse_btn" (click)="select()" class="plupload_button plupload_add">选择文件</button>
-  <button id="startUpload" (click)="startUpload()" class="plupload_button">开始上传</button>
-  <input id="fileInput" type="file" (change)="change()" name="name" style="display: none;" />
+<div id="uploader">
+  <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+<!--  <button id="browse_btn" (click)="select()" class="plupload_button plupload_add">选择文件</button>-->
+<!--  <button id="startUpload" (click)="startUpload()" class="plupload_button">开始上传</button>-->
+<!--  <input id="fileInput" type="file" (change)="change()" name="name" style="display: none;" />-->
 </div>
 
