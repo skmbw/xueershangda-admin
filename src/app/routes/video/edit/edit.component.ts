@@ -313,7 +313,7 @@ export class VideoEditComponent implements OnInit {
     this.uploader.start();
   }
 
-  selectFile() {
+  select() {
     $('#fileInput').trigger('click');
   }
 
