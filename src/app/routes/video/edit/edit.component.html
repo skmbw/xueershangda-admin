@@ -2,6 +2,7 @@
   <div class="modal-title">编辑视频 {{ record.id }} 的信息</div>
 </div>
 <nz-spin *ngIf="!i" class="modal-spin"></nz-spin>
+<div id="uploader"></div>
 <sf *ngIf="i" #sf mode="edit" [schema]="schema" [ui]="ui" [formData]="i" button="none">
   <div class="modal-footer">
     <button nz-button type="button" (click)="close()">关闭</button>
