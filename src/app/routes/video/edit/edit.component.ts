@@ -318,6 +318,6 @@ export class VideoEditComponent implements OnInit {
   }
 
   change() {
-    this.uploader.addFile($('#fileInput'));
+    this.uploader.addFile($('#fileInput')[0]);
   }
 }
