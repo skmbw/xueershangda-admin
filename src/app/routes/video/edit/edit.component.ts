@@ -284,7 +284,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    $(() => {
+    window.onload = (() => {
       this.uploader = $("#uploader").pluploadQueue({
         browse_button : 'browse_btn',
         // General settings
