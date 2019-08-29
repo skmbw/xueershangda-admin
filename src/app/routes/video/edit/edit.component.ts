@@ -264,17 +264,26 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     this.uploader.start();
   }
 
-  close(item: any, event: any) {
-    // alert(item);
+  close(item: any) {
     // this.ele.nativeElement.querySelector('');
     // this.renderer.removeChild();
-    // $('#' + item.id + '_item').remove(); // 是可以删除的，名字里面不能带点，否则可能会被认为是类选择器
-    // const i = this.fileList.indexOf(item);
-    // this.fileList = this.fileList.slice(i, 1);
-    // this.fileList = [...this.fileList];
-
-    // 还应该删除uploader.files中的内容
-    this.fileList = []; // 这个清空，也是可以在页面上刷新的
+    $('#' + item.id + '_item').remove(); // 是可以删除的，名字里面不能带点，否则可能会被认为是类选择器
+    this.fileList.forEach((value, index, array) => {
+      const id = value.id;
+      if (item.id === id) {
+        this.fileList.splice(index, 1); // delete the item
+        this.uploader.files.forEach((val, i) => {
+          if (val.name === item.name) {
+            // 还应该删除uploader.files中的内容
+            this.uploader.removeFile(val);
+          }
+        });
+      }
+    });
+    this.fileList = [...this.fileList];
+    if (this.fileList.length === 0) {
+      this.fileList = []; // 这个清空，刷新页面上
+    }
   }
 
   // select() {

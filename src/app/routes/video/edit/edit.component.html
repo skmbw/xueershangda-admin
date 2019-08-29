@@ -18,7 +18,7 @@
     <nz-list [nzDataSource]="fileList" nzBordered [nzRenderItem]="defaultItem" [nzLoadMore]="loadMore">
       <ng-template #defaultItem let-item>
         <nz-list-item [id]="item.id + '_item'">
-          {{ item.name }} <button nz-button [nzSize]="'small'" (click)="close(item, $event)" style="margin-left: 40px;">X</button>
+          {{ item.name }} <button nz-button [nzSize]="'small'" title="删除" (click)="close(item)" style="margin-left: 40px;">X</button>
         </nz-list-item>
       </ng-template>
     </nz-list>
