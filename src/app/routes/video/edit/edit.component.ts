@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { NzMessageService, UploadChangeParam, UploadFile } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
@@ -10,6 +10,7 @@ import { com } from '@shared';
 import * as plupload from 'plupload';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { environment } from '@env/environment';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
 
@@ -137,9 +138,10 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   };
 
   constructor(
-    private msgSrv: NzMessageService,
+    private msgSrv: NzMessageService, private renderer: Renderer2,
     public http: _HttpClient, private location: Location,
-    private videoService: VideoService, private route: ActivatedRoute
+    private videoService: VideoService, private route: ActivatedRoute,
+    private ele: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -183,9 +185,13 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     this.uploader = new plupload.Uploader({
       browse_button : 'browseBtn',
       // runtimes: 'html5',
-      url: "video/plupload",
+      url: environment.URL + "video/plupload",
+      // 头信息
+      headers: {'tokenId': '1', 'userId': '2'},
+      // 上传时的附加参数
+      multipart_params: {},
       // Maximum file size
-      max_file_size: '10000mb',
+      max_file_size: '1000mb',
       // 分块大小
       chunk_size: '1mb',
       // Resize images on clientside if we can
@@ -239,11 +245,18 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     });
     // 单个文件上完成后,回调事件
     this.uploader.bind('FileUploaded', (upload, file, result) => {
+      // result.response;
+      console.log(result);
       $('#id'+file.id).val(result.response);
     });
     // 全部完成后的回调事件
     this.uploader.bind('UploadComplete', (upload, files) => {
       alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
+      this_.fileList = [];
+    });
+    // 发生错误时的回调
+    this.uploader.bind('Error', (upload, err) => {
+      console.log(err);
     });
   }
 
@@ -251,8 +264,11 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     this.uploader.start();
   }
 
-  close(item: any) {
+  close(item: any, event: any) {
     // alert(item);
+    // this.ele.nativeElement.querySelector('');
+    // this.renderer.removeChild();
+    $('#' + item + '_item').remove();
     const i = this.fileList.indexOf(item);
     this.fileList = this.fileList.slice(i, 1);
     this.fileList = [...this.fileList];
