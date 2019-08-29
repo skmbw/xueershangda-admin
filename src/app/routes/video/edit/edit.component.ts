@@ -7,12 +7,13 @@ import { Consts } from '@shared/utils/consts';
 import { VideoService } from '@shared/service/video.service';
 import { com } from '@shared';
 // import * as $ from 'jquery';
-// import * as plupload from 'plupload';
+import * as plupload from 'plupload';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
 
-declare var $: any; // 这次的导入要使用这种方式声明，否则会说 pluploadQueue is not a function
+declare var $: any; // 这次的导入要使用这种方式声明，否则会报 pluploadQueue is not a function
 
+// 如果使用modal的方式打开，那么因为没有$(document).ready事件，uploader初始化时会找不到对应的browse_button的id，so无法浏览文件
 @Component({
   selector: 'app-video-edit',
   templateUrl: './edit.component.html',
@@ -163,79 +164,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     //   chunk_size: '1mb'
     // });
 
-    // this.uploader = new plupload.Uploader({
-    //   browse_button : 'browse_btn',
-    //   // General settings
-    //   // runtimes: 'html5',
-    //   url: "video/plupload",
-    //
-    //   // Maximum file size
-    //   max_file_size: '10000mb',
-    //
-    //   chunk_size: '1mb',
-    //
-    //   // Resize images on clientside if we can
-    //   // resize: {
-    //   //   width: 200,
-    //   //   height: 200,
-    //   //   quality: 90,
-    //   //   crop: true // crop to exact dimensions
-    //   // },
-    //
-    //   // Specify what files to browse for
-    //   filters: [
-    //     {title: "Image files", extensions: "jpg,gif,png,jpeg"},
-    //     {title: "Vedio files", extensions: "mp4,mkv"},
-    //     {title: "Zip files", extensions: "zip,avi"}
-    //   ],
-    //
-    //   // Rename files by clicking on their titles
-    //   rename: true,
-    //
-    //   // Sort files
-    //   sortable: true,
-    //
-    //   // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
-    //   dragdrop: true,
-    //
-    //   // Views to activate
-    //   // views: {
-    //   //   list: true,
-    //   //   thumbs: true, // Show thumbs
-    //   //   active: 'thumbs'
-    //   // },
-    //
-    //   // Flash settings
-    //   // flash_swf_url: 'js/Moxie.swf',
-    //
-    //   // Silverlight settings
-    //   // silverlight_xap_url: 'js/Moxie.xap'
-    // });
-    //
-    // // 初始化plupload
-    // this.uploader.init();
-    //
-    // // 文件添加时，在容器里显示待上传的文件列表
-    // this.uploader.bind('FilesAdded', (upload, files) => {
-    //   for (const i in files) {
-    //     if (files.hasOwnProperty(i)) {
-    //       // 在页面迭代显示
-    //       $('#filelist').append('<div><input type="hidden" name="attachmentId" id="id'+files[i].id+'"/>'+files[i].name + ' (' + upload.formatSize(files[i].size) + ')<div id="'+files[i].id+'"></div></div></br>');
-    //     }
-    //   }
-    // });
-    // // 文件上传进度显示
-    // this.uploader.bind('UploadProgress', (upload, file) => {
-    //   $('#'+file.id).html("   "+file.percent + "%");
-    // });
-    // // 单个文件上完成后,回调事件
-    // this.uploader.bind('FileUploaded', (upload, file, result) => {
-    //   $('#id'+file.id).val(result.response);
-    // });
-    // // 全部完成后的回调事件
-    // this.uploader.bind('UploadComplete', (upload, files) => {
-    //   alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
-    // });
+
     // $("#toStop").on('click', function () {
     //   uploader.stop();
     // });
@@ -284,30 +213,108 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    window.onload = (() => {
-      this.uploader = $("#uploader").pluploadQueue({
-        browse_button : 'browse_btn',
-        // General settings
-        // runtimes: 'html5',
-        url: "video/plupload",
+    this.uploader = new plupload.Uploader({
+      browse_button : 'browseBtn',
+      // General settings
+      // runtimes: 'html5',
+      url: "video/plupload",
 
-        // Maximum file size
-        max_file_size: '10000mb',
+      // Maximum file size
+      max_file_size: '10000mb',
 
-        chunk_size: '1mb',
+      chunk_size: '1mb',
 
-        // Specify what files to browse for
-        filters: [
-          {title: "Image files", extensions: "jpg,gif,png,jpeg"},
-          {title: "Vedio files", extensions: "mp4,mkv"},
-          {title: "Zip files", extensions: "zip,avi"}
-        ],
+      // Resize images on clientside if we can
+      // resize: {
+      //   width: 200,
+      //   height: 200,
+      //   quality: 90,
+      //   crop: true // crop to exact dimensions
+      // },
 
-        // Rename files by clicking on their titles
-        rename: true
-      });
+      // Specify what files to browse for
+      filters: [
+        {title: "Image files", extensions: "jpg,gif,png,jpeg"},
+        {title: "Vedio files", extensions: "mp4,mkv"},
+        {title: "Zip files", extensions: "zip,avi"}
+      ],
+
+      // Rename files by clicking on their titles
+      rename: true,
+
+      // Sort files
+      sortable: true,
+
+      // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
+      dragdrop: true,
+
+      // Views to activate
+      // views: {
+      //   list: true,
+      //   thumbs: true, // Show thumbs
+      //   active: 'thumbs'
+      // },
+
+      // Flash settings
+      flash_swf_url: 'js/Moxie.swf',
+
+      // Silverlight settings
+      silverlight_xap_url: 'js/Moxie.xap'
     });
+
+    // 初始化plupload
     this.uploader.init();
+
+    // 文件添加时，在容器里显示待上传的文件列表
+    this.uploader.bind('FilesAdded', (upload, files) => {
+      for (const i in files) {
+        if (files.hasOwnProperty(i)) {
+          // 在页面迭代显示
+          $('#filelist').append('<div><input type="hidden" name="attachmentId" id="id'+files[i].id+'"/>'+files[i].name + ' (' + upload.formatSize(files[i].size) + ')<div id="'+files[i].id+'"></div></div></br>');
+        }
+      }
+      // 可实现自动上传
+      // uploader.start();
+    });
+    // 文件上传进度显示
+    this.uploader.bind('UploadProgress', (upload, file) => {
+      $('#'+file.id).html("   "+file.percent + "%");
+    });
+    // 单个文件上完成后,回调事件
+    this.uploader.bind('FileUploaded', (upload, file, result) => {
+      $('#id'+file.id).val(result.response);
+    });
+    // 全部完成后的回调事件
+    this.uploader.bind('UploadComplete', (upload, files) => {
+      alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
+    });
+
+
+    // window.onload = (() => {
+    //   this.uploader = $("#uploader").pluploadQueue({
+    //     browse_button : 'browse_btn',
+    //     // General settings
+    //     // runtimes: 'html5',
+    //     url: "video/plupload",
+    //
+    //     // Maximum file size
+    //     max_file_size: '10000mb',
+    //
+    //     chunk_size: '1mb',
+    //
+    //     // Specify what files to browse for
+    //     filters: [
+    //       {title: "Image files", extensions: "jpg,gif,png,jpeg"},
+    //       {title: "Vedio files", extensions: "mp4,mkv"},
+    //       {title: "Zip files", extensions: "zip,avi"}
+    //     ],
+    //
+    //     // Rename files by clicking on their titles
+    //     rename: true
+    //   });
+    // });
+    // this.uploader.init();
+
     // angular中没有$(document).ready(function(){});的等价物，使用这种方法
     // setTimeout(() => {
     //   this.uploader = $("#uploader").pluploadQueue({
@@ -406,6 +413,9 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   change() {
-    this.uploader.addFile($('#fileInput')[0]);
+    const input = $('#fileInput')[0];
+    const file = input.files[0];
+    const name = file.name;
+    this.uploader.addFile(file, name);
   }
 }

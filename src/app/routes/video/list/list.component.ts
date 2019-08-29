@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ModalHelper } from '@delon/theme';
 import { STColumn, STComponent, STData } from '@delon/abc';
 import { SFSchema } from '@delon/form';
@@ -8,15 +8,18 @@ import { VideoService } from '@shared/service/video.service';
 import { com } from '@shared';
 import { Consts } from '@shared/utils/consts';
 import { ToastrService } from 'ngx-toastr';
+import * as plupload from 'plupload';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
+
+declare var $: any;
 
 @Component({
   selector: 'app-video-list',
   templateUrl: './list.component.html',
 })
-export class VideoListComponent implements OnInit {
-  // url = `/user`;
+export class VideoListComponent implements OnInit, AfterViewInit {
+  uploader: any;
   url: STData[] = [];
   searchSchema: SFSchema = {
     properties: {
@@ -107,4 +110,81 @@ export class VideoListComponent implements OnInit {
       .subscribe(() => this.st.reload());
   }
 
+  ngAfterViewInit() {
+    this.uploader = new plupload.Uploader({
+      browse_button : 'browseBtn',
+      // General settings
+      // runtimes: 'html5',
+      url: "video/plupload",
+
+      // Maximum file size
+      max_file_size: '10000mb',
+
+      chunk_size: '1mb',
+
+      // Resize images on clientside if we can
+      // resize: {
+      //   width: 200,
+      //   height: 200,
+      //   quality: 90,
+      //   crop: true // crop to exact dimensions
+      // },
+
+      // Specify what files to browse for
+      filters: [
+        {title: "Image files", extensions: "jpg,gif,png,jpeg"},
+        {title: "Vedio files", extensions: "mp4,mkv"},
+        {title: "Zip files", extensions: "zip,avi"}
+      ],
+
+      // Rename files by clicking on their titles
+      rename: true,
+
+      // Sort files
+      sortable: true,
+
+      // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
+      dragdrop: true,
+
+      // Views to activate
+      // views: {
+      //   list: true,
+      //   thumbs: true, // Show thumbs
+      //   active: 'thumbs'
+      // },
+
+      // Flash settings
+      flash_swf_url: 'js/Moxie.swf',
+
+      // Silverlight settings
+      silverlight_xap_url: 'js/Moxie.xap'
+    });
+
+    // 初始化plupload
+    this.uploader.init();
+
+    // 文件添加时，在容器里显示待上传的文件列表
+    this.uploader.bind('FilesAdded', (upload, files) => {
+      for (const i in files) {
+        if (files.hasOwnProperty(i)) {
+          // 在页面迭代显示
+          $('#filelist').append('<div><input type="hidden" name="attachmentId" id="id'+files[i].id+'"/>'+files[i].name + ' (' + upload.formatSize(files[i].size) + ')<div id="'+files[i].id+'"></div></div></br>');
+        }
+      }
+      // 可实现自动上传
+      // uploader.start();
+    });
+    // 文件上传进度显示
+    this.uploader.bind('UploadProgress', (upload, file) => {
+      $('#'+file.id).html("   "+file.percent + "%");
+    });
+    // 单个文件上完成后,回调事件
+    this.uploader.bind('FileUploaded', (upload, file, result) => {
+      $('#id'+file.id).val(result.response);
+    });
+    // 全部完成后的回调事件
+    this.uploader.bind('UploadComplete', (upload, files) => {
+      alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
+    });
+  }
 }
