@@ -105,3 +105,6 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 ### ng-alain的一些问题
 * 如果类中注入了Modal，那么由Modal模式改为连接跳转，及时路由配置正确，也会报错。所以要去掉modal的注入
 * 如果使用modal的方式打开，那么因为没有$(document).ready事件，uploader初始化时会找不到对应的browse_button的id，so无法浏览文件
+* 新引入的第三方js或者jquery或者jquery插件，需要重启，新引入，需要重启动，否则无法检测到插件 https://blog.csdn.net/yhc0322/article/details/78796009
+* modal模式，this.undefined就是穿过来的参数，但是table.js._btnClick中的bug，没有设置或取到参数名导致。可以使用click的方式避免
+* angular中没有$(document).ready(function(){});的等价物，使用这种方法。window.onload = (() => {})这个好像也不对

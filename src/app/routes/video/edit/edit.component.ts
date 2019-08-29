@@ -136,51 +136,12 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   };
 
   constructor(
-    // private modal: NzModalRef,
     private msgSrv: NzMessageService,
     public http: _HttpClient, private location: Location,
     private videoService: VideoService, private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.uploader = $("#uploader").pluploadQueue({
-    //     browse_button : 'browse_btn',
-    //     url: "video/plupload",
-    //     max_file_size: '10000mb',
-    //     chunk_size: '1mb'
-    //   });
-    // }, 200);
-
-    // 新引入，需要重启动，否则无法检测到插件 https://blog.csdn.net/yhc0322/article/details/78796009
-    // Initialize the widget when the DOM is ready
-    // this.uploader = $("#uploader").pluploadQueue({
-    //   this_: $("#uploader"),
-    //   url: 'video/plupload',
-    //   max_file_size: '10000mb',
-    //   chunk_size: '1mb'
-    // });
-
-    // 这样new才可以，jquery加载不行
-    // const plu = new plupload.Uploader({
-    //   url: 'video/plupload',
-    //   max_file_size: '10000mb',
-    //   chunk_size: '1mb'
-    // });
-
-
-    // $("#toStop").on('click', function () {
-    //   uploader.stop();
-    // });
-
-    // $("#startUpload").on('click', () => {
-    //   alert('start upload.');
-    //   this.uploader.start();
-    // });
-
-    // alert(this.record.id); // this.undefined就是穿过来的参数，但是table.js._btnClick中的bug，没有设置或取到参数名导致
-    // if (this.record.id > 0)
-    //   this.http.get(Consts.URL + `/video/detail/${this.record.id}`).subscribe(res => (this.i = res));
     if (JsUtils.isNotBlank(this.id)) {
       this.videoService.get(this.id).subscribe(res => {
         const uint8Array = new Uint8Array(res, 0, res.byteLength);
@@ -210,7 +171,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       const reply = VideoReply.decode(uint8Array);
       if (reply.code === 1) {
         this.msgSrv.success('保存成功');
-        // this.modal.close(true);
       } else {
         this.msgSrv.error(reply.message);
       }
@@ -220,15 +180,12 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.uploader = new plupload.Uploader({
       browse_button : 'browseBtn',
-      // General settings
       // runtimes: 'html5',
       url: "video/plupload",
-
       // Maximum file size
       max_file_size: '10000mb',
-
+      // 分块大小
       chunk_size: '1mb',
-
       // Resize images on clientside if we can
       // resize: {
       //   width: 200,
@@ -236,33 +193,26 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       //   quality: 90,
       //   crop: true // crop to exact dimensions
       // },
-
       // Specify what files to browse for
       filters: [
         {title: "Image files", extensions: "jpg,gif,png,jpeg"},
         {title: "Vedio files", extensions: "mp4,mkv"},
         {title: "Zip files", extensions: "zip,avi"}
       ],
-
       // Rename files by clicking on their titles
       rename: true,
-
       // Sort files
       sortable: true,
-
       // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
       dragdrop: true,
-
       // Views to activate
       // views: {
       //   list: true,
       //   thumbs: true, // Show thumbs
       //   active: 'thumbs'
       // },
-
       // Flash settings
       flash_swf_url: 'js/Moxie.swf',
-
       // Silverlight settings
       silverlight_xap_url: 'js/Moxie.xap'
     });
@@ -293,108 +243,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     this.uploader.bind('UploadComplete', (upload, files) => {
       alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
     });
-
-
-    // window.onload = (() => {
-    //   this.uploader = $("#uploader").pluploadQueue({
-    //     browse_button : 'browse_btn',
-    //     // General settings
-    //     // runtimes: 'html5',
-    //     url: "video/plupload",
-    //
-    //     // Maximum file size
-    //     max_file_size: '10000mb',
-    //
-    //     chunk_size: '1mb',
-    //
-    //     // Specify what files to browse for
-    //     filters: [
-    //       {title: "Image files", extensions: "jpg,gif,png,jpeg"},
-    //       {title: "Vedio files", extensions: "mp4,mkv"},
-    //       {title: "Zip files", extensions: "zip,avi"}
-    //     ],
-    //
-    //     // Rename files by clicking on their titles
-    //     rename: true
-    //   });
-    // });
-    // this.uploader.init();
-
-    // angular中没有$(document).ready(function(){});的等价物，使用这种方法
-    // setTimeout(() => {
-    //   this.uploader = $("#uploader").pluploadQueue({
-    //     browse_button : 'browse_btn',
-    //     // General settings
-    //     // runtimes: 'html5',
-    //     url: "video/plupload",
-    //
-    //     // Maximum file size
-    //     max_file_size: '10000mb',
-    //
-    //     chunk_size: '1mb',
-    //
-    //     // Resize images on clientside if we can
-    //     // resize: {
-    //     //   width: 200,
-    //     //   height: 200,
-    //     //   quality: 90,
-    //     //   crop: true // crop to exact dimensions
-    //     // },
-    //
-    //     // Specify what files to browse for
-    //     filters: [
-    //       {title: "Image files", extensions: "jpg,gif,png,jpeg"},
-    //       {title: "Vedio files", extensions: "mp4,mkv"},
-    //       {title: "Zip files", extensions: "zip,avi"}
-    //     ],
-    //
-    //     // Rename files by clicking on their titles
-    //     rename: true,
-    //
-    //     // Sort files
-    //     sortable: true,
-    //
-    //     // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
-    //     dragdrop: true,
-    //
-    //     // Views to activate
-    //     // views: {
-    //     //   list: true,
-    //     //   thumbs: true, // Show thumbs
-    //     //   active: 'thumbs'
-    //     // },
-    //
-    //     // Flash settings
-    //     // flash_swf_url: 'js/Moxie.swf',
-    //
-    //     // Silverlight settings
-    //     // silverlight_xap_url: 'js/Moxie.xap'
-    //   });
-    //   // 已经初始化，不需要了
-    //   // this.uploader.init();
-    //
-    //   // // 文件添加时，在容器里显示待上传的文件列表
-    //   // this.uploader.bind('FilesAdded', (upload, files) => {
-    //   //   for (const i in files) {
-    //   //     if (files.hasOwnProperty(i)) {
-    //   //       // 在页面迭代显示
-    //   //       $('#filelist').append('<div><input type="hidden" name="attachmentId" id="id'+files[i].id+'"/>'+files[i].name + ' (' + upload.formatSize(files[i].size) + ')<div id="'+files[i].id+'"></div></div></br>');
-    //   //     }
-    //   //   }
-    //   // });
-    //   // // 文件上传进度显示
-    //   // this.uploader.bind('UploadProgress', (upload, file) => {
-    //   //   $('#'+file.id).html("   "+file.percent + "%");
-    //   // });
-    //   // // 单个文件上完成后,回调事件
-    //   // this.uploader.bind('FileUploaded', (upload, file, result) => {
-    //   //   $('#id'+file.id).val(result.response);
-    //   // });
-    //   // // 全部完成后的回调事件
-    //   // this.uploader.bind('UploadComplete', (upload, files) => {
-    //   //   alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
-    //   // });
-    // }, 200);
   }
 
   close() {
@@ -407,14 +255,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
 
   select() {
     $('#fileInput').trigger('click');
-    // 在这里触发是OK的，这个时候页面早已经ready
-    // this.uploader = $("#uploader").pluploadQueue({
-    //   this_: $("#uploader"),
-    //   url: 'video/plupload',
-    //   max_file_size: '10000mb',
-    //   chunk_size: '1mb'
-    // });
-    // this.uploader.init();
   }
 
   change() {
