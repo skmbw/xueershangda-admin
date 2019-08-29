@@ -251,6 +251,13 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     this.uploader.start();
   }
 
+  close(item: any) {
+    // alert(item);
+    const i = this.fileList.indexOf(item);
+    this.fileList = this.fileList.slice(i, 1);
+    this.fileList = [...this.fileList];
+  }
+
   // select() {
   //   $('#fileInput').trigger('click');
   // }
