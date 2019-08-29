@@ -27,6 +27,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   record: any = {}; // 如果不初始化，那么this.record.id会是undefined
   i: any;
   uploader: any;
+  fileList: any[] = [];
   // undefined: any; // 好像可以使用undefined作为变量名
   schema: SFSchema = {
     properties: {
@@ -178,6 +179,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    const this_ = this;
     this.uploader = new plupload.Uploader({
       browse_button : 'browseBtn',
       // runtimes: 'html5',
@@ -222,12 +224,12 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
 
     // 文件添加时，在容器里显示待上传的文件列表
     this.uploader.bind('FilesAdded', (upload, files) => {
-      for (const i in files) {
-        if (files.hasOwnProperty(i)) {
-          // 在页面迭代显示
-          $('#filelist').append('<div><input type="hidden" name="attachmentId" id="id'+files[i].id+'"/>'+files[i].name + ' (' + upload.formatSize(files[i].size) + ')<div id="'+files[i].id+'"></div></div></br>');
-        }
+      for (const f of files) {
+        let data: any[] = [];
+        data = this_.fileList.concat(f.name);
+        this_.fileList = [...data]; // 必须要引用变，才会更新？
       }
+
       // 可实现自动上传
       // uploader.start();
     });
@@ -245,22 +247,18 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     });
   }
 
-  close() {
-    // this.modal.destroy();
-  }
-
   startUpload() {
     this.uploader.start();
   }
 
-  select() {
-    $('#fileInput').trigger('click');
-  }
+  // select() {
+  //   $('#fileInput').trigger('click');
+  // }
 
-  change() {
-    const input = $('#fileInput')[0];
-    const file = input.files[0];
-    const name = file.name;
-    this.uploader.addFile(file, name);
-  }
+  // change() {
+  //   const input = $('#fileInput')[0];
+  //   const file = input.files[0];
+  //   const name = file.name;
+  //   this.uploader.addFile(file, name);
+  // }
 }

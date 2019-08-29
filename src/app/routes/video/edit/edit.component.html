@@ -8,9 +8,22 @@
     </footer-toolbar>
   </sf>
 </nz-card>
-<div id="uploader">
-  <button id="browseBtn">选择文件</button>
-  <button id="startUpload" (click)="startUpload()">开始上传</button>
-  <input id="fileInput" type="file" (change)="change()" name="name" style="display: none;" />
-</div>
+
+<nz-card>
+  <div id="uploader">
+    <div style="margin-bottom: 10px;"> <!--这两个button不需要放在#loadMore的模板里面-->
+      <button nz-button [nzSize]="'large'" nzType="default" id="browseBtn"><i nz-icon nzType="video-camera"></i>选择视频文件</button>
+      <button nz-button [nzSize]="'large'" nzType="default" id="startUpload" (click)="startUpload()"><i nz-icon nzType="upload"></i>开始上传</button>
+    </div>
+    <nz-list [nzDataSource]="fileList" nzBordered [nzRenderItem]="defaultItem" [nzLoadMore]="loadMore">
+      <ng-template #defaultItem let-item>
+        <nz-list-item>
+          {{ item }}
+        </nz-list-item>
+      </ng-template>
+    </nz-list>
+    <ng-template #loadMore>
+    </ng-template>
+  </div>
+</nz-card>
 
