@@ -7379,6 +7379,11 @@ $root.com = (function() {
                          * @property {number|null} [code] ArticleReply code
                          * @property {string|null} [message] ArticleReply message
                          * @property {Array.<com.xueershangda.tianxun.article.model.IArticle>|null} [data] ArticleReply data
+                         * @property {string|null} [account] ArticleReply account
+                         * @property {number|null} [price] ArticleReply price
+                         * @property {string|null} [title] ArticleReply title
+                         * @property {string|null} [type] ArticleReply type
+                         * @property {string|null} [targetId] ArticleReply targetId
                          */
 
                         /**
@@ -7422,6 +7427,46 @@ $root.com = (function() {
                         ArticleReply.prototype.data = $util.emptyArray;
 
                         /**
+                         * ArticleReply account.
+                         * @member {string} account
+                         * @memberof com.xueershangda.tianxun.article.model.ArticleReply
+                         * @instance
+                         */
+                        ArticleReply.prototype.account = "";
+
+                        /**
+                         * ArticleReply price.
+                         * @member {number} price
+                         * @memberof com.xueershangda.tianxun.article.model.ArticleReply
+                         * @instance
+                         */
+                        ArticleReply.prototype.price = 0;
+
+                        /**
+                         * ArticleReply title.
+                         * @member {string} title
+                         * @memberof com.xueershangda.tianxun.article.model.ArticleReply
+                         * @instance
+                         */
+                        ArticleReply.prototype.title = "";
+
+                        /**
+                         * ArticleReply type.
+                         * @member {string} type
+                         * @memberof com.xueershangda.tianxun.article.model.ArticleReply
+                         * @instance
+                         */
+                        ArticleReply.prototype.type = "";
+
+                        /**
+                         * ArticleReply targetId.
+                         * @member {string} targetId
+                         * @memberof com.xueershangda.tianxun.article.model.ArticleReply
+                         * @instance
+                         */
+                        ArticleReply.prototype.targetId = "";
+
+                        /**
                          * Creates a new ArticleReply instance using the specified properties.
                          * @function create
                          * @memberof com.xueershangda.tianxun.article.model.ArticleReply
@@ -7452,6 +7497,16 @@ $root.com = (function() {
                             if (message.data != null && message.data.length)
                                 for (var i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.article.model.Article.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                writer.uint32(/* id 4, wireType 2 =*/34).string(message.account);
+                            if (message.price != null && message.hasOwnProperty("price"))
+                                writer.uint32(/* id 5, wireType 1 =*/41).double(message.price);
+                            if (message.title != null && message.hasOwnProperty("title"))
+                                writer.uint32(/* id 6, wireType 2 =*/50).string(message.title);
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                writer.uint32(/* id 7, wireType 2 =*/58).string(message.type);
+                            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                                writer.uint32(/* id 8, wireType 2 =*/66).string(message.targetId);
                             return writer;
                         };
 
@@ -7496,6 +7551,21 @@ $root.com = (function() {
                                     if (!(message.data && message.data.length))
                                         message.data = [];
                                     message.data.push($root.com.xueershangda.tianxun.article.model.Article.decode(reader, reader.uint32()));
+                                    break;
+                                case 4:
+                                    message.account = reader.string();
+                                    break;
+                                case 5:
+                                    message.price = reader.double();
+                                    break;
+                                case 6:
+                                    message.title = reader.string();
+                                    break;
+                                case 7:
+                                    message.type = reader.string();
+                                    break;
+                                case 8:
+                                    message.targetId = reader.string();
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -7547,6 +7617,21 @@ $root.com = (function() {
                                         return "data." + error;
                                 }
                             }
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                if (!$util.isString(message.account))
+                                    return "account: string expected";
+                            if (message.price != null && message.hasOwnProperty("price"))
+                                if (typeof message.price !== "number")
+                                    return "price: number expected";
+                            if (message.title != null && message.hasOwnProperty("title"))
+                                if (!$util.isString(message.title))
+                                    return "title: string expected";
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                if (!$util.isString(message.type))
+                                    return "type: string expected";
+                            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                                if (!$util.isString(message.targetId))
+                                    return "targetId: string expected";
                             return null;
                         };
 
@@ -7576,6 +7661,16 @@ $root.com = (function() {
                                     message.data[i] = $root.com.xueershangda.tianxun.article.model.Article.fromObject(object.data[i]);
                                 }
                             }
+                            if (object.account != null)
+                                message.account = String(object.account);
+                            if (object.price != null)
+                                message.price = Number(object.price);
+                            if (object.title != null)
+                                message.title = String(object.title);
+                            if (object.type != null)
+                                message.type = String(object.type);
+                            if (object.targetId != null)
+                                message.targetId = String(object.targetId);
                             return message;
                         };
 
@@ -7597,6 +7692,11 @@ $root.com = (function() {
                             if (options.defaults) {
                                 object.code = 0;
                                 object.message = "";
+                                object.account = "";
+                                object.price = 0;
+                                object.title = "";
+                                object.type = "";
+                                object.targetId = "";
                             }
                             if (message.code != null && message.hasOwnProperty("code"))
                                 object.code = message.code;
@@ -7607,6 +7707,16 @@ $root.com = (function() {
                                 for (var j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.article.model.Article.toObject(message.data[j], options);
                             }
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                object.account = message.account;
+                            if (message.price != null && message.hasOwnProperty("price"))
+                                object.price = options.json && !isFinite(message.price) ? String(message.price) : message.price;
+                            if (message.title != null && message.hasOwnProperty("title"))
+                                object.title = message.title;
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                object.type = message.type;
+                            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                                object.targetId = message.targetId;
                             return object;
                         };
 
@@ -8859,6 +8969,11 @@ $root.com = (function() {
                          * @property {number|null} [code] QuestionReply code
                          * @property {string|null} [message] QuestionReply message
                          * @property {Array.<com.xueershangda.tianxun.question.model.IQuestion>|null} [data] QuestionReply data
+                         * @property {string|null} [account] QuestionReply account
+                         * @property {number|null} [price] QuestionReply price
+                         * @property {string|null} [title] QuestionReply title
+                         * @property {string|null} [type] QuestionReply type
+                         * @property {string|null} [targetId] QuestionReply targetId
                          */
 
                         /**
@@ -8902,6 +9017,46 @@ $root.com = (function() {
                         QuestionReply.prototype.data = $util.emptyArray;
 
                         /**
+                         * QuestionReply account.
+                         * @member {string} account
+                         * @memberof com.xueershangda.tianxun.question.model.QuestionReply
+                         * @instance
+                         */
+                        QuestionReply.prototype.account = "";
+
+                        /**
+                         * QuestionReply price.
+                         * @member {number} price
+                         * @memberof com.xueershangda.tianxun.question.model.QuestionReply
+                         * @instance
+                         */
+                        QuestionReply.prototype.price = 0;
+
+                        /**
+                         * QuestionReply title.
+                         * @member {string} title
+                         * @memberof com.xueershangda.tianxun.question.model.QuestionReply
+                         * @instance
+                         */
+                        QuestionReply.prototype.title = "";
+
+                        /**
+                         * QuestionReply type.
+                         * @member {string} type
+                         * @memberof com.xueershangda.tianxun.question.model.QuestionReply
+                         * @instance
+                         */
+                        QuestionReply.prototype.type = "";
+
+                        /**
+                         * QuestionReply targetId.
+                         * @member {string} targetId
+                         * @memberof com.xueershangda.tianxun.question.model.QuestionReply
+                         * @instance
+                         */
+                        QuestionReply.prototype.targetId = "";
+
+                        /**
                          * Creates a new QuestionReply instance using the specified properties.
                          * @function create
                          * @memberof com.xueershangda.tianxun.question.model.QuestionReply
@@ -8932,6 +9087,16 @@ $root.com = (function() {
                             if (message.data != null && message.data.length)
                                 for (var i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.question.model.Question.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                writer.uint32(/* id 4, wireType 2 =*/34).string(message.account);
+                            if (message.price != null && message.hasOwnProperty("price"))
+                                writer.uint32(/* id 5, wireType 1 =*/41).double(message.price);
+                            if (message.title != null && message.hasOwnProperty("title"))
+                                writer.uint32(/* id 6, wireType 2 =*/50).string(message.title);
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                writer.uint32(/* id 7, wireType 2 =*/58).string(message.type);
+                            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                                writer.uint32(/* id 8, wireType 2 =*/66).string(message.targetId);
                             return writer;
                         };
 
@@ -8976,6 +9141,21 @@ $root.com = (function() {
                                     if (!(message.data && message.data.length))
                                         message.data = [];
                                     message.data.push($root.com.xueershangda.tianxun.question.model.Question.decode(reader, reader.uint32()));
+                                    break;
+                                case 4:
+                                    message.account = reader.string();
+                                    break;
+                                case 5:
+                                    message.price = reader.double();
+                                    break;
+                                case 6:
+                                    message.title = reader.string();
+                                    break;
+                                case 7:
+                                    message.type = reader.string();
+                                    break;
+                                case 8:
+                                    message.targetId = reader.string();
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -9027,6 +9207,21 @@ $root.com = (function() {
                                         return "data." + error;
                                 }
                             }
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                if (!$util.isString(message.account))
+                                    return "account: string expected";
+                            if (message.price != null && message.hasOwnProperty("price"))
+                                if (typeof message.price !== "number")
+                                    return "price: number expected";
+                            if (message.title != null && message.hasOwnProperty("title"))
+                                if (!$util.isString(message.title))
+                                    return "title: string expected";
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                if (!$util.isString(message.type))
+                                    return "type: string expected";
+                            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                                if (!$util.isString(message.targetId))
+                                    return "targetId: string expected";
                             return null;
                         };
 
@@ -9056,6 +9251,16 @@ $root.com = (function() {
                                     message.data[i] = $root.com.xueershangda.tianxun.question.model.Question.fromObject(object.data[i]);
                                 }
                             }
+                            if (object.account != null)
+                                message.account = String(object.account);
+                            if (object.price != null)
+                                message.price = Number(object.price);
+                            if (object.title != null)
+                                message.title = String(object.title);
+                            if (object.type != null)
+                                message.type = String(object.type);
+                            if (object.targetId != null)
+                                message.targetId = String(object.targetId);
                             return message;
                         };
 
@@ -9077,6 +9282,11 @@ $root.com = (function() {
                             if (options.defaults) {
                                 object.code = 0;
                                 object.message = "";
+                                object.account = "";
+                                object.price = 0;
+                                object.title = "";
+                                object.type = "";
+                                object.targetId = "";
                             }
                             if (message.code != null && message.hasOwnProperty("code"))
                                 object.code = message.code;
@@ -9087,6 +9297,16 @@ $root.com = (function() {
                                 for (var j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.question.model.Question.toObject(message.data[j], options);
                             }
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                object.account = message.account;
+                            if (message.price != null && message.hasOwnProperty("price"))
+                                object.price = options.json && !isFinite(message.price) ? String(message.price) : message.price;
+                            if (message.title != null && message.hasOwnProperty("title"))
+                                object.title = message.title;
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                object.type = message.type;
+                            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                                object.targetId = message.targetId;
                             return object;
                         };
 
@@ -11030,6 +11250,12 @@ $root.com = (function() {
                          * @property {number|null} [source] User source
                          * @property {string|null} [targetId] User targetId
                          * @property {number|null} [type] User type
+                         * @property {number|null} [grade] User grade
+                         * @property {number|Long|null} [replyTime] User replyTime
+                         * @property {string|null} [parent] User parent
+                         * @property {number|null} [paymentAuthority] User paymentAuthority
+                         * @property {number|null} [paymentAmount] User paymentAmount
+                         * @property {number|null} [teacher] User teacher
                          */
 
                         /**
@@ -11352,6 +11578,54 @@ $root.com = (function() {
                         User.prototype.type = 0;
 
                         /**
+                         * User grade.
+                         * @member {number} grade
+                         * @memberof com.xueershangda.tianxun.user.model.User
+                         * @instance
+                         */
+                        User.prototype.grade = 0;
+
+                        /**
+                         * User replyTime.
+                         * @member {number|Long} replyTime
+                         * @memberof com.xueershangda.tianxun.user.model.User
+                         * @instance
+                         */
+                        User.prototype.replyTime = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+                        /**
+                         * User parent.
+                         * @member {string} parent
+                         * @memberof com.xueershangda.tianxun.user.model.User
+                         * @instance
+                         */
+                        User.prototype.parent = "";
+
+                        /**
+                         * User paymentAuthority.
+                         * @member {number} paymentAuthority
+                         * @memberof com.xueershangda.tianxun.user.model.User
+                         * @instance
+                         */
+                        User.prototype.paymentAuthority = 0;
+
+                        /**
+                         * User paymentAmount.
+                         * @member {number} paymentAmount
+                         * @memberof com.xueershangda.tianxun.user.model.User
+                         * @instance
+                         */
+                        User.prototype.paymentAmount = 0;
+
+                        /**
+                         * User teacher.
+                         * @member {number} teacher
+                         * @memberof com.xueershangda.tianxun.user.model.User
+                         * @instance
+                         */
+                        User.prototype.teacher = 0;
+
+                        /**
                          * Creates a new User instance using the specified properties.
                          * @function create
                          * @memberof com.xueershangda.tianxun.user.model.User
@@ -11451,6 +11725,18 @@ $root.com = (function() {
                                 writer.uint32(/* id 37, wireType 2 =*/298).string(message.targetId);
                             if (message.type != null && message.hasOwnProperty("type"))
                                 writer.uint32(/* id 38, wireType 0 =*/304).int32(message.type);
+                            if (message.grade != null && message.hasOwnProperty("grade"))
+                                writer.uint32(/* id 39, wireType 0 =*/312).int32(message.grade);
+                            if (message.replyTime != null && message.hasOwnProperty("replyTime"))
+                                writer.uint32(/* id 40, wireType 0 =*/320).int64(message.replyTime);
+                            if (message.parent != null && message.hasOwnProperty("parent"))
+                                writer.uint32(/* id 41, wireType 2 =*/330).string(message.parent);
+                            if (message.paymentAuthority != null && message.hasOwnProperty("paymentAuthority"))
+                                writer.uint32(/* id 42, wireType 0 =*/336).int32(message.paymentAuthority);
+                            if (message.paymentAmount != null && message.hasOwnProperty("paymentAmount"))
+                                writer.uint32(/* id 43, wireType 0 =*/344).int32(message.paymentAmount);
+                            if (message.teacher != null && message.hasOwnProperty("teacher"))
+                                writer.uint32(/* id 44, wireType 0 =*/352).int32(message.teacher);
                             return writer;
                         };
 
@@ -11598,6 +11884,24 @@ $root.com = (function() {
                                     break;
                                 case 38:
                                     message.type = reader.int32();
+                                    break;
+                                case 39:
+                                    message.grade = reader.int32();
+                                    break;
+                                case 40:
+                                    message.replyTime = reader.int64();
+                                    break;
+                                case 41:
+                                    message.parent = reader.string();
+                                    break;
+                                case 42:
+                                    message.paymentAuthority = reader.int32();
+                                    break;
+                                case 43:
+                                    message.paymentAmount = reader.int32();
+                                    break;
+                                case 44:
+                                    message.teacher = reader.int32();
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -11748,6 +12052,24 @@ $root.com = (function() {
                             if (message.type != null && message.hasOwnProperty("type"))
                                 if (!$util.isInteger(message.type))
                                     return "type: integer expected";
+                            if (message.grade != null && message.hasOwnProperty("grade"))
+                                if (!$util.isInteger(message.grade))
+                                    return "grade: integer expected";
+                            if (message.replyTime != null && message.hasOwnProperty("replyTime"))
+                                if (!$util.isInteger(message.replyTime) && !(message.replyTime && $util.isInteger(message.replyTime.low) && $util.isInteger(message.replyTime.high)))
+                                    return "replyTime: integer|Long expected";
+                            if (message.parent != null && message.hasOwnProperty("parent"))
+                                if (!$util.isString(message.parent))
+                                    return "parent: string expected";
+                            if (message.paymentAuthority != null && message.hasOwnProperty("paymentAuthority"))
+                                if (!$util.isInteger(message.paymentAuthority))
+                                    return "paymentAuthority: integer expected";
+                            if (message.paymentAmount != null && message.hasOwnProperty("paymentAmount"))
+                                if (!$util.isInteger(message.paymentAmount))
+                                    return "paymentAmount: integer expected";
+                            if (message.teacher != null && message.hasOwnProperty("teacher"))
+                                if (!$util.isInteger(message.teacher))
+                                    return "teacher: integer expected";
                             return null;
                         };
 
@@ -11874,6 +12196,25 @@ $root.com = (function() {
                                 message.targetId = String(object.targetId);
                             if (object.type != null)
                                 message.type = object.type | 0;
+                            if (object.grade != null)
+                                message.grade = object.grade | 0;
+                            if (object.replyTime != null)
+                                if ($util.Long)
+                                    (message.replyTime = $util.Long.fromValue(object.replyTime)).unsigned = false;
+                                else if (typeof object.replyTime === "string")
+                                    message.replyTime = parseInt(object.replyTime, 10);
+                                else if (typeof object.replyTime === "number")
+                                    message.replyTime = object.replyTime;
+                                else if (typeof object.replyTime === "object")
+                                    message.replyTime = new $util.LongBits(object.replyTime.low >>> 0, object.replyTime.high >>> 0).toNumber();
+                            if (object.parent != null)
+                                message.parent = String(object.parent);
+                            if (object.paymentAuthority != null)
+                                message.paymentAuthority = object.paymentAuthority | 0;
+                            if (object.paymentAmount != null)
+                                message.paymentAmount = object.paymentAmount | 0;
+                            if (object.teacher != null)
+                                message.teacher = object.teacher | 0;
                             return message;
                         };
 
@@ -11949,6 +12290,16 @@ $root.com = (function() {
                                 object.source = 0;
                                 object.targetId = "";
                                 object.type = 0;
+                                object.grade = 0;
+                                if ($util.Long) {
+                                    var long = new $util.Long(0, 0, false);
+                                    object.replyTime = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                                } else
+                                    object.replyTime = options.longs === String ? "0" : 0;
+                                object.parent = "";
+                                object.paymentAuthority = 0;
+                                object.paymentAmount = 0;
+                                object.teacher = 0;
                             }
                             if (message.id != null && message.hasOwnProperty("id"))
                                 object.id = message.id;
@@ -12041,6 +12392,21 @@ $root.com = (function() {
                                 object.targetId = message.targetId;
                             if (message.type != null && message.hasOwnProperty("type"))
                                 object.type = message.type;
+                            if (message.grade != null && message.hasOwnProperty("grade"))
+                                object.grade = message.grade;
+                            if (message.replyTime != null && message.hasOwnProperty("replyTime"))
+                                if (typeof message.replyTime === "number")
+                                    object.replyTime = options.longs === String ? String(message.replyTime) : message.replyTime;
+                                else
+                                    object.replyTime = options.longs === String ? $util.Long.prototype.toString.call(message.replyTime) : options.longs === Number ? new $util.LongBits(message.replyTime.low >>> 0, message.replyTime.high >>> 0).toNumber() : message.replyTime;
+                            if (message.parent != null && message.hasOwnProperty("parent"))
+                                object.parent = message.parent;
+                            if (message.paymentAuthority != null && message.hasOwnProperty("paymentAuthority"))
+                                object.paymentAuthority = message.paymentAuthority;
+                            if (message.paymentAmount != null && message.hasOwnProperty("paymentAmount"))
+                                object.paymentAmount = message.paymentAmount;
+                            if (message.teacher != null && message.hasOwnProperty("teacher"))
+                                object.teacher = message.teacher;
                             return object;
                         };
 
@@ -12067,6 +12433,7 @@ $root.com = (function() {
                          * @property {number|null} [code] UserReply code
                          * @property {string|null} [message] UserReply message
                          * @property {Array.<com.xueershangda.tianxun.user.model.IUser>|null} [data] UserReply data
+                         * @property {Array.<com.xueershangda.tianxun.question.model.IQuestion>|null} [questionList] UserReply questionList
                          */
 
                         /**
@@ -12079,6 +12446,7 @@ $root.com = (function() {
                          */
                         function UserReply(properties) {
                             this.data = [];
+                            this.questionList = [];
                             if (properties)
                                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
@@ -12108,6 +12476,14 @@ $root.com = (function() {
                          * @instance
                          */
                         UserReply.prototype.data = $util.emptyArray;
+
+                        /**
+                         * UserReply questionList.
+                         * @member {Array.<com.xueershangda.tianxun.question.model.IQuestion>} questionList
+                         * @memberof com.xueershangda.tianxun.user.model.UserReply
+                         * @instance
+                         */
+                        UserReply.prototype.questionList = $util.emptyArray;
 
                         /**
                          * Creates a new UserReply instance using the specified properties.
@@ -12140,6 +12516,9 @@ $root.com = (function() {
                             if (message.data != null && message.data.length)
                                 for (var i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.user.model.User.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                            if (message.questionList != null && message.questionList.length)
+                                for (var i = 0; i < message.questionList.length; ++i)
+                                    $root.com.xueershangda.tianxun.question.model.Question.encode(message.questionList[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                             return writer;
                         };
 
@@ -12184,6 +12563,11 @@ $root.com = (function() {
                                     if (!(message.data && message.data.length))
                                         message.data = [];
                                     message.data.push($root.com.xueershangda.tianxun.user.model.User.decode(reader, reader.uint32()));
+                                    break;
+                                case 4:
+                                    if (!(message.questionList && message.questionList.length))
+                                        message.questionList = [];
+                                    message.questionList.push($root.com.xueershangda.tianxun.question.model.Question.decode(reader, reader.uint32()));
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -12235,6 +12619,15 @@ $root.com = (function() {
                                         return "data." + error;
                                 }
                             }
+                            if (message.questionList != null && message.hasOwnProperty("questionList")) {
+                                if (!Array.isArray(message.questionList))
+                                    return "questionList: array expected";
+                                for (var i = 0; i < message.questionList.length; ++i) {
+                                    var error = $root.com.xueershangda.tianxun.question.model.Question.verify(message.questionList[i]);
+                                    if (error)
+                                        return "questionList." + error;
+                                }
+                            }
                             return null;
                         };
 
@@ -12264,6 +12657,16 @@ $root.com = (function() {
                                     message.data[i] = $root.com.xueershangda.tianxun.user.model.User.fromObject(object.data[i]);
                                 }
                             }
+                            if (object.questionList) {
+                                if (!Array.isArray(object.questionList))
+                                    throw TypeError(".com.xueershangda.tianxun.user.model.UserReply.questionList: array expected");
+                                message.questionList = [];
+                                for (var i = 0; i < object.questionList.length; ++i) {
+                                    if (typeof object.questionList[i] !== "object")
+                                        throw TypeError(".com.xueershangda.tianxun.user.model.UserReply.questionList: object expected");
+                                    message.questionList[i] = $root.com.xueershangda.tianxun.question.model.Question.fromObject(object.questionList[i]);
+                                }
+                            }
                             return message;
                         };
 
@@ -12280,8 +12683,10 @@ $root.com = (function() {
                             if (!options)
                                 options = {};
                             var object = {};
-                            if (options.arrays || options.defaults)
+                            if (options.arrays || options.defaults) {
                                 object.data = [];
+                                object.questionList = [];
+                            }
                             if (options.defaults) {
                                 object.code = 0;
                                 object.message = "";
@@ -12294,6 +12699,11 @@ $root.com = (function() {
                                 object.data = [];
                                 for (var j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.user.model.User.toObject(message.data[j], options);
+                            }
+                            if (message.questionList && message.questionList.length) {
+                                object.questionList = [];
+                                for (var j = 0; j < message.questionList.length; ++j)
+                                    object.questionList[j] = $root.com.xueershangda.tianxun.question.model.Question.toObject(message.questionList[j], options);
                             }
                             return object;
                         };
@@ -18299,6 +18709,11 @@ $root.com = (function() {
                          * @property {string|null} [message] VideoReply message
                          * @property {Array.<com.xueershangda.tianxun.video.model.IVideo>|null} [data] VideoReply data
                          * @property {com.xueershangda.tianxun.video.model.IVideo|null} [video] VideoReply video
+                         * @property {string|null} [account] VideoReply account
+                         * @property {number|null} [price] VideoReply price
+                         * @property {string|null} [title] VideoReply title
+                         * @property {string|null} [type] VideoReply type
+                         * @property {string|null} [targetId] VideoReply targetId
                          */
 
                         /**
@@ -18350,6 +18765,46 @@ $root.com = (function() {
                         VideoReply.prototype.video = null;
 
                         /**
+                         * VideoReply account.
+                         * @member {string} account
+                         * @memberof com.xueershangda.tianxun.video.model.VideoReply
+                         * @instance
+                         */
+                        VideoReply.prototype.account = "";
+
+                        /**
+                         * VideoReply price.
+                         * @member {number} price
+                         * @memberof com.xueershangda.tianxun.video.model.VideoReply
+                         * @instance
+                         */
+                        VideoReply.prototype.price = 0;
+
+                        /**
+                         * VideoReply title.
+                         * @member {string} title
+                         * @memberof com.xueershangda.tianxun.video.model.VideoReply
+                         * @instance
+                         */
+                        VideoReply.prototype.title = "";
+
+                        /**
+                         * VideoReply type.
+                         * @member {string} type
+                         * @memberof com.xueershangda.tianxun.video.model.VideoReply
+                         * @instance
+                         */
+                        VideoReply.prototype.type = "";
+
+                        /**
+                         * VideoReply targetId.
+                         * @member {string} targetId
+                         * @memberof com.xueershangda.tianxun.video.model.VideoReply
+                         * @instance
+                         */
+                        VideoReply.prototype.targetId = "";
+
+                        /**
                          * Creates a new VideoReply instance using the specified properties.
                          * @function create
                          * @memberof com.xueershangda.tianxun.video.model.VideoReply
@@ -18382,6 +18837,16 @@ $root.com = (function() {
                                     $root.com.xueershangda.tianxun.video.model.Video.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.video != null && message.hasOwnProperty("video"))
                                 $root.com.xueershangda.tianxun.video.model.Video.encode(message.video, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                writer.uint32(/* id 5, wireType 2 =*/42).string(message.account);
+                            if (message.price != null && message.hasOwnProperty("price"))
+                                writer.uint32(/* id 6, wireType 1 =*/49).double(message.price);
+                            if (message.title != null && message.hasOwnProperty("title"))
+                                writer.uint32(/* id 7, wireType 2 =*/58).string(message.title);
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                writer.uint32(/* id 8, wireType 2 =*/66).string(message.type);
+                            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                                writer.uint32(/* id 9, wireType 2 =*/74).string(message.targetId);
                             return writer;
                         };
 
@@ -18429,6 +18894,21 @@ $root.com = (function() {
                                     break;
                                 case 4:
                                     message.video = $root.com.xueershangda.tianxun.video.model.Video.decode(reader, reader.uint32());
+                                    break;
+                                case 5:
+                                    message.account = reader.string();
+                                    break;
+                                case 6:
+                                    message.price = reader.double();
+                                    break;
+                                case 7:
+                                    message.title = reader.string();
+                                    break;
+                                case 8:
+                                    message.type = reader.string();
+                                    break;
+                                case 9:
+                                    message.targetId = reader.string();
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -18485,6 +18965,21 @@ $root.com = (function() {
                                 if (error)
                                     return "video." + error;
                             }
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                if (!$util.isString(message.account))
+                                    return "account: string expected";
+                            if (message.price != null && message.hasOwnProperty("price"))
+                                if (typeof message.price !== "number")
+                                    return "price: number expected";
+                            if (message.title != null && message.hasOwnProperty("title"))
+                                if (!$util.isString(message.title))
+                                    return "title: string expected";
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                if (!$util.isString(message.type))
+                                    return "type: string expected";
+                            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                                if (!$util.isString(message.targetId))
+                                    return "targetId: string expected";
                             return null;
                         };
 
@@ -18519,6 +19014,16 @@ $root.com = (function() {
                                     throw TypeError(".com.xueershangda.tianxun.video.model.VideoReply.video: object expected");
                                 message.video = $root.com.xueershangda.tianxun.video.model.Video.fromObject(object.video);
                             }
+                            if (object.account != null)
+                                message.account = String(object.account);
+                            if (object.price != null)
+                                message.price = Number(object.price);
+                            if (object.title != null)
+                                message.title = String(object.title);
+                            if (object.type != null)
+                                message.type = String(object.type);
+                            if (object.targetId != null)
+                                message.targetId = String(object.targetId);
                             return message;
                         };
 
@@ -18541,6 +19046,11 @@ $root.com = (function() {
                                 object.code = 0;
                                 object.message = "";
                                 object.video = null;
+                                object.account = "";
+                                object.price = 0;
+                                object.title = "";
+                                object.type = "";
+                                object.targetId = "";
                             }
                             if (message.code != null && message.hasOwnProperty("code"))
                                 object.code = message.code;
@@ -18553,6 +19063,16 @@ $root.com = (function() {
                             }
                             if (message.video != null && message.hasOwnProperty("video"))
                                 object.video = $root.com.xueershangda.tianxun.video.model.Video.toObject(message.video, options);
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                object.account = message.account;
+                            if (message.price != null && message.hasOwnProperty("price"))
+                                object.price = options.json && !isFinite(message.price) ? String(message.price) : message.price;
+                            if (message.title != null && message.hasOwnProperty("title"))
+                                object.title = message.title;
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                object.type = message.type;
+                            if (message.targetId != null && message.hasOwnProperty("targetId"))
+                                object.targetId = message.targetId;
                             return object;
                         };
 
@@ -18574,6 +19094,940 @@ $root.com = (function() {
                 })();
 
                 return video;
+            })();
+
+            tianxun.pay = (function() {
+
+                /**
+                 * Namespace pay.
+                 * @memberof com.xueershangda.tianxun
+                 * @namespace
+                 */
+                var pay = {};
+
+                pay.model = (function() {
+
+                    /**
+                     * Namespace model.
+                     * @memberof com.xueershangda.tianxun.pay
+                     * @namespace
+                     */
+                    var model = {};
+
+                    model.Alipay = (function() {
+
+                        /**
+                         * Properties of an Alipay.
+                         * @memberof com.xueershangda.tianxun.pay.model
+                         * @interface IAlipay
+                         * @property {number|null} [code] Alipay code
+                         * @property {string|null} [message] Alipay message
+                         * @property {string|null} [id] Alipay id
+                         * @property {string|null} [body] 诸多请求参数，ts端无法序列化map
+                         * @property {string|null} [value] Alipay value
+                         * @property {string|null} [result] Alipay result
+                         * @property {string|null} [subject] 订单标题
+                         * @property {string|null} [titleDesc] 订单标题描述
+                         * @property {string|null} [outTradeNo] 外部订单号（商户自己订单号）
+                         * @property {string|null} [orderId] 支付宝订单号
+                         * @property {number|null} [amount] 订单金额，单位元
+                         * @property {number|null} [type] 购买标的类型：1文章、2问题
+                         * @property {number|Long|null} [createDate] 订单创建时间
+                         * @property {number|Long|null} [payDate] 支付时间
+                         * @property {number|null} [state] 订单状态，1待支付，2支付中，3支付成功
+                         * @property {string|null} [buyer] 买家用户id
+                         * @property {string|null} [seller] 卖家用户id
+                         * @property {string|null} [payChannel] 支付渠道
+                         */
+
+                        /**
+                         * Constructs a new Alipay.
+                         * @memberof com.xueershangda.tianxun.pay.model
+                         * @classdesc Represents an Alipay.
+                         * @implements IAlipay
+                         * @constructor
+                         * @param {com.xueershangda.tianxun.pay.model.IAlipay=} [properties] Properties to set
+                         */
+                        function Alipay(properties) {
+                            if (properties)
+                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null)
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+
+                        /**
+                         * Alipay code.
+                         * @member {number} code
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.code = 0;
+
+                        /**
+                         * Alipay message.
+                         * @member {string} message
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.message = "";
+
+                        /**
+                         * Alipay id.
+                         * @member {string} id
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.id = "";
+
+                        /**
+                         * 诸多请求参数，ts端无法序列化map
+                         * @member {string} body
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.body = "";
+
+                        /**
+                         * Alipay value.
+                         * @member {string} value
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.value = "";
+
+                        /**
+                         * Alipay result.
+                         * @member {string} result
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.result = "";
+
+                        /**
+                         * 订单标题
+                         * @member {string} subject
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.subject = "";
+
+                        /**
+                         * 订单标题描述
+                         * @member {string} titleDesc
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.titleDesc = "";
+
+                        /**
+                         * 外部订单号（商户自己订单号）
+                         * @member {string} outTradeNo
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.outTradeNo = "";
+
+                        /**
+                         * 支付宝订单号
+                         * @member {string} orderId
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.orderId = "";
+
+                        /**
+                         * 订单金额，单位元
+                         * @member {number} amount
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.amount = 0;
+
+                        /**
+                         * 购买标的类型：1文章、2问题
+                         * @member {number} type
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.type = 0;
+
+                        /**
+                         * 订单创建时间
+                         * @member {number|Long} createDate
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+                        /**
+                         * 支付时间
+                         * @member {number|Long} payDate
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.payDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+                        /**
+                         * 订单状态，1待支付，2支付中，3支付成功
+                         * @member {number} state
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.state = 0;
+
+                        /**
+                         * 买家用户id
+                         * @member {string} buyer
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.buyer = "";
+
+                        /**
+                         * 卖家用户id
+                         * @member {string} seller
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.seller = "";
+
+                        /**
+                         * 支付渠道
+                         * @member {string} payChannel
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         */
+                        Alipay.prototype.payChannel = "";
+
+                        /**
+                         * Creates a new Alipay instance using the specified properties.
+                         * @function create
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @static
+                         * @param {com.xueershangda.tianxun.pay.model.IAlipay=} [properties] Properties to set
+                         * @returns {com.xueershangda.tianxun.pay.model.Alipay} Alipay instance
+                         */
+                        Alipay.create = function create(properties) {
+                            return new Alipay(properties);
+                        };
+
+                        /**
+                         * Encodes the specified Alipay message. Does not implicitly {@link com.xueershangda.tianxun.pay.model.Alipay.verify|verify} messages.
+                         * @function encode
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @static
+                         * @param {com.xueershangda.tianxun.pay.model.IAlipay} message Alipay message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        Alipay.encode = function encode(message, writer) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (message.code != null && message.hasOwnProperty("code"))
+                                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.code);
+                            if (message.message != null && message.hasOwnProperty("message"))
+                                writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                writer.uint32(/* id 3, wireType 2 =*/26).string(message.id);
+                            if (message.body != null && message.hasOwnProperty("body"))
+                                writer.uint32(/* id 4, wireType 2 =*/34).string(message.body);
+                            if (message.value != null && message.hasOwnProperty("value"))
+                                writer.uint32(/* id 5, wireType 2 =*/42).string(message.value);
+                            if (message.result != null && message.hasOwnProperty("result"))
+                                writer.uint32(/* id 6, wireType 2 =*/50).string(message.result);
+                            if (message.subject != null && message.hasOwnProperty("subject"))
+                                writer.uint32(/* id 7, wireType 2 =*/58).string(message.subject);
+                            if (message.titleDesc != null && message.hasOwnProperty("titleDesc"))
+                                writer.uint32(/* id 8, wireType 2 =*/66).string(message.titleDesc);
+                            if (message.outTradeNo != null && message.hasOwnProperty("outTradeNo"))
+                                writer.uint32(/* id 9, wireType 2 =*/74).string(message.outTradeNo);
+                            if (message.orderId != null && message.hasOwnProperty("orderId"))
+                                writer.uint32(/* id 10, wireType 2 =*/82).string(message.orderId);
+                            if (message.amount != null && message.hasOwnProperty("amount"))
+                                writer.uint32(/* id 11, wireType 1 =*/89).double(message.amount);
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                writer.uint32(/* id 12, wireType 0 =*/96).int32(message.type);
+                            if (message.createDate != null && message.hasOwnProperty("createDate"))
+                                writer.uint32(/* id 13, wireType 0 =*/104).int64(message.createDate);
+                            if (message.payDate != null && message.hasOwnProperty("payDate"))
+                                writer.uint32(/* id 14, wireType 0 =*/112).int64(message.payDate);
+                            if (message.state != null && message.hasOwnProperty("state"))
+                                writer.uint32(/* id 15, wireType 0 =*/120).int32(message.state);
+                            if (message.buyer != null && message.hasOwnProperty("buyer"))
+                                writer.uint32(/* id 16, wireType 2 =*/130).string(message.buyer);
+                            if (message.seller != null && message.hasOwnProperty("seller"))
+                                writer.uint32(/* id 17, wireType 2 =*/138).string(message.seller);
+                            if (message.payChannel != null && message.hasOwnProperty("payChannel"))
+                                writer.uint32(/* id 18, wireType 2 =*/146).string(message.payChannel);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified Alipay message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.pay.model.Alipay.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @static
+                         * @param {com.xueershangda.tianxun.pay.model.IAlipay} message Alipay message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        Alipay.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer).ldelim();
+                        };
+
+                        /**
+                         * Decodes an Alipay message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {com.xueershangda.tianxun.pay.model.Alipay} Alipay
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        Alipay.decode = function decode(reader, length) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.pay.model.Alipay();
+                            while (reader.pos < end) {
+                                var tag = reader.uint32();
+                                switch (tag >>> 3) {
+                                case 1:
+                                    message.code = reader.int32();
+                                    break;
+                                case 2:
+                                    message.message = reader.string();
+                                    break;
+                                case 3:
+                                    message.id = reader.string();
+                                    break;
+                                case 4:
+                                    message.body = reader.string();
+                                    break;
+                                case 5:
+                                    message.value = reader.string();
+                                    break;
+                                case 6:
+                                    message.result = reader.string();
+                                    break;
+                                case 7:
+                                    message.subject = reader.string();
+                                    break;
+                                case 8:
+                                    message.titleDesc = reader.string();
+                                    break;
+                                case 9:
+                                    message.outTradeNo = reader.string();
+                                    break;
+                                case 10:
+                                    message.orderId = reader.string();
+                                    break;
+                                case 11:
+                                    message.amount = reader.double();
+                                    break;
+                                case 12:
+                                    message.type = reader.int32();
+                                    break;
+                                case 13:
+                                    message.createDate = reader.int64();
+                                    break;
+                                case 14:
+                                    message.payDate = reader.int64();
+                                    break;
+                                case 15:
+                                    message.state = reader.int32();
+                                    break;
+                                case 16:
+                                    message.buyer = reader.string();
+                                    break;
+                                case 17:
+                                    message.seller = reader.string();
+                                    break;
+                                case 18:
+                                    message.payChannel = reader.string();
+                                    break;
+                                default:
+                                    reader.skipType(tag & 7);
+                                    break;
+                                }
+                            }
+                            return message;
+                        };
+
+                        /**
+                         * Decodes an Alipay message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {com.xueershangda.tianxun.pay.model.Alipay} Alipay
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        Alipay.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+
+                        /**
+                         * Verifies an Alipay message.
+                         * @function verify
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        Alipay.verify = function verify(message) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (message.code != null && message.hasOwnProperty("code"))
+                                if (!$util.isInteger(message.code))
+                                    return "code: integer expected";
+                            if (message.message != null && message.hasOwnProperty("message"))
+                                if (!$util.isString(message.message))
+                                    return "message: string expected";
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                if (!$util.isString(message.id))
+                                    return "id: string expected";
+                            if (message.body != null && message.hasOwnProperty("body"))
+                                if (!$util.isString(message.body))
+                                    return "body: string expected";
+                            if (message.value != null && message.hasOwnProperty("value"))
+                                if (!$util.isString(message.value))
+                                    return "value: string expected";
+                            if (message.result != null && message.hasOwnProperty("result"))
+                                if (!$util.isString(message.result))
+                                    return "result: string expected";
+                            if (message.subject != null && message.hasOwnProperty("subject"))
+                                if (!$util.isString(message.subject))
+                                    return "subject: string expected";
+                            if (message.titleDesc != null && message.hasOwnProperty("titleDesc"))
+                                if (!$util.isString(message.titleDesc))
+                                    return "titleDesc: string expected";
+                            if (message.outTradeNo != null && message.hasOwnProperty("outTradeNo"))
+                                if (!$util.isString(message.outTradeNo))
+                                    return "outTradeNo: string expected";
+                            if (message.orderId != null && message.hasOwnProperty("orderId"))
+                                if (!$util.isString(message.orderId))
+                                    return "orderId: string expected";
+                            if (message.amount != null && message.hasOwnProperty("amount"))
+                                if (typeof message.amount !== "number")
+                                    return "amount: number expected";
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                if (!$util.isInteger(message.type))
+                                    return "type: integer expected";
+                            if (message.createDate != null && message.hasOwnProperty("createDate"))
+                                if (!$util.isInteger(message.createDate) && !(message.createDate && $util.isInteger(message.createDate.low) && $util.isInteger(message.createDate.high)))
+                                    return "createDate: integer|Long expected";
+                            if (message.payDate != null && message.hasOwnProperty("payDate"))
+                                if (!$util.isInteger(message.payDate) && !(message.payDate && $util.isInteger(message.payDate.low) && $util.isInteger(message.payDate.high)))
+                                    return "payDate: integer|Long expected";
+                            if (message.state != null && message.hasOwnProperty("state"))
+                                if (!$util.isInteger(message.state))
+                                    return "state: integer expected";
+                            if (message.buyer != null && message.hasOwnProperty("buyer"))
+                                if (!$util.isString(message.buyer))
+                                    return "buyer: string expected";
+                            if (message.seller != null && message.hasOwnProperty("seller"))
+                                if (!$util.isString(message.seller))
+                                    return "seller: string expected";
+                            if (message.payChannel != null && message.hasOwnProperty("payChannel"))
+                                if (!$util.isString(message.payChannel))
+                                    return "payChannel: string expected";
+                            return null;
+                        };
+
+                        /**
+                         * Creates an Alipay message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {com.xueershangda.tianxun.pay.model.Alipay} Alipay
+                         */
+                        Alipay.fromObject = function fromObject(object) {
+                            if (object instanceof $root.com.xueershangda.tianxun.pay.model.Alipay)
+                                return object;
+                            var message = new $root.com.xueershangda.tianxun.pay.model.Alipay();
+                            if (object.code != null)
+                                message.code = object.code | 0;
+                            if (object.message != null)
+                                message.message = String(object.message);
+                            if (object.id != null)
+                                message.id = String(object.id);
+                            if (object.body != null)
+                                message.body = String(object.body);
+                            if (object.value != null)
+                                message.value = String(object.value);
+                            if (object.result != null)
+                                message.result = String(object.result);
+                            if (object.subject != null)
+                                message.subject = String(object.subject);
+                            if (object.titleDesc != null)
+                                message.titleDesc = String(object.titleDesc);
+                            if (object.outTradeNo != null)
+                                message.outTradeNo = String(object.outTradeNo);
+                            if (object.orderId != null)
+                                message.orderId = String(object.orderId);
+                            if (object.amount != null)
+                                message.amount = Number(object.amount);
+                            if (object.type != null)
+                                message.type = object.type | 0;
+                            if (object.createDate != null)
+                                if ($util.Long)
+                                    (message.createDate = $util.Long.fromValue(object.createDate)).unsigned = false;
+                                else if (typeof object.createDate === "string")
+                                    message.createDate = parseInt(object.createDate, 10);
+                                else if (typeof object.createDate === "number")
+                                    message.createDate = object.createDate;
+                                else if (typeof object.createDate === "object")
+                                    message.createDate = new $util.LongBits(object.createDate.low >>> 0, object.createDate.high >>> 0).toNumber();
+                            if (object.payDate != null)
+                                if ($util.Long)
+                                    (message.payDate = $util.Long.fromValue(object.payDate)).unsigned = false;
+                                else if (typeof object.payDate === "string")
+                                    message.payDate = parseInt(object.payDate, 10);
+                                else if (typeof object.payDate === "number")
+                                    message.payDate = object.payDate;
+                                else if (typeof object.payDate === "object")
+                                    message.payDate = new $util.LongBits(object.payDate.low >>> 0, object.payDate.high >>> 0).toNumber();
+                            if (object.state != null)
+                                message.state = object.state | 0;
+                            if (object.buyer != null)
+                                message.buyer = String(object.buyer);
+                            if (object.seller != null)
+                                message.seller = String(object.seller);
+                            if (object.payChannel != null)
+                                message.payChannel = String(object.payChannel);
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from an Alipay message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @static
+                         * @param {com.xueershangda.tianxun.pay.model.Alipay} message Alipay
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        Alipay.toObject = function toObject(message, options) {
+                            if (!options)
+                                options = {};
+                            var object = {};
+                            if (options.defaults) {
+                                object.code = 0;
+                                object.message = "";
+                                object.id = "";
+                                object.body = "";
+                                object.value = "";
+                                object.result = "";
+                                object.subject = "";
+                                object.titleDesc = "";
+                                object.outTradeNo = "";
+                                object.orderId = "";
+                                object.amount = 0;
+                                object.type = 0;
+                                if ($util.Long) {
+                                    var long = new $util.Long(0, 0, false);
+                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                                } else
+                                    object.createDate = options.longs === String ? "0" : 0;
+                                if ($util.Long) {
+                                    var long = new $util.Long(0, 0, false);
+                                    object.payDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                                } else
+                                    object.payDate = options.longs === String ? "0" : 0;
+                                object.state = 0;
+                                object.buyer = "";
+                                object.seller = "";
+                                object.payChannel = "";
+                            }
+                            if (message.code != null && message.hasOwnProperty("code"))
+                                object.code = message.code;
+                            if (message.message != null && message.hasOwnProperty("message"))
+                                object.message = message.message;
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                object.id = message.id;
+                            if (message.body != null && message.hasOwnProperty("body"))
+                                object.body = message.body;
+                            if (message.value != null && message.hasOwnProperty("value"))
+                                object.value = message.value;
+                            if (message.result != null && message.hasOwnProperty("result"))
+                                object.result = message.result;
+                            if (message.subject != null && message.hasOwnProperty("subject"))
+                                object.subject = message.subject;
+                            if (message.titleDesc != null && message.hasOwnProperty("titleDesc"))
+                                object.titleDesc = message.titleDesc;
+                            if (message.outTradeNo != null && message.hasOwnProperty("outTradeNo"))
+                                object.outTradeNo = message.outTradeNo;
+                            if (message.orderId != null && message.hasOwnProperty("orderId"))
+                                object.orderId = message.orderId;
+                            if (message.amount != null && message.hasOwnProperty("amount"))
+                                object.amount = options.json && !isFinite(message.amount) ? String(message.amount) : message.amount;
+                            if (message.type != null && message.hasOwnProperty("type"))
+                                object.type = message.type;
+                            if (message.createDate != null && message.hasOwnProperty("createDate"))
+                                if (typeof message.createDate === "number")
+                                    object.createDate = options.longs === String ? String(message.createDate) : message.createDate;
+                                else
+                                    object.createDate = options.longs === String ? $util.Long.prototype.toString.call(message.createDate) : options.longs === Number ? new $util.LongBits(message.createDate.low >>> 0, message.createDate.high >>> 0).toNumber() : message.createDate;
+                            if (message.payDate != null && message.hasOwnProperty("payDate"))
+                                if (typeof message.payDate === "number")
+                                    object.payDate = options.longs === String ? String(message.payDate) : message.payDate;
+                                else
+                                    object.payDate = options.longs === String ? $util.Long.prototype.toString.call(message.payDate) : options.longs === Number ? new $util.LongBits(message.payDate.low >>> 0, message.payDate.high >>> 0).toNumber() : message.payDate;
+                            if (message.state != null && message.hasOwnProperty("state"))
+                                object.state = message.state;
+                            if (message.buyer != null && message.hasOwnProperty("buyer"))
+                                object.buyer = message.buyer;
+                            if (message.seller != null && message.hasOwnProperty("seller"))
+                                object.seller = message.seller;
+                            if (message.payChannel != null && message.hasOwnProperty("payChannel"))
+                                object.payChannel = message.payChannel;
+                            return object;
+                        };
+
+                        /**
+                         * Converts this Alipay to JSON.
+                         * @function toJSON
+                         * @memberof com.xueershangda.tianxun.pay.model.Alipay
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        Alipay.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        return Alipay;
+                    })();
+
+                    model.AlipayReply = (function() {
+
+                        /**
+                         * Properties of an AlipayReply.
+                         * @memberof com.xueershangda.tianxun.pay.model
+                         * @interface IAlipayReply
+                         * @property {number|null} [code] AlipayReply code
+                         * @property {string|null} [message] AlipayReply message
+                         * @property {Array.<com.xueershangda.tianxun.pay.model.IAlipay>|null} [data] AlipayReply data
+                         * @property {string|null} [body] AlipayReply body
+                         * @property {string|null} [value] AlipayReply value
+                         * @property {string|null} [result] AlipayReply result
+                         */
+
+                        /**
+                         * Constructs a new AlipayReply.
+                         * @memberof com.xueershangda.tianxun.pay.model
+                         * @classdesc Represents an AlipayReply.
+                         * @implements IAlipayReply
+                         * @constructor
+                         * @param {com.xueershangda.tianxun.pay.model.IAlipayReply=} [properties] Properties to set
+                         */
+                        function AlipayReply(properties) {
+                            this.data = [];
+                            if (properties)
+                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null)
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+
+                        /**
+                         * AlipayReply code.
+                         * @member {number} code
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @instance
+                         */
+                        AlipayReply.prototype.code = 0;
+
+                        /**
+                         * AlipayReply message.
+                         * @member {string} message
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @instance
+                         */
+                        AlipayReply.prototype.message = "";
+
+                        /**
+                         * AlipayReply data.
+                         * @member {Array.<com.xueershangda.tianxun.pay.model.IAlipay>} data
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @instance
+                         */
+                        AlipayReply.prototype.data = $util.emptyArray;
+
+                        /**
+                         * AlipayReply body.
+                         * @member {string} body
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @instance
+                         */
+                        AlipayReply.prototype.body = "";
+
+                        /**
+                         * AlipayReply value.
+                         * @member {string} value
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @instance
+                         */
+                        AlipayReply.prototype.value = "";
+
+                        /**
+                         * AlipayReply result.
+                         * @member {string} result
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @instance
+                         */
+                        AlipayReply.prototype.result = "";
+
+                        /**
+                         * Creates a new AlipayReply instance using the specified properties.
+                         * @function create
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @static
+                         * @param {com.xueershangda.tianxun.pay.model.IAlipayReply=} [properties] Properties to set
+                         * @returns {com.xueershangda.tianxun.pay.model.AlipayReply} AlipayReply instance
+                         */
+                        AlipayReply.create = function create(properties) {
+                            return new AlipayReply(properties);
+                        };
+
+                        /**
+                         * Encodes the specified AlipayReply message. Does not implicitly {@link com.xueershangda.tianxun.pay.model.AlipayReply.verify|verify} messages.
+                         * @function encode
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @static
+                         * @param {com.xueershangda.tianxun.pay.model.IAlipayReply} message AlipayReply message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        AlipayReply.encode = function encode(message, writer) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (message.code != null && message.hasOwnProperty("code"))
+                                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.code);
+                            if (message.message != null && message.hasOwnProperty("message"))
+                                writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
+                            if (message.data != null && message.data.length)
+                                for (var i = 0; i < message.data.length; ++i)
+                                    $root.com.xueershangda.tianxun.pay.model.Alipay.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                            if (message.body != null && message.hasOwnProperty("body"))
+                                writer.uint32(/* id 4, wireType 2 =*/34).string(message.body);
+                            if (message.value != null && message.hasOwnProperty("value"))
+                                writer.uint32(/* id 5, wireType 2 =*/42).string(message.value);
+                            if (message.result != null && message.hasOwnProperty("result"))
+                                writer.uint32(/* id 6, wireType 2 =*/50).string(message.result);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified AlipayReply message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.pay.model.AlipayReply.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @static
+                         * @param {com.xueershangda.tianxun.pay.model.IAlipayReply} message AlipayReply message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        AlipayReply.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer).ldelim();
+                        };
+
+                        /**
+                         * Decodes an AlipayReply message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {com.xueershangda.tianxun.pay.model.AlipayReply} AlipayReply
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        AlipayReply.decode = function decode(reader, length) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.pay.model.AlipayReply();
+                            while (reader.pos < end) {
+                                var tag = reader.uint32();
+                                switch (tag >>> 3) {
+                                case 1:
+                                    message.code = reader.int32();
+                                    break;
+                                case 2:
+                                    message.message = reader.string();
+                                    break;
+                                case 3:
+                                    if (!(message.data && message.data.length))
+                                        message.data = [];
+                                    message.data.push($root.com.xueershangda.tianxun.pay.model.Alipay.decode(reader, reader.uint32()));
+                                    break;
+                                case 4:
+                                    message.body = reader.string();
+                                    break;
+                                case 5:
+                                    message.value = reader.string();
+                                    break;
+                                case 6:
+                                    message.result = reader.string();
+                                    break;
+                                default:
+                                    reader.skipType(tag & 7);
+                                    break;
+                                }
+                            }
+                            return message;
+                        };
+
+                        /**
+                         * Decodes an AlipayReply message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {com.xueershangda.tianxun.pay.model.AlipayReply} AlipayReply
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        AlipayReply.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+
+                        /**
+                         * Verifies an AlipayReply message.
+                         * @function verify
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        AlipayReply.verify = function verify(message) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (message.code != null && message.hasOwnProperty("code"))
+                                if (!$util.isInteger(message.code))
+                                    return "code: integer expected";
+                            if (message.message != null && message.hasOwnProperty("message"))
+                                if (!$util.isString(message.message))
+                                    return "message: string expected";
+                            if (message.data != null && message.hasOwnProperty("data")) {
+                                if (!Array.isArray(message.data))
+                                    return "data: array expected";
+                                for (var i = 0; i < message.data.length; ++i) {
+                                    var error = $root.com.xueershangda.tianxun.pay.model.Alipay.verify(message.data[i]);
+                                    if (error)
+                                        return "data." + error;
+                                }
+                            }
+                            if (message.body != null && message.hasOwnProperty("body"))
+                                if (!$util.isString(message.body))
+                                    return "body: string expected";
+                            if (message.value != null && message.hasOwnProperty("value"))
+                                if (!$util.isString(message.value))
+                                    return "value: string expected";
+                            if (message.result != null && message.hasOwnProperty("result"))
+                                if (!$util.isString(message.result))
+                                    return "result: string expected";
+                            return null;
+                        };
+
+                        /**
+                         * Creates an AlipayReply message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {com.xueershangda.tianxun.pay.model.AlipayReply} AlipayReply
+                         */
+                        AlipayReply.fromObject = function fromObject(object) {
+                            if (object instanceof $root.com.xueershangda.tianxun.pay.model.AlipayReply)
+                                return object;
+                            var message = new $root.com.xueershangda.tianxun.pay.model.AlipayReply();
+                            if (object.code != null)
+                                message.code = object.code | 0;
+                            if (object.message != null)
+                                message.message = String(object.message);
+                            if (object.data) {
+                                if (!Array.isArray(object.data))
+                                    throw TypeError(".com.xueershangda.tianxun.pay.model.AlipayReply.data: array expected");
+                                message.data = [];
+                                for (var i = 0; i < object.data.length; ++i) {
+                                    if (typeof object.data[i] !== "object")
+                                        throw TypeError(".com.xueershangda.tianxun.pay.model.AlipayReply.data: object expected");
+                                    message.data[i] = $root.com.xueershangda.tianxun.pay.model.Alipay.fromObject(object.data[i]);
+                                }
+                            }
+                            if (object.body != null)
+                                message.body = String(object.body);
+                            if (object.value != null)
+                                message.value = String(object.value);
+                            if (object.result != null)
+                                message.result = String(object.result);
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from an AlipayReply message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @static
+                         * @param {com.xueershangda.tianxun.pay.model.AlipayReply} message AlipayReply
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        AlipayReply.toObject = function toObject(message, options) {
+                            if (!options)
+                                options = {};
+                            var object = {};
+                            if (options.arrays || options.defaults)
+                                object.data = [];
+                            if (options.defaults) {
+                                object.code = 0;
+                                object.message = "";
+                                object.body = "";
+                                object.value = "";
+                                object.result = "";
+                            }
+                            if (message.code != null && message.hasOwnProperty("code"))
+                                object.code = message.code;
+                            if (message.message != null && message.hasOwnProperty("message"))
+                                object.message = message.message;
+                            if (message.data && message.data.length) {
+                                object.data = [];
+                                for (var j = 0; j < message.data.length; ++j)
+                                    object.data[j] = $root.com.xueershangda.tianxun.pay.model.Alipay.toObject(message.data[j], options);
+                            }
+                            if (message.body != null && message.hasOwnProperty("body"))
+                                object.body = message.body;
+                            if (message.value != null && message.hasOwnProperty("value"))
+                                object.value = message.value;
+                            if (message.result != null && message.hasOwnProperty("result"))
+                                object.result = message.result;
+                            return object;
+                        };
+
+                        /**
+                         * Converts this AlipayReply to JSON.
+                         * @function toJSON
+                         * @memberof com.xueershangda.tianxun.pay.model.AlipayReply
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        AlipayReply.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        return AlipayReply;
+                    })();
+
+                    return model;
+                })();
+
+                return pay;
             })();
 
             return tianxun;

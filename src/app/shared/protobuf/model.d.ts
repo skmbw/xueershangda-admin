@@ -2492,6 +2492,21 @@ export namespace com {
 
                         /** ArticleReply data */
                         data?: (com.xueershangda.tianxun.article.model.IArticle[]|null);
+
+                        /** ArticleReply account */
+                        account?: (string|null);
+
+                        /** ArticleReply price */
+                        price?: (number|null);
+
+                        /** ArticleReply title */
+                        title?: (string|null);
+
+                        /** ArticleReply type */
+                        type?: (string|null);
+
+                        /** ArticleReply targetId */
+                        targetId?: (string|null);
                     }
 
                     /** Represents an ArticleReply. */
@@ -2511,6 +2526,21 @@ export namespace com {
 
                         /** ArticleReply data. */
                         public data: com.xueershangda.tianxun.article.model.IArticle[];
+
+                        /** ArticleReply account. */
+                        public account: string;
+
+                        /** ArticleReply price. */
+                        public price: number;
+
+                        /** ArticleReply title. */
+                        public title: string;
+
+                        /** ArticleReply type. */
+                        public type: string;
+
+                        /** ArticleReply targetId. */
+                        public targetId: string;
 
                         /**
                          * Creates a new ArticleReply instance using the specified properties.
@@ -2926,6 +2956,21 @@ export namespace com {
 
                         /** QuestionReply data */
                         data?: (com.xueershangda.tianxun.question.model.IQuestion[]|null);
+
+                        /** QuestionReply account */
+                        account?: (string|null);
+
+                        /** QuestionReply price */
+                        price?: (number|null);
+
+                        /** QuestionReply title */
+                        title?: (string|null);
+
+                        /** QuestionReply type */
+                        type?: (string|null);
+
+                        /** QuestionReply targetId */
+                        targetId?: (string|null);
                     }
 
                     /** Represents a QuestionReply. */
@@ -2945,6 +2990,21 @@ export namespace com {
 
                         /** QuestionReply data. */
                         public data: com.xueershangda.tianxun.question.model.IQuestion[];
+
+                        /** QuestionReply account. */
+                        public account: string;
+
+                        /** QuestionReply price. */
+                        public price: number;
+
+                        /** QuestionReply title. */
+                        public title: string;
+
+                        /** QuestionReply type. */
+                        public type: string;
+
+                        /** QuestionReply targetId. */
+                        public targetId: string;
 
                         /**
                          * Creates a new QuestionReply instance using the specified properties.
@@ -3817,6 +3877,24 @@ export namespace com {
 
                         /** User type */
                         type?: (number|null);
+
+                        /** User grade */
+                        grade?: (number|null);
+
+                        /** User replyTime */
+                        replyTime?: (number|null);
+
+                        /** User parent */
+                        parent?: (string|null);
+
+                        /** User paymentAuthority */
+                        paymentAuthority?: (number|null);
+
+                        /** User paymentAmount */
+                        paymentAmount?: (number|null);
+
+                        /** User teacher */
+                        teacher?: (number|null);
                     }
 
                     /** Represents a User. */
@@ -3942,6 +4020,24 @@ export namespace com {
                         /** User type. */
                         public type: number;
 
+                        /** User grade. */
+                        public grade: number;
+
+                        /** User replyTime. */
+                        public replyTime: (number);
+
+                        /** User parent. */
+                        public parent: string;
+
+                        /** User paymentAuthority. */
+                        public paymentAuthority: number;
+
+                        /** User paymentAmount. */
+                        public paymentAmount: number;
+
+                        /** User teacher. */
+                        public teacher: number;
+
                         /**
                          * Creates a new User instance using the specified properties.
                          * @param [properties] Properties to set
@@ -4024,6 +4120,9 @@ export namespace com {
 
                         /** UserReply data */
                         data?: (com.xueershangda.tianxun.user.model.IUser[]|null);
+
+                        /** UserReply questionList */
+                        questionList?: (com.xueershangda.tianxun.question.model.IQuestion[]|null);
                     }
 
                     /** Represents a UserReply. */
@@ -4043,6 +4142,9 @@ export namespace com {
 
                         /** UserReply data. */
                         public data: com.xueershangda.tianxun.user.model.IUser[];
+
+                        /** UserReply questionList. */
+                        public questionList: com.xueershangda.tianxun.question.model.IQuestion[];
 
                         /**
                          * Creates a new UserReply instance using the specified properties.
@@ -6183,6 +6285,21 @@ export namespace com {
 
                         /** VideoReply video */
                         video?: (com.xueershangda.tianxun.video.model.IVideo|null);
+
+                        /** VideoReply account */
+                        account?: (string|null);
+
+                        /** VideoReply price */
+                        price?: (number|null);
+
+                        /** VideoReply title */
+                        title?: (string|null);
+
+                        /** VideoReply type */
+                        type?: (string|null);
+
+                        /** VideoReply targetId */
+                        targetId?: (string|null);
                     }
 
                     /** Represents a VideoReply. */
@@ -6205,6 +6322,21 @@ export namespace com {
 
                         /** VideoReply video. */
                         public video?: (com.xueershangda.tianxun.video.model.IVideo|null);
+
+                        /** VideoReply account. */
+                        public account: string;
+
+                        /** VideoReply price. */
+                        public price: number;
+
+                        /** VideoReply title. */
+                        public title: string;
+
+                        /** VideoReply type. */
+                        public type: string;
+
+                        /** VideoReply targetId. */
+                        public targetId: string;
 
                         /**
                          * Creates a new VideoReply instance using the specified properties.
@@ -6272,6 +6404,326 @@ export namespace com {
 
                         /**
                          * Converts this VideoReply to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+                }
+            }
+
+            /** Namespace pay. */
+            namespace pay {
+
+                /** Namespace model. */
+                namespace model {
+
+                    /** Properties of an Alipay. */
+                    interface IAlipay {
+
+                        /** Alipay code */
+                        code?: (number|null);
+
+                        /** Alipay message */
+                        message?: (string|null);
+
+                        /** Alipay id */
+                        id?: (string|null);
+
+                        /** 诸多请求参数，ts端无法序列化map */
+                        body?: (string|null);
+
+                        /** Alipay value */
+                        value?: (string|null);
+
+                        /** Alipay result */
+                        result?: (string|null);
+
+                        /** 订单标题 */
+                        subject?: (string|null);
+
+                        /** 订单标题描述 */
+                        titleDesc?: (string|null);
+
+                        /** 外部订单号（商户自己订单号） */
+                        outTradeNo?: (string|null);
+
+                        /** 支付宝订单号 */
+                        orderId?: (string|null);
+
+                        /** 订单金额，单位元 */
+                        amount?: (number|null);
+
+                        /** 购买标的类型：1文章、2问题 */
+                        type?: (number|null);
+
+                        /** 订单创建时间 */
+                        createDate?: (number|null);
+
+                        /** 支付时间 */
+                        payDate?: (number|null);
+
+                        /** 订单状态，1待支付，2支付中，3支付成功 */
+                        state?: (number|null);
+
+                        /** 买家用户id */
+                        buyer?: (string|null);
+
+                        /** 卖家用户id */
+                        seller?: (string|null);
+
+                        /** 支付渠道 */
+                        payChannel?: (string|null);
+                    }
+
+                    /** Represents an Alipay. */
+                    class Alipay implements IAlipay {
+
+                        /**
+                         * Constructs a new Alipay.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: com.xueershangda.tianxun.pay.model.IAlipay);
+
+                        /** Alipay code. */
+                        public code: number;
+
+                        /** Alipay message. */
+                        public message: string;
+
+                        /** Alipay id. */
+                        public id: string;
+
+                        /** 诸多请求参数，ts端无法序列化map */
+                        public body: string;
+
+                        /** Alipay value. */
+                        public value: string;
+
+                        /** Alipay result. */
+                        public result: string;
+
+                        /** 订单标题 */
+                        public subject: string;
+
+                        /** 订单标题描述 */
+                        public titleDesc: string;
+
+                        /** 外部订单号（商户自己订单号） */
+                        public outTradeNo: string;
+
+                        /** 支付宝订单号 */
+                        public orderId: string;
+
+                        /** 订单金额，单位元 */
+                        public amount: number;
+
+                        /** 购买标的类型：1文章、2问题 */
+                        public type: number;
+
+                        /** 订单创建时间 */
+                        public createDate: (number);
+
+                        /** 支付时间 */
+                        public payDate: (number);
+
+                        /** 订单状态，1待支付，2支付中，3支付成功 */
+                        public state: number;
+
+                        /** 买家用户id */
+                        public buyer: string;
+
+                        /** 卖家用户id */
+                        public seller: string;
+
+                        /** 支付渠道 */
+                        public payChannel: string;
+
+                        /**
+                         * Creates a new Alipay instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns Alipay instance
+                         */
+                        public static create(properties?: com.xueershangda.tianxun.pay.model.IAlipay): com.xueershangda.tianxun.pay.model.Alipay;
+
+                        /**
+                         * Encodes the specified Alipay message. Does not implicitly {@link com.xueershangda.tianxun.pay.model.Alipay.verify|verify} messages.
+                         * @param message Alipay message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: com.xueershangda.tianxun.pay.model.IAlipay, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified Alipay message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.pay.model.Alipay.verify|verify} messages.
+                         * @param message Alipay message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: com.xueershangda.tianxun.pay.model.IAlipay, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes an Alipay message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns Alipay
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): com.xueershangda.tianxun.pay.model.Alipay;
+
+                        /**
+                         * Decodes an Alipay message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns Alipay
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): com.xueershangda.tianxun.pay.model.Alipay;
+
+                        /**
+                         * Verifies an Alipay message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates an Alipay message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns Alipay
+                         */
+                        public static fromObject(object: { [k: string]: any }): com.xueershangda.tianxun.pay.model.Alipay;
+
+                        /**
+                         * Creates a plain object from an Alipay message. Also converts values to other types if specified.
+                         * @param message Alipay
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: com.xueershangda.tianxun.pay.model.Alipay, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this Alipay to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Properties of an AlipayReply. */
+                    interface IAlipayReply {
+
+                        /** AlipayReply code */
+                        code?: (number|null);
+
+                        /** AlipayReply message */
+                        message?: (string|null);
+
+                        /** AlipayReply data */
+                        data?: (com.xueershangda.tianxun.pay.model.IAlipay[]|null);
+
+                        /** AlipayReply body */
+                        body?: (string|null);
+
+                        /** AlipayReply value */
+                        value?: (string|null);
+
+                        /** AlipayReply result */
+                        result?: (string|null);
+                    }
+
+                    /** Represents an AlipayReply. */
+                    class AlipayReply implements IAlipayReply {
+
+                        /**
+                         * Constructs a new AlipayReply.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: com.xueershangda.tianxun.pay.model.IAlipayReply);
+
+                        /** AlipayReply code. */
+                        public code: number;
+
+                        /** AlipayReply message. */
+                        public message: string;
+
+                        /** AlipayReply data. */
+                        public data: com.xueershangda.tianxun.pay.model.IAlipay[];
+
+                        /** AlipayReply body. */
+                        public body: string;
+
+                        /** AlipayReply value. */
+                        public value: string;
+
+                        /** AlipayReply result. */
+                        public result: string;
+
+                        /**
+                         * Creates a new AlipayReply instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns AlipayReply instance
+                         */
+                        public static create(properties?: com.xueershangda.tianxun.pay.model.IAlipayReply): com.xueershangda.tianxun.pay.model.AlipayReply;
+
+                        /**
+                         * Encodes the specified AlipayReply message. Does not implicitly {@link com.xueershangda.tianxun.pay.model.AlipayReply.verify|verify} messages.
+                         * @param message AlipayReply message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: com.xueershangda.tianxun.pay.model.IAlipayReply, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified AlipayReply message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.pay.model.AlipayReply.verify|verify} messages.
+                         * @param message AlipayReply message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: com.xueershangda.tianxun.pay.model.IAlipayReply, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes an AlipayReply message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns AlipayReply
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): com.xueershangda.tianxun.pay.model.AlipayReply;
+
+                        /**
+                         * Decodes an AlipayReply message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns AlipayReply
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): com.xueershangda.tianxun.pay.model.AlipayReply;
+
+                        /**
+                         * Verifies an AlipayReply message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates an AlipayReply message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns AlipayReply
+                         */
+                        public static fromObject(object: { [k: string]: any }): com.xueershangda.tianxun.pay.model.AlipayReply;
+
+                        /**
+                         * Creates a plain object from an AlipayReply message. Also converts values to other types if specified.
+                         * @param message AlipayReply
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: com.xueershangda.tianxun.pay.model.AlipayReply, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this AlipayReply to JSON.
                          * @returns JSON object
                          */
                         public toJSON(): { [k: string]: any };
