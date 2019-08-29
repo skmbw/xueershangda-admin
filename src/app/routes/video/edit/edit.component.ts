@@ -232,7 +232,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     this.uploader.bind('FilesAdded', (upload, files) => {
       for (const f of files) {
         let data: any[] = [];
-        data = this_.fileList.concat(f.name);
+        data = this_.fileList.concat({id: f.name.substring(0, f.name.lastIndexOf('.')), name: f.name, type: f.type});
         this_.fileList = [...data]; // 必须要引用变，才会更新？
       }
 
@@ -268,10 +268,13 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     // alert(item);
     // this.ele.nativeElement.querySelector('');
     // this.renderer.removeChild();
-    $('#' + item + '_item').remove();
-    const i = this.fileList.indexOf(item);
-    this.fileList = this.fileList.slice(i, 1);
-    this.fileList = [...this.fileList];
+    // $('#' + item.id + '_item').remove(); // 是可以删除的，名字里面不能带点，否则可能会被认为是类选择器
+    // const i = this.fileList.indexOf(item);
+    // this.fileList = this.fileList.slice(i, 1);
+    // this.fileList = [...this.fileList];
+
+    // 还应该删除uploader.files中的内容
+    this.fileList = []; // 这个清空，也是可以在页面上刷新的
   }
 
   // select() {
