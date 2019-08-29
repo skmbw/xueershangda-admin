@@ -307,6 +307,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
         rename: true
       });
     });
+    this.uploader.init();
     // angular中没有$(document).ready(function(){});的等价物，使用这种方法
     // setTimeout(() => {
     //   this.uploader = $("#uploader").pluploadQueue({
