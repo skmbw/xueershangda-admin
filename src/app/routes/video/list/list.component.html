@@ -7,8 +7,3 @@
   <sf mode="search" [schema]="searchSchema" (formSubmit)="st.reset($event)" (formReset)="st.reset($event)"></sf>
   <st #st [data]="url" [columns]="columns"></st>
 </nz-card>
-<div id="uploader">
-  <button id="browseBtn">选择文件</button>
-  <button id="startUpload" (click)="startUpload()">开始上传</button>
-  <input id="fileInput" type="file" (change)="change()" name="name" style="display: none;" />
-</div>

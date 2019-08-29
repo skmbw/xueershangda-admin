@@ -6,8 +6,7 @@ import { VideoEditComponent } from './edit/edit.component';
 const routes: Routes = [
 
   { path: 'list', component: VideoListComponent },
-  { path: 'edit/:id', component: VideoEditComponent }
-];
+  { path: 'edit/:id', component: VideoEditComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

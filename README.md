@@ -101,3 +101,7 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 * pbjs -t static-module -w commonjs -o bundled.js account_detail.proto answer.proto content.proto follow.proto platform_detail.proto score_detail.proto user.proto account.proto article.proto dialogue.proto orders.proto images.proto score.proto answer_file.proto comment.proto favorite.proto platform_account.proto question.proto tags.proto equipment.proto characters.proto virtual_items.proto category.proto video.proto payment.proto
 * pbts -o bundled.d.ts bundled.js
 将生成的bundled.js 生成typescript的文件bundled.d.ts
+
+### ng-alain的一些问题
+* 如果类中注入了Modal，那么由Modal模式改为连接跳转，及时路由配置正确，也会报错。所以要去掉modal的注入
+* 如果使用modal的方式打开，那么因为没有$(document).ready事件，uploader初始化时会找不到对应的browse_button的id，so无法浏览文件

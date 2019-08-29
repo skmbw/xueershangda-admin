@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { NzMessageService, NzModalRef, UploadChangeParam, UploadFile } from 'ng-zorro-antd';
+import { NzMessageService, UploadChangeParam, UploadFile } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
 import { JsUtils } from '@shared/utils/js-utils';
@@ -9,11 +9,13 @@ import { com } from '@shared';
 // import * as $ from 'jquery';
 import * as plupload from 'plupload';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
 
 declare var $: any; // 这次的导入要使用这种方式声明，否则会报 pluploadQueue is not a function
 
+// 如果类中注入了Modal，那么由Modal模式改为连接跳转，及时路由配置正确，也会报错。所以要去掉modal的注入
 // 如果使用modal的方式打开，那么因为没有$(document).ready事件，uploader初始化时会找不到对应的browse_button的id，so无法浏览文件
 @Component({
   selector: 'app-video-edit',
@@ -134,9 +136,9 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   };
 
   constructor(
-    private modal: NzModalRef,
+    // private modal: NzModalRef,
     private msgSrv: NzMessageService,
-    public http: _HttpClient,
+    public http: _HttpClient, private location: Location,
     private videoService: VideoService, private route: ActivatedRoute
   ) {}
 
@@ -208,7 +210,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       const reply = VideoReply.decode(uint8Array);
       if (reply.code === 1) {
         this.msgSrv.success('保存成功');
-        this.modal.close(true);
+        // this.modal.close(true);
       } else {
         this.msgSrv.error(reply.message);
       }
@@ -396,7 +398,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   close() {
-    this.modal.destroy();
+    // this.modal.destroy();
   }
 
   startUpload() {

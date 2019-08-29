@@ -7,11 +7,9 @@ import { VideoViewComponent } from './view/view.component';
 
 const COMPONENTS = [
   VideoListComponent,
-  VideoEditComponent
-];
+  VideoEditComponent];
 const COMPONENTS_NOROUNT = [
-  VideoViewComponent
-];
+  VideoViewComponent];
 
 @NgModule({
   imports: [
