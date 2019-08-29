@@ -60,10 +60,8 @@ export class VideoListComponent implements OnInit, AfterViewInit {
         { // 这种方式打开modal为什么不能正确的传递参数呢？因为bug，没有取modal这个参数，导致参数名是undefined。
           // 默认传递的参数是该行记录。
           text: '编辑',
-          click: (item: any) => {
-            this.modal.createStatic(VideoEditComponent, { record: item})
-              .subscribe(() => this.st.reload());
-          }
+          type: 'link',
+          click: (item: any) => `/video/edit/${item.id}`
           // type: 'static',
           // component: VideoEditComponent // 默认将当前行记录record传进去作为参数
           // 这个参数没有使用，是一个bug，在@delon/abc/fesm5/table.js._btnClick（1978行）中，根本没有判断paramsName是否为空

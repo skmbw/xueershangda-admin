@@ -8,6 +8,7 @@ import { VideoService } from '@shared/service/video.service';
 import { com } from '@shared';
 // import * as $ from 'jquery';
 import * as plupload from 'plupload';
+import { ActivatedRoute } from '@angular/router';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
 
@@ -20,6 +21,7 @@ declare var $: any; // 这次的导入要使用这种方式声明，否则会报
   styleUrls: ['./edit.component.css']
 })
 export class VideoEditComponent implements OnInit, AfterViewInit {
+  id = this.route.snapshot.params.id;
   record: any = {}; // 如果不初始化，那么this.record.id会是undefined
   i: any;
   uploader: any;
@@ -135,7 +137,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     private modal: NzModalRef,
     private msgSrv: NzMessageService,
     public http: _HttpClient,
-    private videoService: VideoService
+    private videoService: VideoService, private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -177,12 +179,13 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     // alert(this.record.id); // this.undefined就是穿过来的参数，但是table.js._btnClick中的bug，没有设置或取到参数名导致
     // if (this.record.id > 0)
     //   this.http.get(Consts.URL + `/video/detail/${this.record.id}`).subscribe(res => (this.i = res));
-    if (JsUtils.isNotBlank(this.record.id)) {
-      this.videoService.get(this.record.id).subscribe(res => {
+    if (JsUtils.isNotBlank(this.id)) {
+      this.videoService.get(this.id).subscribe(res => {
         const uint8Array = new Uint8Array(res, 0, res.byteLength);
         const reply = VideoReply.decode(uint8Array);
         if (reply.code === 1) {
           this.i = reply.video;
+          this.record = this.i; // record是modal模式下带过来的数据，和i应该是一样的
         } else {
           this.msgSrv.info(reply.message);
         }

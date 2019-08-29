@@ -6,20 +6,23 @@ import { VideoEditComponent } from './edit/edit.component';
 import { VideoViewComponent } from './view/view.component';
 
 const COMPONENTS = [
-  VideoListComponent];
+  VideoListComponent,
+  VideoEditComponent
+];
 const COMPONENTS_NOROUNT = [
-  VideoEditComponent,
-  VideoViewComponent];
+  VideoViewComponent
+];
 
 @NgModule({
   imports: [
     SharedModule,
-    VideoRoutingModule
+    VideoRoutingModule,
   ],
   declarations: [
     ...COMPONENTS,
-    ...COMPONENTS_NOROUNT
+    ...COMPONENTS_NOROUNT,
   ],
-  entryComponents: COMPONENTS_NOROUNT
+  entryComponents: COMPONENTS_NOROUNT,
 })
-export class VideoModule { }
+export class VideoModule {
+}
