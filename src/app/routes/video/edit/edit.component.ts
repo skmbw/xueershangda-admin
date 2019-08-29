@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NzMessageService, NzModalRef, UploadChangeParam, UploadFile } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
@@ -138,35 +138,15 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.uploader = $("#uploader").pluploadQueue({
-        browse_button : 'browse_btn',
-        // General settings
-        // runtimes: 'html5',
-        url: "video/plupload",
+    // setTimeout(() => {
+    //   this.uploader = $("#uploader").pluploadQueue({
+    //     browse_button : 'browse_btn',
+    //     url: "video/plupload",
+    //     max_file_size: '10000mb',
+    //     chunk_size: '1mb'
+    //   });
+    // }, 200);
 
-        // Maximum file size
-        max_file_size: '10000mb',
-
-        chunk_size: '1mb',
-
-        // Specify what files to browse for
-        filters: [
-          {title: "Image files", extensions: "jpg,gif,png,jpeg"},
-          {title: "Vedio files", extensions: "mp4,mkv"},
-          {title: "Zip files", extensions: "zip,avi"}
-        ],
-
-        // Rename files by clicking on their titles
-        rename: true,
-
-        // Sort files
-        sortable: true,
-
-        // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
-        dragdrop: true,
-      });
-    }, 500);
     // 新引入，需要重启动，否则无法检测到插件 https://blog.csdn.net/yhc0322/article/details/78796009
     // Initialize the widget when the DOM is ready
     // this.uploader = $("#uploader").pluploadQueue({
@@ -304,9 +284,32 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    $(() => {
+      this.uploader = $("#uploader").pluploadQueue({
+        browse_button : 'browse_btn',
+        // General settings
+        // runtimes: 'html5',
+        url: "video/plupload",
+
+        // Maximum file size
+        max_file_size: '10000mb',
+
+        chunk_size: '1mb',
+
+        // Specify what files to browse for
+        filters: [
+          {title: "Image files", extensions: "jpg,gif,png,jpeg"},
+          {title: "Vedio files", extensions: "mp4,mkv"},
+          {title: "Zip files", extensions: "zip,avi"}
+        ],
+
+        // Rename files by clicking on their titles
+        rename: true
+      });
+    });
     // angular中没有$(document).ready(function(){});的等价物，使用这种方法
     // setTimeout(() => {
-    //   $("#uploader").pluploadQueue({
+    //   this.uploader = $("#uploader").pluploadQueue({
     //     browse_button : 'browse_btn',
     //     // General settings
     //     // runtimes: 'html5',
@@ -378,7 +381,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     //   // this.uploader.bind('UploadComplete', (upload, files) => {
     //   //   alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
     //   // });
-    // }, 500);
+    // }, 200);
   }
 
   close() {
