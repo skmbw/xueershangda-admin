@@ -252,7 +252,10 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     // 全部完成后的回调事件
     this.uploader.bind('UploadComplete', (upload, files) => {
       alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
-      this_.fileList = [];
+      this.fileList = [];
+      this.uploader.files.forEach((value) => {
+        this.uploader.removeFile(value);
+      });
     });
     // 发生错误时的回调
     this.uploader.bind('Error', (upload, err) => {
