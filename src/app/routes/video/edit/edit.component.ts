@@ -187,7 +187,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       // runtimes: 'html5',
       url: environment.URL + "video/plupload",
       // 头信息
-      headers: {'tokenId': '1', 'userId': '2'},
+      headers: {'userId': '2'}, // 'tokenId': '1', // 没有token暂时不传
       // 上传时的附加参数
       multipart_params: {},
       // Maximum file size
