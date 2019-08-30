@@ -193,7 +193,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       // Maximum file size
       max_file_size: '1000mb',
       // 分块大小
-      chunk_size: '1mb',
+      chunk_size: '2mb',
       // Resize images on clientside if we can
       // resize: {
       //   width: 200,
@@ -204,8 +204,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       // Specify what files to browse for
       filters: [
         {title: "Image files", extensions: "jpg,gif,png,jpeg"},
-        {title: "Vedio files", extensions: "mp4,mkv"},
-        {title: "Zip files", extensions: "zip,avi"}
+        {title: "Vedio files", extensions: "mp4,mkv"}
       ],
       // Rename files by clicking on their titles
       rename: true,
@@ -219,6 +218,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       //   thumbs: true, // Show thumbs
       //   active: 'thumbs'
       // },
+      file_data_name: "file", // 上传的文件域的名字
       // Flash settings
       flash_swf_url: 'js/Moxie.swf',
       // Silverlight settings
@@ -247,7 +247,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     this.uploader.bind('FileUploaded', (upload, file, result) => {
       const rsp = result.response;
       const videoId = rsp.videoId;
-      if (JsUtils.isNotBlank(videoId)) {
+      if (JsUtils.isNotBlank(videoId) && JsUtils.isBlank(this.record.id)) {
         this.record.id = videoId;
       }
       console.log("FileUploaded:");
@@ -271,6 +271,9 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   startUpload() {
+    // 这里需要设置服务端返回的videoId
+    this.uploader.setOption({"multipart_params": {"id": this.record.id}}); // 可以键值对，也可以{key, value}对象，然后refresh();
+    this.uploader.refresh();
     this.uploader.start();
   }
 
