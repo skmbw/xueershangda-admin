@@ -185,7 +185,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     this.uploader = new plupload.Uploader({
       browse_button : 'browseBtn',
       // runtimes: 'html5',
-      url: environment.URL + "video/plupload",
+      url: environment.URL + "video/upload",
       // 头信息
       headers: {'userId': '2'}, // 'tokenId': '1', // 没有token暂时不传
       // 上传时的附加参数
@@ -220,9 +220,9 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       // },
       file_data_name: "file", // 上传的文件域的名字
       // Flash settings
-      flash_swf_url: 'js/Moxie.swf',
+      // flash_swf_url: 'js/Moxie.swf',
       // Silverlight settings
-      silverlight_xap_url: 'js/Moxie.xap'
+      // silverlight_xap_url: 'js/Moxie.xap'
     });
 
     // 初始化plupload
@@ -246,7 +246,8 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     // 单个文件上完成后,回调事件
     this.uploader.bind('FileUploaded', (upload, file, result) => {
       const rsp = result.response;
-      const videoId = rsp.videoId;
+      const rspJson = JSON.parse(rsp);
+      const videoId = rspJson.videoId;
       if (JsUtils.isNotBlank(videoId) && JsUtils.isBlank(this.record.id)) {
         this.record.id = videoId;
       }
@@ -273,7 +274,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   startUpload() {
     // 这里需要设置服务端返回的videoId
     this.uploader.setOption({"multipart_params": {"id": this.record.id, "videoType": "3"}}); // 可以键值对，也可以{key, value}对象，然后refresh();
-    this.uploader.refresh();
+    // this.uploader.refresh(); // 不刷新，也OK
     this.uploader.start();
   }
 
