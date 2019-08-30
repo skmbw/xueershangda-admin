@@ -10,6 +10,7 @@ import { Consts } from '@shared/utils/consts';
 import { ToastrService } from 'ngx-toastr';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-video-list',
@@ -78,7 +79,8 @@ export class VideoListComponent implements OnInit {
     }
   ];
 
-  constructor(private toastr: ToastrService, private modal: ModalHelper, private videoService: VideoService) { }
+  constructor(private toastr: ToastrService, private modal: ModalHelper,
+              private videoService: VideoService, private router: Router) { }
 
   ngOnInit() {
     const video = new Video();
@@ -99,8 +101,9 @@ export class VideoListComponent implements OnInit {
   }
 
   add() {
-    this.modal
-      .createStatic(VideoEditComponent, { i: { id: '' } }) // id 初始化为空
-      .subscribe(() => this.st.reload());
+    this.router.navigateByUrl("video/edit/").catch();
+    // this.modal
+    //   .createStatic(VideoEditComponent, { i: { id: '' } }) // id 初始化为空
+    //   .subscribe(() => this.st.reload());
   }
 }

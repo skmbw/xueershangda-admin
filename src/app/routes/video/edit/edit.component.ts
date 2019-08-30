@@ -156,6 +156,8 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
           this.msgSrv.info(reply.message);
         }
       });
+    } else {
+      this.i = {};
     }
   }
 
