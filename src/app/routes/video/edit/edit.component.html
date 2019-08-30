@@ -19,6 +19,7 @@
       <ng-template #defaultItem let-item>
         <nz-list-item [id]="item.id + '_item'">
           {{ item.name }} <button nz-button [nzSize]="'small'" title="删除" (click)="close(item)" style="margin-left: 40px;">X</button>
+           <div [id]="item.id + '_progress'" style="margin-left: 40px;"></div>
         </nz-list-item>
       </ng-template>
     </nz-list>

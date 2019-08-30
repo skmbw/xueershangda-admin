@@ -241,16 +241,22 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     });
     // 文件上传进度显示
     this.uploader.bind('UploadProgress', (upload, file) => {
-      $('#'+file.id).html("   "+file.percent + "%");
+      $('#' + file.id + "_progress").html("   " + file.percent + "%");
     });
     // 单个文件上完成后,回调事件
     this.uploader.bind('FileUploaded', (upload, file, result) => {
-      // result.response;
+      const rsp = result.response;
+      const videoId = rsp.videoId;
+      if (JsUtils.isNotBlank(videoId)) {
+        this.record.id = videoId;
+      }
+      console.log("FileUploaded:");
       console.log(result);
-      $('#id'+file.id).val(result.response);
+      // $('#id'+file.id).val(result.response);
     });
     // 全部完成后的回调事件
     this.uploader.bind('UploadComplete', (upload, files) => {
+      console.log("UploadComplete:");
       alert("您选择的文件已经全部上传，总计共" + files.length + "个文件");
       this.fileList = [];
       this.uploader.files.forEach((value) => {
@@ -259,6 +265,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     });
     // 发生错误时的回调
     this.uploader.bind('Error', (upload, err) => {
+      console.log("Error:");
       console.log(err);
     });
   }
