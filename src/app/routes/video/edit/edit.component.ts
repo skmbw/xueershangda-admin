@@ -288,15 +288,4 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       this.fileList = []; // 这个清空，刷新页面上
     }
   }
-
-  // select() {
-  //   $('#fileInput').trigger('click');
-  // }
-
-  // change() {
-  //   const input = $('#fileInput')[0];
-  //   const file = input.files[0];
-  //   const name = file.name;
-  //   this.uploader.addFile(file, name);
-  // }
 }
