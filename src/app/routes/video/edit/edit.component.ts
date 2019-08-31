@@ -254,8 +254,12 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       if (JsUtils.isNotBlank(videoId) && JsUtils.isBlank(this.record.id)) {
         this.record.id = videoId;
       }
-      console.log("FileUploaded:");
-      console.log(result);
+      if (JsUtils.isNotBlank(this.record.id)) {
+        const ext = file.name.substring(file.name.lastIndexOf('.'));
+        this.record.url = videoId + ext;
+      }
+      // console.log("FileUploaded:");
+      // console.log(result);
       // $('#id'+file.id).val(result.response);
     });
     // 全部完成后的回调事件
