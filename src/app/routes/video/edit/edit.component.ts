@@ -46,7 +46,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       // url: { type: 'string', title: '链接', format: 'uri' },
       coverImage: { type: 'string', title: '封面图片',
       },
-      video: { type: 'string', title: '视频文件'},
+      // video: { type: 'string', title: '视频文件'},
       category: { type: 'string', title: '分类', maxLength: 12 }
     },
     required: ['title', 'price', 'free', 'coverImage', 'video', 'category'],
@@ -105,33 +105,33 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
         return {'videoType': '1', 'id': id};
       }
     },
-    $video: {
-      widget: 'upload',
-      action: Consts.URL + 'video/upload',
-      name: 'video',
-      fileType: 'video/mp4',
-      fileSize: 204800,
-      resReName: 'videoId', // 这个字段的值会赋值给video，当保存时用来关联上传的文件和该记录
-      data: (upload: UploadFile) => { // 要用回调，静态的话，当更新了数据，里面的数据也不会更新
-        const id = JsUtils.isBlank(this.record.id) ? '' : this.record.id;
-        return {'videoType': '2', 'id': id};
-      },
-      change: (args: UploadChangeParam) => {
-        if (args.type === 'success') {
-          const reply = args.file;
-          const response = reply.response;
-          if (response.code !== 1) {
-            this.msgSrv.error(response.message);
-          } else {
-            if (JsUtils.isBlank(this.record.id)) {
-              this.record.id = response.videoId;
-            }
-            const ext = reply.name.substring(reply.name.lastIndexOf('.'));
-            this.record.url = this.record.id + ext;
-          }
-        }
-      }
-    },
+    // $video: {
+    //   widget: 'upload',
+    //   action: Consts.URL + 'video/upload',
+    //   name: 'video',
+    //   fileType: 'video/mp4',
+    //   fileSize: 204800,
+    //   resReName: 'videoId', // 这个字段的值会赋值给video，当保存时用来关联上传的文件和该记录
+    //   data: (upload: UploadFile) => { // 要用回调，静态的话，当更新了数据，里面的数据也不会更新
+    //     const id = JsUtils.isBlank(this.record.id) ? '' : this.record.id;
+    //     return {'videoType': '2', 'id': id};
+    //   },
+    //   change: (args: UploadChangeParam) => {
+    //     if (args.type === 'success') {
+    //       const reply = args.file;
+    //       const response = reply.response;
+    //       if (response.code !== 1) {
+    //         this.msgSrv.error(response.message);
+    //       } else {
+    //         if (JsUtils.isBlank(this.record.id)) {
+    //           this.record.id = response.videoId;
+    //         }
+    //         const ext = reply.name.substring(reply.name.lastIndexOf('.'));
+    //         this.record.url = this.record.id + ext;
+    //       }
+    //     }
+    //   }
+    // },
     $category: {
       widget: 'string'
     }
