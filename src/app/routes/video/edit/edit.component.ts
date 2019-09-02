@@ -168,6 +168,9 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     }
     if (value.id === 0 || JsUtils.isBlank(value.id)) {
       value.id = this.record.id;
+      value.backup2 = 1;
+    } else {
+      value.backup2 = 2;
     }
     value.image = this.record.image;
     value.url = this.record.url;
