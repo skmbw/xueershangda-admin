@@ -259,7 +259,9 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       const videoId = rspJson.videoId;
       if (JsUtils.isNotBlank(videoId) && JsUtils.isBlank(this.record.id)) {
         this.record.id = videoId;
-        this.record.updateVideo = 1;
+        this.record.updateVideo = 1; // add video
+      } else {
+        this.record.updateVideo = 2; // update video
       }
       if (JsUtils.isNotBlank(this.record.id)) {
         const ext = file.name.substring(file.name.lastIndexOf('.'));
