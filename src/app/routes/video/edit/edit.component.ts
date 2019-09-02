@@ -151,6 +151,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
         const reply = VideoReply.decode(uint8Array);
         if (reply.code === 1) {
           this.i = reply.video;
+          this.i.update = 2;
           this.record = this.i; // record是modal模式下带过来的数据，和i应该是一样的
         } else {
           this.msgSrv.info(reply.message);
@@ -158,6 +159,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       });
     } else {
       this.i = {};
+      this.i.update = 1;
     }
   }
 
@@ -168,12 +170,13 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     }
     if (value.id === 0 || JsUtils.isBlank(value.id)) {
       value.id = this.record.id;
-      value.backup2 = 1;
+      value.update = 1;
     } else {
-      value.backup2 = 2;
+      value.update = 2;
     }
     value.image = this.record.image;
     value.url = this.record.url;
+    value.updateVideo = this.record.updateVideo;
     this.videoService.save(value as Video).subscribe(result => {
       const uint8Array = new Uint8Array(result, 0, result.byteLength);
       const reply = VideoReply.decode(uint8Array);
@@ -256,6 +259,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       const videoId = rspJson.videoId;
       if (JsUtils.isNotBlank(videoId) && JsUtils.isBlank(this.record.id)) {
         this.record.id = videoId;
+        this.record.updateVideo = 1;
       }
       if (JsUtils.isNotBlank(this.record.id)) {
         const ext = file.name.substring(file.name.lastIndexOf('.'));
