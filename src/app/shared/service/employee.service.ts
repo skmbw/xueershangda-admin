@@ -21,7 +21,7 @@ export class EmployeeService extends CommonService {
     return int8Array.buffer;
   }
 
-  public login(employee: Employee): Observable<ArrayBuffer> {
+  login(employee: Employee): Observable<ArrayBuffer> {
     return super.postProtobuf("employee/login", this.encode(employee));
   }
 }

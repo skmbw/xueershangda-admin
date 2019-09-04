@@ -122,7 +122,7 @@ export class UserLoginComponent implements OnDestroy {
         // 设置用户Token信息
         this.tokenService.set(reply.user as ITokenModel); // 适配alain的token模型
         // 重新获取 StartupService 内容，我们始终认为应用信息一般都会受当前用户授权范围而影响
-        this.startupSrv.loadRemote(reply.menu).then(() => {
+        this.startupSrv.loadRemote(reply).then(() => {
           let url = this.tokenService.referrer!.url || '/';
           if (url.includes('/passport')) {
             url = '/';
