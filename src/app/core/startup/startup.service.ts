@@ -76,7 +76,7 @@ export class StartupService {
     return new Promise(resolve => {
       zip(
         this.httpClient.get(`assets/tmp/i18n/${this.i18n.defaultLang}.json`),
-        of(objs)
+        of(objs) // 这个数据是登录后，后端返回的。这里直接构造一个Observable
       ).pipe(
           // 接收其他拦截器后产生的异常消息
           catchError(([langData, appData]) => {
