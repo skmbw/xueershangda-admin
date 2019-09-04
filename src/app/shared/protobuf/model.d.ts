@@ -6094,8 +6094,8 @@ export namespace com {
                         /** 视频类型 */
                         videoType?: (string|null);
 
-                        /** 备用2 */
-                        backup2?: (number|null);
+                        /** 1新增2更新 */
+                        update?: (number|null);
 
                         /** 预览url，试看 */
                         previewUrl?: (string|null);
@@ -6111,6 +6111,9 @@ export namespace com {
 
                         /** 分页大小 */
                         pageSize?: (number|null);
+
+                        /** 1新增2更新 */
+                        updateVideo?: (number|null);
                     }
 
                     /** Represents a Video. */
@@ -6182,8 +6185,8 @@ export namespace com {
                         /** 视频类型 */
                         public videoType: string;
 
-                        /** 备用2 */
-                        public backup2: number;
+                        /** 1新增2更新 */
+                        public update: number;
 
                         /** 预览url，试看 */
                         public previewUrl: string;
@@ -6199,6 +6202,9 @@ export namespace com {
 
                         /** 分页大小 */
                         public pageSize: number;
+
+                        /** 1新增2更新 */
+                        public updateVideo: number;
 
                         /**
                          * Creates a new Video instance using the specified properties.
@@ -6730,6 +6736,1078 @@ export namespace com {
                     }
                 }
             }
+
+            /** Namespace employee. */
+            namespace employee {
+
+                /** Namespace model. */
+                namespace model {
+
+                    /** Properties of an Employee. */
+                    interface IEmployee {
+
+                        /** Employee orderBy */
+                        orderBy?: (string|null);
+
+                        /** Employee start */
+                        start?: (number|null);
+
+                        /** Employee pageSize */
+                        pageSize?: (number|null);
+
+                        /** Employee id */
+                        id?: (string|null);
+
+                        /** Employee account */
+                        account?: (string|null);
+
+                        /** Employee name */
+                        name?: (string|null);
+
+                        /** Employee mobile */
+                        mobile?: (string|null);
+
+                        /** Employee email */
+                        email?: (string|null);
+
+                        /** Employee gender */
+                        gender?: (number|null);
+
+                        /** Employee deptName */
+                        deptName?: (string|null);
+
+                        /** Employee position */
+                        position?: (string|null);
+
+                        /** Employee password */
+                        password?: (string|null);
+
+                        /** Employee avatar */
+                        avatar?: (string|null);
+
+                        /** Employee admin */
+                        admin?: (number|null);
+
+                        /** Employee createDate */
+                        createDate?: (number|null);
+
+                        /** Employee number */
+                        number?: (string|null);
+
+                        /** Employee entryTime */
+                        entryTime?: (number|null);
+
+                        /** Employee birthday */
+                        birthday?: (number|null);
+
+                        /** Employee address */
+                        address?: (string|null);
+
+                        /** Employee idcard */
+                        idcard?: (string|null);
+
+                        /** Employee deptId */
+                        deptId?: (string|null);
+
+                        /** Employee state */
+                        state?: (number|null);
+
+                        /** Employee employeeNo */
+                        employeeNo?: (number|null);
+
+                        /** Employee token */
+                        token?: (string|null);
+                    }
+
+                    /** Represents an Employee. */
+                    class Employee implements IEmployee {
+
+                        /**
+                         * Constructs a new Employee.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: com.xueershangda.tianxun.employee.model.IEmployee);
+
+                        /** Employee orderBy. */
+                        public orderBy: string;
+
+                        /** Employee start. */
+                        public start: number;
+
+                        /** Employee pageSize. */
+                        public pageSize: number;
+
+                        /** Employee id. */
+                        public id: string;
+
+                        /** Employee account. */
+                        public account: string;
+
+                        /** Employee name. */
+                        public name: string;
+
+                        /** Employee mobile. */
+                        public mobile: string;
+
+                        /** Employee email. */
+                        public email: string;
+
+                        /** Employee gender. */
+                        public gender: number;
+
+                        /** Employee deptName. */
+                        public deptName: string;
+
+                        /** Employee position. */
+                        public position: string;
+
+                        /** Employee password. */
+                        public password: string;
+
+                        /** Employee avatar. */
+                        public avatar: string;
+
+                        /** Employee admin. */
+                        public admin: number;
+
+                        /** Employee createDate. */
+                        public createDate: (number);
+
+                        /** Employee number. */
+                        public number: string;
+
+                        /** Employee entryTime. */
+                        public entryTime: (number);
+
+                        /** Employee birthday. */
+                        public birthday: (number);
+
+                        /** Employee address. */
+                        public address: string;
+
+                        /** Employee idcard. */
+                        public idcard: string;
+
+                        /** Employee deptId. */
+                        public deptId: string;
+
+                        /** Employee state. */
+                        public state: number;
+
+                        /** Employee employeeNo. */
+                        public employeeNo: number;
+
+                        /** Employee token. */
+                        public token: string;
+
+                        /**
+                         * Creates a new Employee instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns Employee instance
+                         */
+                        public static create(properties?: com.xueershangda.tianxun.employee.model.IEmployee): com.xueershangda.tianxun.employee.model.Employee;
+
+                        /**
+                         * Encodes the specified Employee message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Employee.verify|verify} messages.
+                         * @param message Employee message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: com.xueershangda.tianxun.employee.model.IEmployee, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified Employee message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Employee.verify|verify} messages.
+                         * @param message Employee message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: com.xueershangda.tianxun.employee.model.IEmployee, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes an Employee message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns Employee
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): com.xueershangda.tianxun.employee.model.Employee;
+
+                        /**
+                         * Decodes an Employee message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns Employee
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): com.xueershangda.tianxun.employee.model.Employee;
+
+                        /**
+                         * Verifies an Employee message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates an Employee message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns Employee
+                         */
+                        public static fromObject(object: { [k: string]: any }): com.xueershangda.tianxun.employee.model.Employee;
+
+                        /**
+                         * Creates a plain object from an Employee message. Also converts values to other types if specified.
+                         * @param message Employee
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: com.xueershangda.tianxun.employee.model.Employee, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this Employee to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Properties of an App. */
+                    interface IApp {
+
+                        /** App id */
+                        id?: (string|null);
+
+                        /** App name */
+                        name?: (string|null);
+
+                        /** App description */
+                        description?: (string|null);
+                    }
+
+                    /** Represents an App. */
+                    class App implements IApp {
+
+                        /**
+                         * Constructs a new App.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: com.xueershangda.tianxun.employee.model.IApp);
+
+                        /** App id. */
+                        public id: string;
+
+                        /** App name. */
+                        public name: string;
+
+                        /** App description. */
+                        public description: string;
+
+                        /**
+                         * Creates a new App instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns App instance
+                         */
+                        public static create(properties?: com.xueershangda.tianxun.employee.model.IApp): com.xueershangda.tianxun.employee.model.App;
+
+                        /**
+                         * Encodes the specified App message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.App.verify|verify} messages.
+                         * @param message App message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: com.xueershangda.tianxun.employee.model.IApp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified App message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.App.verify|verify} messages.
+                         * @param message App message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: com.xueershangda.tianxun.employee.model.IApp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes an App message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns App
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): com.xueershangda.tianxun.employee.model.App;
+
+                        /**
+                         * Decodes an App message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns App
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): com.xueershangda.tianxun.employee.model.App;
+
+                        /**
+                         * Verifies an App message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates an App message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns App
+                         */
+                        public static fromObject(object: { [k: string]: any }): com.xueershangda.tianxun.employee.model.App;
+
+                        /**
+                         * Creates a plain object from an App message. Also converts values to other types if specified.
+                         * @param message App
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: com.xueershangda.tianxun.employee.model.App, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this App to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Properties of a Menu. */
+                    interface IMenu {
+
+                        /** Menu id */
+                        id?: (string|null);
+
+                        /** Menu text */
+                        text?: (string|null);
+
+                        /** Menu i18n */
+                        i18n?: (string|null);
+
+                        /** Menu group */
+                        group?: (boolean|null);
+
+                        /** Menu hideInBreadcrumb */
+                        hideInBreadcrumb?: (boolean|null);
+
+                        /** Menu children */
+                        children?: (com.xueershangda.tianxun.employee.model.ISubmenu[]|null);
+
+                        /** Menu name */
+                        name?: (string|null);
+
+                        /** Menu enabled */
+                        enabled?: (boolean|null);
+
+                        /** Menu orders */
+                        orders?: (number|null);
+
+                        /** Menu state */
+                        state?: (number|null);
+
+                        /** Menu icon */
+                        icon?: (string|null);
+
+                        /** Menu initial */
+                        initial?: (boolean|null);
+                    }
+
+                    /** Represents a Menu. */
+                    class Menu implements IMenu {
+
+                        /**
+                         * Constructs a new Menu.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: com.xueershangda.tianxun.employee.model.IMenu);
+
+                        /** Menu id. */
+                        public id: string;
+
+                        /** Menu text. */
+                        public text: string;
+
+                        /** Menu i18n. */
+                        public i18n: string;
+
+                        /** Menu group. */
+                        public group: boolean;
+
+                        /** Menu hideInBreadcrumb. */
+                        public hideInBreadcrumb: boolean;
+
+                        /** Menu children. */
+                        public children: com.xueershangda.tianxun.employee.model.ISubmenu[];
+
+                        /** Menu name. */
+                        public name: string;
+
+                        /** Menu enabled. */
+                        public enabled: boolean;
+
+                        /** Menu orders. */
+                        public orders: number;
+
+                        /** Menu state. */
+                        public state: number;
+
+                        /** Menu icon. */
+                        public icon: string;
+
+                        /** Menu initial. */
+                        public initial: boolean;
+
+                        /**
+                         * Creates a new Menu instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns Menu instance
+                         */
+                        public static create(properties?: com.xueershangda.tianxun.employee.model.IMenu): com.xueershangda.tianxun.employee.model.Menu;
+
+                        /**
+                         * Encodes the specified Menu message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Menu.verify|verify} messages.
+                         * @param message Menu message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: com.xueershangda.tianxun.employee.model.IMenu, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified Menu message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Menu.verify|verify} messages.
+                         * @param message Menu message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: com.xueershangda.tianxun.employee.model.IMenu, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a Menu message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns Menu
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): com.xueershangda.tianxun.employee.model.Menu;
+
+                        /**
+                         * Decodes a Menu message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns Menu
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): com.xueershangda.tianxun.employee.model.Menu;
+
+                        /**
+                         * Verifies a Menu message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a Menu message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns Menu
+                         */
+                        public static fromObject(object: { [k: string]: any }): com.xueershangda.tianxun.employee.model.Menu;
+
+                        /**
+                         * Creates a plain object from a Menu message. Also converts values to other types if specified.
+                         * @param message Menu
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: com.xueershangda.tianxun.employee.model.Menu, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this Menu to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Properties of a Submenu. */
+                    interface ISubmenu {
+
+                        /** Submenu id */
+                        id?: (string|null);
+
+                        /** Submenu text */
+                        text?: (string|null);
+
+                        /** Submenu i18n */
+                        i18n?: (string|null);
+
+                        /** Submenu icon */
+                        icon?: (string|null);
+
+                        /** Submenu link */
+                        link?: (string|null);
+
+                        /** Submenu children */
+                        children?: (com.xueershangda.tianxun.employee.model.IMenuItem[]|null);
+
+                        /** Submenu shortcutRoot */
+                        shortcutRoot?: (boolean|null);
+                    }
+
+                    /** Represents a Submenu. */
+                    class Submenu implements ISubmenu {
+
+                        /**
+                         * Constructs a new Submenu.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: com.xueershangda.tianxun.employee.model.ISubmenu);
+
+                        /** Submenu id. */
+                        public id: string;
+
+                        /** Submenu text. */
+                        public text: string;
+
+                        /** Submenu i18n. */
+                        public i18n: string;
+
+                        /** Submenu icon. */
+                        public icon: string;
+
+                        /** Submenu link. */
+                        public link: string;
+
+                        /** Submenu children. */
+                        public children: com.xueershangda.tianxun.employee.model.IMenuItem[];
+
+                        /** Submenu shortcutRoot. */
+                        public shortcutRoot: boolean;
+
+                        /**
+                         * Creates a new Submenu instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns Submenu instance
+                         */
+                        public static create(properties?: com.xueershangda.tianxun.employee.model.ISubmenu): com.xueershangda.tianxun.employee.model.Submenu;
+
+                        /**
+                         * Encodes the specified Submenu message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Submenu.verify|verify} messages.
+                         * @param message Submenu message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: com.xueershangda.tianxun.employee.model.ISubmenu, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified Submenu message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Submenu.verify|verify} messages.
+                         * @param message Submenu message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: com.xueershangda.tianxun.employee.model.ISubmenu, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a Submenu message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns Submenu
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): com.xueershangda.tianxun.employee.model.Submenu;
+
+                        /**
+                         * Decodes a Submenu message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns Submenu
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): com.xueershangda.tianxun.employee.model.Submenu;
+
+                        /**
+                         * Verifies a Submenu message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a Submenu message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns Submenu
+                         */
+                        public static fromObject(object: { [k: string]: any }): com.xueershangda.tianxun.employee.model.Submenu;
+
+                        /**
+                         * Creates a plain object from a Submenu message. Also converts values to other types if specified.
+                         * @param message Submenu
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: com.xueershangda.tianxun.employee.model.Submenu, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this Submenu to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Properties of a MenuItem. */
+                    interface IMenuItem {
+
+                        /** MenuItem id */
+                        id?: (string|null);
+
+                        /** MenuItem text */
+                        text?: (string|null);
+
+                        /** MenuItem i18n */
+                        i18n?: (string|null);
+
+                        /** MenuItem link */
+                        link?: (string|null);
+
+                        /** MenuItem shortcut */
+                        shortcut?: (boolean|null);
+
+                        /** MenuItem reuse */
+                        reuse?: (boolean|null);
+                    }
+
+                    /** Represents a MenuItem. */
+                    class MenuItem implements IMenuItem {
+
+                        /**
+                         * Constructs a new MenuItem.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: com.xueershangda.tianxun.employee.model.IMenuItem);
+
+                        /** MenuItem id. */
+                        public id: string;
+
+                        /** MenuItem text. */
+                        public text: string;
+
+                        /** MenuItem i18n. */
+                        public i18n: string;
+
+                        /** MenuItem link. */
+                        public link: string;
+
+                        /** MenuItem shortcut. */
+                        public shortcut: boolean;
+
+                        /** MenuItem reuse. */
+                        public reuse: boolean;
+
+                        /**
+                         * Creates a new MenuItem instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns MenuItem instance
+                         */
+                        public static create(properties?: com.xueershangda.tianxun.employee.model.IMenuItem): com.xueershangda.tianxun.employee.model.MenuItem;
+
+                        /**
+                         * Encodes the specified MenuItem message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.MenuItem.verify|verify} messages.
+                         * @param message MenuItem message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: com.xueershangda.tianxun.employee.model.IMenuItem, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified MenuItem message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.MenuItem.verify|verify} messages.
+                         * @param message MenuItem message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: com.xueershangda.tianxun.employee.model.IMenuItem, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a MenuItem message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns MenuItem
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): com.xueershangda.tianxun.employee.model.MenuItem;
+
+                        /**
+                         * Decodes a MenuItem message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns MenuItem
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): com.xueershangda.tianxun.employee.model.MenuItem;
+
+                        /**
+                         * Verifies a MenuItem message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a MenuItem message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns MenuItem
+                         */
+                        public static fromObject(object: { [k: string]: any }): com.xueershangda.tianxun.employee.model.MenuItem;
+
+                        /**
+                         * Creates a plain object from a MenuItem message. Also converts values to other types if specified.
+                         * @param message MenuItem
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: com.xueershangda.tianxun.employee.model.MenuItem, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this MenuItem to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Properties of a LoginReply. */
+                    interface ILoginReply {
+
+                        /** LoginReply app */
+                        app?: (com.xueershangda.tianxun.employee.model.IApp|null);
+
+                        /** LoginReply user */
+                        user?: (com.xueershangda.tianxun.employee.model.IEmployee|null);
+
+                        /** LoginReply menu */
+                        menu?: (com.xueershangda.tianxun.employee.model.IMenu[]|null);
+
+                        /** LoginReply code */
+                        code?: (number|null);
+
+                        /** LoginReply message */
+                        message?: (string|null);
+                    }
+
+                    /** Represents a LoginReply. */
+                    class LoginReply implements ILoginReply {
+
+                        /**
+                         * Constructs a new LoginReply.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: com.xueershangda.tianxun.employee.model.ILoginReply);
+
+                        /** LoginReply app. */
+                        public app?: (com.xueershangda.tianxun.employee.model.IApp|null);
+
+                        /** LoginReply user. */
+                        public user?: (com.xueershangda.tianxun.employee.model.IEmployee|null);
+
+                        /** LoginReply menu. */
+                        public menu: com.xueershangda.tianxun.employee.model.IMenu[];
+
+                        /** LoginReply code. */
+                        public code: number;
+
+                        /** LoginReply message. */
+                        public message: string;
+
+                        /**
+                         * Creates a new LoginReply instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns LoginReply instance
+                         */
+                        public static create(properties?: com.xueershangda.tianxun.employee.model.ILoginReply): com.xueershangda.tianxun.employee.model.LoginReply;
+
+                        /**
+                         * Encodes the specified LoginReply message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.LoginReply.verify|verify} messages.
+                         * @param message LoginReply message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: com.xueershangda.tianxun.employee.model.ILoginReply, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified LoginReply message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.LoginReply.verify|verify} messages.
+                         * @param message LoginReply message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: com.xueershangda.tianxun.employee.model.ILoginReply, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a LoginReply message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns LoginReply
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): com.xueershangda.tianxun.employee.model.LoginReply;
+
+                        /**
+                         * Decodes a LoginReply message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns LoginReply
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): com.xueershangda.tianxun.employee.model.LoginReply;
+
+                        /**
+                         * Verifies a LoginReply message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a LoginReply message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns LoginReply
+                         */
+                        public static fromObject(object: { [k: string]: any }): com.xueershangda.tianxun.employee.model.LoginReply;
+
+                        /**
+                         * Creates a plain object from a LoginReply message. Also converts values to other types if specified.
+                         * @param message LoginReply
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: com.xueershangda.tianxun.employee.model.LoginReply, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this LoginReply to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+                }
+            }
+        }
+    }
+
+    /** Namespace vteba. */
+    namespace vteba {
+
+        /** Namespace web. */
+        namespace web {
+
+            /** Namespace action. */
+            namespace action {
+
+                /** Properties of a JsonBean. */
+                interface IJsonBean {
+
+                    /** JsonBean code */
+                    code?: (number|null);
+
+                    /** JsonBean message */
+                    message?: (string|null);
+
+                    /** JsonBean data */
+                    data?: (google.protobuf.IAny|null);
+                }
+
+                /** Represents a JsonBean. */
+                class JsonBean implements IJsonBean {
+
+                    /**
+                     * Constructs a new JsonBean.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: com.vteba.web.action.IJsonBean);
+
+                    /** JsonBean code. */
+                    public code: number;
+
+                    /** JsonBean message. */
+                    public message: string;
+
+                    /** JsonBean data. */
+                    public data?: (google.protobuf.IAny|null);
+
+                    /**
+                     * Creates a new JsonBean instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns JsonBean instance
+                     */
+                    public static create(properties?: com.vteba.web.action.IJsonBean): com.vteba.web.action.JsonBean;
+
+                    /**
+                     * Encodes the specified JsonBean message. Does not implicitly {@link com.vteba.web.action.JsonBean.verify|verify} messages.
+                     * @param message JsonBean message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: com.vteba.web.action.IJsonBean, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified JsonBean message, length delimited. Does not implicitly {@link com.vteba.web.action.JsonBean.verify|verify} messages.
+                     * @param message JsonBean message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: com.vteba.web.action.IJsonBean, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a JsonBean message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns JsonBean
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): com.vteba.web.action.JsonBean;
+
+                    /**
+                     * Decodes a JsonBean message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns JsonBean
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): com.vteba.web.action.JsonBean;
+
+                    /**
+                     * Verifies a JsonBean message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a JsonBean message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns JsonBean
+                     */
+                    public static fromObject(object: { [k: string]: any }): com.vteba.web.action.JsonBean;
+
+                    /**
+                     * Creates a plain object from a JsonBean message. Also converts values to other types if specified.
+                     * @param message JsonBean
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: com.vteba.web.action.JsonBean, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this JsonBean to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+                }
+            }
+        }
+    }
+}
+
+/** Namespace google. */
+export namespace google {
+
+    /** Namespace protobuf. */
+    namespace protobuf {
+
+        /** Properties of an Any. */
+        interface IAny {
+
+            /** Any type_url */
+            type_url?: (string|null);
+
+            /** Any value */
+            value?: (Uint8Array|null);
+        }
+
+        /** Represents an Any. */
+        class Any implements IAny {
+
+            /**
+             * Constructs a new Any.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IAny);
+
+            /** Any type_url. */
+            public type_url: string;
+
+            /** Any value. */
+            public value: Uint8Array;
+
+            /**
+             * Creates a new Any instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Any instance
+             */
+            public static create(properties?: google.protobuf.IAny): google.protobuf.Any;
+
+            /**
+             * Encodes the specified Any message. Does not implicitly {@link google.protobuf.Any.verify|verify} messages.
+             * @param message Any message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IAny, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Any message, length delimited. Does not implicitly {@link google.protobuf.Any.verify|verify} messages.
+             * @param message Any message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IAny, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an Any message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Any
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Any;
+
+            /**
+             * Decodes an Any message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Any
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Any;
+
+            /**
+             * Verifies an Any message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an Any message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Any
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Any;
+
+            /**
+             * Creates a plain object from an Any message. Also converts values to other types if specified.
+             * @param message Any
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Any, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Any to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
         }
     }
 }

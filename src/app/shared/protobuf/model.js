@@ -1,22 +1,20 @@
 /*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
-"use strict";
-
-var $protobuf = require("protobufjs/minimal");
+import * as $protobuf from 'protobufjs/minimal';
 
 // Common aliases
-var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
+const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
 
 // Exported root namespace
-var $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
+const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
-$root.com = (function() {
+export const com = $root.com = (() => {
 
     /**
      * Namespace com.
      * @exports com
      * @namespace
      */
-    var com = {};
+    const com = {};
 
     com.xueershangda = (function() {
 
@@ -25,7 +23,7 @@ $root.com = (function() {
          * @memberof com
          * @namespace
          */
-        var xueershangda = {};
+        const xueershangda = {};
 
         xueershangda.tianxun = (function() {
 
@@ -34,7 +32,7 @@ $root.com = (function() {
              * @memberof com.xueershangda
              * @namespace
              */
-            var tianxun = {};
+            const tianxun = {};
 
             tianxun.account = (function() {
 
@@ -43,7 +41,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var account = {};
+                const account = {};
 
                 account.model = (function() {
 
@@ -52,7 +50,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.account
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.AccountDetail = (function() {
 
@@ -85,7 +83,7 @@ $root.com = (function() {
                          */
                         function AccountDetail(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -136,7 +134,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.account.model.AccountDetail
                          * @instance
                          */
-                        AccountDetail.prototype.operationTime = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        AccountDetail.prototype.operationTime = 0;
 
                         /**
                          * AccountDetail ordersId.
@@ -168,7 +166,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.account.model.AccountDetail
                          * @instance
                          */
-                        AccountDetail.prototype.updateDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        AccountDetail.prototype.updateDate = 0;
 
                         /**
                          * AccountDetail page.
@@ -274,9 +272,9 @@ $root.com = (function() {
                         AccountDetail.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.AccountDetail();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.AccountDetail();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -405,7 +403,7 @@ $root.com = (function() {
                         AccountDetail.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.account.model.AccountDetail)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.account.model.AccountDetail();
+                            let message = new $root.com.xueershangda.tianxun.account.model.AccountDetail();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.userId != null)
@@ -461,26 +459,18 @@ $root.com = (function() {
                         AccountDetail.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.userId = "";
                                 object.accountId = "";
                                 object.amount = 0;
                                 object.category = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.operationTime = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.operationTime = options.longs === String ? "0" : 0;
+                                object.operationTime = 0;
                                 object.ordersId = "";
                                 object.tradeNo = "";
                                 object.state = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.updateDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.updateDate = options.longs === String ? "0" : 0;
+                                object.updateDate = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
                                 object.orderBy = "";
@@ -557,7 +547,7 @@ $root.com = (function() {
                         function AccountDetailReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -623,7 +613,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.account.model.AccountDetail.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.account != null && message.hasOwnProperty("account"))
                                 $root.com.xueershangda.tianxun.account.model.Account.encode(message.account, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
@@ -657,9 +647,9 @@ $root.com = (function() {
                         AccountDetailReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.AccountDetailReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.AccountDetailReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -719,14 +709,14 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.account.model.AccountDetail.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.account.model.AccountDetail.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
                             }
                             if (message.account != null && message.hasOwnProperty("account")) {
-                                var error = $root.com.xueershangda.tianxun.account.model.Account.verify(message.account);
+                                let error = $root.com.xueershangda.tianxun.account.model.Account.verify(message.account);
                                 if (error)
                                     return "account." + error;
                             }
@@ -744,7 +734,7 @@ $root.com = (function() {
                         AccountDetailReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.account.model.AccountDetailReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.account.model.AccountDetailReply();
+                            let message = new $root.com.xueershangda.tianxun.account.model.AccountDetailReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -753,7 +743,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.account.model.AccountDetailReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.account.model.AccountDetailReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.account.model.AccountDetail.fromObject(object.data[i]);
@@ -779,7 +769,7 @@ $root.com = (function() {
                         AccountDetailReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -793,7 +783,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.account.model.AccountDetail.toObject(message.data[j], options);
                             }
                             if (message.account != null && message.hasOwnProperty("account"))
@@ -849,7 +839,7 @@ $root.com = (function() {
                          */
                         function Account(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -940,7 +930,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.account.model.Account
                          * @instance
                          */
-                        Account.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Account.prototype.createDate = 0;
 
                         /**
                          * Account page.
@@ -1068,9 +1058,9 @@ $root.com = (function() {
                         Account.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.Account();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.Account();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -1217,7 +1207,7 @@ $root.com = (function() {
                         Account.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.account.model.Account)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.account.model.Account();
+                            let message = new $root.com.xueershangda.tianxun.account.model.Account();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.alipay != null)
@@ -1272,7 +1262,7 @@ $root.com = (function() {
                         Account.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.alipay = "";
@@ -1284,11 +1274,7 @@ $root.com = (function() {
                                 object.income = 0;
                                 object.recharge = 0;
                                 object.state = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.createDate = options.longs === String ? "0" : 0;
+                                object.createDate = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
                                 object.orderBy = "";
@@ -1373,7 +1359,7 @@ $root.com = (function() {
                             this.data = [];
                             this.accountList = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -1455,12 +1441,12 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.account.model.AccountDetail.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.account != null && message.hasOwnProperty("account"))
                                 $root.com.xueershangda.tianxun.account.model.Account.encode(message.account, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                             if (message.accountList != null && message.accountList.length)
-                                for (var i = 0; i < message.accountList.length; ++i)
+                                for (let i = 0; i < message.accountList.length; ++i)
                                     $root.com.xueershangda.tianxun.account.model.Account.encode(message.accountList[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
                             if (message.score != null && message.hasOwnProperty("score"))
                                 $root.com.xueershangda.tianxun.score.model.Score.encode(message.score, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
@@ -1494,9 +1480,9 @@ $root.com = (function() {
                         AccountReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.AccountReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.AccountReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -1564,28 +1550,28 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.account.model.AccountDetail.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.account.model.AccountDetail.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
                             }
                             if (message.account != null && message.hasOwnProperty("account")) {
-                                var error = $root.com.xueershangda.tianxun.account.model.Account.verify(message.account);
+                                let error = $root.com.xueershangda.tianxun.account.model.Account.verify(message.account);
                                 if (error)
                                     return "account." + error;
                             }
                             if (message.accountList != null && message.hasOwnProperty("accountList")) {
                                 if (!Array.isArray(message.accountList))
                                     return "accountList: array expected";
-                                for (var i = 0; i < message.accountList.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.account.model.Account.verify(message.accountList[i]);
+                                for (let i = 0; i < message.accountList.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.account.model.Account.verify(message.accountList[i]);
                                     if (error)
                                         return "accountList." + error;
                                 }
                             }
                             if (message.score != null && message.hasOwnProperty("score")) {
-                                var error = $root.com.xueershangda.tianxun.score.model.Score.verify(message.score);
+                                let error = $root.com.xueershangda.tianxun.score.model.Score.verify(message.score);
                                 if (error)
                                     return "score." + error;
                             }
@@ -1603,7 +1589,7 @@ $root.com = (function() {
                         AccountReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.account.model.AccountReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.account.model.AccountReply();
+                            let message = new $root.com.xueershangda.tianxun.account.model.AccountReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -1612,7 +1598,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.account.model.AccountReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.account.model.AccountReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.account.model.AccountDetail.fromObject(object.data[i]);
@@ -1627,7 +1613,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.accountList))
                                     throw TypeError(".com.xueershangda.tianxun.account.model.AccountReply.accountList: array expected");
                                 message.accountList = [];
-                                for (var i = 0; i < object.accountList.length; ++i) {
+                                for (let i = 0; i < object.accountList.length; ++i) {
                                     if (typeof object.accountList[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.account.model.AccountReply.accountList: object expected");
                                     message.accountList[i] = $root.com.xueershangda.tianxun.account.model.Account.fromObject(object.accountList[i]);
@@ -1653,7 +1639,7 @@ $root.com = (function() {
                         AccountReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults) {
                                 object.data = [];
                                 object.accountList = [];
@@ -1670,14 +1656,14 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.account.model.AccountDetail.toObject(message.data[j], options);
                             }
                             if (message.account != null && message.hasOwnProperty("account"))
                                 object.account = $root.com.xueershangda.tianxun.account.model.Account.toObject(message.account, options);
                             if (message.accountList && message.accountList.length) {
                                 object.accountList = [];
-                                for (var j = 0; j < message.accountList.length; ++j)
+                                for (let j = 0; j < message.accountList.length; ++j)
                                     object.accountList[j] = $root.com.xueershangda.tianxun.account.model.Account.toObject(message.accountList[j], options);
                             }
                             if (message.score != null && message.hasOwnProperty("score"))
@@ -1726,7 +1712,7 @@ $root.com = (function() {
                          */
                         function PlatformDetail(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -1777,7 +1763,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.account.model.PlatformDetail
                          * @instance
                          */
-                        PlatformDetail.prototype.operationTime = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        PlatformDetail.prototype.operationTime = 0;
 
                         /**
                          * PlatformDetail page.
@@ -1875,9 +1861,9 @@ $root.com = (function() {
                         PlatformDetail.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.PlatformDetail();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.PlatformDetail();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -1982,7 +1968,7 @@ $root.com = (function() {
                         PlatformDetail.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.account.model.PlatformDetail)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.account.model.PlatformDetail();
+                            let message = new $root.com.xueershangda.tianxun.account.model.PlatformDetail();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.userId != null)
@@ -2023,18 +2009,14 @@ $root.com = (function() {
                         PlatformDetail.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.userId = "";
                                 object.accountId = "";
                                 object.amount = 0;
                                 object.category = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.operationTime = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.operationTime = options.longs === String ? "0" : 0;
+                                object.operationTime = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
                                 object.orderBy = "";
@@ -2102,7 +2084,7 @@ $root.com = (function() {
                          */
                         function PlatformAccount(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -2231,9 +2213,9 @@ $root.com = (function() {
                         PlatformAccount.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.PlatformAccount();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.account.model.PlatformAccount();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -2326,7 +2308,7 @@ $root.com = (function() {
                         PlatformAccount.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.account.model.PlatformAccount)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.account.model.PlatformAccount();
+                            let message = new $root.com.xueershangda.tianxun.account.model.PlatformAccount();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.balance != null)
@@ -2356,7 +2338,7 @@ $root.com = (function() {
                         PlatformAccount.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.balance = 0;
@@ -2410,7 +2392,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var score = {};
+                const score = {};
 
                 score.model = (function() {
 
@@ -2419,7 +2401,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.score
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.Score = (function() {
 
@@ -2456,7 +2438,7 @@ $root.com = (function() {
                          */
                         function Score(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -2491,7 +2473,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.score.model.Score
                          * @instance
                          */
-                        Score.prototype.score = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Score.prototype.score = 0;
 
                         /**
                          * Score lastScore.
@@ -2499,7 +2481,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.score.model.Score
                          * @instance
                          */
-                        Score.prototype.lastScore = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Score.prototype.lastScore = 0;
 
                         /**
                          * Score state.
@@ -2515,7 +2497,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.score.model.Score
                          * @instance
                          */
-                        Score.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Score.prototype.createDate = 0;
 
                         /**
                          * Score updateDate.
@@ -2523,7 +2505,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.score.model.Score
                          * @instance
                          */
-                        Score.prototype.updateDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Score.prototype.updateDate = 0;
 
                         /**
                          * Score page.
@@ -2685,9 +2667,9 @@ $root.com = (function() {
                         Score.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.score.model.Score();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.score.model.Score();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -2840,7 +2822,7 @@ $root.com = (function() {
                         Score.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.score.model.Score)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.score.model.Score();
+                            let message = new $root.com.xueershangda.tianxun.score.model.Score();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.userId != null)
@@ -2918,32 +2900,16 @@ $root.com = (function() {
                         Score.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.userId = "";
                                 object.year = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.score = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.score = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.lastScore = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.lastScore = options.longs === String ? "0" : 0;
+                                object.score = 0;
+                                object.lastScore = 0;
                                 object.state = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.createDate = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.updateDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.updateDate = options.longs === String ? "0" : 0;
+                                object.createDate = 0;
+                                object.updateDate = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
                                 object.orderBy = "";
@@ -3042,7 +3008,7 @@ $root.com = (function() {
                             this.data = [];
                             this.scoreList = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -3116,12 +3082,12 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.score.model.ScoreDetail.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.score != null && message.hasOwnProperty("score"))
                                 $root.com.xueershangda.tianxun.score.model.Score.encode(message.score, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                             if (message.scoreList != null && message.scoreList.length)
-                                for (var i = 0; i < message.scoreList.length; ++i)
+                                for (let i = 0; i < message.scoreList.length; ++i)
                                     $root.com.xueershangda.tianxun.score.model.Score.encode(message.scoreList[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
                             return writer;
                         };
@@ -3153,9 +3119,9 @@ $root.com = (function() {
                         ScoreReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.score.model.ScoreReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.score.model.ScoreReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -3220,22 +3186,22 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.score.model.ScoreDetail.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.score.model.ScoreDetail.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
                             }
                             if (message.score != null && message.hasOwnProperty("score")) {
-                                var error = $root.com.xueershangda.tianxun.score.model.Score.verify(message.score);
+                                let error = $root.com.xueershangda.tianxun.score.model.Score.verify(message.score);
                                 if (error)
                                     return "score." + error;
                             }
                             if (message.scoreList != null && message.hasOwnProperty("scoreList")) {
                                 if (!Array.isArray(message.scoreList))
                                     return "scoreList: array expected";
-                                for (var i = 0; i < message.scoreList.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.score.model.Score.verify(message.scoreList[i]);
+                                for (let i = 0; i < message.scoreList.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.score.model.Score.verify(message.scoreList[i]);
                                     if (error)
                                         return "scoreList." + error;
                                 }
@@ -3254,7 +3220,7 @@ $root.com = (function() {
                         ScoreReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.score.model.ScoreReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.score.model.ScoreReply();
+                            let message = new $root.com.xueershangda.tianxun.score.model.ScoreReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -3263,7 +3229,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.score.model.ScoreReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.score.model.ScoreReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.score.model.ScoreDetail.fromObject(object.data[i]);
@@ -3278,7 +3244,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.scoreList))
                                     throw TypeError(".com.xueershangda.tianxun.score.model.ScoreReply.scoreList: array expected");
                                 message.scoreList = [];
-                                for (var i = 0; i < object.scoreList.length; ++i) {
+                                for (let i = 0; i < object.scoreList.length; ++i) {
                                     if (typeof object.scoreList[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.score.model.ScoreReply.scoreList: object expected");
                                     message.scoreList[i] = $root.com.xueershangda.tianxun.score.model.Score.fromObject(object.scoreList[i]);
@@ -3299,7 +3265,7 @@ $root.com = (function() {
                         ScoreReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults) {
                                 object.data = [];
                                 object.scoreList = [];
@@ -3315,14 +3281,14 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.score.model.ScoreDetail.toObject(message.data[j], options);
                             }
                             if (message.score != null && message.hasOwnProperty("score"))
                                 object.score = $root.com.xueershangda.tianxun.score.model.Score.toObject(message.score, options);
                             if (message.scoreList && message.scoreList.length) {
                                 object.scoreList = [];
-                                for (var j = 0; j < message.scoreList.length; ++j)
+                                for (let j = 0; j < message.scoreList.length; ++j)
                                     object.scoreList[j] = $root.com.xueershangda.tianxun.score.model.Score.toObject(message.scoreList[j], options);
                             }
                             return object;
@@ -3371,7 +3337,7 @@ $root.com = (function() {
                          */
                         function ScoreDetail(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -3422,7 +3388,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.score.model.ScoreDetail
                          * @instance
                          */
-                        ScoreDetail.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        ScoreDetail.prototype.createDate = 0;
 
                         /**
                          * ScoreDetail comment.
@@ -3540,9 +3506,9 @@ $root.com = (function() {
                         ScoreDetail.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.score.model.ScoreDetail();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.score.model.ScoreDetail();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -3659,7 +3625,7 @@ $root.com = (function() {
                         ScoreDetail.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.score.model.ScoreDetail)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.score.model.ScoreDetail();
+                            let message = new $root.com.xueershangda.tianxun.score.model.ScoreDetail();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.scoreId != null)
@@ -3704,18 +3670,14 @@ $root.com = (function() {
                         ScoreDetail.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.scoreId = "";
                                 object.score = 0;
                                 object.targetId = "";
                                 object.type = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.createDate = options.longs === String ? "0" : 0;
+                                object.createDate = 0;
                                 object.comment = "";
                                 object.userId = "";
                                 object.page = 0;
@@ -3777,7 +3739,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var answer = {};
+                const answer = {};
 
                 answer.model = (function() {
 
@@ -3786,7 +3748,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.answer
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.Answer = (function() {
 
@@ -3833,7 +3795,7 @@ $root.com = (function() {
                         function Answer(properties) {
                             this.fileList = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -3884,7 +3846,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.answer.model.Answer
                          * @instance
                          */
-                        Answer.prototype.answerDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Answer.prototype.answerDate = 0;
 
                         /**
                          * Answer questionId.
@@ -3948,7 +3910,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.answer.model.Answer
                          * @instance
                          */
-                        Answer.prototype.focusNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Answer.prototype.focusNumber = 0;
 
                         /**
                          * Answer loveNumber.
@@ -3956,7 +3918,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.answer.model.Answer
                          * @instance
                          */
-                        Answer.prototype.loveNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Answer.prototype.loveNumber = 0;
 
                         /**
                          * Answer despiseNumber.
@@ -3964,7 +3926,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.answer.model.Answer
                          * @instance
                          */
-                        Answer.prototype.despiseNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Answer.prototype.despiseNumber = 0;
 
                         /**
                          * Answer page.
@@ -4117,7 +4079,7 @@ $root.com = (function() {
                             if (message.password != null && message.hasOwnProperty("password"))
                                 writer.uint32(/* id 23, wireType 2 =*/186).string(message.password);
                             if (message.fileList != null && message.fileList.length)
-                                for (var i = 0; i < message.fileList.length; ++i)
+                                for (let i = 0; i < message.fileList.length; ++i)
                                     $root.com.xueershangda.tianxun.article.model.Images.encode(message.fileList[i], writer.uint32(/* id 24, wireType 2 =*/194).fork()).ldelim();
                             if (message.targetId != null && message.hasOwnProperty("targetId"))
                                 writer.uint32(/* id 25, wireType 2 =*/202).string(message.targetId);
@@ -4153,9 +4115,9 @@ $root.com = (function() {
                         Answer.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.Answer();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.Answer();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -4344,8 +4306,8 @@ $root.com = (function() {
                             if (message.fileList != null && message.hasOwnProperty("fileList")) {
                                 if (!Array.isArray(message.fileList))
                                     return "fileList: array expected";
-                                for (var i = 0; i < message.fileList.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.article.model.Images.verify(message.fileList[i]);
+                                for (let i = 0; i < message.fileList.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.article.model.Images.verify(message.fileList[i]);
                                     if (error)
                                         return "fileList." + error;
                                 }
@@ -4370,7 +4332,7 @@ $root.com = (function() {
                         Answer.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.answer.model.Answer)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.answer.model.Answer();
+                            let message = new $root.com.xueershangda.tianxun.answer.model.Answer();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.summary != null)
@@ -4449,7 +4411,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.fileList))
                                     throw TypeError(".com.xueershangda.tianxun.answer.model.Answer.fileList: array expected");
                                 message.fileList = [];
-                                for (var i = 0; i < object.fileList.length; ++i) {
+                                for (let i = 0; i < object.fileList.length; ++i) {
                                     if (typeof object.fileList[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.answer.model.Answer.fileList: object expected");
                                     message.fileList[i] = $root.com.xueershangda.tianxun.article.model.Images.fromObject(object.fileList[i]);
@@ -4474,7 +4436,7 @@ $root.com = (function() {
                         Answer.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.fileList = [];
                             if (options.defaults) {
@@ -4483,11 +4445,7 @@ $root.com = (function() {
                                 object.income = 0;
                                 object.platform = false;
                                 object.answerUserId = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.answerDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.answerDate = options.longs === String ? "0" : 0;
+                                object.answerDate = 0;
                                 object.questionId = "";
                                 object.accept = 0;
                                 object.orders = 0;
@@ -4495,21 +4453,9 @@ $root.com = (function() {
                                 object.open = false;
                                 object.full = false;
                                 object.content = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.focusNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.focusNumber = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.loveNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.loveNumber = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.despiseNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.despiseNumber = options.longs === String ? "0" : 0;
+                                object.focusNumber = 0;
+                                object.loveNumber = 0;
+                                object.despiseNumber = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
                                 object.orderBy = "";
@@ -4580,7 +4526,7 @@ $root.com = (function() {
                                 object.password = message.password;
                             if (message.fileList && message.fileList.length) {
                                 object.fileList = [];
-                                for (var j = 0; j < message.fileList.length; ++j)
+                                for (let j = 0; j < message.fileList.length; ++j)
                                     object.fileList[j] = $root.com.xueershangda.tianxun.article.model.Images.toObject(message.fileList[j], options);
                             }
                             if (message.targetId != null && message.hasOwnProperty("targetId"))
@@ -4627,7 +4573,7 @@ $root.com = (function() {
                         function AnswerReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -4693,7 +4639,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.answer.model.Answer.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.question != null && message.hasOwnProperty("question"))
                                 $root.com.xueershangda.tianxun.question.model.Question.encode(message.question, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
@@ -4727,9 +4673,9 @@ $root.com = (function() {
                         AnswerReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.AnswerReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.AnswerReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -4789,14 +4735,14 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.answer.model.Answer.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.answer.model.Answer.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
                             }
                             if (message.question != null && message.hasOwnProperty("question")) {
-                                var error = $root.com.xueershangda.tianxun.question.model.Question.verify(message.question);
+                                let error = $root.com.xueershangda.tianxun.question.model.Question.verify(message.question);
                                 if (error)
                                     return "question." + error;
                             }
@@ -4814,7 +4760,7 @@ $root.com = (function() {
                         AnswerReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.answer.model.AnswerReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.answer.model.AnswerReply();
+                            let message = new $root.com.xueershangda.tianxun.answer.model.AnswerReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -4823,7 +4769,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.answer.model.AnswerReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.answer.model.AnswerReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.answer.model.Answer.fromObject(object.data[i]);
@@ -4849,7 +4795,7 @@ $root.com = (function() {
                         AnswerReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -4863,7 +4809,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.answer.model.Answer.toObject(message.data[j], options);
                             }
                             if (message.question != null && message.hasOwnProperty("question"))
@@ -4915,7 +4861,7 @@ $root.com = (function() {
                          */
                         function Dialogue(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -4950,7 +4896,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.answer.model.Dialogue
                          * @instance
                          */
-                        Dialogue.prototype.dialogDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Dialogue.prototype.dialogDate = 0;
 
                         /**
                          * Dialogue questionId.
@@ -5094,9 +5040,9 @@ $root.com = (function() {
                         Dialogue.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.Dialogue();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.Dialogue();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -5219,7 +5165,7 @@ $root.com = (function() {
                         Dialogue.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.answer.model.Dialogue)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.answer.model.Dialogue();
+                            let message = new $root.com.xueershangda.tianxun.answer.model.Dialogue();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.userId != null)
@@ -5266,16 +5212,12 @@ $root.com = (function() {
                         Dialogue.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.userId = "";
                                 object.nickName = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.dialogDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.dialogDate = options.longs === String ? "0" : 0;
+                                object.dialogDate = 0;
                                 object.questionId = "";
                                 object.state = 0;
                                 object.open = false;
@@ -5351,7 +5293,7 @@ $root.com = (function() {
                         function DialogueReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -5409,7 +5351,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.answer.model.Dialogue.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             return writer;
                         };
@@ -5441,9 +5383,9 @@ $root.com = (function() {
                         DialogueReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.DialogueReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.DialogueReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -5500,8 +5442,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.answer.model.Dialogue.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.answer.model.Dialogue.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -5520,7 +5462,7 @@ $root.com = (function() {
                         DialogueReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.answer.model.DialogueReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.answer.model.DialogueReply();
+                            let message = new $root.com.xueershangda.tianxun.answer.model.DialogueReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -5529,7 +5471,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.answer.model.DialogueReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.answer.model.DialogueReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.answer.model.Dialogue.fromObject(object.data[i]);
@@ -5550,7 +5492,7 @@ $root.com = (function() {
                         DialogueReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -5563,7 +5505,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.answer.model.Dialogue.toObject(message.data[j], options);
                             }
                             return object;
@@ -5609,7 +5551,7 @@ $root.com = (function() {
                          */
                         function AnswerFile(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -5644,7 +5586,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.answer.model.AnswerFile
                          * @instance
                          */
-                        AnswerFile.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        AnswerFile.prototype.createDate = 0;
 
                         /**
                          * AnswerFile type.
@@ -5748,9 +5690,9 @@ $root.com = (function() {
                         AnswerFile.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.AnswerFile();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.answer.model.AnswerFile();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -5849,7 +5791,7 @@ $root.com = (function() {
                         AnswerFile.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.answer.model.AnswerFile)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.answer.model.AnswerFile();
+                            let message = new $root.com.xueershangda.tianxun.answer.model.AnswerFile();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.answerId != null)
@@ -5888,16 +5830,12 @@ $root.com = (function() {
                         AnswerFile.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.answerId = "";
                                 object.filePath = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.createDate = options.longs === String ? "0" : 0;
+                                object.createDate = 0;
                                 object.type = "";
                                 object.page = 0;
                                 object.pageSize = 0;
@@ -5952,7 +5890,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var article = {};
+                const article = {};
 
                 article.model = (function() {
 
@@ -5961,7 +5899,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.article
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.Images = (function() {
 
@@ -5992,7 +5930,7 @@ $root.com = (function() {
                          */
                         function Images(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -6027,7 +5965,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.article.model.Images
                          * @instance
                          */
-                        Images.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Images.prototype.createDate = 0;
 
                         /**
                          * Images type.
@@ -6161,9 +6099,9 @@ $root.com = (function() {
                         Images.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.article.model.Images();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.article.model.Images();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -6280,7 +6218,7 @@ $root.com = (function() {
                         Images.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.article.model.Images)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.article.model.Images();
+                            let message = new $root.com.xueershangda.tianxun.article.model.Images();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.targetId != null)
@@ -6325,16 +6263,12 @@ $root.com = (function() {
                         Images.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.targetId = "";
                                 object.filePath = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.createDate = options.longs === String ? "0" : 0;
+                                object.createDate = 0;
                                 object.type = "";
                                 object.source = 0;
                                 object.page = 0;
@@ -6436,7 +6370,7 @@ $root.com = (function() {
                             this.fileList = [];
                             this.ids = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -6519,7 +6453,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.article.model.Article
                          * @instance
                          */
-                        Article.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Article.prototype.createDate = 0;
 
                         /**
                          * Article updateDate.
@@ -6527,7 +6461,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.article.model.Article
                          * @instance
                          */
-                        Article.prototype.updateDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Article.prototype.updateDate = 0;
 
                         /**
                          * Article state.
@@ -6591,7 +6525,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.article.model.Article
                          * @instance
                          */
-                        Article.prototype.number = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Article.prototype.number = 0;
 
                         /**
                          * Article focusNumber.
@@ -6599,7 +6533,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.article.model.Article
                          * @instance
                          */
-                        Article.prototype.focusNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Article.prototype.focusNumber = 0;
 
                         /**
                          * Article loveNumber.
@@ -6607,7 +6541,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.article.model.Article
                          * @instance
                          */
-                        Article.prototype.loveNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Article.prototype.loveNumber = 0;
 
                         /**
                          * Article despiseNumber.
@@ -6615,7 +6549,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.article.model.Article
                          * @instance
                          */
-                        Article.prototype.despiseNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Article.prototype.despiseNumber = 0;
 
                         /**
                          * Article deleteDate.
@@ -6623,7 +6557,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.article.model.Article
                          * @instance
                          */
-                        Article.prototype.deleteDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Article.prototype.deleteDate = 0;
 
                         /**
                          * Article page.
@@ -6768,10 +6702,10 @@ $root.com = (function() {
                             if (message.tokenId != null && message.hasOwnProperty("tokenId"))
                                 writer.uint32(/* id 27, wireType 2 =*/218).string(message.tokenId);
                             if (message.fileList != null && message.fileList.length)
-                                for (var i = 0; i < message.fileList.length; ++i)
+                                for (let i = 0; i < message.fileList.length; ++i)
                                     $root.com.xueershangda.tianxun.article.model.Images.encode(message.fileList[i], writer.uint32(/* id 28, wireType 2 =*/226).fork()).ldelim();
                             if (message.ids != null && message.ids.length)
-                                for (var i = 0; i < message.ids.length; ++i)
+                                for (let i = 0; i < message.ids.length; ++i)
                                     writer.uint32(/* id 29, wireType 2 =*/234).string(message.ids[i]);
                             if (message.coverImage != null && message.hasOwnProperty("coverImage"))
                                 writer.uint32(/* id 30, wireType 2 =*/242).string(message.coverImage);
@@ -6807,9 +6741,9 @@ $root.com = (function() {
                         Article.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.article.model.Article();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.article.model.Article();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -7027,8 +6961,8 @@ $root.com = (function() {
                             if (message.fileList != null && message.hasOwnProperty("fileList")) {
                                 if (!Array.isArray(message.fileList))
                                     return "fileList: array expected";
-                                for (var i = 0; i < message.fileList.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.article.model.Images.verify(message.fileList[i]);
+                                for (let i = 0; i < message.fileList.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.article.model.Images.verify(message.fileList[i]);
                                     if (error)
                                         return "fileList." + error;
                                 }
@@ -7036,7 +6970,7 @@ $root.com = (function() {
                             if (message.ids != null && message.hasOwnProperty("ids")) {
                                 if (!Array.isArray(message.ids))
                                     return "ids: array expected";
-                                for (var i = 0; i < message.ids.length; ++i)
+                                for (let i = 0; i < message.ids.length; ++i)
                                     if (!$util.isString(message.ids[i]))
                                         return "ids: string[] expected";
                             }
@@ -7060,7 +6994,7 @@ $root.com = (function() {
                         Article.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.article.model.Article)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.article.model.Article();
+                            let message = new $root.com.xueershangda.tianxun.article.model.Article();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.title != null)
@@ -7168,7 +7102,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.fileList))
                                     throw TypeError(".com.xueershangda.tianxun.article.model.Article.fileList: array expected");
                                 message.fileList = [];
-                                for (var i = 0; i < object.fileList.length; ++i) {
+                                for (let i = 0; i < object.fileList.length; ++i) {
                                     if (typeof object.fileList[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.article.model.Article.fileList: object expected");
                                     message.fileList[i] = $root.com.xueershangda.tianxun.article.model.Images.fromObject(object.fileList[i]);
@@ -7178,7 +7112,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.ids))
                                     throw TypeError(".com.xueershangda.tianxun.article.model.Article.ids: array expected");
                                 message.ids = [];
-                                for (var i = 0; i < object.ids.length; ++i)
+                                for (let i = 0; i < object.ids.length; ++i)
                                     message.ids[i] = String(object.ids[i]);
                             }
                             if (object.coverImage != null)
@@ -7200,7 +7134,7 @@ $root.com = (function() {
                         Article.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults) {
                                 object.fileList = [];
                                 object.ids = [];
@@ -7215,16 +7149,8 @@ $root.com = (function() {
                                 object.terminal = "";
                                 object.authorId = "";
                                 object.authorName = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.createDate = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.updateDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.updateDate = options.longs === String ? "0" : 0;
+                                object.createDate = 0;
+                                object.updateDate = 0;
                                 object.state = 0;
                                 object.platform = false;
                                 object.open = false;
@@ -7232,31 +7158,11 @@ $root.com = (function() {
                                 object.free = false;
                                 object.price = 0;
                                 object.content = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.number = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.number = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.focusNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.focusNumber = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.loveNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.loveNumber = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.despiseNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.despiseNumber = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.deleteDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.deleteDate = options.longs === String ? "0" : 0;
+                                object.number = 0;
+                                object.focusNumber = 0;
+                                object.loveNumber = 0;
+                                object.despiseNumber = 0;
+                                object.deleteDate = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
                                 object.orderBy = "";
@@ -7341,12 +7247,12 @@ $root.com = (function() {
                                 object.tokenId = message.tokenId;
                             if (message.fileList && message.fileList.length) {
                                 object.fileList = [];
-                                for (var j = 0; j < message.fileList.length; ++j)
+                                for (let j = 0; j < message.fileList.length; ++j)
                                     object.fileList[j] = $root.com.xueershangda.tianxun.article.model.Images.toObject(message.fileList[j], options);
                             }
                             if (message.ids && message.ids.length) {
                                 object.ids = [];
-                                for (var j = 0; j < message.ids.length; ++j)
+                                for (let j = 0; j < message.ids.length; ++j)
                                     object.ids[j] = message.ids[j];
                             }
                             if (message.coverImage != null && message.hasOwnProperty("coverImage"))
@@ -7397,7 +7303,7 @@ $root.com = (function() {
                         function ArticleReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -7495,7 +7401,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.article.model.Article.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.account != null && message.hasOwnProperty("account"))
                                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.account);
@@ -7537,9 +7443,9 @@ $root.com = (function() {
                         ArticleReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.article.model.ArticleReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.article.model.ArticleReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -7611,8 +7517,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.article.model.Article.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.article.model.Article.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -7646,7 +7552,7 @@ $root.com = (function() {
                         ArticleReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.article.model.ArticleReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.article.model.ArticleReply();
+                            let message = new $root.com.xueershangda.tianxun.article.model.ArticleReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -7655,7 +7561,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.article.model.ArticleReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.article.model.ArticleReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.article.model.Article.fromObject(object.data[i]);
@@ -7686,7 +7592,7 @@ $root.com = (function() {
                         ArticleReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -7704,7 +7610,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.article.model.Article.toObject(message.data[j], options);
                             }
                             if (message.account != null && message.hasOwnProperty("account"))
@@ -7747,7 +7653,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var question = {};
+                const question = {};
 
                 question.model = (function() {
 
@@ -7756,7 +7662,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.question
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.Question = (function() {
 
@@ -7818,7 +7724,7 @@ $root.com = (function() {
                             this.fileList = [];
                             this.ids = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -7877,7 +7783,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.question.model.Question
                          * @instance
                          */
-                        Question.prototype.askDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Question.prototype.askDate = 0;
 
                         /**
                          * Question answerDate.
@@ -7885,7 +7791,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.question.model.Question
                          * @instance
                          */
-                        Question.prototype.answerDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Question.prototype.answerDate = 0;
 
                         /**
                          * Question closeDate.
@@ -7893,7 +7799,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.question.model.Question
                          * @instance
                          */
-                        Question.prototype.closeDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Question.prototype.closeDate = 0;
 
                         /**
                          * Question solved.
@@ -7989,7 +7895,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.question.model.Question
                          * @instance
                          */
-                        Question.prototype.number = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Question.prototype.number = 0;
 
                         /**
                          * Question answerNumber.
@@ -8005,7 +7911,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.question.model.Question
                          * @instance
                          */
-                        Question.prototype.focusNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Question.prototype.focusNumber = 0;
 
                         /**
                          * Question loveNumber.
@@ -8013,7 +7919,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.question.model.Question
                          * @instance
                          */
-                        Question.prototype.loveNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Question.prototype.loveNumber = 0;
 
                         /**
                          * Question despiseNumber.
@@ -8021,7 +7927,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.question.model.Question
                          * @instance
                          */
-                        Question.prototype.despiseNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Question.prototype.despiseNumber = 0;
 
                         /**
                          * Question fee.
@@ -8045,7 +7951,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.question.model.Question
                          * @instance
                          */
-                        Question.prototype.deleteDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Question.prototype.deleteDate = 0;
 
                         /**
                          * Question terminal.
@@ -8234,7 +8140,7 @@ $root.com = (function() {
                             if (message.tokenId != null && message.hasOwnProperty("tokenId"))
                                 writer.uint32(/* id 33, wireType 2 =*/266).string(message.tokenId);
                             if (message.fileList != null && message.fileList.length)
-                                for (var i = 0; i < message.fileList.length; ++i)
+                                for (let i = 0; i < message.fileList.length; ++i)
                                     $root.com.xueershangda.tianxun.article.model.Images.encode(message.fileList[i], writer.uint32(/* id 34, wireType 2 =*/274).fork()).ldelim();
                             if (message.answer != null && message.hasOwnProperty("answer"))
                                 $root.com.xueershangda.tianxun.answer.model.Answer.encode(message.answer, writer.uint32(/* id 35, wireType 2 =*/282).fork()).ldelim();
@@ -8245,7 +8151,7 @@ $root.com = (function() {
                             if (message.type != null && message.hasOwnProperty("type"))
                                 writer.uint32(/* id 38, wireType 2 =*/306).string(message.type);
                             if (message.ids != null && message.ids.length)
-                                for (var i = 0; i < message.ids.length; ++i)
+                                for (let i = 0; i < message.ids.length; ++i)
                                     writer.uint32(/* id 39, wireType 2 =*/314).string(message.ids[i]);
                             if (message.account != null && message.hasOwnProperty("account"))
                                 writer.uint32(/* id 40, wireType 2 =*/322).string(message.account);
@@ -8279,9 +8185,9 @@ $root.com = (function() {
                         Question.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.question.model.Question();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.question.model.Question();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -8544,14 +8450,14 @@ $root.com = (function() {
                             if (message.fileList != null && message.hasOwnProperty("fileList")) {
                                 if (!Array.isArray(message.fileList))
                                     return "fileList: array expected";
-                                for (var i = 0; i < message.fileList.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.article.model.Images.verify(message.fileList[i]);
+                                for (let i = 0; i < message.fileList.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.article.model.Images.verify(message.fileList[i]);
                                     if (error)
                                         return "fileList." + error;
                                 }
                             }
                             if (message.answer != null && message.hasOwnProperty("answer")) {
-                                var error = $root.com.xueershangda.tianxun.answer.model.Answer.verify(message.answer);
+                                let error = $root.com.xueershangda.tianxun.answer.model.Answer.verify(message.answer);
                                 if (error)
                                     return "answer." + error;
                             }
@@ -8567,7 +8473,7 @@ $root.com = (function() {
                             if (message.ids != null && message.hasOwnProperty("ids")) {
                                 if (!Array.isArray(message.ids))
                                     return "ids: array expected";
-                                for (var i = 0; i < message.ids.length; ++i)
+                                for (let i = 0; i < message.ids.length; ++i)
                                     if (!$util.isString(message.ids[i]))
                                         return "ids: string[] expected";
                             }
@@ -8588,7 +8494,7 @@ $root.com = (function() {
                         Question.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.question.model.Question)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.question.model.Question();
+                            let message = new $root.com.xueershangda.tianxun.question.model.Question();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.title != null)
@@ -8715,7 +8621,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.fileList))
                                     throw TypeError(".com.xueershangda.tianxun.question.model.Question.fileList: array expected");
                                 message.fileList = [];
-                                for (var i = 0; i < object.fileList.length; ++i) {
+                                for (let i = 0; i < object.fileList.length; ++i) {
                                     if (typeof object.fileList[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.question.model.Question.fileList: object expected");
                                     message.fileList[i] = $root.com.xueershangda.tianxun.article.model.Images.fromObject(object.fileList[i]);
@@ -8736,7 +8642,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.ids))
                                     throw TypeError(".com.xueershangda.tianxun.question.model.Question.ids: array expected");
                                 message.ids = [];
-                                for (var i = 0; i < object.ids.length; ++i)
+                                for (let i = 0; i < object.ids.length; ++i)
                                     message.ids[i] = String(object.ids[i]);
                             }
                             if (object.account != null)
@@ -8756,7 +8662,7 @@ $root.com = (function() {
                         Question.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults) {
                                 object.fileList = [];
                                 object.ids = [];
@@ -8768,21 +8674,9 @@ $root.com = (function() {
                                 object.price = 0;
                                 object.asker = "";
                                 object.askerName = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.askDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.askDate = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.answerDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.answerDate = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.closeDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.closeDate = options.longs === String ? "0" : 0;
+                                object.askDate = 0;
+                                object.answerDate = 0;
+                                object.closeDate = 0;
                                 object.solved = false;
                                 object.open = false;
                                 object.platform = 0;
@@ -8794,34 +8688,14 @@ $root.com = (function() {
                                 object.state = 0;
                                 object.deleted = false;
                                 object.content = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.number = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.number = options.longs === String ? "0" : 0;
+                                object.number = 0;
                                 object.answerNumber = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.focusNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.focusNumber = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.loveNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.loveNumber = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.despiseNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.despiseNumber = options.longs === String ? "0" : 0;
+                                object.focusNumber = 0;
+                                object.loveNumber = 0;
+                                object.despiseNumber = 0;
                                 object.fee = 0;
                                 object.serviceType = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.deleteDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.deleteDate = options.longs === String ? "0" : 0;
+                                object.deleteDate = 0;
                                 object.terminal = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
@@ -8925,7 +8799,7 @@ $root.com = (function() {
                                 object.tokenId = message.tokenId;
                             if (message.fileList && message.fileList.length) {
                                 object.fileList = [];
-                                for (var j = 0; j < message.fileList.length; ++j)
+                                for (let j = 0; j < message.fileList.length; ++j)
                                     object.fileList[j] = $root.com.xueershangda.tianxun.article.model.Images.toObject(message.fileList[j], options);
                             }
                             if (message.answer != null && message.hasOwnProperty("answer"))
@@ -8938,7 +8812,7 @@ $root.com = (function() {
                                 object.type = message.type;
                             if (message.ids && message.ids.length) {
                                 object.ids = [];
-                                for (var j = 0; j < message.ids.length; ++j)
+                                for (let j = 0; j < message.ids.length; ++j)
                                     object.ids[j] = message.ids[j];
                             }
                             if (message.account != null && message.hasOwnProperty("account"))
@@ -8987,7 +8861,7 @@ $root.com = (function() {
                         function QuestionReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -9085,7 +8959,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.question.model.Question.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.account != null && message.hasOwnProperty("account"))
                                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.account);
@@ -9127,9 +9001,9 @@ $root.com = (function() {
                         QuestionReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.question.model.QuestionReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.question.model.QuestionReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -9201,8 +9075,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.question.model.Question.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.question.model.Question.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -9236,7 +9110,7 @@ $root.com = (function() {
                         QuestionReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.question.model.QuestionReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.question.model.QuestionReply();
+                            let message = new $root.com.xueershangda.tianxun.question.model.QuestionReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -9245,7 +9119,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.question.model.QuestionReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.question.model.QuestionReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.question.model.Question.fromObject(object.data[i]);
@@ -9276,7 +9150,7 @@ $root.com = (function() {
                         QuestionReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -9294,7 +9168,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.question.model.Question.toObject(message.data[j], options);
                             }
                             if (message.account != null && message.hasOwnProperty("account"))
@@ -9351,7 +9225,7 @@ $root.com = (function() {
                          */
                         function Category(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -9500,9 +9374,9 @@ $root.com = (function() {
                         Category.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.question.model.Category();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.question.model.Category();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -9607,7 +9481,7 @@ $root.com = (function() {
                         Category.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.question.model.Category)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.question.model.Category();
+                            let message = new $root.com.xueershangda.tianxun.question.model.Category();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.text != null)
@@ -9641,7 +9515,7 @@ $root.com = (function() {
                         Category.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.text = "";
@@ -9710,7 +9584,7 @@ $root.com = (function() {
                         function CategoryReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -9768,7 +9642,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.question.model.Category.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             return writer;
                         };
@@ -9800,9 +9674,9 @@ $root.com = (function() {
                         CategoryReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.question.model.CategoryReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.question.model.CategoryReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -9859,8 +9733,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.question.model.Category.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.question.model.Category.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -9879,7 +9753,7 @@ $root.com = (function() {
                         CategoryReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.question.model.CategoryReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.question.model.CategoryReply();
+                            let message = new $root.com.xueershangda.tianxun.question.model.CategoryReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -9888,7 +9762,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.question.model.CategoryReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.question.model.CategoryReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.question.model.Category.fromObject(object.data[i]);
@@ -9909,7 +9783,7 @@ $root.com = (function() {
                         CategoryReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -9922,7 +9796,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.question.model.Category.toObject(message.data[j], options);
                             }
                             return object;
@@ -9955,7 +9829,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var proto = {};
+                const proto = {};
 
                 proto.Content = (function() {
 
@@ -9982,7 +9856,7 @@ $root.com = (function() {
                      */
                     function Content(properties) {
                         if (properties)
-                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
                                     this[keys[i]] = properties[keys[i]];
                     }
@@ -10111,9 +9985,9 @@ $root.com = (function() {
                     Content.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.proto.Content();
+                        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.proto.Content();
                         while (reader.pos < end) {
-                            var tag = reader.uint32();
+                            let tag = reader.uint32();
                             switch (tag >>> 3) {
                             case 1:
                                 message.id = reader.string();
@@ -10206,7 +10080,7 @@ $root.com = (function() {
                     Content.fromObject = function fromObject(object) {
                         if (object instanceof $root.com.xueershangda.tianxun.proto.Content)
                             return object;
-                        var message = new $root.com.xueershangda.tianxun.proto.Content();
+                        let message = new $root.com.xueershangda.tianxun.proto.Content();
                         if (object.id != null)
                             message.id = String(object.id);
                         if (object.articleId != null)
@@ -10236,7 +10110,7 @@ $root.com = (function() {
                     Content.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
-                        var object = {};
+                        let object = {};
                         if (options.defaults) {
                             object.id = "";
                             object.articleId = "";
@@ -10306,7 +10180,7 @@ $root.com = (function() {
                      */
                     function Follow(properties) {
                         if (properties)
-                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
                                     this[keys[i]] = properties[keys[i]];
                     }
@@ -10333,7 +10207,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.proto.Follow
                      * @instance
                      */
-                    Follow.prototype.followDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    Follow.prototype.followDate = 0;
 
                     /**
                      * Follow followId.
@@ -10475,9 +10349,9 @@ $root.com = (function() {
                     Follow.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.proto.Follow();
+                        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.proto.Follow();
                         while (reader.pos < end) {
-                            var tag = reader.uint32();
+                            let tag = reader.uint32();
                             switch (tag >>> 3) {
                             case 1:
                                 message.id = reader.string();
@@ -10594,7 +10468,7 @@ $root.com = (function() {
                     Follow.fromObject = function fromObject(object) {
                         if (object instanceof $root.com.xueershangda.tianxun.proto.Follow)
                             return object;
-                        var message = new $root.com.xueershangda.tianxun.proto.Follow();
+                        let message = new $root.com.xueershangda.tianxun.proto.Follow();
                         if (object.id != null)
                             message.id = String(object.id);
                         if (object.userId != null)
@@ -10639,15 +10513,11 @@ $root.com = (function() {
                     Follow.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
-                        var object = {};
+                        let object = {};
                         if (options.defaults) {
                             object.id = "";
                             object.userId = "";
-                            if ($util.Long) {
-                                var long = new $util.Long(0, 0, false);
-                                object.followDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                            } else
-                                object.followDate = options.longs === String ? "0" : 0;
+                            object.followDate = 0;
                             object.followId = "";
                             object.type = 0;
                             object.targetId = "";
@@ -10729,7 +10599,7 @@ $root.com = (function() {
                      */
                     function Tags(properties) {
                         if (properties)
-                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null)
                                     this[keys[i]] = properties[keys[i]];
                     }
@@ -10772,7 +10642,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.proto.Tags
                      * @instance
                      */
-                    Tags.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    Tags.prototype.createDate = 0;
 
                     /**
                      * Tags focusNumber.
@@ -10780,7 +10650,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.proto.Tags
                      * @instance
                      */
-                    Tags.prototype.focusNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    Tags.prototype.focusNumber = 0;
 
                     /**
                      * Tags loveNumber.
@@ -10788,7 +10658,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.proto.Tags
                      * @instance
                      */
-                    Tags.prototype.loveNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    Tags.prototype.loveNumber = 0;
 
                     /**
                      * Tags despiseNumber.
@@ -10796,7 +10666,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.proto.Tags
                      * @instance
                      */
-                    Tags.prototype.despiseNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                    Tags.prototype.despiseNumber = 0;
 
                     /**
                      * Tags description.
@@ -10908,9 +10778,9 @@ $root.com = (function() {
                     Tags.decode = function decode(reader, length) {
                         if (!(reader instanceof $Reader))
                             reader = $Reader.create(reader);
-                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.proto.Tags();
+                        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.proto.Tags();
                         while (reader.pos < end) {
-                            var tag = reader.uint32();
+                            let tag = reader.uint32();
                             switch (tag >>> 3) {
                             case 1:
                                 message.id = reader.string();
@@ -11033,7 +10903,7 @@ $root.com = (function() {
                     Tags.fromObject = function fromObject(object) {
                         if (object instanceof $root.com.xueershangda.tianxun.proto.Tags)
                             return object;
-                        var message = new $root.com.xueershangda.tianxun.proto.Tags();
+                        let message = new $root.com.xueershangda.tianxun.proto.Tags();
                         if (object.id != null)
                             message.id = String(object.id);
                         if (object.name != null)
@@ -11101,32 +10971,16 @@ $root.com = (function() {
                     Tags.toObject = function toObject(message, options) {
                         if (!options)
                             options = {};
-                        var object = {};
+                        let object = {};
                         if (options.defaults) {
                             object.id = "";
                             object.name = "";
                             object.state = 0;
                             object.hot = 0;
-                            if ($util.Long) {
-                                var long = new $util.Long(0, 0, false);
-                                object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                            } else
-                                object.createDate = options.longs === String ? "0" : 0;
-                            if ($util.Long) {
-                                var long = new $util.Long(0, 0, false);
-                                object.focusNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                            } else
-                                object.focusNumber = options.longs === String ? "0" : 0;
-                            if ($util.Long) {
-                                var long = new $util.Long(0, 0, false);
-                                object.loveNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                            } else
-                                object.loveNumber = options.longs === String ? "0" : 0;
-                            if ($util.Long) {
-                                var long = new $util.Long(0, 0, false);
-                                object.despiseNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                            } else
-                                object.despiseNumber = options.longs === String ? "0" : 0;
+                            object.createDate = 0;
+                            object.focusNumber = 0;
+                            object.loveNumber = 0;
+                            object.despiseNumber = 0;
                             object.description = "";
                             object.page = 0;
                             object.pageSize = 0;
@@ -11195,7 +11049,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var user = {};
+                const user = {};
 
                 user.model = (function() {
 
@@ -11204,7 +11058,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.user
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.User = (function() {
 
@@ -11268,7 +11122,7 @@ $root.com = (function() {
                          */
                         function User(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -11335,7 +11189,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.user.model.User
                          * @instance
                          */
-                        User.prototype.registerDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        User.prototype.registerDate = 0;
 
                         /**
                          * User age.
@@ -11351,7 +11205,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.user.model.User
                          * @instance
                          */
-                        User.prototype.lastLoginDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        User.prototype.lastLoginDate = 0;
 
                         /**
                          * User state.
@@ -11447,7 +11301,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.user.model.User
                          * @instance
                          */
-                        User.prototype.birthday = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        User.prototype.birthday = 0;
 
                         /**
                          * User summary.
@@ -11479,7 +11333,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.user.model.User
                          * @instance
                          */
-                        User.prototype.focusNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        User.prototype.focusNumber = 0;
 
                         /**
                          * User loveNumber.
@@ -11487,7 +11341,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.user.model.User
                          * @instance
                          */
-                        User.prototype.loveNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        User.prototype.loveNumber = 0;
 
                         /**
                          * User page.
@@ -11591,7 +11445,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.user.model.User
                          * @instance
                          */
-                        User.prototype.replyTime = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        User.prototype.replyTime = 0;
 
                         /**
                          * User parent.
@@ -11767,9 +11621,9 @@ $root.com = (function() {
                         User.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.user.model.User();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.user.model.User();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -12084,7 +11938,7 @@ $root.com = (function() {
                         User.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.user.model.User)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.user.model.User();
+                            let message = new $root.com.xueershangda.tianxun.user.model.User();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.name != null)
@@ -12230,7 +12084,7 @@ $root.com = (function() {
                         User.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.name = "";
@@ -12239,17 +12093,9 @@ $root.com = (function() {
                                 object.email = "";
                                 object.mobile = "";
                                 object.password = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.registerDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.registerDate = options.longs === String ? "0" : 0;
+                                object.registerDate = 0;
                                 object.age = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.lastLoginDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.lastLoginDate = options.longs === String ? "0" : 0;
+                                object.lastLoginDate = 0;
                                 object.state = 0;
                                 object.level = 0;
                                 object.asker = 0;
@@ -12261,24 +12107,12 @@ $root.com = (function() {
                                 object.qq = "";
                                 object.address = "";
                                 object.avatar = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.birthday = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.birthday = options.longs === String ? "0" : 0;
+                                object.birthday = 0;
                                 object.summary = "";
                                 object.signature = "";
                                 object.title = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.focusNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.focusNumber = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.loveNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.loveNumber = options.longs === String ? "0" : 0;
+                                object.focusNumber = 0;
+                                object.loveNumber = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
                                 object.orderBy = "";
@@ -12291,11 +12125,7 @@ $root.com = (function() {
                                 object.targetId = "";
                                 object.type = 0;
                                 object.grade = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.replyTime = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.replyTime = options.longs === String ? "0" : 0;
+                                object.replyTime = 0;
                                 object.parent = "";
                                 object.paymentAuthority = 0;
                                 object.paymentAmount = 0;
@@ -12448,7 +12278,7 @@ $root.com = (function() {
                             this.data = [];
                             this.questionList = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -12514,10 +12344,10 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.user.model.User.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.questionList != null && message.questionList.length)
-                                for (var i = 0; i < message.questionList.length; ++i)
+                                for (let i = 0; i < message.questionList.length; ++i)
                                     $root.com.xueershangda.tianxun.question.model.Question.encode(message.questionList[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                             return writer;
                         };
@@ -12549,9 +12379,9 @@ $root.com = (function() {
                         UserReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.user.model.UserReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.user.model.UserReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -12613,8 +12443,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.user.model.User.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.user.model.User.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -12622,8 +12452,8 @@ $root.com = (function() {
                             if (message.questionList != null && message.hasOwnProperty("questionList")) {
                                 if (!Array.isArray(message.questionList))
                                     return "questionList: array expected";
-                                for (var i = 0; i < message.questionList.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.question.model.Question.verify(message.questionList[i]);
+                                for (let i = 0; i < message.questionList.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.question.model.Question.verify(message.questionList[i]);
                                     if (error)
                                         return "questionList." + error;
                                 }
@@ -12642,7 +12472,7 @@ $root.com = (function() {
                         UserReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.user.model.UserReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.user.model.UserReply();
+                            let message = new $root.com.xueershangda.tianxun.user.model.UserReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -12651,7 +12481,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.user.model.UserReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.user.model.UserReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.user.model.User.fromObject(object.data[i]);
@@ -12661,7 +12491,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.questionList))
                                     throw TypeError(".com.xueershangda.tianxun.user.model.UserReply.questionList: array expected");
                                 message.questionList = [];
-                                for (var i = 0; i < object.questionList.length; ++i) {
+                                for (let i = 0; i < object.questionList.length; ++i) {
                                     if (typeof object.questionList[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.user.model.UserReply.questionList: object expected");
                                     message.questionList[i] = $root.com.xueershangda.tianxun.question.model.Question.fromObject(object.questionList[i]);
@@ -12682,7 +12512,7 @@ $root.com = (function() {
                         UserReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults) {
                                 object.data = [];
                                 object.questionList = [];
@@ -12697,12 +12527,12 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.user.model.User.toObject(message.data[j], options);
                             }
                             if (message.questionList && message.questionList.length) {
                                 object.questionList = [];
-                                for (var j = 0; j < message.questionList.length; ++j)
+                                for (let j = 0; j < message.questionList.length; ++j)
                                     object.questionList[j] = $root.com.xueershangda.tianxun.question.model.Question.toObject(message.questionList[j], options);
                             }
                             return object;
@@ -12751,7 +12581,7 @@ $root.com = (function() {
                          */
                         function Favorite(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -12770,7 +12600,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.user.model.Favorite
                          * @instance
                          */
-                        Favorite.prototype.favoriteDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Favorite.prototype.favoriteDate = 0;
 
                         /**
                          * Favorite targetId.
@@ -12920,9 +12750,9 @@ $root.com = (function() {
                         Favorite.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.user.model.Favorite();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.user.model.Favorite();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -13039,7 +12869,7 @@ $root.com = (function() {
                         Favorite.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.user.model.Favorite)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.user.model.Favorite();
+                            let message = new $root.com.xueershangda.tianxun.user.model.Favorite();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.favoriteDate != null)
@@ -13084,14 +12914,10 @@ $root.com = (function() {
                         Favorite.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.favoriteDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.favoriteDate = options.longs === String ? "0" : 0;
+                                object.favoriteDate = 0;
                                 object.targetId = "";
                                 object.targetType = 0;
                                 object.userId = "";
@@ -13166,7 +12992,7 @@ $root.com = (function() {
                         function FavoriteReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -13224,7 +13050,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.user.model.Favorite.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             return writer;
                         };
@@ -13256,9 +13082,9 @@ $root.com = (function() {
                         FavoriteReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.user.model.FavoriteReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.user.model.FavoriteReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -13315,8 +13141,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.user.model.Favorite.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.user.model.Favorite.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -13335,7 +13161,7 @@ $root.com = (function() {
                         FavoriteReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.user.model.FavoriteReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.user.model.FavoriteReply();
+                            let message = new $root.com.xueershangda.tianxun.user.model.FavoriteReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -13344,7 +13170,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.user.model.FavoriteReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.user.model.FavoriteReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.user.model.Favorite.fromObject(object.data[i]);
@@ -13365,7 +13191,7 @@ $root.com = (function() {
                         FavoriteReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -13378,7 +13204,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.user.model.Favorite.toObject(message.data[j], options);
                             }
                             return object;
@@ -13411,7 +13237,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var orders = {};
+                const orders = {};
 
                 orders.model = (function() {
 
@@ -13420,7 +13246,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.orders
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.Orders = (function() {
 
@@ -13457,7 +13283,7 @@ $root.com = (function() {
                          */
                         function Orders(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -13492,7 +13318,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.orders.model.Orders
                          * @instance
                          */
-                        Orders.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Orders.prototype.createDate = 0;
 
                         /**
                          * Orders payDate.
@@ -13500,7 +13326,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.orders.model.Orders
                          * @instance
                          */
-                        Orders.prototype.payDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Orders.prototype.payDate = 0;
 
                         /**
                          * Orders amount.
@@ -13686,9 +13512,9 @@ $root.com = (function() {
                         Orders.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.orders.model.Orders();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.orders.model.Orders();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -13841,7 +13667,7 @@ $root.com = (function() {
                         Orders.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.orders.model.Orders)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.orders.model.Orders();
+                            let message = new $root.com.xueershangda.tianxun.orders.model.Orders();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.targetId != null)
@@ -13905,21 +13731,13 @@ $root.com = (function() {
                         Orders.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.targetId = "";
                                 object.type = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.createDate = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.payDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.payDate = options.longs === String ? "0" : 0;
+                                object.createDate = 0;
+                                object.payDate = 0;
                                 object.amount = 0;
                                 object.state = 0;
                                 object.buyer = "";
@@ -14012,7 +13830,7 @@ $root.com = (function() {
                         function OrdersReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -14070,7 +13888,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.orders.model.Orders.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             return writer;
                         };
@@ -14102,9 +13920,9 @@ $root.com = (function() {
                         OrdersReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.orders.model.OrdersReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.orders.model.OrdersReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -14161,8 +13979,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.orders.model.Orders.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.orders.model.Orders.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -14181,7 +13999,7 @@ $root.com = (function() {
                         OrdersReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.orders.model.OrdersReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.orders.model.OrdersReply();
+                            let message = new $root.com.xueershangda.tianxun.orders.model.OrdersReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -14190,7 +14008,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.orders.model.OrdersReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.orders.model.OrdersReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.orders.model.Orders.fromObject(object.data[i]);
@@ -14211,7 +14029,7 @@ $root.com = (function() {
                         OrdersReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -14224,7 +14042,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.orders.model.Orders.toObject(message.data[j], options);
                             }
                             return object;
@@ -14257,7 +14075,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var comment = {};
+                const comment = {};
 
                 comment.model = (function() {
 
@@ -14266,7 +14084,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.comment
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.Comment = (function() {
 
@@ -14298,7 +14116,7 @@ $root.com = (function() {
                          */
                         function Comment(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -14341,7 +14159,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.comment.model.Comment
                          * @instance
                          */
-                        Comment.prototype.commentDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Comment.prototype.commentDate = 0;
 
                         /**
                          * Comment articleId.
@@ -14477,9 +14295,9 @@ $root.com = (function() {
                         Comment.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.comment.model.Comment();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.comment.model.Comment();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -14602,7 +14420,7 @@ $root.com = (function() {
                         Comment.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.comment.model.Comment)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.comment.model.Comment();
+                            let message = new $root.com.xueershangda.tianxun.comment.model.Comment();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.content != null)
@@ -14649,17 +14467,13 @@ $root.com = (function() {
                         Comment.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.content = "";
                                 object.userId = "";
                                 object.nickName = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.commentDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.commentDate = options.longs === String ? "0" : 0;
+                                object.commentDate = 0;
                                 object.articleId = "";
                                 object.type = 0;
                                 object.orders = 0;
@@ -14734,7 +14548,7 @@ $root.com = (function() {
                         function CommentReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -14792,7 +14606,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.comment.model.Comment.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             return writer;
                         };
@@ -14824,9 +14638,9 @@ $root.com = (function() {
                         CommentReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.comment.model.CommentReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.comment.model.CommentReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -14883,8 +14697,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.comment.model.Comment.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.comment.model.Comment.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -14903,7 +14717,7 @@ $root.com = (function() {
                         CommentReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.comment.model.CommentReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.comment.model.CommentReply();
+                            let message = new $root.com.xueershangda.tianxun.comment.model.CommentReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -14912,7 +14726,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.comment.model.CommentReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.comment.model.CommentReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.comment.model.Comment.fromObject(object.data[i]);
@@ -14933,7 +14747,7 @@ $root.com = (function() {
                         CommentReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -14946,7 +14760,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.comment.model.Comment.toObject(message.data[j], options);
                             }
                             return object;
@@ -14979,7 +14793,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var game = {};
+                const game = {};
 
                 game.model = (function() {
 
@@ -14988,7 +14802,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.game
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.Equipment = (function() {
 
@@ -15027,7 +14841,7 @@ $root.com = (function() {
                          */
                         function Equipment(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -15276,9 +15090,9 @@ $root.com = (function() {
                         Equipment.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.Equipment();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.Equipment();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -15443,7 +15257,7 @@ $root.com = (function() {
                         Equipment.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.game.model.Equipment)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.game.model.Equipment();
+                            let message = new $root.com.xueershangda.tianxun.game.model.Equipment();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.name != null)
@@ -15497,7 +15311,7 @@ $root.com = (function() {
                         Equipment.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.name = "";
@@ -15596,7 +15410,7 @@ $root.com = (function() {
                         function EquipmentReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -15654,7 +15468,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.game.model.Equipment.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             return writer;
                         };
@@ -15686,9 +15500,9 @@ $root.com = (function() {
                         EquipmentReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.EquipmentReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.EquipmentReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -15745,8 +15559,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.game.model.Equipment.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.game.model.Equipment.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -15765,7 +15579,7 @@ $root.com = (function() {
                         EquipmentReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.game.model.EquipmentReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.game.model.EquipmentReply();
+                            let message = new $root.com.xueershangda.tianxun.game.model.EquipmentReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -15774,7 +15588,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.game.model.EquipmentReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.game.model.EquipmentReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.game.model.Equipment.fromObject(object.data[i]);
@@ -15795,7 +15609,7 @@ $root.com = (function() {
                         EquipmentReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -15808,7 +15622,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.game.model.Equipment.toObject(message.data[j], options);
                             }
                             return object;
@@ -15876,7 +15690,7 @@ $root.com = (function() {
                          */
                         function Characters(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -16023,7 +15837,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.game.model.Characters
                          * @instance
                          */
-                        Characters.prototype.experience = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Characters.prototype.experience = 0;
 
                         /**
                          * Characters state.
@@ -16111,7 +15925,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.game.model.Characters
                          * @instance
                          */
-                        Characters.prototype.gradeExperience = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Characters.prototype.gradeExperience = 0;
 
                         /**
                          * Characters powerValue.
@@ -16235,9 +16049,9 @@ $root.com = (function() {
                         Characters.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.Characters();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.Characters();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -16468,7 +16282,7 @@ $root.com = (function() {
                         Characters.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.game.model.Characters)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.game.model.Characters();
+                            let message = new $root.com.xueershangda.tianxun.game.model.Characters();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.userId != null)
@@ -16558,7 +16372,7 @@ $root.com = (function() {
                         Characters.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.userId = "";
@@ -16577,11 +16391,7 @@ $root.com = (function() {
                                 object.defense = 0;
                                 object.healthPoint = 0;
                                 object.grade = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.experience = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.experience = options.longs === String ? "0" : 0;
+                                object.experience = 0;
                                 object.state = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
@@ -16592,11 +16402,7 @@ $root.com = (function() {
                                 object.text = "";
                                 object.attack = 0;
                                 object.currentPoint = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.gradeExperience = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.gradeExperience = options.longs === String ? "0" : 0;
+                                object.gradeExperience = 0;
                                 object.powerValue = 0;
                             }
                             if (message.id != null && message.hasOwnProperty("id"))
@@ -16705,7 +16511,7 @@ $root.com = (function() {
                         function CharactersReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -16771,7 +16577,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.game.model.Characters.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.characters != null && message.hasOwnProperty("characters"))
                                 $root.com.xueershangda.tianxun.game.model.Characters.encode(message.characters, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
@@ -16805,9 +16611,9 @@ $root.com = (function() {
                         CharactersReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.CharactersReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.CharactersReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -16867,14 +16673,14 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.game.model.Characters.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.game.model.Characters.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
                             }
                             if (message.characters != null && message.hasOwnProperty("characters")) {
-                                var error = $root.com.xueershangda.tianxun.game.model.Characters.verify(message.characters);
+                                let error = $root.com.xueershangda.tianxun.game.model.Characters.verify(message.characters);
                                 if (error)
                                     return "characters." + error;
                             }
@@ -16892,7 +16698,7 @@ $root.com = (function() {
                         CharactersReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.game.model.CharactersReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.game.model.CharactersReply();
+                            let message = new $root.com.xueershangda.tianxun.game.model.CharactersReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -16901,7 +16707,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.game.model.CharactersReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.game.model.CharactersReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.game.model.Characters.fromObject(object.data[i]);
@@ -16927,7 +16733,7 @@ $root.com = (function() {
                         CharactersReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -16941,7 +16747,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.game.model.Characters.toObject(message.data[j], options);
                             }
                             if (message.characters != null && message.hasOwnProperty("characters"))
@@ -17001,7 +16807,7 @@ $root.com = (function() {
                          */
                         function VirtualItems(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -17124,7 +16930,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.game.model.VirtualItems
                          * @instance
                          */
-                        VirtualItems.prototype.number = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        VirtualItems.prototype.number = 0;
 
                         /**
                          * VirtualItems focusNumber.
@@ -17132,7 +16938,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.game.model.VirtualItems
                          * @instance
                          */
-                        VirtualItems.prototype.focusNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        VirtualItems.prototype.focusNumber = 0;
 
                         /**
                          * VirtualItems loveNumber.
@@ -17140,7 +16946,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.game.model.VirtualItems
                          * @instance
                          */
-                        VirtualItems.prototype.loveNumber = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        VirtualItems.prototype.loveNumber = 0;
 
                         /**
                          * VirtualItems price.
@@ -17260,9 +17066,9 @@ $root.com = (function() {
                         VirtualItems.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.VirtualItems();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.VirtualItems();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -17433,7 +17239,7 @@ $root.com = (function() {
                         VirtualItems.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.game.model.VirtualItems)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.game.model.VirtualItems();
+                            let message = new $root.com.xueershangda.tianxun.game.model.VirtualItems();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.name != null)
@@ -17510,7 +17316,7 @@ $root.com = (function() {
                         VirtualItems.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.name = "";
@@ -17526,21 +17332,9 @@ $root.com = (function() {
                                 object.pageSize = 0;
                                 object.orderBy = "";
                                 object.coverImage = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.number = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.number = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.focusNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.focusNumber = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.loveNumber = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.loveNumber = options.longs === String ? "0" : 0;
+                                object.number = 0;
+                                object.focusNumber = 0;
+                                object.loveNumber = 0;
                                 object.price = 0;
                                 object.summary = "";
                                 object.text = "";
@@ -17635,7 +17429,7 @@ $root.com = (function() {
                             this.data = [];
                             this.equipmentList = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -17701,10 +17495,10 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.game.model.VirtualItems.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.equipmentList != null && message.equipmentList.length)
-                                for (var i = 0; i < message.equipmentList.length; ++i)
+                                for (let i = 0; i < message.equipmentList.length; ++i)
                                     $root.com.xueershangda.tianxun.game.model.Equipment.encode(message.equipmentList[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                             return writer;
                         };
@@ -17736,9 +17530,9 @@ $root.com = (function() {
                         VirtualItemsReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.VirtualItemsReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.game.model.VirtualItemsReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -17800,8 +17594,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.game.model.VirtualItems.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.game.model.VirtualItems.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -17809,8 +17603,8 @@ $root.com = (function() {
                             if (message.equipmentList != null && message.hasOwnProperty("equipmentList")) {
                                 if (!Array.isArray(message.equipmentList))
                                     return "equipmentList: array expected";
-                                for (var i = 0; i < message.equipmentList.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.game.model.Equipment.verify(message.equipmentList[i]);
+                                for (let i = 0; i < message.equipmentList.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.game.model.Equipment.verify(message.equipmentList[i]);
                                     if (error)
                                         return "equipmentList." + error;
                                 }
@@ -17829,7 +17623,7 @@ $root.com = (function() {
                         VirtualItemsReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.game.model.VirtualItemsReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.game.model.VirtualItemsReply();
+                            let message = new $root.com.xueershangda.tianxun.game.model.VirtualItemsReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -17838,7 +17632,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.game.model.VirtualItemsReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.game.model.VirtualItemsReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.game.model.VirtualItems.fromObject(object.data[i]);
@@ -17848,7 +17642,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.equipmentList))
                                     throw TypeError(".com.xueershangda.tianxun.game.model.VirtualItemsReply.equipmentList: array expected");
                                 message.equipmentList = [];
-                                for (var i = 0; i < object.equipmentList.length; ++i) {
+                                for (let i = 0; i < object.equipmentList.length; ++i) {
                                     if (typeof object.equipmentList[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.game.model.VirtualItemsReply.equipmentList: object expected");
                                     message.equipmentList[i] = $root.com.xueershangda.tianxun.game.model.Equipment.fromObject(object.equipmentList[i]);
@@ -17869,7 +17663,7 @@ $root.com = (function() {
                         VirtualItemsReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults) {
                                 object.data = [];
                                 object.equipmentList = [];
@@ -17884,12 +17678,12 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.game.model.VirtualItems.toObject(message.data[j], options);
                             }
                             if (message.equipmentList && message.equipmentList.length) {
                                 object.equipmentList = [];
-                                for (var j = 0; j < message.equipmentList.length; ++j)
+                                for (let j = 0; j < message.equipmentList.length; ++j)
                                     object.equipmentList[j] = $root.com.xueershangda.tianxun.game.model.Equipment.toObject(message.equipmentList[j], options);
                             }
                             return object;
@@ -17922,7 +17716,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var video = {};
+                const video = {};
 
                 video.model = (function() {
 
@@ -17931,7 +17725,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.video
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.Video = (function() {
 
@@ -17959,12 +17753,13 @@ $root.com = (function() {
                          * @property {string|null} [remark] 备注
                          * @property {string|null} [userId] 用户id/平台
                          * @property {string|null} [videoType] 视频类型
-                         * @property {number|null} [backup2] 备用2
+                         * @property {number|null} [update] 1新增2更新
                          * @property {string|null} [previewUrl] 预览url，试看
                          * @property {string|null} [orderBy] order by 排序语句
                          * @property {number|null} [start] 分页开始记录
                          * @property {number|null} [page] 页码
                          * @property {number|null} [pageSize] 分页大小
+                         * @property {number|null} [updateVideo] 1新增2更新
                          */
 
                         /**
@@ -17977,7 +17772,7 @@ $root.com = (function() {
                          */
                         function Video(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -18028,7 +17823,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.video.model.Video
                          * @instance
                          */
-                        Video.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Video.prototype.createDate = 0;
 
                         /**
                          * 更新时间
@@ -18036,7 +17831,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.video.model.Video
                          * @instance
                          */
-                        Video.prototype.updateDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Video.prototype.updateDate = 0;
 
                         /**
                          * 价格
@@ -18143,12 +17938,12 @@ $root.com = (function() {
                         Video.prototype.videoType = "";
 
                         /**
-                         * 备用2
-                         * @member {number} backup2
+                         * 1新增2更新
+                         * @member {number} update
                          * @memberof com.xueershangda.tianxun.video.model.Video
                          * @instance
                          */
-                        Video.prototype.backup2 = 0;
+                        Video.prototype.update = 0;
 
                         /**
                          * 预览url，试看
@@ -18189,6 +17984,14 @@ $root.com = (function() {
                          * @instance
                          */
                         Video.prototype.pageSize = 0;
+
+                        /**
+                         * 1新增2更新
+                         * @member {number} updateVideo
+                         * @memberof com.xueershangda.tianxun.video.model.Video
+                         * @instance
+                         */
+                        Video.prototype.updateVideo = 0;
 
                         /**
                          * Creates a new Video instance using the specified properties.
@@ -18254,8 +18057,8 @@ $root.com = (function() {
                                 writer.uint32(/* id 19, wireType 2 =*/154).string(message.userId);
                             if (message.videoType != null && message.hasOwnProperty("videoType"))
                                 writer.uint32(/* id 20, wireType 2 =*/162).string(message.videoType);
-                            if (message.backup2 != null && message.hasOwnProperty("backup2"))
-                                writer.uint32(/* id 21, wireType 0 =*/168).int32(message.backup2);
+                            if (message.update != null && message.hasOwnProperty("update"))
+                                writer.uint32(/* id 21, wireType 0 =*/168).int32(message.update);
                             if (message.previewUrl != null && message.hasOwnProperty("previewUrl"))
                                 writer.uint32(/* id 22, wireType 2 =*/178).string(message.previewUrl);
                             if (message.orderBy != null && message.hasOwnProperty("orderBy"))
@@ -18266,6 +18069,8 @@ $root.com = (function() {
                                 writer.uint32(/* id 25, wireType 0 =*/200).int32(message.page);
                             if (message.pageSize != null && message.hasOwnProperty("pageSize"))
                                 writer.uint32(/* id 26, wireType 0 =*/208).int32(message.pageSize);
+                            if (message.updateVideo != null && message.hasOwnProperty("updateVideo"))
+                                writer.uint32(/* id 27, wireType 0 =*/216).int32(message.updateVideo);
                             return writer;
                         };
 
@@ -18296,9 +18101,9 @@ $root.com = (function() {
                         Video.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.video.model.Video();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.video.model.Video();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.id = reader.string();
@@ -18361,7 +18166,7 @@ $root.com = (function() {
                                     message.videoType = reader.string();
                                     break;
                                 case 21:
-                                    message.backup2 = reader.int32();
+                                    message.update = reader.int32();
                                     break;
                                 case 22:
                                     message.previewUrl = reader.string();
@@ -18377,6 +18182,9 @@ $root.com = (function() {
                                     break;
                                 case 26:
                                     message.pageSize = reader.int32();
+                                    break;
+                                case 27:
+                                    message.updateVideo = reader.int32();
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -18473,9 +18281,9 @@ $root.com = (function() {
                             if (message.videoType != null && message.hasOwnProperty("videoType"))
                                 if (!$util.isString(message.videoType))
                                     return "videoType: string expected";
-                            if (message.backup2 != null && message.hasOwnProperty("backup2"))
-                                if (!$util.isInteger(message.backup2))
-                                    return "backup2: integer expected";
+                            if (message.update != null && message.hasOwnProperty("update"))
+                                if (!$util.isInteger(message.update))
+                                    return "update: integer expected";
                             if (message.previewUrl != null && message.hasOwnProperty("previewUrl"))
                                 if (!$util.isString(message.previewUrl))
                                     return "previewUrl: string expected";
@@ -18491,6 +18299,9 @@ $root.com = (function() {
                             if (message.pageSize != null && message.hasOwnProperty("pageSize"))
                                 if (!$util.isInteger(message.pageSize))
                                     return "pageSize: integer expected";
+                            if (message.updateVideo != null && message.hasOwnProperty("updateVideo"))
+                                if (!$util.isInteger(message.updateVideo))
+                                    return "updateVideo: integer expected";
                             return null;
                         };
 
@@ -18505,7 +18316,7 @@ $root.com = (function() {
                         Video.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.video.model.Video)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.video.model.Video();
+                            let message = new $root.com.xueershangda.tianxun.video.model.Video();
                             if (object.id != null)
                                 message.id = String(object.id);
                             if (object.title != null)
@@ -18560,8 +18371,8 @@ $root.com = (function() {
                                 message.userId = String(object.userId);
                             if (object.videoType != null)
                                 message.videoType = String(object.videoType);
-                            if (object.backup2 != null)
-                                message.backup2 = object.backup2 | 0;
+                            if (object.update != null)
+                                message.update = object.update | 0;
                             if (object.previewUrl != null)
                                 message.previewUrl = String(object.previewUrl);
                             if (object.orderBy != null)
@@ -18572,6 +18383,8 @@ $root.com = (function() {
                                 message.page = object.page | 0;
                             if (object.pageSize != null)
                                 message.pageSize = object.pageSize | 0;
+                            if (object.updateVideo != null)
+                                message.updateVideo = object.updateVideo | 0;
                             return message;
                         };
 
@@ -18587,23 +18400,15 @@ $root.com = (function() {
                         Video.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.id = "";
                                 object.title = "";
                                 object.url = "";
                                 object.image = "";
                                 object.summary = "";
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.createDate = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.updateDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.updateDate = options.longs === String ? "0" : 0;
+                                object.createDate = 0;
+                                object.updateDate = 0;
                                 object.price = 0;
                                 object.freeTime = 0;
                                 object.free = false;
@@ -18617,12 +18422,13 @@ $root.com = (function() {
                                 object.remark = "";
                                 object.userId = "";
                                 object.videoType = "";
-                                object.backup2 = 0;
+                                object.update = 0;
                                 object.previewUrl = "";
                                 object.orderBy = "";
                                 object.start = 0;
                                 object.page = 0;
                                 object.pageSize = 0;
+                                object.updateVideo = 0;
                             }
                             if (message.id != null && message.hasOwnProperty("id"))
                                 object.id = message.id;
@@ -18670,8 +18476,8 @@ $root.com = (function() {
                                 object.userId = message.userId;
                             if (message.videoType != null && message.hasOwnProperty("videoType"))
                                 object.videoType = message.videoType;
-                            if (message.backup2 != null && message.hasOwnProperty("backup2"))
-                                object.backup2 = message.backup2;
+                            if (message.update != null && message.hasOwnProperty("update"))
+                                object.update = message.update;
                             if (message.previewUrl != null && message.hasOwnProperty("previewUrl"))
                                 object.previewUrl = message.previewUrl;
                             if (message.orderBy != null && message.hasOwnProperty("orderBy"))
@@ -18682,6 +18488,8 @@ $root.com = (function() {
                                 object.page = message.page;
                             if (message.pageSize != null && message.hasOwnProperty("pageSize"))
                                 object.pageSize = message.pageSize;
+                            if (message.updateVideo != null && message.hasOwnProperty("updateVideo"))
+                                object.updateVideo = message.updateVideo;
                             return object;
                         };
 
@@ -18727,7 +18535,7 @@ $root.com = (function() {
                         function VideoReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -18833,7 +18641,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.video.model.Video.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.video != null && message.hasOwnProperty("video"))
                                 $root.com.xueershangda.tianxun.video.model.Video.encode(message.video, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
@@ -18877,9 +18685,9 @@ $root.com = (function() {
                         VideoReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.video.model.VideoReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.video.model.VideoReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -18954,14 +18762,14 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.video.model.Video.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.video.model.Video.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
                             }
                             if (message.video != null && message.hasOwnProperty("video")) {
-                                var error = $root.com.xueershangda.tianxun.video.model.Video.verify(message.video);
+                                let error = $root.com.xueershangda.tianxun.video.model.Video.verify(message.video);
                                 if (error)
                                     return "video." + error;
                             }
@@ -18994,7 +18802,7 @@ $root.com = (function() {
                         VideoReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.video.model.VideoReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.video.model.VideoReply();
+                            let message = new $root.com.xueershangda.tianxun.video.model.VideoReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -19003,7 +18811,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.video.model.VideoReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.video.model.VideoReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.video.model.Video.fromObject(object.data[i]);
@@ -19039,7 +18847,7 @@ $root.com = (function() {
                         VideoReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -19058,7 +18866,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.video.model.Video.toObject(message.data[j], options);
                             }
                             if (message.video != null && message.hasOwnProperty("video"))
@@ -19103,7 +18911,7 @@ $root.com = (function() {
                  * @memberof com.xueershangda.tianxun
                  * @namespace
                  */
-                var pay = {};
+                const pay = {};
 
                 pay.model = (function() {
 
@@ -19112,7 +18920,7 @@ $root.com = (function() {
                      * @memberof com.xueershangda.tianxun.pay
                      * @namespace
                      */
-                    var model = {};
+                    const model = {};
 
                     model.Alipay = (function() {
 
@@ -19150,7 +18958,7 @@ $root.com = (function() {
                          */
                         function Alipay(properties) {
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -19257,7 +19065,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.pay.model.Alipay
                          * @instance
                          */
-                        Alipay.prototype.createDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Alipay.prototype.createDate = 0;
 
                         /**
                          * 支付时间
@@ -19265,7 +19073,7 @@ $root.com = (function() {
                          * @memberof com.xueershangda.tianxun.pay.model.Alipay
                          * @instance
                          */
-                        Alipay.prototype.payDate = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+                        Alipay.prototype.payDate = 0;
 
                         /**
                          * 订单状态，1待支付，2支付中，3支付成功
@@ -19389,9 +19197,9 @@ $root.com = (function() {
                         Alipay.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.pay.model.Alipay();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.pay.model.Alipay();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -19550,7 +19358,7 @@ $root.com = (function() {
                         Alipay.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.pay.model.Alipay)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.pay.model.Alipay();
+                            let message = new $root.com.xueershangda.tianxun.pay.model.Alipay();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -19616,7 +19424,7 @@ $root.com = (function() {
                         Alipay.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.defaults) {
                                 object.code = 0;
                                 object.message = "";
@@ -19630,16 +19438,8 @@ $root.com = (function() {
                                 object.orderId = "";
                                 object.amount = 0;
                                 object.type = 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.createDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.createDate = options.longs === String ? "0" : 0;
-                                if ($util.Long) {
-                                    var long = new $util.Long(0, 0, false);
-                                    object.payDate = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
-                                } else
-                                    object.payDate = options.longs === String ? "0" : 0;
+                                object.createDate = 0;
+                                object.payDate = 0;
                                 object.state = 0;
                                 object.buyer = "";
                                 object.seller = "";
@@ -19729,7 +19529,7 @@ $root.com = (function() {
                         function AlipayReply(properties) {
                             this.data = [];
                             if (properties)
-                                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                                     if (properties[keys[i]] != null)
                                         this[keys[i]] = properties[keys[i]];
                         }
@@ -19811,7 +19611,7 @@ $root.com = (function() {
                             if (message.message != null && message.hasOwnProperty("message"))
                                 writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
                             if (message.data != null && message.data.length)
-                                for (var i = 0; i < message.data.length; ++i)
+                                for (let i = 0; i < message.data.length; ++i)
                                     $root.com.xueershangda.tianxun.pay.model.Alipay.encode(message.data[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                             if (message.body != null && message.hasOwnProperty("body"))
                                 writer.uint32(/* id 4, wireType 2 =*/34).string(message.body);
@@ -19849,9 +19649,9 @@ $root.com = (function() {
                         AlipayReply.decode = function decode(reader, length) {
                             if (!(reader instanceof $Reader))
                                 reader = $Reader.create(reader);
-                            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.pay.model.AlipayReply();
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.pay.model.AlipayReply();
                             while (reader.pos < end) {
-                                var tag = reader.uint32();
+                                let tag = reader.uint32();
                                 switch (tag >>> 3) {
                                 case 1:
                                     message.code = reader.int32();
@@ -19917,8 +19717,8 @@ $root.com = (function() {
                             if (message.data != null && message.hasOwnProperty("data")) {
                                 if (!Array.isArray(message.data))
                                     return "data: array expected";
-                                for (var i = 0; i < message.data.length; ++i) {
-                                    var error = $root.com.xueershangda.tianxun.pay.model.Alipay.verify(message.data[i]);
+                                for (let i = 0; i < message.data.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.pay.model.Alipay.verify(message.data[i]);
                                     if (error)
                                         return "data." + error;
                                 }
@@ -19946,7 +19746,7 @@ $root.com = (function() {
                         AlipayReply.fromObject = function fromObject(object) {
                             if (object instanceof $root.com.xueershangda.tianxun.pay.model.AlipayReply)
                                 return object;
-                            var message = new $root.com.xueershangda.tianxun.pay.model.AlipayReply();
+                            let message = new $root.com.xueershangda.tianxun.pay.model.AlipayReply();
                             if (object.code != null)
                                 message.code = object.code | 0;
                             if (object.message != null)
@@ -19955,7 +19755,7 @@ $root.com = (function() {
                                 if (!Array.isArray(object.data))
                                     throw TypeError(".com.xueershangda.tianxun.pay.model.AlipayReply.data: array expected");
                                 message.data = [];
-                                for (var i = 0; i < object.data.length; ++i) {
+                                for (let i = 0; i < object.data.length; ++i) {
                                     if (typeof object.data[i] !== "object")
                                         throw TypeError(".com.xueershangda.tianxun.pay.model.AlipayReply.data: object expected");
                                     message.data[i] = $root.com.xueershangda.tianxun.pay.model.Alipay.fromObject(object.data[i]);
@@ -19982,7 +19782,7 @@ $root.com = (function() {
                         AlipayReply.toObject = function toObject(message, options) {
                             if (!options)
                                 options = {};
-                            var object = {};
+                            let object = {};
                             if (options.arrays || options.defaults)
                                 object.data = [];
                             if (options.defaults) {
@@ -19998,7 +19798,7 @@ $root.com = (function() {
                                 object.message = message.message;
                             if (message.data && message.data.length) {
                                 object.data = [];
-                                for (var j = 0; j < message.data.length; ++j)
+                                for (let j = 0; j < message.data.length; ++j)
                                     object.data[j] = $root.com.xueershangda.tianxun.pay.model.Alipay.toObject(message.data[j], options);
                             }
                             if (message.body != null && message.hasOwnProperty("body"))
@@ -20030,13 +19830,2909 @@ $root.com = (function() {
                 return pay;
             })();
 
+            tianxun.employee = (function() {
+
+                /**
+                 * Namespace employee.
+                 * @memberof com.xueershangda.tianxun
+                 * @namespace
+                 */
+                const employee = {};
+
+                employee.model = (function() {
+
+                    /**
+                     * Namespace model.
+                     * @memberof com.xueershangda.tianxun.employee
+                     * @namespace
+                     */
+                    const model = {};
+
+                    model.Employee = (function() {
+
+                        /**
+                         * Properties of an Employee.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @interface IEmployee
+                         * @property {string|null} [orderBy] Employee orderBy
+                         * @property {number|null} [start] Employee start
+                         * @property {number|null} [pageSize] Employee pageSize
+                         * @property {string|null} [id] Employee id
+                         * @property {string|null} [account] Employee account
+                         * @property {string|null} [name] Employee name
+                         * @property {string|null} [mobile] Employee mobile
+                         * @property {string|null} [email] Employee email
+                         * @property {number|null} [gender] Employee gender
+                         * @property {string|null} [deptName] Employee deptName
+                         * @property {string|null} [position] Employee position
+                         * @property {string|null} [password] Employee password
+                         * @property {string|null} [avatar] Employee avatar
+                         * @property {number|null} [admin] Employee admin
+                         * @property {number|Long|null} [createDate] Employee createDate
+                         * @property {string|null} [number] Employee number
+                         * @property {number|Long|null} [entryTime] Employee entryTime
+                         * @property {number|Long|null} [birthday] Employee birthday
+                         * @property {string|null} [address] Employee address
+                         * @property {string|null} [idcard] Employee idcard
+                         * @property {string|null} [deptId] Employee deptId
+                         * @property {number|null} [state] Employee state
+                         * @property {number|null} [employeeNo] Employee employeeNo
+                         * @property {string|null} [token] Employee token
+                         */
+
+                        /**
+                         * Constructs a new Employee.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @classdesc Represents an Employee.
+                         * @implements IEmployee
+                         * @constructor
+                         * @param {com.xueershangda.tianxun.employee.model.IEmployee=} [properties] Properties to set
+                         */
+                        function Employee(properties) {
+                            if (properties)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null)
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+
+                        /**
+                         * Employee orderBy.
+                         * @member {string} orderBy
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.orderBy = "";
+
+                        /**
+                         * Employee start.
+                         * @member {number} start
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.start = 0;
+
+                        /**
+                         * Employee pageSize.
+                         * @member {number} pageSize
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.pageSize = 0;
+
+                        /**
+                         * Employee id.
+                         * @member {string} id
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.id = "";
+
+                        /**
+                         * Employee account.
+                         * @member {string} account
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.account = "";
+
+                        /**
+                         * Employee name.
+                         * @member {string} name
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.name = "";
+
+                        /**
+                         * Employee mobile.
+                         * @member {string} mobile
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.mobile = "";
+
+                        /**
+                         * Employee email.
+                         * @member {string} email
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.email = "";
+
+                        /**
+                         * Employee gender.
+                         * @member {number} gender
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.gender = 0;
+
+                        /**
+                         * Employee deptName.
+                         * @member {string} deptName
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.deptName = "";
+
+                        /**
+                         * Employee position.
+                         * @member {string} position
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.position = "";
+
+                        /**
+                         * Employee password.
+                         * @member {string} password
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.password = "";
+
+                        /**
+                         * Employee avatar.
+                         * @member {string} avatar
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.avatar = "";
+
+                        /**
+                         * Employee admin.
+                         * @member {number} admin
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.admin = 0;
+
+                        /**
+                         * Employee createDate.
+                         * @member {number|Long} createDate
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.createDate = 0;
+
+                        /**
+                         * Employee number.
+                         * @member {string} number
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.number = "";
+
+                        /**
+                         * Employee entryTime.
+                         * @member {number|Long} entryTime
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.entryTime = 0;
+
+                        /**
+                         * Employee birthday.
+                         * @member {number|Long} birthday
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.birthday = 0;
+
+                        /**
+                         * Employee address.
+                         * @member {string} address
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.address = "";
+
+                        /**
+                         * Employee idcard.
+                         * @member {string} idcard
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.idcard = "";
+
+                        /**
+                         * Employee deptId.
+                         * @member {string} deptId
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.deptId = "";
+
+                        /**
+                         * Employee state.
+                         * @member {number} state
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.state = 0;
+
+                        /**
+                         * Employee employeeNo.
+                         * @member {number} employeeNo
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.employeeNo = 0;
+
+                        /**
+                         * Employee token.
+                         * @member {string} token
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         */
+                        Employee.prototype.token = "";
+
+                        /**
+                         * Creates a new Employee instance using the specified properties.
+                         * @function create
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IEmployee=} [properties] Properties to set
+                         * @returns {com.xueershangda.tianxun.employee.model.Employee} Employee instance
+                         */
+                        Employee.create = function create(properties) {
+                            return new Employee(properties);
+                        };
+
+                        /**
+                         * Encodes the specified Employee message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Employee.verify|verify} messages.
+                         * @function encode
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IEmployee} message Employee message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        Employee.encode = function encode(message, writer) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (message.orderBy != null && message.hasOwnProperty("orderBy"))
+                                writer.uint32(/* id 1, wireType 2 =*/10).string(message.orderBy);
+                            if (message.start != null && message.hasOwnProperty("start"))
+                                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.start);
+                            if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.pageSize);
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                writer.uint32(/* id 4, wireType 2 =*/34).string(message.id);
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                writer.uint32(/* id 5, wireType 2 =*/42).string(message.account);
+                            if (message.name != null && message.hasOwnProperty("name"))
+                                writer.uint32(/* id 6, wireType 2 =*/50).string(message.name);
+                            if (message.mobile != null && message.hasOwnProperty("mobile"))
+                                writer.uint32(/* id 7, wireType 2 =*/58).string(message.mobile);
+                            if (message.email != null && message.hasOwnProperty("email"))
+                                writer.uint32(/* id 8, wireType 2 =*/66).string(message.email);
+                            if (message.gender != null && message.hasOwnProperty("gender"))
+                                writer.uint32(/* id 9, wireType 0 =*/72).int32(message.gender);
+                            if (message.deptName != null && message.hasOwnProperty("deptName"))
+                                writer.uint32(/* id 10, wireType 2 =*/82).string(message.deptName);
+                            if (message.position != null && message.hasOwnProperty("position"))
+                                writer.uint32(/* id 11, wireType 2 =*/90).string(message.position);
+                            if (message.password != null && message.hasOwnProperty("password"))
+                                writer.uint32(/* id 12, wireType 2 =*/98).string(message.password);
+                            if (message.avatar != null && message.hasOwnProperty("avatar"))
+                                writer.uint32(/* id 13, wireType 2 =*/106).string(message.avatar);
+                            if (message.admin != null && message.hasOwnProperty("admin"))
+                                writer.uint32(/* id 14, wireType 0 =*/112).int32(message.admin);
+                            if (message.createDate != null && message.hasOwnProperty("createDate"))
+                                writer.uint32(/* id 15, wireType 0 =*/120).int64(message.createDate);
+                            if (message.number != null && message.hasOwnProperty("number"))
+                                writer.uint32(/* id 16, wireType 2 =*/130).string(message.number);
+                            if (message.entryTime != null && message.hasOwnProperty("entryTime"))
+                                writer.uint32(/* id 17, wireType 0 =*/136).int64(message.entryTime);
+                            if (message.birthday != null && message.hasOwnProperty("birthday"))
+                                writer.uint32(/* id 18, wireType 0 =*/144).int64(message.birthday);
+                            if (message.address != null && message.hasOwnProperty("address"))
+                                writer.uint32(/* id 19, wireType 2 =*/154).string(message.address);
+                            if (message.idcard != null && message.hasOwnProperty("idcard"))
+                                writer.uint32(/* id 20, wireType 2 =*/162).string(message.idcard);
+                            if (message.deptId != null && message.hasOwnProperty("deptId"))
+                                writer.uint32(/* id 21, wireType 2 =*/170).string(message.deptId);
+                            if (message.state != null && message.hasOwnProperty("state"))
+                                writer.uint32(/* id 22, wireType 0 =*/176).int32(message.state);
+                            if (message.employeeNo != null && message.hasOwnProperty("employeeNo"))
+                                writer.uint32(/* id 23, wireType 0 =*/184).int32(message.employeeNo);
+                            if (message.token != null && message.hasOwnProperty("token"))
+                                writer.uint32(/* id 24, wireType 2 =*/194).string(message.token);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified Employee message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Employee.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IEmployee} message Employee message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        Employee.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer).ldelim();
+                        };
+
+                        /**
+                         * Decodes an Employee message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {com.xueershangda.tianxun.employee.model.Employee} Employee
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        Employee.decode = function decode(reader, length) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.employee.model.Employee();
+                            while (reader.pos < end) {
+                                let tag = reader.uint32();
+                                switch (tag >>> 3) {
+                                case 1:
+                                    message.orderBy = reader.string();
+                                    break;
+                                case 2:
+                                    message.start = reader.int32();
+                                    break;
+                                case 3:
+                                    message.pageSize = reader.int32();
+                                    break;
+                                case 4:
+                                    message.id = reader.string();
+                                    break;
+                                case 5:
+                                    message.account = reader.string();
+                                    break;
+                                case 6:
+                                    message.name = reader.string();
+                                    break;
+                                case 7:
+                                    message.mobile = reader.string();
+                                    break;
+                                case 8:
+                                    message.email = reader.string();
+                                    break;
+                                case 9:
+                                    message.gender = reader.int32();
+                                    break;
+                                case 10:
+                                    message.deptName = reader.string();
+                                    break;
+                                case 11:
+                                    message.position = reader.string();
+                                    break;
+                                case 12:
+                                    message.password = reader.string();
+                                    break;
+                                case 13:
+                                    message.avatar = reader.string();
+                                    break;
+                                case 14:
+                                    message.admin = reader.int32();
+                                    break;
+                                case 15:
+                                    message.createDate = reader.int64();
+                                    break;
+                                case 16:
+                                    message.number = reader.string();
+                                    break;
+                                case 17:
+                                    message.entryTime = reader.int64();
+                                    break;
+                                case 18:
+                                    message.birthday = reader.int64();
+                                    break;
+                                case 19:
+                                    message.address = reader.string();
+                                    break;
+                                case 20:
+                                    message.idcard = reader.string();
+                                    break;
+                                case 21:
+                                    message.deptId = reader.string();
+                                    break;
+                                case 22:
+                                    message.state = reader.int32();
+                                    break;
+                                case 23:
+                                    message.employeeNo = reader.int32();
+                                    break;
+                                case 24:
+                                    message.token = reader.string();
+                                    break;
+                                default:
+                                    reader.skipType(tag & 7);
+                                    break;
+                                }
+                            }
+                            return message;
+                        };
+
+                        /**
+                         * Decodes an Employee message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {com.xueershangda.tianxun.employee.model.Employee} Employee
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        Employee.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+
+                        /**
+                         * Verifies an Employee message.
+                         * @function verify
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        Employee.verify = function verify(message) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (message.orderBy != null && message.hasOwnProperty("orderBy"))
+                                if (!$util.isString(message.orderBy))
+                                    return "orderBy: string expected";
+                            if (message.start != null && message.hasOwnProperty("start"))
+                                if (!$util.isInteger(message.start))
+                                    return "start: integer expected";
+                            if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                                if (!$util.isInteger(message.pageSize))
+                                    return "pageSize: integer expected";
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                if (!$util.isString(message.id))
+                                    return "id: string expected";
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                if (!$util.isString(message.account))
+                                    return "account: string expected";
+                            if (message.name != null && message.hasOwnProperty("name"))
+                                if (!$util.isString(message.name))
+                                    return "name: string expected";
+                            if (message.mobile != null && message.hasOwnProperty("mobile"))
+                                if (!$util.isString(message.mobile))
+                                    return "mobile: string expected";
+                            if (message.email != null && message.hasOwnProperty("email"))
+                                if (!$util.isString(message.email))
+                                    return "email: string expected";
+                            if (message.gender != null && message.hasOwnProperty("gender"))
+                                if (!$util.isInteger(message.gender))
+                                    return "gender: integer expected";
+                            if (message.deptName != null && message.hasOwnProperty("deptName"))
+                                if (!$util.isString(message.deptName))
+                                    return "deptName: string expected";
+                            if (message.position != null && message.hasOwnProperty("position"))
+                                if (!$util.isString(message.position))
+                                    return "position: string expected";
+                            if (message.password != null && message.hasOwnProperty("password"))
+                                if (!$util.isString(message.password))
+                                    return "password: string expected";
+                            if (message.avatar != null && message.hasOwnProperty("avatar"))
+                                if (!$util.isString(message.avatar))
+                                    return "avatar: string expected";
+                            if (message.admin != null && message.hasOwnProperty("admin"))
+                                if (!$util.isInteger(message.admin))
+                                    return "admin: integer expected";
+                            if (message.createDate != null && message.hasOwnProperty("createDate"))
+                                if (!$util.isInteger(message.createDate) && !(message.createDate && $util.isInteger(message.createDate.low) && $util.isInteger(message.createDate.high)))
+                                    return "createDate: integer|Long expected";
+                            if (message.number != null && message.hasOwnProperty("number"))
+                                if (!$util.isString(message.number))
+                                    return "number: string expected";
+                            if (message.entryTime != null && message.hasOwnProperty("entryTime"))
+                                if (!$util.isInteger(message.entryTime) && !(message.entryTime && $util.isInteger(message.entryTime.low) && $util.isInteger(message.entryTime.high)))
+                                    return "entryTime: integer|Long expected";
+                            if (message.birthday != null && message.hasOwnProperty("birthday"))
+                                if (!$util.isInteger(message.birthday) && !(message.birthday && $util.isInteger(message.birthday.low) && $util.isInteger(message.birthday.high)))
+                                    return "birthday: integer|Long expected";
+                            if (message.address != null && message.hasOwnProperty("address"))
+                                if (!$util.isString(message.address))
+                                    return "address: string expected";
+                            if (message.idcard != null && message.hasOwnProperty("idcard"))
+                                if (!$util.isString(message.idcard))
+                                    return "idcard: string expected";
+                            if (message.deptId != null && message.hasOwnProperty("deptId"))
+                                if (!$util.isString(message.deptId))
+                                    return "deptId: string expected";
+                            if (message.state != null && message.hasOwnProperty("state"))
+                                if (!$util.isInteger(message.state))
+                                    return "state: integer expected";
+                            if (message.employeeNo != null && message.hasOwnProperty("employeeNo"))
+                                if (!$util.isInteger(message.employeeNo))
+                                    return "employeeNo: integer expected";
+                            if (message.token != null && message.hasOwnProperty("token"))
+                                if (!$util.isString(message.token))
+                                    return "token: string expected";
+                            return null;
+                        };
+
+                        /**
+                         * Creates an Employee message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {com.xueershangda.tianxun.employee.model.Employee} Employee
+                         */
+                        Employee.fromObject = function fromObject(object) {
+                            if (object instanceof $root.com.xueershangda.tianxun.employee.model.Employee)
+                                return object;
+                            let message = new $root.com.xueershangda.tianxun.employee.model.Employee();
+                            if (object.orderBy != null)
+                                message.orderBy = String(object.orderBy);
+                            if (object.start != null)
+                                message.start = object.start | 0;
+                            if (object.pageSize != null)
+                                message.pageSize = object.pageSize | 0;
+                            if (object.id != null)
+                                message.id = String(object.id);
+                            if (object.account != null)
+                                message.account = String(object.account);
+                            if (object.name != null)
+                                message.name = String(object.name);
+                            if (object.mobile != null)
+                                message.mobile = String(object.mobile);
+                            if (object.email != null)
+                                message.email = String(object.email);
+                            if (object.gender != null)
+                                message.gender = object.gender | 0;
+                            if (object.deptName != null)
+                                message.deptName = String(object.deptName);
+                            if (object.position != null)
+                                message.position = String(object.position);
+                            if (object.password != null)
+                                message.password = String(object.password);
+                            if (object.avatar != null)
+                                message.avatar = String(object.avatar);
+                            if (object.admin != null)
+                                message.admin = object.admin | 0;
+                            if (object.createDate != null)
+                                if ($util.Long)
+                                    (message.createDate = $util.Long.fromValue(object.createDate)).unsigned = false;
+                                else if (typeof object.createDate === "string")
+                                    message.createDate = parseInt(object.createDate, 10);
+                                else if (typeof object.createDate === "number")
+                                    message.createDate = object.createDate;
+                                else if (typeof object.createDate === "object")
+                                    message.createDate = new $util.LongBits(object.createDate.low >>> 0, object.createDate.high >>> 0).toNumber();
+                            if (object.number != null)
+                                message.number = String(object.number);
+                            if (object.entryTime != null)
+                                if ($util.Long)
+                                    (message.entryTime = $util.Long.fromValue(object.entryTime)).unsigned = false;
+                                else if (typeof object.entryTime === "string")
+                                    message.entryTime = parseInt(object.entryTime, 10);
+                                else if (typeof object.entryTime === "number")
+                                    message.entryTime = object.entryTime;
+                                else if (typeof object.entryTime === "object")
+                                    message.entryTime = new $util.LongBits(object.entryTime.low >>> 0, object.entryTime.high >>> 0).toNumber();
+                            if (object.birthday != null)
+                                if ($util.Long)
+                                    (message.birthday = $util.Long.fromValue(object.birthday)).unsigned = false;
+                                else if (typeof object.birthday === "string")
+                                    message.birthday = parseInt(object.birthday, 10);
+                                else if (typeof object.birthday === "number")
+                                    message.birthday = object.birthday;
+                                else if (typeof object.birthday === "object")
+                                    message.birthday = new $util.LongBits(object.birthday.low >>> 0, object.birthday.high >>> 0).toNumber();
+                            if (object.address != null)
+                                message.address = String(object.address);
+                            if (object.idcard != null)
+                                message.idcard = String(object.idcard);
+                            if (object.deptId != null)
+                                message.deptId = String(object.deptId);
+                            if (object.state != null)
+                                message.state = object.state | 0;
+                            if (object.employeeNo != null)
+                                message.employeeNo = object.employeeNo | 0;
+                            if (object.token != null)
+                                message.token = String(object.token);
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from an Employee message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.Employee} message Employee
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        Employee.toObject = function toObject(message, options) {
+                            if (!options)
+                                options = {};
+                            let object = {};
+                            if (options.defaults) {
+                                object.orderBy = "";
+                                object.start = 0;
+                                object.pageSize = 0;
+                                object.id = "";
+                                object.account = "";
+                                object.name = "";
+                                object.mobile = "";
+                                object.email = "";
+                                object.gender = 0;
+                                object.deptName = "";
+                                object.position = "";
+                                object.password = "";
+                                object.avatar = "";
+                                object.admin = 0;
+                                object.createDate = 0;
+                                object.number = "";
+                                object.entryTime = 0;
+                                object.birthday = 0;
+                                object.address = "";
+                                object.idcard = "";
+                                object.deptId = "";
+                                object.state = 0;
+                                object.employeeNo = 0;
+                                object.token = "";
+                            }
+                            if (message.orderBy != null && message.hasOwnProperty("orderBy"))
+                                object.orderBy = message.orderBy;
+                            if (message.start != null && message.hasOwnProperty("start"))
+                                object.start = message.start;
+                            if (message.pageSize != null && message.hasOwnProperty("pageSize"))
+                                object.pageSize = message.pageSize;
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                object.id = message.id;
+                            if (message.account != null && message.hasOwnProperty("account"))
+                                object.account = message.account;
+                            if (message.name != null && message.hasOwnProperty("name"))
+                                object.name = message.name;
+                            if (message.mobile != null && message.hasOwnProperty("mobile"))
+                                object.mobile = message.mobile;
+                            if (message.email != null && message.hasOwnProperty("email"))
+                                object.email = message.email;
+                            if (message.gender != null && message.hasOwnProperty("gender"))
+                                object.gender = message.gender;
+                            if (message.deptName != null && message.hasOwnProperty("deptName"))
+                                object.deptName = message.deptName;
+                            if (message.position != null && message.hasOwnProperty("position"))
+                                object.position = message.position;
+                            if (message.password != null && message.hasOwnProperty("password"))
+                                object.password = message.password;
+                            if (message.avatar != null && message.hasOwnProperty("avatar"))
+                                object.avatar = message.avatar;
+                            if (message.admin != null && message.hasOwnProperty("admin"))
+                                object.admin = message.admin;
+                            if (message.createDate != null && message.hasOwnProperty("createDate"))
+                                if (typeof message.createDate === "number")
+                                    object.createDate = options.longs === String ? String(message.createDate) : message.createDate;
+                                else
+                                    object.createDate = options.longs === String ? $util.Long.prototype.toString.call(message.createDate) : options.longs === Number ? new $util.LongBits(message.createDate.low >>> 0, message.createDate.high >>> 0).toNumber() : message.createDate;
+                            if (message.number != null && message.hasOwnProperty("number"))
+                                object.number = message.number;
+                            if (message.entryTime != null && message.hasOwnProperty("entryTime"))
+                                if (typeof message.entryTime === "number")
+                                    object.entryTime = options.longs === String ? String(message.entryTime) : message.entryTime;
+                                else
+                                    object.entryTime = options.longs === String ? $util.Long.prototype.toString.call(message.entryTime) : options.longs === Number ? new $util.LongBits(message.entryTime.low >>> 0, message.entryTime.high >>> 0).toNumber() : message.entryTime;
+                            if (message.birthday != null && message.hasOwnProperty("birthday"))
+                                if (typeof message.birthday === "number")
+                                    object.birthday = options.longs === String ? String(message.birthday) : message.birthday;
+                                else
+                                    object.birthday = options.longs === String ? $util.Long.prototype.toString.call(message.birthday) : options.longs === Number ? new $util.LongBits(message.birthday.low >>> 0, message.birthday.high >>> 0).toNumber() : message.birthday;
+                            if (message.address != null && message.hasOwnProperty("address"))
+                                object.address = message.address;
+                            if (message.idcard != null && message.hasOwnProperty("idcard"))
+                                object.idcard = message.idcard;
+                            if (message.deptId != null && message.hasOwnProperty("deptId"))
+                                object.deptId = message.deptId;
+                            if (message.state != null && message.hasOwnProperty("state"))
+                                object.state = message.state;
+                            if (message.employeeNo != null && message.hasOwnProperty("employeeNo"))
+                                object.employeeNo = message.employeeNo;
+                            if (message.token != null && message.hasOwnProperty("token"))
+                                object.token = message.token;
+                            return object;
+                        };
+
+                        /**
+                         * Converts this Employee to JSON.
+                         * @function toJSON
+                         * @memberof com.xueershangda.tianxun.employee.model.Employee
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        Employee.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        return Employee;
+                    })();
+
+                    model.App = (function() {
+
+                        /**
+                         * Properties of an App.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @interface IApp
+                         * @property {string|null} [id] App id
+                         * @property {string|null} [name] App name
+                         * @property {string|null} [description] App description
+                         */
+
+                        /**
+                         * Constructs a new App.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @classdesc Represents an App.
+                         * @implements IApp
+                         * @constructor
+                         * @param {com.xueershangda.tianxun.employee.model.IApp=} [properties] Properties to set
+                         */
+                        function App(properties) {
+                            if (properties)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null)
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+
+                        /**
+                         * App id.
+                         * @member {string} id
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @instance
+                         */
+                        App.prototype.id = "";
+
+                        /**
+                         * App name.
+                         * @member {string} name
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @instance
+                         */
+                        App.prototype.name = "";
+
+                        /**
+                         * App description.
+                         * @member {string} description
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @instance
+                         */
+                        App.prototype.description = "";
+
+                        /**
+                         * Creates a new App instance using the specified properties.
+                         * @function create
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IApp=} [properties] Properties to set
+                         * @returns {com.xueershangda.tianxun.employee.model.App} App instance
+                         */
+                        App.create = function create(properties) {
+                            return new App(properties);
+                        };
+
+                        /**
+                         * Encodes the specified App message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.App.verify|verify} messages.
+                         * @function encode
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IApp} message App message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        App.encode = function encode(message, writer) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+                            if (message.name != null && message.hasOwnProperty("name"))
+                                writer.uint32(/* id 2, wireType 2 =*/18).string(message.name);
+                            if (message.description != null && message.hasOwnProperty("description"))
+                                writer.uint32(/* id 3, wireType 2 =*/26).string(message.description);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified App message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.App.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IApp} message App message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        App.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer).ldelim();
+                        };
+
+                        /**
+                         * Decodes an App message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {com.xueershangda.tianxun.employee.model.App} App
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        App.decode = function decode(reader, length) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.employee.model.App();
+                            while (reader.pos < end) {
+                                let tag = reader.uint32();
+                                switch (tag >>> 3) {
+                                case 1:
+                                    message.id = reader.string();
+                                    break;
+                                case 2:
+                                    message.name = reader.string();
+                                    break;
+                                case 3:
+                                    message.description = reader.string();
+                                    break;
+                                default:
+                                    reader.skipType(tag & 7);
+                                    break;
+                                }
+                            }
+                            return message;
+                        };
+
+                        /**
+                         * Decodes an App message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {com.xueershangda.tianxun.employee.model.App} App
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        App.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+
+                        /**
+                         * Verifies an App message.
+                         * @function verify
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        App.verify = function verify(message) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                if (!$util.isString(message.id))
+                                    return "id: string expected";
+                            if (message.name != null && message.hasOwnProperty("name"))
+                                if (!$util.isString(message.name))
+                                    return "name: string expected";
+                            if (message.description != null && message.hasOwnProperty("description"))
+                                if (!$util.isString(message.description))
+                                    return "description: string expected";
+                            return null;
+                        };
+
+                        /**
+                         * Creates an App message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {com.xueershangda.tianxun.employee.model.App} App
+                         */
+                        App.fromObject = function fromObject(object) {
+                            if (object instanceof $root.com.xueershangda.tianxun.employee.model.App)
+                                return object;
+                            let message = new $root.com.xueershangda.tianxun.employee.model.App();
+                            if (object.id != null)
+                                message.id = String(object.id);
+                            if (object.name != null)
+                                message.name = String(object.name);
+                            if (object.description != null)
+                                message.description = String(object.description);
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from an App message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.App} message App
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        App.toObject = function toObject(message, options) {
+                            if (!options)
+                                options = {};
+                            let object = {};
+                            if (options.defaults) {
+                                object.id = "";
+                                object.name = "";
+                                object.description = "";
+                            }
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                object.id = message.id;
+                            if (message.name != null && message.hasOwnProperty("name"))
+                                object.name = message.name;
+                            if (message.description != null && message.hasOwnProperty("description"))
+                                object.description = message.description;
+                            return object;
+                        };
+
+                        /**
+                         * Converts this App to JSON.
+                         * @function toJSON
+                         * @memberof com.xueershangda.tianxun.employee.model.App
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        App.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        return App;
+                    })();
+
+                    model.Menu = (function() {
+
+                        /**
+                         * Properties of a Menu.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @interface IMenu
+                         * @property {string|null} [id] Menu id
+                         * @property {string|null} [text] Menu text
+                         * @property {string|null} [i18n] Menu i18n
+                         * @property {boolean|null} [group] Menu group
+                         * @property {boolean|null} [hideInBreadcrumb] Menu hideInBreadcrumb
+                         * @property {Array.<com.xueershangda.tianxun.employee.model.ISubmenu>|null} [children] Menu children
+                         * @property {string|null} [name] Menu name
+                         * @property {boolean|null} [enabled] Menu enabled
+                         * @property {number|null} [orders] Menu orders
+                         * @property {number|null} [state] Menu state
+                         * @property {string|null} [icon] Menu icon
+                         * @property {boolean|null} [initial] Menu initial
+                         */
+
+                        /**
+                         * Constructs a new Menu.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @classdesc Represents a Menu.
+                         * @implements IMenu
+                         * @constructor
+                         * @param {com.xueershangda.tianxun.employee.model.IMenu=} [properties] Properties to set
+                         */
+                        function Menu(properties) {
+                            this.children = [];
+                            if (properties)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null)
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+
+                        /**
+                         * Menu id.
+                         * @member {string} id
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.id = "";
+
+                        /**
+                         * Menu text.
+                         * @member {string} text
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.text = "";
+
+                        /**
+                         * Menu i18n.
+                         * @member {string} i18n
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.i18n = "";
+
+                        /**
+                         * Menu group.
+                         * @member {boolean} group
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.group = false;
+
+                        /**
+                         * Menu hideInBreadcrumb.
+                         * @member {boolean} hideInBreadcrumb
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.hideInBreadcrumb = false;
+
+                        /**
+                         * Menu children.
+                         * @member {Array.<com.xueershangda.tianxun.employee.model.ISubmenu>} children
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.children = $util.emptyArray;
+
+                        /**
+                         * Menu name.
+                         * @member {string} name
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.name = "";
+
+                        /**
+                         * Menu enabled.
+                         * @member {boolean} enabled
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.enabled = false;
+
+                        /**
+                         * Menu orders.
+                         * @member {number} orders
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.orders = 0;
+
+                        /**
+                         * Menu state.
+                         * @member {number} state
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.state = 0;
+
+                        /**
+                         * Menu icon.
+                         * @member {string} icon
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.icon = "";
+
+                        /**
+                         * Menu initial.
+                         * @member {boolean} initial
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         */
+                        Menu.prototype.initial = false;
+
+                        /**
+                         * Creates a new Menu instance using the specified properties.
+                         * @function create
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IMenu=} [properties] Properties to set
+                         * @returns {com.xueershangda.tianxun.employee.model.Menu} Menu instance
+                         */
+                        Menu.create = function create(properties) {
+                            return new Menu(properties);
+                        };
+
+                        /**
+                         * Encodes the specified Menu message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Menu.verify|verify} messages.
+                         * @function encode
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IMenu} message Menu message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        Menu.encode = function encode(message, writer) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+                            if (message.text != null && message.hasOwnProperty("text"))
+                                writer.uint32(/* id 2, wireType 2 =*/18).string(message.text);
+                            if (message.i18n != null && message.hasOwnProperty("i18n"))
+                                writer.uint32(/* id 3, wireType 2 =*/26).string(message.i18n);
+                            if (message.group != null && message.hasOwnProperty("group"))
+                                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.group);
+                            if (message.hideInBreadcrumb != null && message.hasOwnProperty("hideInBreadcrumb"))
+                                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.hideInBreadcrumb);
+                            if (message.children != null && message.children.length)
+                                for (let i = 0; i < message.children.length; ++i)
+                                    $root.com.xueershangda.tianxun.employee.model.Submenu.encode(message.children[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
+                            if (message.name != null && message.hasOwnProperty("name"))
+                                writer.uint32(/* id 7, wireType 2 =*/58).string(message.name);
+                            if (message.enabled != null && message.hasOwnProperty("enabled"))
+                                writer.uint32(/* id 8, wireType 0 =*/64).bool(message.enabled);
+                            if (message.orders != null && message.hasOwnProperty("orders"))
+                                writer.uint32(/* id 9, wireType 0 =*/72).int32(message.orders);
+                            if (message.state != null && message.hasOwnProperty("state"))
+                                writer.uint32(/* id 10, wireType 0 =*/80).int32(message.state);
+                            if (message.icon != null && message.hasOwnProperty("icon"))
+                                writer.uint32(/* id 11, wireType 2 =*/90).string(message.icon);
+                            if (message.initial != null && message.hasOwnProperty("initial"))
+                                writer.uint32(/* id 12, wireType 0 =*/96).bool(message.initial);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified Menu message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Menu.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IMenu} message Menu message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        Menu.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer).ldelim();
+                        };
+
+                        /**
+                         * Decodes a Menu message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {com.xueershangda.tianxun.employee.model.Menu} Menu
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        Menu.decode = function decode(reader, length) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.employee.model.Menu();
+                            while (reader.pos < end) {
+                                let tag = reader.uint32();
+                                switch (tag >>> 3) {
+                                case 1:
+                                    message.id = reader.string();
+                                    break;
+                                case 2:
+                                    message.text = reader.string();
+                                    break;
+                                case 3:
+                                    message.i18n = reader.string();
+                                    break;
+                                case 4:
+                                    message.group = reader.bool();
+                                    break;
+                                case 5:
+                                    message.hideInBreadcrumb = reader.bool();
+                                    break;
+                                case 6:
+                                    if (!(message.children && message.children.length))
+                                        message.children = [];
+                                    message.children.push($root.com.xueershangda.tianxun.employee.model.Submenu.decode(reader, reader.uint32()));
+                                    break;
+                                case 7:
+                                    message.name = reader.string();
+                                    break;
+                                case 8:
+                                    message.enabled = reader.bool();
+                                    break;
+                                case 9:
+                                    message.orders = reader.int32();
+                                    break;
+                                case 10:
+                                    message.state = reader.int32();
+                                    break;
+                                case 11:
+                                    message.icon = reader.string();
+                                    break;
+                                case 12:
+                                    message.initial = reader.bool();
+                                    break;
+                                default:
+                                    reader.skipType(tag & 7);
+                                    break;
+                                }
+                            }
+                            return message;
+                        };
+
+                        /**
+                         * Decodes a Menu message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {com.xueershangda.tianxun.employee.model.Menu} Menu
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        Menu.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+
+                        /**
+                         * Verifies a Menu message.
+                         * @function verify
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        Menu.verify = function verify(message) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                if (!$util.isString(message.id))
+                                    return "id: string expected";
+                            if (message.text != null && message.hasOwnProperty("text"))
+                                if (!$util.isString(message.text))
+                                    return "text: string expected";
+                            if (message.i18n != null && message.hasOwnProperty("i18n"))
+                                if (!$util.isString(message.i18n))
+                                    return "i18n: string expected";
+                            if (message.group != null && message.hasOwnProperty("group"))
+                                if (typeof message.group !== "boolean")
+                                    return "group: boolean expected";
+                            if (message.hideInBreadcrumb != null && message.hasOwnProperty("hideInBreadcrumb"))
+                                if (typeof message.hideInBreadcrumb !== "boolean")
+                                    return "hideInBreadcrumb: boolean expected";
+                            if (message.children != null && message.hasOwnProperty("children")) {
+                                if (!Array.isArray(message.children))
+                                    return "children: array expected";
+                                for (let i = 0; i < message.children.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.employee.model.Submenu.verify(message.children[i]);
+                                    if (error)
+                                        return "children." + error;
+                                }
+                            }
+                            if (message.name != null && message.hasOwnProperty("name"))
+                                if (!$util.isString(message.name))
+                                    return "name: string expected";
+                            if (message.enabled != null && message.hasOwnProperty("enabled"))
+                                if (typeof message.enabled !== "boolean")
+                                    return "enabled: boolean expected";
+                            if (message.orders != null && message.hasOwnProperty("orders"))
+                                if (!$util.isInteger(message.orders))
+                                    return "orders: integer expected";
+                            if (message.state != null && message.hasOwnProperty("state"))
+                                if (!$util.isInteger(message.state))
+                                    return "state: integer expected";
+                            if (message.icon != null && message.hasOwnProperty("icon"))
+                                if (!$util.isString(message.icon))
+                                    return "icon: string expected";
+                            if (message.initial != null && message.hasOwnProperty("initial"))
+                                if (typeof message.initial !== "boolean")
+                                    return "initial: boolean expected";
+                            return null;
+                        };
+
+                        /**
+                         * Creates a Menu message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {com.xueershangda.tianxun.employee.model.Menu} Menu
+                         */
+                        Menu.fromObject = function fromObject(object) {
+                            if (object instanceof $root.com.xueershangda.tianxun.employee.model.Menu)
+                                return object;
+                            let message = new $root.com.xueershangda.tianxun.employee.model.Menu();
+                            if (object.id != null)
+                                message.id = String(object.id);
+                            if (object.text != null)
+                                message.text = String(object.text);
+                            if (object.i18n != null)
+                                message.i18n = String(object.i18n);
+                            if (object.group != null)
+                                message.group = Boolean(object.group);
+                            if (object.hideInBreadcrumb != null)
+                                message.hideInBreadcrumb = Boolean(object.hideInBreadcrumb);
+                            if (object.children) {
+                                if (!Array.isArray(object.children))
+                                    throw TypeError(".com.xueershangda.tianxun.employee.model.Menu.children: array expected");
+                                message.children = [];
+                                for (let i = 0; i < object.children.length; ++i) {
+                                    if (typeof object.children[i] !== "object")
+                                        throw TypeError(".com.xueershangda.tianxun.employee.model.Menu.children: object expected");
+                                    message.children[i] = $root.com.xueershangda.tianxun.employee.model.Submenu.fromObject(object.children[i]);
+                                }
+                            }
+                            if (object.name != null)
+                                message.name = String(object.name);
+                            if (object.enabled != null)
+                                message.enabled = Boolean(object.enabled);
+                            if (object.orders != null)
+                                message.orders = object.orders | 0;
+                            if (object.state != null)
+                                message.state = object.state | 0;
+                            if (object.icon != null)
+                                message.icon = String(object.icon);
+                            if (object.initial != null)
+                                message.initial = Boolean(object.initial);
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from a Menu message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.Menu} message Menu
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        Menu.toObject = function toObject(message, options) {
+                            if (!options)
+                                options = {};
+                            let object = {};
+                            if (options.arrays || options.defaults)
+                                object.children = [];
+                            if (options.defaults) {
+                                object.id = "";
+                                object.text = "";
+                                object.i18n = "";
+                                object.group = false;
+                                object.hideInBreadcrumb = false;
+                                object.name = "";
+                                object.enabled = false;
+                                object.orders = 0;
+                                object.state = 0;
+                                object.icon = "";
+                                object.initial = false;
+                            }
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                object.id = message.id;
+                            if (message.text != null && message.hasOwnProperty("text"))
+                                object.text = message.text;
+                            if (message.i18n != null && message.hasOwnProperty("i18n"))
+                                object.i18n = message.i18n;
+                            if (message.group != null && message.hasOwnProperty("group"))
+                                object.group = message.group;
+                            if (message.hideInBreadcrumb != null && message.hasOwnProperty("hideInBreadcrumb"))
+                                object.hideInBreadcrumb = message.hideInBreadcrumb;
+                            if (message.children && message.children.length) {
+                                object.children = [];
+                                for (let j = 0; j < message.children.length; ++j)
+                                    object.children[j] = $root.com.xueershangda.tianxun.employee.model.Submenu.toObject(message.children[j], options);
+                            }
+                            if (message.name != null && message.hasOwnProperty("name"))
+                                object.name = message.name;
+                            if (message.enabled != null && message.hasOwnProperty("enabled"))
+                                object.enabled = message.enabled;
+                            if (message.orders != null && message.hasOwnProperty("orders"))
+                                object.orders = message.orders;
+                            if (message.state != null && message.hasOwnProperty("state"))
+                                object.state = message.state;
+                            if (message.icon != null && message.hasOwnProperty("icon"))
+                                object.icon = message.icon;
+                            if (message.initial != null && message.hasOwnProperty("initial"))
+                                object.initial = message.initial;
+                            return object;
+                        };
+
+                        /**
+                         * Converts this Menu to JSON.
+                         * @function toJSON
+                         * @memberof com.xueershangda.tianxun.employee.model.Menu
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        Menu.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        return Menu;
+                    })();
+
+                    model.Submenu = (function() {
+
+                        /**
+                         * Properties of a Submenu.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @interface ISubmenu
+                         * @property {string|null} [id] Submenu id
+                         * @property {string|null} [text] Submenu text
+                         * @property {string|null} [i18n] Submenu i18n
+                         * @property {string|null} [icon] Submenu icon
+                         * @property {string|null} [link] Submenu link
+                         * @property {Array.<com.xueershangda.tianxun.employee.model.IMenuItem>|null} [children] Submenu children
+                         * @property {boolean|null} [shortcutRoot] Submenu shortcutRoot
+                         */
+
+                        /**
+                         * Constructs a new Submenu.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @classdesc Represents a Submenu.
+                         * @implements ISubmenu
+                         * @constructor
+                         * @param {com.xueershangda.tianxun.employee.model.ISubmenu=} [properties] Properties to set
+                         */
+                        function Submenu(properties) {
+                            this.children = [];
+                            if (properties)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null)
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+
+                        /**
+                         * Submenu id.
+                         * @member {string} id
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @instance
+                         */
+                        Submenu.prototype.id = "";
+
+                        /**
+                         * Submenu text.
+                         * @member {string} text
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @instance
+                         */
+                        Submenu.prototype.text = "";
+
+                        /**
+                         * Submenu i18n.
+                         * @member {string} i18n
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @instance
+                         */
+                        Submenu.prototype.i18n = "";
+
+                        /**
+                         * Submenu icon.
+                         * @member {string} icon
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @instance
+                         */
+                        Submenu.prototype.icon = "";
+
+                        /**
+                         * Submenu link.
+                         * @member {string} link
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @instance
+                         */
+                        Submenu.prototype.link = "";
+
+                        /**
+                         * Submenu children.
+                         * @member {Array.<com.xueershangda.tianxun.employee.model.IMenuItem>} children
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @instance
+                         */
+                        Submenu.prototype.children = $util.emptyArray;
+
+                        /**
+                         * Submenu shortcutRoot.
+                         * @member {boolean} shortcutRoot
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @instance
+                         */
+                        Submenu.prototype.shortcutRoot = false;
+
+                        /**
+                         * Creates a new Submenu instance using the specified properties.
+                         * @function create
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.ISubmenu=} [properties] Properties to set
+                         * @returns {com.xueershangda.tianxun.employee.model.Submenu} Submenu instance
+                         */
+                        Submenu.create = function create(properties) {
+                            return new Submenu(properties);
+                        };
+
+                        /**
+                         * Encodes the specified Submenu message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Submenu.verify|verify} messages.
+                         * @function encode
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.ISubmenu} message Submenu message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        Submenu.encode = function encode(message, writer) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+                            if (message.text != null && message.hasOwnProperty("text"))
+                                writer.uint32(/* id 2, wireType 2 =*/18).string(message.text);
+                            if (message.i18n != null && message.hasOwnProperty("i18n"))
+                                writer.uint32(/* id 3, wireType 2 =*/26).string(message.i18n);
+                            if (message.icon != null && message.hasOwnProperty("icon"))
+                                writer.uint32(/* id 4, wireType 2 =*/34).string(message.icon);
+                            if (message.link != null && message.hasOwnProperty("link"))
+                                writer.uint32(/* id 5, wireType 2 =*/42).string(message.link);
+                            if (message.children != null && message.children.length)
+                                for (let i = 0; i < message.children.length; ++i)
+                                    $root.com.xueershangda.tianxun.employee.model.MenuItem.encode(message.children[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
+                            if (message.shortcutRoot != null && message.hasOwnProperty("shortcutRoot"))
+                                writer.uint32(/* id 7, wireType 0 =*/56).bool(message.shortcutRoot);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified Submenu message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.Submenu.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.ISubmenu} message Submenu message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        Submenu.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer).ldelim();
+                        };
+
+                        /**
+                         * Decodes a Submenu message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {com.xueershangda.tianxun.employee.model.Submenu} Submenu
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        Submenu.decode = function decode(reader, length) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.employee.model.Submenu();
+                            while (reader.pos < end) {
+                                let tag = reader.uint32();
+                                switch (tag >>> 3) {
+                                case 1:
+                                    message.id = reader.string();
+                                    break;
+                                case 2:
+                                    message.text = reader.string();
+                                    break;
+                                case 3:
+                                    message.i18n = reader.string();
+                                    break;
+                                case 4:
+                                    message.icon = reader.string();
+                                    break;
+                                case 5:
+                                    message.link = reader.string();
+                                    break;
+                                case 6:
+                                    if (!(message.children && message.children.length))
+                                        message.children = [];
+                                    message.children.push($root.com.xueershangda.tianxun.employee.model.MenuItem.decode(reader, reader.uint32()));
+                                    break;
+                                case 7:
+                                    message.shortcutRoot = reader.bool();
+                                    break;
+                                default:
+                                    reader.skipType(tag & 7);
+                                    break;
+                                }
+                            }
+                            return message;
+                        };
+
+                        /**
+                         * Decodes a Submenu message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {com.xueershangda.tianxun.employee.model.Submenu} Submenu
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        Submenu.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+
+                        /**
+                         * Verifies a Submenu message.
+                         * @function verify
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        Submenu.verify = function verify(message) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                if (!$util.isString(message.id))
+                                    return "id: string expected";
+                            if (message.text != null && message.hasOwnProperty("text"))
+                                if (!$util.isString(message.text))
+                                    return "text: string expected";
+                            if (message.i18n != null && message.hasOwnProperty("i18n"))
+                                if (!$util.isString(message.i18n))
+                                    return "i18n: string expected";
+                            if (message.icon != null && message.hasOwnProperty("icon"))
+                                if (!$util.isString(message.icon))
+                                    return "icon: string expected";
+                            if (message.link != null && message.hasOwnProperty("link"))
+                                if (!$util.isString(message.link))
+                                    return "link: string expected";
+                            if (message.children != null && message.hasOwnProperty("children")) {
+                                if (!Array.isArray(message.children))
+                                    return "children: array expected";
+                                for (let i = 0; i < message.children.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.employee.model.MenuItem.verify(message.children[i]);
+                                    if (error)
+                                        return "children." + error;
+                                }
+                            }
+                            if (message.shortcutRoot != null && message.hasOwnProperty("shortcutRoot"))
+                                if (typeof message.shortcutRoot !== "boolean")
+                                    return "shortcutRoot: boolean expected";
+                            return null;
+                        };
+
+                        /**
+                         * Creates a Submenu message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {com.xueershangda.tianxun.employee.model.Submenu} Submenu
+                         */
+                        Submenu.fromObject = function fromObject(object) {
+                            if (object instanceof $root.com.xueershangda.tianxun.employee.model.Submenu)
+                                return object;
+                            let message = new $root.com.xueershangda.tianxun.employee.model.Submenu();
+                            if (object.id != null)
+                                message.id = String(object.id);
+                            if (object.text != null)
+                                message.text = String(object.text);
+                            if (object.i18n != null)
+                                message.i18n = String(object.i18n);
+                            if (object.icon != null)
+                                message.icon = String(object.icon);
+                            if (object.link != null)
+                                message.link = String(object.link);
+                            if (object.children) {
+                                if (!Array.isArray(object.children))
+                                    throw TypeError(".com.xueershangda.tianxun.employee.model.Submenu.children: array expected");
+                                message.children = [];
+                                for (let i = 0; i < object.children.length; ++i) {
+                                    if (typeof object.children[i] !== "object")
+                                        throw TypeError(".com.xueershangda.tianxun.employee.model.Submenu.children: object expected");
+                                    message.children[i] = $root.com.xueershangda.tianxun.employee.model.MenuItem.fromObject(object.children[i]);
+                                }
+                            }
+                            if (object.shortcutRoot != null)
+                                message.shortcutRoot = Boolean(object.shortcutRoot);
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from a Submenu message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.Submenu} message Submenu
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        Submenu.toObject = function toObject(message, options) {
+                            if (!options)
+                                options = {};
+                            let object = {};
+                            if (options.arrays || options.defaults)
+                                object.children = [];
+                            if (options.defaults) {
+                                object.id = "";
+                                object.text = "";
+                                object.i18n = "";
+                                object.icon = "";
+                                object.link = "";
+                                object.shortcutRoot = false;
+                            }
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                object.id = message.id;
+                            if (message.text != null && message.hasOwnProperty("text"))
+                                object.text = message.text;
+                            if (message.i18n != null && message.hasOwnProperty("i18n"))
+                                object.i18n = message.i18n;
+                            if (message.icon != null && message.hasOwnProperty("icon"))
+                                object.icon = message.icon;
+                            if (message.link != null && message.hasOwnProperty("link"))
+                                object.link = message.link;
+                            if (message.children && message.children.length) {
+                                object.children = [];
+                                for (let j = 0; j < message.children.length; ++j)
+                                    object.children[j] = $root.com.xueershangda.tianxun.employee.model.MenuItem.toObject(message.children[j], options);
+                            }
+                            if (message.shortcutRoot != null && message.hasOwnProperty("shortcutRoot"))
+                                object.shortcutRoot = message.shortcutRoot;
+                            return object;
+                        };
+
+                        /**
+                         * Converts this Submenu to JSON.
+                         * @function toJSON
+                         * @memberof com.xueershangda.tianxun.employee.model.Submenu
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        Submenu.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        return Submenu;
+                    })();
+
+                    model.MenuItem = (function() {
+
+                        /**
+                         * Properties of a MenuItem.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @interface IMenuItem
+                         * @property {string|null} [id] MenuItem id
+                         * @property {string|null} [text] MenuItem text
+                         * @property {string|null} [i18n] MenuItem i18n
+                         * @property {string|null} [link] MenuItem link
+                         * @property {boolean|null} [shortcut] MenuItem shortcut
+                         * @property {boolean|null} [reuse] MenuItem reuse
+                         */
+
+                        /**
+                         * Constructs a new MenuItem.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @classdesc Represents a MenuItem.
+                         * @implements IMenuItem
+                         * @constructor
+                         * @param {com.xueershangda.tianxun.employee.model.IMenuItem=} [properties] Properties to set
+                         */
+                        function MenuItem(properties) {
+                            if (properties)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null)
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+
+                        /**
+                         * MenuItem id.
+                         * @member {string} id
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @instance
+                         */
+                        MenuItem.prototype.id = "";
+
+                        /**
+                         * MenuItem text.
+                         * @member {string} text
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @instance
+                         */
+                        MenuItem.prototype.text = "";
+
+                        /**
+                         * MenuItem i18n.
+                         * @member {string} i18n
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @instance
+                         */
+                        MenuItem.prototype.i18n = "";
+
+                        /**
+                         * MenuItem link.
+                         * @member {string} link
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @instance
+                         */
+                        MenuItem.prototype.link = "";
+
+                        /**
+                         * MenuItem shortcut.
+                         * @member {boolean} shortcut
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @instance
+                         */
+                        MenuItem.prototype.shortcut = false;
+
+                        /**
+                         * MenuItem reuse.
+                         * @member {boolean} reuse
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @instance
+                         */
+                        MenuItem.prototype.reuse = false;
+
+                        /**
+                         * Creates a new MenuItem instance using the specified properties.
+                         * @function create
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IMenuItem=} [properties] Properties to set
+                         * @returns {com.xueershangda.tianxun.employee.model.MenuItem} MenuItem instance
+                         */
+                        MenuItem.create = function create(properties) {
+                            return new MenuItem(properties);
+                        };
+
+                        /**
+                         * Encodes the specified MenuItem message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.MenuItem.verify|verify} messages.
+                         * @function encode
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IMenuItem} message MenuItem message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        MenuItem.encode = function encode(message, writer) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+                            if (message.text != null && message.hasOwnProperty("text"))
+                                writer.uint32(/* id 2, wireType 2 =*/18).string(message.text);
+                            if (message.i18n != null && message.hasOwnProperty("i18n"))
+                                writer.uint32(/* id 3, wireType 2 =*/26).string(message.i18n);
+                            if (message.link != null && message.hasOwnProperty("link"))
+                                writer.uint32(/* id 4, wireType 2 =*/34).string(message.link);
+                            if (message.shortcut != null && message.hasOwnProperty("shortcut"))
+                                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.shortcut);
+                            if (message.reuse != null && message.hasOwnProperty("reuse"))
+                                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.reuse);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified MenuItem message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.MenuItem.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.IMenuItem} message MenuItem message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        MenuItem.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer).ldelim();
+                        };
+
+                        /**
+                         * Decodes a MenuItem message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {com.xueershangda.tianxun.employee.model.MenuItem} MenuItem
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        MenuItem.decode = function decode(reader, length) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.employee.model.MenuItem();
+                            while (reader.pos < end) {
+                                let tag = reader.uint32();
+                                switch (tag >>> 3) {
+                                case 1:
+                                    message.id = reader.string();
+                                    break;
+                                case 2:
+                                    message.text = reader.string();
+                                    break;
+                                case 3:
+                                    message.i18n = reader.string();
+                                    break;
+                                case 4:
+                                    message.link = reader.string();
+                                    break;
+                                case 5:
+                                    message.shortcut = reader.bool();
+                                    break;
+                                case 6:
+                                    message.reuse = reader.bool();
+                                    break;
+                                default:
+                                    reader.skipType(tag & 7);
+                                    break;
+                                }
+                            }
+                            return message;
+                        };
+
+                        /**
+                         * Decodes a MenuItem message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {com.xueershangda.tianxun.employee.model.MenuItem} MenuItem
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        MenuItem.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+
+                        /**
+                         * Verifies a MenuItem message.
+                         * @function verify
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        MenuItem.verify = function verify(message) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                if (!$util.isString(message.id))
+                                    return "id: string expected";
+                            if (message.text != null && message.hasOwnProperty("text"))
+                                if (!$util.isString(message.text))
+                                    return "text: string expected";
+                            if (message.i18n != null && message.hasOwnProperty("i18n"))
+                                if (!$util.isString(message.i18n))
+                                    return "i18n: string expected";
+                            if (message.link != null && message.hasOwnProperty("link"))
+                                if (!$util.isString(message.link))
+                                    return "link: string expected";
+                            if (message.shortcut != null && message.hasOwnProperty("shortcut"))
+                                if (typeof message.shortcut !== "boolean")
+                                    return "shortcut: boolean expected";
+                            if (message.reuse != null && message.hasOwnProperty("reuse"))
+                                if (typeof message.reuse !== "boolean")
+                                    return "reuse: boolean expected";
+                            return null;
+                        };
+
+                        /**
+                         * Creates a MenuItem message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {com.xueershangda.tianxun.employee.model.MenuItem} MenuItem
+                         */
+                        MenuItem.fromObject = function fromObject(object) {
+                            if (object instanceof $root.com.xueershangda.tianxun.employee.model.MenuItem)
+                                return object;
+                            let message = new $root.com.xueershangda.tianxun.employee.model.MenuItem();
+                            if (object.id != null)
+                                message.id = String(object.id);
+                            if (object.text != null)
+                                message.text = String(object.text);
+                            if (object.i18n != null)
+                                message.i18n = String(object.i18n);
+                            if (object.link != null)
+                                message.link = String(object.link);
+                            if (object.shortcut != null)
+                                message.shortcut = Boolean(object.shortcut);
+                            if (object.reuse != null)
+                                message.reuse = Boolean(object.reuse);
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from a MenuItem message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.MenuItem} message MenuItem
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        MenuItem.toObject = function toObject(message, options) {
+                            if (!options)
+                                options = {};
+                            let object = {};
+                            if (options.defaults) {
+                                object.id = "";
+                                object.text = "";
+                                object.i18n = "";
+                                object.link = "";
+                                object.shortcut = false;
+                                object.reuse = false;
+                            }
+                            if (message.id != null && message.hasOwnProperty("id"))
+                                object.id = message.id;
+                            if (message.text != null && message.hasOwnProperty("text"))
+                                object.text = message.text;
+                            if (message.i18n != null && message.hasOwnProperty("i18n"))
+                                object.i18n = message.i18n;
+                            if (message.link != null && message.hasOwnProperty("link"))
+                                object.link = message.link;
+                            if (message.shortcut != null && message.hasOwnProperty("shortcut"))
+                                object.shortcut = message.shortcut;
+                            if (message.reuse != null && message.hasOwnProperty("reuse"))
+                                object.reuse = message.reuse;
+                            return object;
+                        };
+
+                        /**
+                         * Converts this MenuItem to JSON.
+                         * @function toJSON
+                         * @memberof com.xueershangda.tianxun.employee.model.MenuItem
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        MenuItem.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        return MenuItem;
+                    })();
+
+                    model.LoginReply = (function() {
+
+                        /**
+                         * Properties of a LoginReply.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @interface ILoginReply
+                         * @property {com.xueershangda.tianxun.employee.model.IApp|null} [app] LoginReply app
+                         * @property {com.xueershangda.tianxun.employee.model.IEmployee|null} [user] LoginReply user
+                         * @property {Array.<com.xueershangda.tianxun.employee.model.IMenu>|null} [menu] LoginReply menu
+                         * @property {number|null} [code] LoginReply code
+                         * @property {string|null} [message] LoginReply message
+                         */
+
+                        /**
+                         * Constructs a new LoginReply.
+                         * @memberof com.xueershangda.tianxun.employee.model
+                         * @classdesc Represents a LoginReply.
+                         * @implements ILoginReply
+                         * @constructor
+                         * @param {com.xueershangda.tianxun.employee.model.ILoginReply=} [properties] Properties to set
+                         */
+                        function LoginReply(properties) {
+                            this.menu = [];
+                            if (properties)
+                                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null)
+                                        this[keys[i]] = properties[keys[i]];
+                        }
+
+                        /**
+                         * LoginReply app.
+                         * @member {com.xueershangda.tianxun.employee.model.IApp|null|undefined} app
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @instance
+                         */
+                        LoginReply.prototype.app = null;
+
+                        /**
+                         * LoginReply user.
+                         * @member {com.xueershangda.tianxun.employee.model.IEmployee|null|undefined} user
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @instance
+                         */
+                        LoginReply.prototype.user = null;
+
+                        /**
+                         * LoginReply menu.
+                         * @member {Array.<com.xueershangda.tianxun.employee.model.IMenu>} menu
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @instance
+                         */
+                        LoginReply.prototype.menu = $util.emptyArray;
+
+                        /**
+                         * LoginReply code.
+                         * @member {number} code
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @instance
+                         */
+                        LoginReply.prototype.code = 0;
+
+                        /**
+                         * LoginReply message.
+                         * @member {string} message
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @instance
+                         */
+                        LoginReply.prototype.message = "";
+
+                        /**
+                         * Creates a new LoginReply instance using the specified properties.
+                         * @function create
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.ILoginReply=} [properties] Properties to set
+                         * @returns {com.xueershangda.tianxun.employee.model.LoginReply} LoginReply instance
+                         */
+                        LoginReply.create = function create(properties) {
+                            return new LoginReply(properties);
+                        };
+
+                        /**
+                         * Encodes the specified LoginReply message. Does not implicitly {@link com.xueershangda.tianxun.employee.model.LoginReply.verify|verify} messages.
+                         * @function encode
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.ILoginReply} message LoginReply message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        LoginReply.encode = function encode(message, writer) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (message.app != null && message.hasOwnProperty("app"))
+                                $root.com.xueershangda.tianxun.employee.model.App.encode(message.app, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                            if (message.user != null && message.hasOwnProperty("user"))
+                                $root.com.xueershangda.tianxun.employee.model.Employee.encode(message.user, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                            if (message.menu != null && message.menu.length)
+                                for (let i = 0; i < message.menu.length; ++i)
+                                    $root.com.xueershangda.tianxun.employee.model.Menu.encode(message.menu[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                            if (message.code != null && message.hasOwnProperty("code"))
+                                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.code);
+                            if (message.message != null && message.hasOwnProperty("message"))
+                                writer.uint32(/* id 5, wireType 2 =*/42).string(message.message);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified LoginReply message, length delimited. Does not implicitly {@link com.xueershangda.tianxun.employee.model.LoginReply.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.ILoginReply} message LoginReply message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        LoginReply.encodeDelimited = function encodeDelimited(message, writer) {
+                            return this.encode(message, writer).ldelim();
+                        };
+
+                        /**
+                         * Decodes a LoginReply message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {com.xueershangda.tianxun.employee.model.LoginReply} LoginReply
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        LoginReply.decode = function decode(reader, length) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.xueershangda.tianxun.employee.model.LoginReply();
+                            while (reader.pos < end) {
+                                let tag = reader.uint32();
+                                switch (tag >>> 3) {
+                                case 1:
+                                    message.app = $root.com.xueershangda.tianxun.employee.model.App.decode(reader, reader.uint32());
+                                    break;
+                                case 2:
+                                    message.user = $root.com.xueershangda.tianxun.employee.model.Employee.decode(reader, reader.uint32());
+                                    break;
+                                case 3:
+                                    if (!(message.menu && message.menu.length))
+                                        message.menu = [];
+                                    message.menu.push($root.com.xueershangda.tianxun.employee.model.Menu.decode(reader, reader.uint32()));
+                                    break;
+                                case 4:
+                                    message.code = reader.int32();
+                                    break;
+                                case 5:
+                                    message.message = reader.string();
+                                    break;
+                                default:
+                                    reader.skipType(tag & 7);
+                                    break;
+                                }
+                            }
+                            return message;
+                        };
+
+                        /**
+                         * Decodes a LoginReply message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {com.xueershangda.tianxun.employee.model.LoginReply} LoginReply
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        LoginReply.decodeDelimited = function decodeDelimited(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.uint32());
+                        };
+
+                        /**
+                         * Verifies a LoginReply message.
+                         * @function verify
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        LoginReply.verify = function verify(message) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (message.app != null && message.hasOwnProperty("app")) {
+                                let error = $root.com.xueershangda.tianxun.employee.model.App.verify(message.app);
+                                if (error)
+                                    return "app." + error;
+                            }
+                            if (message.user != null && message.hasOwnProperty("user")) {
+                                let error = $root.com.xueershangda.tianxun.employee.model.Employee.verify(message.user);
+                                if (error)
+                                    return "user." + error;
+                            }
+                            if (message.menu != null && message.hasOwnProperty("menu")) {
+                                if (!Array.isArray(message.menu))
+                                    return "menu: array expected";
+                                for (let i = 0; i < message.menu.length; ++i) {
+                                    let error = $root.com.xueershangda.tianxun.employee.model.Menu.verify(message.menu[i]);
+                                    if (error)
+                                        return "menu." + error;
+                                }
+                            }
+                            if (message.code != null && message.hasOwnProperty("code"))
+                                if (!$util.isInteger(message.code))
+                                    return "code: integer expected";
+                            if (message.message != null && message.hasOwnProperty("message"))
+                                if (!$util.isString(message.message))
+                                    return "message: string expected";
+                            return null;
+                        };
+
+                        /**
+                         * Creates a LoginReply message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {com.xueershangda.tianxun.employee.model.LoginReply} LoginReply
+                         */
+                        LoginReply.fromObject = function fromObject(object) {
+                            if (object instanceof $root.com.xueershangda.tianxun.employee.model.LoginReply)
+                                return object;
+                            let message = new $root.com.xueershangda.tianxun.employee.model.LoginReply();
+                            if (object.app != null) {
+                                if (typeof object.app !== "object")
+                                    throw TypeError(".com.xueershangda.tianxun.employee.model.LoginReply.app: object expected");
+                                message.app = $root.com.xueershangda.tianxun.employee.model.App.fromObject(object.app);
+                            }
+                            if (object.user != null) {
+                                if (typeof object.user !== "object")
+                                    throw TypeError(".com.xueershangda.tianxun.employee.model.LoginReply.user: object expected");
+                                message.user = $root.com.xueershangda.tianxun.employee.model.Employee.fromObject(object.user);
+                            }
+                            if (object.menu) {
+                                if (!Array.isArray(object.menu))
+                                    throw TypeError(".com.xueershangda.tianxun.employee.model.LoginReply.menu: array expected");
+                                message.menu = [];
+                                for (let i = 0; i < object.menu.length; ++i) {
+                                    if (typeof object.menu[i] !== "object")
+                                        throw TypeError(".com.xueershangda.tianxun.employee.model.LoginReply.menu: object expected");
+                                    message.menu[i] = $root.com.xueershangda.tianxun.employee.model.Menu.fromObject(object.menu[i]);
+                                }
+                            }
+                            if (object.code != null)
+                                message.code = object.code | 0;
+                            if (object.message != null)
+                                message.message = String(object.message);
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from a LoginReply message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @static
+                         * @param {com.xueershangda.tianxun.employee.model.LoginReply} message LoginReply
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        LoginReply.toObject = function toObject(message, options) {
+                            if (!options)
+                                options = {};
+                            let object = {};
+                            if (options.arrays || options.defaults)
+                                object.menu = [];
+                            if (options.defaults) {
+                                object.app = null;
+                                object.user = null;
+                                object.code = 0;
+                                object.message = "";
+                            }
+                            if (message.app != null && message.hasOwnProperty("app"))
+                                object.app = $root.com.xueershangda.tianxun.employee.model.App.toObject(message.app, options);
+                            if (message.user != null && message.hasOwnProperty("user"))
+                                object.user = $root.com.xueershangda.tianxun.employee.model.Employee.toObject(message.user, options);
+                            if (message.menu && message.menu.length) {
+                                object.menu = [];
+                                for (let j = 0; j < message.menu.length; ++j)
+                                    object.menu[j] = $root.com.xueershangda.tianxun.employee.model.Menu.toObject(message.menu[j], options);
+                            }
+                            if (message.code != null && message.hasOwnProperty("code"))
+                                object.code = message.code;
+                            if (message.message != null && message.hasOwnProperty("message"))
+                                object.message = message.message;
+                            return object;
+                        };
+
+                        /**
+                         * Converts this LoginReply to JSON.
+                         * @function toJSON
+                         * @memberof com.xueershangda.tianxun.employee.model.LoginReply
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        LoginReply.prototype.toJSON = function toJSON() {
+                            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        return LoginReply;
+                    })();
+
+                    return model;
+                })();
+
+                return employee;
+            })();
+
             return tianxun;
         })();
 
         return xueershangda;
     })();
 
+    com.vteba = (function() {
+
+        /**
+         * Namespace vteba.
+         * @memberof com
+         * @namespace
+         */
+        const vteba = {};
+
+        vteba.web = (function() {
+
+            /**
+             * Namespace web.
+             * @memberof com.vteba
+             * @namespace
+             */
+            const web = {};
+
+            web.action = (function() {
+
+                /**
+                 * Namespace action.
+                 * @memberof com.vteba.web
+                 * @namespace
+                 */
+                const action = {};
+
+                action.JsonBean = (function() {
+
+                    /**
+                     * Properties of a JsonBean.
+                     * @memberof com.vteba.web.action
+                     * @interface IJsonBean
+                     * @property {number|null} [code] JsonBean code
+                     * @property {string|null} [message] JsonBean message
+                     * @property {google.protobuf.IAny|null} [data] JsonBean data
+                     */
+
+                    /**
+                     * Constructs a new JsonBean.
+                     * @memberof com.vteba.web.action
+                     * @classdesc Represents a JsonBean.
+                     * @implements IJsonBean
+                     * @constructor
+                     * @param {com.vteba.web.action.IJsonBean=} [properties] Properties to set
+                     */
+                    function JsonBean(properties) {
+                        if (properties)
+                            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+
+                    /**
+                     * JsonBean code.
+                     * @member {number} code
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @instance
+                     */
+                    JsonBean.prototype.code = 0;
+
+                    /**
+                     * JsonBean message.
+                     * @member {string} message
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @instance
+                     */
+                    JsonBean.prototype.message = "";
+
+                    /**
+                     * JsonBean data.
+                     * @member {google.protobuf.IAny|null|undefined} data
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @instance
+                     */
+                    JsonBean.prototype.data = null;
+
+                    /**
+                     * Creates a new JsonBean instance using the specified properties.
+                     * @function create
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @static
+                     * @param {com.vteba.web.action.IJsonBean=} [properties] Properties to set
+                     * @returns {com.vteba.web.action.JsonBean} JsonBean instance
+                     */
+                    JsonBean.create = function create(properties) {
+                        return new JsonBean(properties);
+                    };
+
+                    /**
+                     * Encodes the specified JsonBean message. Does not implicitly {@link com.vteba.web.action.JsonBean.verify|verify} messages.
+                     * @function encode
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @static
+                     * @param {com.vteba.web.action.IJsonBean} message JsonBean message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    JsonBean.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.code != null && message.hasOwnProperty("code"))
+                            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.code);
+                        if (message.message != null && message.hasOwnProperty("message"))
+                            writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
+                        if (message.data != null && message.hasOwnProperty("data"))
+                            $root.google.protobuf.Any.encode(message.data, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                        return writer;
+                    };
+
+                    /**
+                     * Encodes the specified JsonBean message, length delimited. Does not implicitly {@link com.vteba.web.action.JsonBean.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @static
+                     * @param {com.vteba.web.action.IJsonBean} message JsonBean message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    JsonBean.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+
+                    /**
+                     * Decodes a JsonBean message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {com.vteba.web.action.JsonBean} JsonBean
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    JsonBean.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.com.vteba.web.action.JsonBean();
+                        while (reader.pos < end) {
+                            let tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1:
+                                message.code = reader.int32();
+                                break;
+                            case 2:
+                                message.message = reader.string();
+                                break;
+                            case 3:
+                                message.data = $root.google.protobuf.Any.decode(reader, reader.uint32());
+                                break;
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+
+                    /**
+                     * Decodes a JsonBean message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {com.vteba.web.action.JsonBean} JsonBean
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    JsonBean.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+
+                    /**
+                     * Verifies a JsonBean message.
+                     * @function verify
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    JsonBean.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (message.code != null && message.hasOwnProperty("code"))
+                            if (!$util.isInteger(message.code))
+                                return "code: integer expected";
+                        if (message.message != null && message.hasOwnProperty("message"))
+                            if (!$util.isString(message.message))
+                                return "message: string expected";
+                        if (message.data != null && message.hasOwnProperty("data")) {
+                            let error = $root.google.protobuf.Any.verify(message.data);
+                            if (error)
+                                return "data." + error;
+                        }
+                        return null;
+                    };
+
+                    /**
+                     * Creates a JsonBean message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {com.vteba.web.action.JsonBean} JsonBean
+                     */
+                    JsonBean.fromObject = function fromObject(object) {
+                        if (object instanceof $root.com.vteba.web.action.JsonBean)
+                            return object;
+                        let message = new $root.com.vteba.web.action.JsonBean();
+                        if (object.code != null)
+                            message.code = object.code | 0;
+                        if (object.message != null)
+                            message.message = String(object.message);
+                        if (object.data != null) {
+                            if (typeof object.data !== "object")
+                                throw TypeError(".com.vteba.web.action.JsonBean.data: object expected");
+                            message.data = $root.google.protobuf.Any.fromObject(object.data);
+                        }
+                        return message;
+                    };
+
+                    /**
+                     * Creates a plain object from a JsonBean message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @static
+                     * @param {com.vteba.web.action.JsonBean} message JsonBean
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    JsonBean.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        let object = {};
+                        if (options.defaults) {
+                            object.code = 0;
+                            object.message = "";
+                            object.data = null;
+                        }
+                        if (message.code != null && message.hasOwnProperty("code"))
+                            object.code = message.code;
+                        if (message.message != null && message.hasOwnProperty("message"))
+                            object.message = message.message;
+                        if (message.data != null && message.hasOwnProperty("data"))
+                            object.data = $root.google.protobuf.Any.toObject(message.data, options);
+                        return object;
+                    };
+
+                    /**
+                     * Converts this JsonBean to JSON.
+                     * @function toJSON
+                     * @memberof com.vteba.web.action.JsonBean
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    JsonBean.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+
+                    return JsonBean;
+                })();
+
+                return action;
+            })();
+
+            return web;
+        })();
+
+        return vteba;
+    })();
+
     return com;
 })();
 
-module.exports = $root;
+export const google = $root.google = (() => {
+
+    /**
+     * Namespace google.
+     * @exports google
+     * @namespace
+     */
+    const google = {};
+
+    google.protobuf = (function() {
+
+        /**
+         * Namespace protobuf.
+         * @memberof google
+         * @namespace
+         */
+        const protobuf = {};
+
+        protobuf.Any = (function() {
+
+            /**
+             * Properties of an Any.
+             * @memberof google.protobuf
+             * @interface IAny
+             * @property {string|null} [type_url] Any type_url
+             * @property {Uint8Array|null} [value] Any value
+             */
+
+            /**
+             * Constructs a new Any.
+             * @memberof google.protobuf
+             * @classdesc Represents an Any.
+             * @implements IAny
+             * @constructor
+             * @param {google.protobuf.IAny=} [properties] Properties to set
+             */
+            function Any(properties) {
+                if (properties)
+                    for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Any type_url.
+             * @member {string} type_url
+             * @memberof google.protobuf.Any
+             * @instance
+             */
+            Any.prototype.type_url = "";
+
+            /**
+             * Any value.
+             * @member {Uint8Array} value
+             * @memberof google.protobuf.Any
+             * @instance
+             */
+            Any.prototype.value = $util.newBuffer([]);
+
+            /**
+             * Creates a new Any instance using the specified properties.
+             * @function create
+             * @memberof google.protobuf.Any
+             * @static
+             * @param {google.protobuf.IAny=} [properties] Properties to set
+             * @returns {google.protobuf.Any} Any instance
+             */
+            Any.create = function create(properties) {
+                return new Any(properties);
+            };
+
+            /**
+             * Encodes the specified Any message. Does not implicitly {@link google.protobuf.Any.verify|verify} messages.
+             * @function encode
+             * @memberof google.protobuf.Any
+             * @static
+             * @param {google.protobuf.IAny} message Any message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Any.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.type_url != null && message.hasOwnProperty("type_url"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.type_url);
+                if (message.value != null && message.hasOwnProperty("value"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.value);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Any message, length delimited. Does not implicitly {@link google.protobuf.Any.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof google.protobuf.Any
+             * @static
+             * @param {google.protobuf.IAny} message Any message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Any.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an Any message from the specified reader or buffer.
+             * @function decode
+             * @memberof google.protobuf.Any
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {google.protobuf.Any} Any
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Any.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                let end = length === undefined ? reader.len : reader.pos + length, message = new $root.google.protobuf.Any();
+                while (reader.pos < end) {
+                    let tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.type_url = reader.string();
+                        break;
+                    case 2:
+                        message.value = reader.bytes();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an Any message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof google.protobuf.Any
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {google.protobuf.Any} Any
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Any.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an Any message.
+             * @function verify
+             * @memberof google.protobuf.Any
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Any.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.type_url != null && message.hasOwnProperty("type_url"))
+                    if (!$util.isString(message.type_url))
+                        return "type_url: string expected";
+                if (message.value != null && message.hasOwnProperty("value"))
+                    if (!(message.value && typeof message.value.length === "number" || $util.isString(message.value)))
+                        return "value: buffer expected";
+                return null;
+            };
+
+            /**
+             * Creates an Any message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof google.protobuf.Any
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {google.protobuf.Any} Any
+             */
+            Any.fromObject = function fromObject(object) {
+                if (object instanceof $root.google.protobuf.Any)
+                    return object;
+                let message = new $root.google.protobuf.Any();
+                if (object.type_url != null)
+                    message.type_url = String(object.type_url);
+                if (object.value != null)
+                    if (typeof object.value === "string")
+                        $util.base64.decode(object.value, message.value = $util.newBuffer($util.base64.length(object.value)), 0);
+                    else if (object.value.length)
+                        message.value = object.value;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an Any message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof google.protobuf.Any
+             * @static
+             * @param {google.protobuf.Any} message Any
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Any.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                let object = {};
+                if (options.defaults) {
+                    object.type_url = "";
+                    if (options.bytes === String)
+                        object.value = "";
+                    else {
+                        object.value = [];
+                        if (options.bytes !== Array)
+                            object.value = $util.newBuffer(object.value);
+                    }
+                }
+                if (message.type_url != null && message.hasOwnProperty("type_url"))
+                    object.type_url = message.type_url;
+                if (message.value != null && message.hasOwnProperty("value"))
+                    object.value = options.bytes === String ? $util.base64.encode(message.value, 0, message.value.length) : options.bytes === Array ? Array.prototype.slice.call(message.value) : message.value;
+                return object;
+            };
+
+            /**
+             * Converts this Any to JSON.
+             * @function toJSON
+             * @memberof google.protobuf.Any
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Any.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return Any;
+        })();
+
+        return protobuf;
+    })();
+
+    return google;
+})();
+
+export { $root as default };
