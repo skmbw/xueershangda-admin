@@ -16,12 +16,12 @@ import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
 
 declare var $: any; // 这次的导入要使用这种方式声明，否则会报 pluploadQueue is not a function
 
-// 如果类中注入了Modal，那么由Modal模式改为连接跳转，及时路由配置正确，也会报错。所以要去掉modal的注入
-// 如果使用modal的方式打开，那么因为没有$(document).ready事件，uploader初始化时会找不到对应的browse_button的id，so无法浏览文件
+// 如果类中注入了Modal，那么由Modal模式改为连接跳转，即使路由配置正确，也会报错。所以要去掉modal的注入
+// 如果使用modal的方式打开，那么因为没有$(document).ready事件，uploader初始化时会找不到对应的browse_button的id，so浏览器无法浏览文件
 @Component({
   selector: 'app-video-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
 })
 export class VideoEditComponent implements OnInit, AfterViewInit {
   id = this.route.snapshot.params.id;
@@ -36,20 +36,18 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       title: { type: 'string', title: '标题', maxLength: 200 },
       summary: { type: 'string', title: '简介' },
       price: { type: 'number', title: '价格', default: 0 },
-      free: { type: 'boolean', title: '是否免费',
-        enum: [
-          { label: '收费', value: false },
-          { label: '免费', value: true }
-        ],
+      free: {
+        type: 'boolean',
+        title: '是否免费',
+        enum: [{ label: '收费', value: false }, { label: '免费', value: true }],
         default: true,
       },
       // url: { type: 'string', title: '链接', format: 'uri' },
-      coverImage: { type: 'string', title: '封面图片',
-      },
+      coverImage: { type: 'string', title: '封面图片' },
       // video: { type: 'string', title: '视频文件'},
-      category: { type: 'string', title: '分类', maxLength: 12 }
+      category: { type: 'string', title: '分类', maxLength: 12 },
     },
-    required: ['title', 'price', 'free', 'coverImage', 'video', 'category'],
+    required: ['title', 'price', 'free', 'category'],
   };
   ui: SFUISchema = {
     '*': {
@@ -57,7 +55,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       grid: { span: 12 },
     },
     $id: {
-      widget: 'text'
+      widget: 'text',
     },
     $title: {
       widget: 'string',
@@ -88,7 +86,8 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
         if (args.type === 'success') {
           const reply = args.file;
           const response = reply.response;
-          if (response.code !== 1) { // 提示信息
+          if (response.code !== 1) {
+            // 提示信息
             this.msgSrv.error(response.message);
           } else {
             if (JsUtils.isBlank(this.record.id)) {
@@ -102,8 +101,8 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       listType: 'picture',
       data: (upload: UploadFile) => {
         const id = JsUtils.isBlank(this.record.id) ? '' : this.record.id;
-        return {'videoType': '1', 'id': id};
-      }
+        return { videoType: '1', id };
+      },
     },
     // $video: {
     //   widget: 'upload',
@@ -133,15 +132,18 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     //   }
     // },
     $category: {
-      widget: 'string'
-    }
+      widget: 'string',
+    },
   };
 
   constructor(
-    private msgSrv: NzMessageService, private renderer: Renderer2,
-    public http: _HttpClient, private location: Location,
-    private videoService: VideoService, private route: ActivatedRoute,
-    private ele: ElementRef
+    private msgSrv: NzMessageService,
+    private renderer: Renderer2,
+    public http: _HttpClient,
+    private location: Location,
+    private videoService: VideoService,
+    private route: ActivatedRoute,
+    private ele: ElementRef,
   ) {}
 
   ngOnInit(): void {
@@ -164,18 +166,23 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   save(value: any) {
-    if (value.coverImage !== value.video) {
-      this.msgSrv.info('视频文件和封面图片信息不匹配。');
-      return;
-    }
     if (value.id === 0 || JsUtils.isBlank(value.id)) {
       value.id = this.record.id;
       value.update = 1;
+      if (JsUtils.isBlank(value.coverImage)) {
+        this.msgSrv.info('视频封面不能为空。');
+        return;
+      }
+      // 只有新增的时候，才验证视频的id和封面的id是否一致
+      if (value.coverImage !== value.video) {
+        this.msgSrv.info('视频文件和封面图片信息不匹配。');
+        return;
+      }
     } else {
       value.update = 2;
     }
-    value.image = this.record.image;
-    value.url = this.record.url;
+    value.image = this.record.image; // ex. id.jpeg
+    value.url = this.record.url; // ex. id.mp4
     value.updateVideo = this.record.updateVideo;
     this.videoService.save(value as Video).subscribe(result => {
       const uint8Array = new Uint8Array(result, 0, result.byteLength);
@@ -191,11 +198,11 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     const this_ = this;
     this.uploader = new plupload.Uploader({
-      browse_button : 'browseBtn',
+      browse_button: 'browseBtn',
       // runtimes: 'html5',
-      url: environment.URL + "video/upload",
+      url: environment.URL + 'video/upload',
       // 头信息
-      headers: {'userId': '2'}, // 'tokenId': '1', // 没有token暂时不传
+      headers: { userId: '2' }, // 'tokenId': '1', // 没有token暂时不传
       // 上传时的附加参数
       multipart_params: {},
       // Maximum file size
@@ -211,8 +218,8 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       // },
       // Specify what files to browse for
       filters: [
-        {title: "Image files", extensions: "jpg,gif,png,jpeg"},
-        {title: "Vedio files", extensions: "mp4,mkv"}
+        { title: 'Image files', extensions: 'jpg,gif,png,jpeg' },
+        { title: 'Vedio files', extensions: 'mp4,mkv' },
       ],
       // Rename files by clicking on their titles
       rename: true,
@@ -226,7 +233,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       //   thumbs: true, // Show thumbs
       //   active: 'thumbs'
       // },
-      file_data_name: "file", // 上传的文件域的名字
+      file_data_name: 'file', // 上传的文件域的名字
       // Flash settings
       // flash_swf_url: 'js/Moxie.swf',
       // Silverlight settings
@@ -240,7 +247,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     this.uploader.bind('FilesAdded', (upload, files) => {
       for (const f of files) {
         let data: any[] = [];
-        data = this_.fileList.concat({id: f.name.substring(0, f.name.lastIndexOf('.')), name: f.name, type: f.type});
+        data = this_.fileList.concat({ id: f.name.substring(0, f.name.lastIndexOf('.')), name: f.name, type: f.type });
         this_.fileList = [...data]; // 必须要引用变，才会更新？
       }
 
@@ -249,8 +256,8 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     });
     // 文件上传进度显示
     this.uploader.bind('UploadProgress', (upload, file) => {
-      const id = file.name.substring(0, file.name.lastIndexOf('.')) + "_progress";
-      $('#' + id).html("   " + file.percent + "%");
+      const id = file.name.substring(0, file.name.lastIndexOf('.')) + '_progress';
+      $('#' + id).html('   ' + file.percent + '%');
     });
     // 单个文件上完成后,回调事件
     this.uploader.bind('FileUploaded', (upload, file, result) => {
@@ -274,9 +281,9 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     // 全部完成后的回调事件
     this.uploader.bind('UploadComplete', (upload, files) => {
       // console.log("UploadComplete:");
-      this.msgSrv.info("您选择的文件已经全部上传，总计共" + files.length + "个文件");
+      this.msgSrv.info('您选择的文件已经全部上传，总计共' + files.length + '个文件');
       this.fileList = [];
-      this.uploader.files.forEach((value) => {
+      this.uploader.files.forEach(value => {
         this.uploader.removeFile(value);
       });
     });
@@ -289,7 +296,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
 
   startUpload() {
     // 这里需要设置服务端返回的videoId
-    this.uploader.setOption({"multipart_params": {"id": this.record.id, "videoType": "3"}}); // 可以键值对，也可以{key, value}对象，然后refresh();
+    this.uploader.setOption({ multipart_params: { id: this.record.id, videoType: '3' } }); // 可以键值对，也可以{key, value}对象，然后refresh();
     // this.uploader.refresh(); // 不刷新，也OK
     this.uploader.start();
   }
