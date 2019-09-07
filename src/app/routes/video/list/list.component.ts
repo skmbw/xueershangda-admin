@@ -22,16 +22,19 @@ export class VideoListComponent implements OnInit {
     properties: {
       no: {
         type: 'string',
-        title: '编号'
-      }
-    }
+        title: '编号',
+      },
+    },
   };
   @ViewChild('st', { static: false }) st: STComponent;
   columns: STColumn[] = [
     { title: '编号', index: 'id' },
     { title: '标题', index: 'title' },
     { title: '分类', index: 'category' },
-    { title: '封面', type: 'img', index: 'image',
+    {
+      title: '封面',
+      type: 'img',
+      index: 'image',
       // format: (item: STData, col: STColumn) => {
       //   return Consts.IMAGE_HOST + item.image;
       // }
@@ -48,17 +51,18 @@ export class VideoListComponent implements OnInit {
           // modal: {params: {'id': 322}, paramsName: 'record'},
           click: (item: any) => {
             this.modal
-            // static的modal点击蒙层，不会关闭modal
-            // 这个参数名有两个一个是i，一个是record
+              // static的modal点击蒙层，不会关闭modal
+              // 这个参数名有两个一个是i，一个是record
               .createStatic(VideoViewComponent, { record: item })
               .subscribe(() => this.st.reload());
-          }
+          },
         },
-        { // 这种方式打开modal为什么不能正确的传递参数呢？因为bug，没有取modal这个参数，导致参数名是undefined。
+        {
+          // 这种方式打开modal为什么不能正确的传递参数呢？因为bug，没有取modal这个参数，导致参数名是undefined。
           // 默认传递的参数是该行记录。
           text: '编辑',
           type: 'link',
-          click: (item: any) => `/video/edit/${item.id}`
+          click: (item: any) => `/video/edit/${item.id}`,
           // type: 'static',
           // component: VideoEditComponent // 默认将当前行记录record传进去作为参数
           // 这个参数没有使用，是一个bug，在@delon/abc/fesm5/table.js._btnClick（1978行）中，根本没有判断paramsName是否为空
@@ -74,13 +78,17 @@ export class VideoListComponent implements OnInit {
           //     return record;
           //   }, 'paramsName': 'record'}
           // click: (item: any) => item
-        }
-      ]
-    }
+        },
+      ],
+    },
   ];
 
-  constructor(private toastr: ToastrService, private modal: ModalHelper,
-              private videoService: VideoService, private router: Router) { }
+  constructor(
+    private toastr: ToastrService,
+    private modal: ModalHelper,
+    private videoService: VideoService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     const video = new Video();
@@ -90,7 +98,8 @@ export class VideoListComponent implements OnInit {
       const uint8Array = new Uint8Array(result, 0, result.byteLength);
       const reply = VideoReply.decode(uint8Array);
       if (reply.code === 1) {
-        for (const v of reply.data) { // 渲染的时候，不能加url前缀，这里处理一下
+        for (const v of reply.data) {
+          // 渲染的时候，不能加url前缀，这里处理一下
           v.image = Consts.IMAGE_HOST + v.image;
         }
         this.url = reply.data as STData[];
@@ -101,7 +110,7 @@ export class VideoListComponent implements OnInit {
   }
 
   add() {
-    this.router.navigateByUrl("video/edit/").catch();
+    this.router.navigateByUrl('video/edit/null').catch();
     // this.modal
     //   .createStatic(VideoEditComponent, { i: { id: '' } }) // id 初始化为空
     //   .subscribe(() => this.st.reload());

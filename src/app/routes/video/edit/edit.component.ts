@@ -90,7 +90,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
             // 提示信息
             this.msgSrv.error(response.message);
           } else {
-            if (JsUtils.isBlank(this.record.id)) {
+            if (JsUtils.isBlank(this.record.id) || this.record.id === 'null') {
               this.record.id = response.resourceId;
             }
             const ext = reply.name.substring(reply.name.lastIndexOf('.'));
@@ -100,7 +100,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       },
       listType: 'picture',
       data: (upload: UploadFile) => {
-        const id = JsUtils.isBlank(this.record.id) ? '' : this.record.id;
+        const id = JsUtils.isBlank(this.record.id) || this.record.id === 'null' ? '' : this.record.id;
         return { videoType: '1', id };
       },
     },
@@ -147,7 +147,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    if (JsUtils.isNotBlank(this.id)) {
+    if (JsUtils.isNotBlank(this.id) && this.id !== 'null') {
       this.videoService.get(this.id).subscribe(res => {
         const uint8Array = new Uint8Array(res, 0, res.byteLength);
         const reply = VideoReply.decode(uint8Array);
@@ -166,7 +166,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   }
 
   save(value: any) {
-    if (value.id === 0 || JsUtils.isBlank(value.id)) {
+    if (value.id === 'null' || JsUtils.isBlank(value.id)) {
       value.id = this.record.id;
       value.update = 1;
       if (JsUtils.isBlank(value.coverImage)) {
@@ -174,7 +174,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
         return;
       }
       // 只有新增的时候，才验证视频的id和封面的id是否一致
-      if (value.coverImage !== value.video) {
+      if (value.coverImage !== this.record.video) {
         this.msgSrv.info('视频文件和封面图片信息不匹配。');
         return;
       }
@@ -189,6 +189,9 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       const reply = VideoReply.decode(uint8Array);
       if (reply.code === 1) {
         this.msgSrv.success('保存成功');
+        this.i = {};
+        this.record = {};
+        this.id = 'null';
       } else {
         this.msgSrv.error(reply.message);
       }
@@ -264,11 +267,20 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       const rsp = result.response;
       const rspJson = JSON.parse(rsp);
       const videoId = rspJson.videoId;
-      if (JsUtils.isNotBlank(videoId) && JsUtils.isBlank(this.record.id)) {
+      if ((JsUtils.isNotBlank(videoId) && JsUtils.isBlank(this.record.id)) || this.record.id === 'null') {
         this.record.id = videoId;
         this.record.updateVideo = 1; // add video
+        this.record.video = videoId;
       } else {
-        this.record.updateVideo = 2; // update video
+        switch (this.i.update) {
+          case 2:
+            this.record.updateVideo = 2; // update
+            break;
+          default:
+            this.record.updateVideo = 1; // add
+            break;
+        }
+        this.record.video = this.record.id;
       }
       if (JsUtils.isNotBlank(this.record.id)) {
         const ext = file.name.substring(file.name.lastIndexOf('.'));
