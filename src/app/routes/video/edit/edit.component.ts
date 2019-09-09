@@ -14,7 +14,7 @@ import { environment } from '@env/environment';
 import Video = com.xueershangda.tianxun.video.model.Video;
 import VideoReply = com.xueershangda.tianxun.video.model.VideoReply;
 
-declare var $: any; // 这次的导入要使用这种方式声明，否则会报 pluploadQueue is not a function
+declare const $: any; // 这次的导入要使用这种方式声明，否则会报 pluploadQueue is not a function
 
 // 如果类中注入了Modal，那么由Modal模式改为连接跳转，即使路由配置正确，也会报错。所以要去掉modal的注入
 // 如果使用modal的方式打开，那么因为没有$(document).ready事件，uploader初始化时会找不到对应的browse_button的id，so浏览器无法浏览文件
