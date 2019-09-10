@@ -184,11 +184,11 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     value.image = this.record.image; // ex. id.jpeg
     value.url = this.record.url; // ex. id.mp4
     value.updateVideo = this.record.updateVideo;
-    this.videoService.save(value as Video).subscribe(result => {
+    this.videoService.saveOrUpdate(value as Video).subscribe(result => {
       const uint8Array = new Uint8Array(result, 0, result.byteLength);
       const reply = VideoReply.decode(uint8Array);
       if (reply.code === 1) {
-        this.msgSrv.success('保存成功');
+        this.msgSrv.success(reply.message);
         this.i = {};
         this.record = {};
         this.id = 'null';
