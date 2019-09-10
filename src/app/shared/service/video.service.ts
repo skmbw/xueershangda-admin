@@ -27,7 +27,7 @@ export class VideoService extends CommonService {
       return this.postProtobuf('video/add', this.encode(video));
     } else if (video.update === 2) {
       return this.postProtobuf('video/update', this.encode(video));
-    } else {
+    } else { // 这个也可以delete，没必要
       const reply = new VideoReply();
       reply.code = -10;
       reply.message = 'update field error.';
