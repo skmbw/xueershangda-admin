@@ -110,7 +110,7 @@ export class UserLoginComponent implements OnDestroy {
       }
     }
     const employee = new Employee();
-    employee.name = this.userName.value;
+    employee.account = this.userName.value;
     employee.password = this.password.value;
 
     this.employeeService.login(employee).subscribe(result => {
