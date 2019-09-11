@@ -75,6 +75,7 @@ const INTERCEPTOR_PROVIDES = [
 export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
 }
+// 启动入口点，调用StartupService.load()
 const APPINIT_PROVIDES = [
   StartupService,
   {
