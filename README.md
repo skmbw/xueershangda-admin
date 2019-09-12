@@ -111,5 +111,5 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 * 关于标题显示出了注释中的内容，如果没有没有按照菜单的等级去显示，那么titleService.getByElement()778行(fesm2015/theme.js中)
 使用firstChild会获取到注释，改为使用lastChild就可以了。但是最好还是使用菜单层级，那样，菜单选中也是显示正确的
 * 路径和菜单不匹配，子路径匹配父路径也会打开对应的菜单。要多配置一个路由，参考video模块
-* 关于面包屑菜单不能正确显示（父路径匹配子路径的情况），因为pageHeader.js是拿整个路径去menuservice查询，因为没有配置，所以查询不到。
-在fesm2015/pageHeader.js中修改了，截取父路径在查询一次127行。
+* 关于面包屑菜单不能正确显示（父路径匹配子路径的情况），因为pageHeader.js是拿整个子路径去MenuService查询，因为没有配置子路径，所以查询不到。
+在fesm2015/pageHeader.js中修改了，截取父路径再查询一次，在127行修改。
