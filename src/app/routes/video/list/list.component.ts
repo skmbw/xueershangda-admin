@@ -63,6 +63,10 @@ export class VideoListComponent implements OnInit {
           text: '编辑',
           type: 'link',
           click: (item: any) => `/video/edit/${item.id}`,
+          // click: (item: any) => {
+          //   this.router.navigateByUrl(`video/edit/${item.id}`).catch();
+            // this.router.navigate(['video/add'], {queryParams: {'id': `${item.id}`}}).catch()
+          // },
           // type: 'static',
           // component: VideoEditComponent // 默认将当前行记录record传进去作为参数
           // 这个参数没有使用，是一个bug，在@delon/abc/fesm5/table.js._btnClick（1978行）中，根本没有判断paramsName是否为空
@@ -110,7 +114,7 @@ export class VideoListComponent implements OnInit {
   }
 
   add() {
-    this.router.navigateByUrl('video/edit/null').catch();
+    this.router.navigateByUrl('video/edit').catch();
     // this.modal
     //   .createStatic(VideoEditComponent, { i: { id: '' } }) // id 初始化为空
     //   .subscribe(() => this.st.reload());

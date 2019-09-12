@@ -66,6 +66,11 @@
               "text": "视频列表",
               "link": "/video/list",
               "i18n": "menu.video.list"
+            },
+            {
+              "text": "新增视频",
+              "link": "/video/edit",
+              "i18n": "menu.video.edit"
             }
           ]
         },
