@@ -108,3 +108,5 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 * 新引入的第三方js或者jquery或者jquery插件，需要重启，新引入，需要重启动，否则无法检测到插件 https://blog.csdn.net/yhc0322/article/details/78796009
 * modal模式，this.undefined就是穿过来的参数，但是table.js._btnClick中的bug，没有设置或取到参数名导致。可以使用click的方式避免
 * angular中没有$(document).ready(function(){});的等价物，使用这种方法。window.onload = (() => {})这个好像也不对
+* 关于标题显示出了注释中的内容，如果没有没有按照菜单的等级去显示，那么titleService.getByElement()778行(fesm2015/theme.js中)
+使用firstChild会获取到注释，改为使用lastChild就可以了。但是最好还是使用菜单层级，那样，菜单选中也是显示正确的
