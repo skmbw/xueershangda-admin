@@ -46,6 +46,7 @@ const routes: Routes = [
       { path: 'video', loadChildren: () => import('./video/video.module').then(m => m.VideoModule) },
       { path: 'article', loadChildren: './article/article.module#ArticleModule' }, // 这种legacy的方式也是OK的
       { path: 'question', loadChildren: () => import('./question/question.module').then(m => m.QuestionModule) },
+      { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
     ],
   },
   // 全屏布局
