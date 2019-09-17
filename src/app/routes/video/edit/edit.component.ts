@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NzMessageService, UploadChangeParam, UploadFile } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { SFSchema, SFUISchema } from '@delon/form';
@@ -29,6 +29,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
   i: any;
   uploader: any;
   fileList: any[] = [];
+  title = '更新视频信息';
   // undefined: any; // 好像可以使用undefined作为变量名
   schema: SFSchema = {
     properties: {
@@ -138,12 +139,10 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
 
   constructor(
     private msgSrv: NzMessageService,
-    private renderer: Renderer2,
     public http: _HttpClient,
     private location: Location,
     private videoService: VideoService,
-    private route: ActivatedRoute,
-    private ele: ElementRef,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -162,6 +161,7 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     } else {
       this.i = {};
       this.i.update = 1;
+      this.title = '新增视频';
     }
   }
 
