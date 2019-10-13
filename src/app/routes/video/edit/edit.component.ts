@@ -183,7 +183,8 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     }
     value.image = this.record.image; // ex. id.jpeg
     value.url = this.record.url; // ex. id.mp4
-    value.updateVideo = this.record.updateVideo;
+    // value.updateVideo = this.record.updateVideo; // 是否更新了视频，这个字段没有使用，使用update一个字段就够了，这个用于是否解码mp4
+    value.updateVideo = this.record.status;
     this.videoService.saveOrUpdate(value as Video).subscribe(result => {
       const uint8Array = new Uint8Array(result, 0, result.byteLength);
       const reply = VideoReply.decode(uint8Array);
@@ -267,19 +268,20 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       const rsp = result.response;
       const rspJson = JSON.parse(rsp);
       const videoId = rspJson.videoId;
+      this.record.status = rspJson.status;
       if ((JsUtils.isNotBlank(videoId) && JsUtils.isBlank(this.record.id)) || this.record.id === 'null') {
         this.record.id = videoId;
-        this.record.updateVideo = 1; // add video
+        // this.record.updateVideo = 1; // add video
         this.record.video = videoId;
       } else {
-        switch (this.i.update) {
-          case 2:
-            this.record.updateVideo = 2; // update
-            break;
-          default:
-            this.record.updateVideo = 1; // add
-            break;
-        }
+        // switch (this.i.update) {
+        //   case 2:
+        //     this.record.updateVideo = 2; // update
+        //     break;
+        //   default:
+        //     this.record.updateVideo = 1; // add
+        //     break;
+        // }
         this.record.video = this.record.id;
       }
       if (JsUtils.isNotBlank(this.record.id)) {
