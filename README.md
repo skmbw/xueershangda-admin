@@ -114,3 +114,7 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 * 路径和菜单不匹配，子路径匹配父路径也会打开对应的菜单。要多配置一个路由，参考video模块
 * 关于面包屑菜单不能正确显示（父路径匹配子路径的情况），因为pageHeader.js是拿整个子路径去MenuService查询，因为没有配置子路径，所以查询不到。
 在fesm2015/pageHeader.js中修改了，截取父路径再查询一次，在127行修改。
+
+### angular 404 错误
+* 拦截器中，重新clone request，可是这个clone总失败，导致404，是因为没有设置url。
+* http 404错误，是后端真的是没有这个url，video/update

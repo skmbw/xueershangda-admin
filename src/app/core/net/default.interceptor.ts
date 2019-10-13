@@ -13,7 +13,7 @@ import { catchError, mergeMap } from 'rxjs/operators';
 import { NzNotificationService } from 'ng-zorro-antd';
 import { _HttpClient } from '@delon/theme';
 import { environment } from '@env/environment';
-import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
+import { DA_SERVICE_TOKEN, ITokenModel, ITokenService } from '@delon/auth';
 
 const CODEMESSAGE = {
   200: '服务器成功返回请求的数据。',
@@ -113,8 +113,15 @@ export class DefaultInterceptor implements HttpInterceptor {
     if (!url.startsWith('https://') && !url.startsWith('http://')) {
       url = url.startsWith('assets/') ? environment.SERVER_LOCAL + url : environment.SERVER_URL + url;
     }
-
-    const newReq = req.clone({ url });
+    const tokenModel: ITokenModel = (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).get();
+    const userId = tokenModel.id;
+    let newReq = null;
+    if (userId !== undefined && userId !== null) { // undefined 继承的 null，判断null多余？
+      newReq = req.clone({headers: req.headers.set('userId', userId), url}); // 这个clone总失败，导致404，是因为没有设置url
+    }
+    if (newReq === null) {
+      newReq = req.clone({ url });
+    }
     return next.handle(newReq).pipe(
       mergeMap((event: any) => {
         // 允许统一对请求错误处理
