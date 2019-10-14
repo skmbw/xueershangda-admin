@@ -118,3 +118,7 @@ The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/mas
 ### angular 404 错误
 * 拦截器中，重新clone request，可是这个clone总失败，导致404，是因为没有设置url。
 * http 404错误，是后端真的是没有这个url，video/update
+
+### url跳转和modal弹窗，以及plupload上传初始化的问题
+- 如果类中注入了Modal，那么由Modal模式改为连接跳转，即使路由配置正确，也会报错。所以要去掉modal的注入
+- 如果使用modal的方式打开，那么因为没有$(document).ready事件，uploader初始化时会找不到对应的browse_button的id，so浏览器无法浏览文件
