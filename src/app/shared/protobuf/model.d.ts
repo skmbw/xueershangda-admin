@@ -3895,6 +3895,12 @@ export namespace com {
 
                         /** User teacher */
                         teacher?: (number|null);
+
+                        /** User weixinQrcode */
+                        weixinQrcode?: (string|null);
+
+                        /** User alipayQrcode */
+                        alipayQrcode?: (string|null);
                     }
 
                     /** Represents a User. */
@@ -4037,6 +4043,12 @@ export namespace com {
 
                         /** User teacher. */
                         public teacher: number;
+
+                        /** User weixinQrcode. */
+                        public weixinQrcode: string;
+
+                        /** User alipayQrcode. */
+                        public alipayQrcode: string;
 
                         /**
                          * Creates a new User instance using the specified properties.
@@ -6114,6 +6126,9 @@ export namespace com {
 
                         /** 1新增2更新 */
                         updateVideo?: (number|null);
+
+                        /** 日期路径 */
+                        datePath?: (string|null);
                     }
 
                     /** Represents a Video. */
@@ -6205,6 +6220,9 @@ export namespace com {
 
                         /** 1新增2更新 */
                         public updateVideo: number;
+
+                        /** 日期路径 */
+                        public datePath: string;
 
                         /**
                          * Creates a new Video instance using the specified properties.

@@ -11110,6 +11110,8 @@ export const com = $root.com = (() => {
                          * @property {number|null} [paymentAuthority] User paymentAuthority
                          * @property {number|null} [paymentAmount] User paymentAmount
                          * @property {number|null} [teacher] User teacher
+                         * @property {string|null} [weixinQrcode] User weixinQrcode
+                         * @property {string|null} [alipayQrcode] User alipayQrcode
                          */
 
                         /**
@@ -11480,6 +11482,22 @@ export const com = $root.com = (() => {
                         User.prototype.teacher = 0;
 
                         /**
+                         * User weixinQrcode.
+                         * @member {string} weixinQrcode
+                         * @memberof com.xueershangda.tianxun.user.model.User
+                         * @instance
+                         */
+                        User.prototype.weixinQrcode = "";
+
+                        /**
+                         * User alipayQrcode.
+                         * @member {string} alipayQrcode
+                         * @memberof com.xueershangda.tianxun.user.model.User
+                         * @instance
+                         */
+                        User.prototype.alipayQrcode = "";
+
+                        /**
                          * Creates a new User instance using the specified properties.
                          * @function create
                          * @memberof com.xueershangda.tianxun.user.model.User
@@ -11591,6 +11609,10 @@ export const com = $root.com = (() => {
                                 writer.uint32(/* id 43, wireType 0 =*/344).int32(message.paymentAmount);
                             if (message.teacher != null && message.hasOwnProperty("teacher"))
                                 writer.uint32(/* id 44, wireType 0 =*/352).int32(message.teacher);
+                            if (message.weixinQrcode != null && message.hasOwnProperty("weixinQrcode"))
+                                writer.uint32(/* id 45, wireType 2 =*/362).string(message.weixinQrcode);
+                            if (message.alipayQrcode != null && message.hasOwnProperty("alipayQrcode"))
+                                writer.uint32(/* id 46, wireType 2 =*/370).string(message.alipayQrcode);
                             return writer;
                         };
 
@@ -11756,6 +11778,12 @@ export const com = $root.com = (() => {
                                     break;
                                 case 44:
                                     message.teacher = reader.int32();
+                                    break;
+                                case 45:
+                                    message.weixinQrcode = reader.string();
+                                    break;
+                                case 46:
+                                    message.alipayQrcode = reader.string();
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -11924,6 +11952,12 @@ export const com = $root.com = (() => {
                             if (message.teacher != null && message.hasOwnProperty("teacher"))
                                 if (!$util.isInteger(message.teacher))
                                     return "teacher: integer expected";
+                            if (message.weixinQrcode != null && message.hasOwnProperty("weixinQrcode"))
+                                if (!$util.isString(message.weixinQrcode))
+                                    return "weixinQrcode: string expected";
+                            if (message.alipayQrcode != null && message.hasOwnProperty("alipayQrcode"))
+                                if (!$util.isString(message.alipayQrcode))
+                                    return "alipayQrcode: string expected";
                             return null;
                         };
 
@@ -12069,6 +12103,10 @@ export const com = $root.com = (() => {
                                 message.paymentAmount = object.paymentAmount | 0;
                             if (object.teacher != null)
                                 message.teacher = object.teacher | 0;
+                            if (object.weixinQrcode != null)
+                                message.weixinQrcode = String(object.weixinQrcode);
+                            if (object.alipayQrcode != null)
+                                message.alipayQrcode = String(object.alipayQrcode);
                             return message;
                         };
 
@@ -12130,6 +12168,8 @@ export const com = $root.com = (() => {
                                 object.paymentAuthority = 0;
                                 object.paymentAmount = 0;
                                 object.teacher = 0;
+                                object.weixinQrcode = "";
+                                object.alipayQrcode = "";
                             }
                             if (message.id != null && message.hasOwnProperty("id"))
                                 object.id = message.id;
@@ -12237,6 +12277,10 @@ export const com = $root.com = (() => {
                                 object.paymentAmount = message.paymentAmount;
                             if (message.teacher != null && message.hasOwnProperty("teacher"))
                                 object.teacher = message.teacher;
+                            if (message.weixinQrcode != null && message.hasOwnProperty("weixinQrcode"))
+                                object.weixinQrcode = message.weixinQrcode;
+                            if (message.alipayQrcode != null && message.hasOwnProperty("alipayQrcode"))
+                                object.alipayQrcode = message.alipayQrcode;
                             return object;
                         };
 
@@ -17760,6 +17804,7 @@ export const com = $root.com = (() => {
                          * @property {number|null} [page] 页码
                          * @property {number|null} [pageSize] 分页大小
                          * @property {number|null} [updateVideo] 1新增2更新
+                         * @property {string|null} [datePath] 日期路径
                          */
 
                         /**
@@ -17994,6 +18039,14 @@ export const com = $root.com = (() => {
                         Video.prototype.updateVideo = 0;
 
                         /**
+                         * 日期路径
+                         * @member {string} datePath
+                         * @memberof com.xueershangda.tianxun.video.model.Video
+                         * @instance
+                         */
+                        Video.prototype.datePath = "";
+
+                        /**
                          * Creates a new Video instance using the specified properties.
                          * @function create
                          * @memberof com.xueershangda.tianxun.video.model.Video
@@ -18071,6 +18124,8 @@ export const com = $root.com = (() => {
                                 writer.uint32(/* id 26, wireType 0 =*/208).int32(message.pageSize);
                             if (message.updateVideo != null && message.hasOwnProperty("updateVideo"))
                                 writer.uint32(/* id 27, wireType 0 =*/216).int32(message.updateVideo);
+                            if (message.datePath != null && message.hasOwnProperty("datePath"))
+                                writer.uint32(/* id 28, wireType 2 =*/226).string(message.datePath);
                             return writer;
                         };
 
@@ -18185,6 +18240,9 @@ export const com = $root.com = (() => {
                                     break;
                                 case 27:
                                     message.updateVideo = reader.int32();
+                                    break;
+                                case 28:
+                                    message.datePath = reader.string();
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -18302,6 +18360,9 @@ export const com = $root.com = (() => {
                             if (message.updateVideo != null && message.hasOwnProperty("updateVideo"))
                                 if (!$util.isInteger(message.updateVideo))
                                     return "updateVideo: integer expected";
+                            if (message.datePath != null && message.hasOwnProperty("datePath"))
+                                if (!$util.isString(message.datePath))
+                                    return "datePath: string expected";
                             return null;
                         };
 
@@ -18385,6 +18446,8 @@ export const com = $root.com = (() => {
                                 message.pageSize = object.pageSize | 0;
                             if (object.updateVideo != null)
                                 message.updateVideo = object.updateVideo | 0;
+                            if (object.datePath != null)
+                                message.datePath = String(object.datePath);
                             return message;
                         };
 
@@ -18429,6 +18492,7 @@ export const com = $root.com = (() => {
                                 object.page = 0;
                                 object.pageSize = 0;
                                 object.updateVideo = 0;
+                                object.datePath = "";
                             }
                             if (message.id != null && message.hasOwnProperty("id"))
                                 object.id = message.id;
@@ -18490,6 +18554,8 @@ export const com = $root.com = (() => {
                                 object.pageSize = message.pageSize;
                             if (message.updateVideo != null && message.hasOwnProperty("updateVideo"))
                                 object.updateVideo = message.updateVideo;
+                            if (message.datePath != null && message.hasOwnProperty("datePath"))
+                                object.datePath = message.datePath;
                             return object;
                         };
 
