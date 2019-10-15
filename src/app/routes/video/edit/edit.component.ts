@@ -72,10 +72,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
     $free: {
       widget: 'select',
     },
-    // $url: {
-    //   widget: 'string',
-    //   grid: { span: 24 }
-    // },
     $coverImage: {
       widget: 'upload',
       action: Consts.URL + 'video/upload',
@@ -109,33 +105,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
         return { videoType: '1', id };
       },
     },
-    // $video: {
-    //   widget: 'upload',
-    //   action: Consts.URL + 'video/upload',
-    //   name: 'video',
-    //   fileType: 'video/mp4',
-    //   fileSize: 204800,
-    //   resReName: 'videoId', // 这个字段的值会赋值给video，当保存时用来关联上传的文件和该记录
-    //   data: (upload: UploadFile) => { // 要用回调，静态的话，当更新了数据，里面的数据也不会更新
-    //     const id = JsUtils.isBlank(this.record.id) ? '' : this.record.id;
-    //     return {'videoType': '2', 'id': id};
-    //   },
-    //   change: (args: UploadChangeParam) => {
-    //     if (args.type === 'success') {
-    //       const reply = args.file;
-    //       const response = reply.response;
-    //       if (response.code !== 1) {
-    //         this.msgSrv.error(response.message);
-    //       } else {
-    //         if (JsUtils.isBlank(this.record.id)) {
-    //           this.record.id = response.videoId;
-    //         }
-    //         const ext = reply.name.substring(reply.name.lastIndexOf('.'));
-    //         this.record.url = this.record.id + ext;
-    //       }
-    //     }
-    //   }
-    // },
     $category: {
       widget: 'string',
     },
@@ -243,10 +212,6 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
       //   active: 'thumbs'
       // },
       file_data_name: 'file', // 上传的文件域的名字
-      // Flash settings
-      // flash_swf_url: 'js/Moxie.swf',
-      // Silverlight settings
-      // silverlight_xap_url: 'js/Moxie.xap'
     });
 
     // 初始化plupload
