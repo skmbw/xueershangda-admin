@@ -97,6 +97,12 @@ export class VideoEditComponent implements OnInit, AfterViewInit {
               this.datePath = response.datePath;
             }
           }
+        } else if (args.type === 'error') {
+
+        } else if (args.type === 'start') {
+
+        } else if (args.type === 'progress') {
+
         }
       },
       listType: 'picture',
