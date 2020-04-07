@@ -14148,6 +14148,7 @@ export const com = $root.com = (() => {
                          * @property {number|null} [page] Comment page
                          * @property {number|null} [pageSize] Comment pageSize
                          * @property {string|null} [orderBy] Comment orderBy
+                         * @property {string|null} [targetTitle] Comment targetTitle
                          */
 
                         /**
@@ -14262,6 +14263,14 @@ export const com = $root.com = (() => {
                         Comment.prototype.orderBy = "";
 
                         /**
+                         * Comment targetTitle.
+                         * @member {string} targetTitle
+                         * @memberof com.xueershangda.tianxun.comment.model.Comment
+                         * @instance
+                         */
+                        Comment.prototype.targetTitle = "";
+
+                        /**
                          * Creates a new Comment instance using the specified properties.
                          * @function create
                          * @memberof com.xueershangda.tianxun.comment.model.Comment
@@ -14309,6 +14318,8 @@ export const com = $root.com = (() => {
                                 writer.uint32(/* id 11, wireType 0 =*/88).int32(message.pageSize);
                             if (message.orderBy != null && message.hasOwnProperty("orderBy"))
                                 writer.uint32(/* id 12, wireType 2 =*/98).string(message.orderBy);
+                            if (message.targetTitle != null && message.hasOwnProperty("targetTitle"))
+                                writer.uint32(/* id 13, wireType 2 =*/106).string(message.targetTitle);
                             return writer;
                         };
 
@@ -14378,6 +14389,9 @@ export const com = $root.com = (() => {
                                     break;
                                 case 12:
                                     message.orderBy = reader.string();
+                                    break;
+                                case 13:
+                                    message.targetTitle = reader.string();
                                     break;
                                 default:
                                     reader.skipType(tag & 7);
@@ -14450,6 +14464,9 @@ export const com = $root.com = (() => {
                             if (message.orderBy != null && message.hasOwnProperty("orderBy"))
                                 if (!$util.isString(message.orderBy))
                                     return "orderBy: string expected";
+                            if (message.targetTitle != null && message.hasOwnProperty("targetTitle"))
+                                if (!$util.isString(message.targetTitle))
+                                    return "targetTitle: string expected";
                             return null;
                         };
 
@@ -14496,6 +14513,8 @@ export const com = $root.com = (() => {
                                 message.pageSize = object.pageSize | 0;
                             if (object.orderBy != null)
                                 message.orderBy = String(object.orderBy);
+                            if (object.targetTitle != null)
+                                message.targetTitle = String(object.targetTitle);
                             return message;
                         };
 
@@ -14525,6 +14544,7 @@ export const com = $root.com = (() => {
                                 object.page = 0;
                                 object.pageSize = 0;
                                 object.orderBy = "";
+                                object.targetTitle = "";
                             }
                             if (message.id != null && message.hasOwnProperty("id"))
                                 object.id = message.id;
@@ -14553,6 +14573,8 @@ export const com = $root.com = (() => {
                                 object.pageSize = message.pageSize;
                             if (message.orderBy != null && message.hasOwnProperty("orderBy"))
                                 object.orderBy = message.orderBy;
+                            if (message.targetTitle != null && message.hasOwnProperty("targetTitle"))
+                                object.targetTitle = message.targetTitle;
                             return object;
                         };
 

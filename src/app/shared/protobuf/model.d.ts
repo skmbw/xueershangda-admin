@@ -4823,6 +4823,9 @@ export namespace com {
 
                         /** Comment orderBy */
                         orderBy?: (string|null);
+
+                        /** Comment targetTitle */
+                        targetTitle?: (string|null);
                     }
 
                     /** Represents a Comment. */
@@ -4869,6 +4872,9 @@ export namespace com {
 
                         /** Comment orderBy. */
                         public orderBy: string;
+
+                        /** Comment targetTitle. */
+                        public targetTitle: string;
 
                         /**
                          * Creates a new Comment instance using the specified properties.
