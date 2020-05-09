@@ -33,7 +33,6 @@
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
-              "node_modules/@antv/g2/build/g2.js",
               "node_modules/ajv/dist/ajv.bundle.js",
               "node_modules/qrious/dist/qrious.min.js",
               "node_modules/simplemde-antd/dist/simplemde.min.js",
@@ -148,6 +147,123 @@
           "configurations": {
             "production": {
               "devServerTarget": "ng-alain:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "xueershangda-web": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/xueershangda-web",
+      "sourceRoot": "projects/xueershangda-web/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/xueershangda-web",
+            "index": "projects/xueershangda-web/src/index.html",
+            "main": "projects/xueershangda-web/src/main.ts",
+            "polyfills": "projects/xueershangda-web/src/polyfills.ts",
+            "tsConfig": "projects/xueershangda-web/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/xueershangda-web/src/favicon.ico",
+              "projects/xueershangda-web/src/assets"
+            ],
+            "styles": [
+              "projects/xueershangda-web/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/xueershangda-web/src/environments/environment.ts",
+                  "with": "projects/xueershangda-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "xueershangda-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "xueershangda-web:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "xueershangda-web:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/xueershangda-web/src/test.ts",
+            "polyfills": "projects/xueershangda-web/src/polyfills.ts",
+            "tsConfig": "projects/xueershangda-web/tsconfig.spec.json",
+            "karmaConfig": "projects/xueershangda-web/karma.conf.js",
+            "assets": [
+              "projects/xueershangda-web/src/favicon.ico",
+              "projects/xueershangda-web/src/assets"
+            ],
+            "styles": [
+              "projects/xueershangda-web/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/xueershangda-web/tsconfig.app.json",
+              "projects/xueershangda-web/tsconfig.spec.json",
+              "projects/xueershangda-web/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/xueershangda-web/e2e/protractor.conf.js",
+            "devServerTarget": "xueershangda-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "xueershangda-web:serve:production"
             }
           }
         }

@@ -7,8 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // #region default language
 // 参考：https://ng-alain.com/docs/i18n
 import { default as ngLang } from '@angular/common/locales/zh';
-import { NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd';
+import { NZ_DATE_LOCALE, NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd';
 import { ALAIN_I18N_TOKEN, DELON_LOCALE, zh_CN as delonLang } from '@delon/theme';
+import { zhCN as dateLang } from 'date-fns/locale';
 // register angular
 import { registerLocaleData } from '@angular/common';
 // #region i18n services
@@ -19,25 +20,28 @@ import { DefaultInterceptor, I18NService, StartupService } from '@core';
 // #region JSON Schema form (using @delon/form)
 import { JsonSchemaModule } from '@shared/json-schema/json-schema.module';
 import { SimpleInterceptor } from '@delon/auth';
-import { DelonModule } from './delon.module';
+// import { DelonModule } from './delon.module';
 import { CoreModule } from '@core/core.module';
 import { SharedModule } from '@shared';
 import { AppComponent } from './app.component';
 import { RoutesModule } from './routes/routes.module';
 import { LayoutModule } from './layout/layout.module';
 import { SimplemdeModule } from 'ngx-simplemde';
+import { GlobalConfigModule } from './global-config.module';
 
 const LANG = {
   abbr: 'zh',
   ng: ngLang,
   zorro: zorroLang,
   delon: delonLang,
+  date: dateLang
 };
 registerLocaleData(LANG.ng, LANG.abbr);
 const LANG_PROVIDES = [
   { provide: LOCALE_ID, useValue: LANG.abbr },
   { provide: NZ_I18N, useValue: LANG.zorro },
   { provide: DELON_LOCALE, useValue: LANG.delon },
+  { provide: NZ_DATE_LOCALE, useValue: LANG.date },
 ];
 // #endregion
 
@@ -93,7 +97,8 @@ const APPINIT_PROVIDES = [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    DelonModule.forRoot(),
+    // DelonModule.forRoot(),
+    GlobalConfigModule.forRoot(),
     CoreModule,
     SharedModule,
     LayoutModule,
