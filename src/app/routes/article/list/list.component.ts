@@ -27,7 +27,7 @@ export class ArticleListComponent implements OnInit {
       }
     }
   };
-  @ViewChild('st', { static: false }) st: STComponent;
+  @ViewChild('st') st: STComponent;
   // 表格显示的属性，与后端数据要能对的上
   columns: STColumn[] = [
     { title: '编号', index: 'id' },

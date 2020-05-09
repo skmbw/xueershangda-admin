@@ -24,7 +24,7 @@ export class QuestionListComponent implements OnInit {
       }
     }
   };
-  @ViewChild('st', { static: false }) st: STComponent;
+  @ViewChild('st') st: STComponent;
   columns: STColumn[] = [
     { title: '编号', index: 'id' },
     { title: '调用次数', type: 'number', index: 'callNo' },

@@ -43,7 +43,7 @@ export class ProAccountCenterComponent implements OnInit, OnDestroy {
 
   taging = false;
   tagValue = '';
-  @ViewChild('tagInput', { static: false })
+  @ViewChild('tagInput')
   private tagInput: ElementRef;
 
   private setActive() {

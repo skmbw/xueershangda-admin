@@ -44,7 +44,7 @@ const routes: Routes = [
       { path: 'exception', loadChildren: () => import('./exception/exception.module').then(m => m.ExceptionModule) },
       // 业务module
       { path: 'video', loadChildren: () => import('./video/video.module').then(m => m.VideoModule) },
-      { path: 'article', loadChildren: './article/article.module#ArticleModule' }, // 这种legacy的方式也是OK的
+      { path: 'article', loadChildren: () => import('./article/article.module').then(m => m.ArticleModule) }, // 这种legacy的方式也是OK的
       { path: 'question', loadChildren: () => import('./question/question.module').then(m => m.QuestionModule) },
       { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
     ],

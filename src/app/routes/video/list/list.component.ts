@@ -26,7 +26,7 @@ export class VideoListComponent implements OnInit {
       },
     },
   };
-  @ViewChild('st', { static: false }) st: STComponent;
+  @ViewChild('st') st: STComponent;
   columns: STColumn[] = [
     { title: '编号', index: 'id' },
     { title: '标题', index: 'title' },
