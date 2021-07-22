@@ -121,7 +121,7 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.8.3",
     "webpack-bundle-analyzer": "^3.6.1",
-    "xlsx": "^0.15.6"
+    "xlsx": "^0.17.0"
   },
   "husky": {
     "hooks": {
